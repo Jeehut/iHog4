@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		155530D125138A5500CF48FD /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155530D025138A5500CF48FD /* UIDevice+Extensions.swift */; };
+		1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3272512F3DF001E1BDF /* ShowBox.swift */; };
+		1578D3312512F460001E1BDF /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3302512F460001E1BDF /* Device.swift */; };
 		15DA2677251237D60063E236 /* iHogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2676251237D60063E236 /* iHogApp.swift */; };
 		15DA2679251237D60063E236 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2678251237D60063E236 /* ContentView.swift */; };
 		15DA267B251237D70063E236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15DA267A251237D70063E236 /* Assets.xcassets */; };
@@ -15,6 +18,9 @@
 		15DA2683251237D70063E236 /* iHog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2681251237D70063E236 /* iHog.xcdatamodeld */; };
 		15DA268E251237D70063E236 /* iHogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA268D251237D70063E236 /* iHogTests.swift */; };
 		15DA2699251237D70063E236 /* iHogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2698251237D70063E236 /* iHogUITests.swift */; };
+		15DA26AC251238980063E236 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26AB251238980063E236 /* Settings.swift */; };
+		15DA26B425123D200063E236 /* SelectShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26B325123D200063E236 /* SelectShow.swift */; };
+		15DA26BA25123EEB0063E236 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26B925123EEB0063E236 /* Show.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		155530D025138A5500CF48FD /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
+		1578D3272512F3DF001E1BDF /* ShowBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBox.swift; sourceTree = "<group>"; };
+		1578D3302512F460001E1BDF /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		15DA2673251237D60063E236 /* iHog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iHog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DA2676251237D60063E236 /* iHogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogApp.swift; sourceTree = "<group>"; };
 		15DA2678251237D60063E236 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +58,9 @@
 		15DA2694251237D70063E236 /* iHogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iHogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DA2698251237D70063E236 /* iHogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogUITests.swift; sourceTree = "<group>"; };
 		15DA269A251237D70063E236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15DA26AB251238980063E236 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		15DA26B325123D200063E236 /* SelectShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectShow.swift; sourceTree = "<group>"; };
+		15DA26B925123EEB0063E236 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +88,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		155530CF25138A2D00CF48FD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				155530D025138A5500CF48FD /* UIDevice+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1578D3262512F3CF001E1BDF /* ShowSettings */ = {
+			isa = PBXGroup;
+			children = (
+				15DA26B325123D200063E236 /* SelectShow.swift */,
+				1578D3272512F3DF001E1BDF /* ShowBox.swift */,
+			);
+			path = ShowSettings;
+			sourceTree = "<group>";
+		};
+		1578D32F2512F44F001E1BDF /* DeviceSettings */ = {
+			isa = PBXGroup;
+			children = (
+				1578D3302512F460001E1BDF /* Device.swift */,
+			);
+			path = DeviceSettings;
+			sourceTree = "<group>";
+		};
 		15DA266A251237D60063E236 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +136,9 @@
 		15DA2675251237D60063E236 /* iHog */ = {
 			isa = PBXGroup;
 			children = (
+				155530CF25138A2D00CF48FD /* Helpers */,
+				15DA26B825123ED90063E236 /* Data */,
+				15DA26A92512387D0063E236 /* Views */,
 				15DA2676251237D60063E236 /* iHogApp.swift */,
 				15DA2678251237D60063E236 /* ContentView.swift */,
 				15DA267A251237D70063E236 /* Assets.xcassets */,
@@ -134,6 +174,32 @@
 				15DA269A251237D70063E236 /* Info.plist */,
 			);
 			path = iHogUITests;
+			sourceTree = "<group>";
+		};
+		15DA26A92512387D0063E236 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				15DA26AA251238830063E236 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		15DA26AA251238830063E236 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1578D32F2512F44F001E1BDF /* DeviceSettings */,
+				1578D3262512F3CF001E1BDF /* ShowSettings */,
+				15DA26AB251238980063E236 /* Settings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		15DA26B825123ED90063E236 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				15DA26B925123EEB0063E236 /* Show.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,10 +331,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15DA26B425123D200063E236 /* SelectShow.swift in Sources */,
 				15DA2683251237D70063E236 /* iHog.xcdatamodeld in Sources */,
+				1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */,
+				1578D3312512F460001E1BDF /* Device.swift in Sources */,
 				15DA2680251237D70063E236 /* Persistence.swift in Sources */,
+				155530D125138A5500CF48FD /* UIDevice+Extensions.swift in Sources */,
 				15DA2679251237D60063E236 /* ContentView.swift in Sources */,
+				15DA26BA25123EEB0063E236 /* Show.swift in Sources */,
 				15DA2677251237D60063E236 /* iHogApp.swift in Sources */,
+				15DA26AC251238980063E236 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
