@@ -17,13 +17,12 @@ struct ShowSetting: View {
             Button("Save All") {
                 print("save settings")
             }.foregroundColor(.green)
-        }
+        }.navigationTitle("Show Settings")
     }
 }
 
 struct ShowSetting_Previews: PreviewProvider {
     static var previews: some View {
         ShowSetting()
-        
     }
 }

@@ -27,7 +27,7 @@ struct Settings: View {
             List{
                 NavigationLink("Show", destination: SelectShow(), tag: SettingsNav.chooseShow, selection: $selectedSetting)
                 NavigationLink("Device", destination: Device(), tag: SettingsNav.device, selection: $selectedSetting)
-                NavigationLink("Show Settings", destination: Text("Adjust show"), tag: SettingsNav.showSettings, selection: $selectedSetting)
+                NavigationLink("Show Settings", destination: ShowSetting(), tag: SettingsNav.showSettings, selection: $selectedSetting)
                 NavigationLink("About", destination: Text("About the app options"), tag: SettingsNav.about, selection: $selectedSetting)
                 Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")
             }
