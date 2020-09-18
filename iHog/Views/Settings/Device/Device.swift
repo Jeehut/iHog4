@@ -69,5 +69,6 @@ struct Device: View {
 struct Device_Previews: PreviewProvider {
     static var previews: some View {
         Device()
+            .preferredColorScheme(.light)
     }
 }

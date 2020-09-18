@@ -21,6 +21,8 @@
 		15DA26AC251238980063E236 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26AB251238980063E236 /* Settings.swift */; };
 		15DA26B425123D200063E236 /* SelectShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26B325123D200063E236 /* SelectShow.swift */; };
 		15DA26BA25123EEB0063E236 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26B925123EEB0063E236 /* Show.swift */; };
+		15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520252514DA7500EF4B98 /* ShowSetting.swift */; };
+		15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520302514DBA300EF4B98 /* ObjectSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		15DA26AB251238980063E236 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		15DA26B325123D200063E236 /* SelectShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectShow.swift; sourceTree = "<group>"; };
 		15DA26B925123EEB0063E236 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
+		15F520252514DA7500EF4B98 /* ShowSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSetting.swift; sourceTree = "<group>"; };
+		15F520302514DBA300EF4B98 /* ObjectSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +210,8 @@
 		15F5201B2514D95D00EF4B98 /* ShowSettings */ = {
 			isa = PBXGroup;
 			children = (
+				15F520252514DA7500EF4B98 /* ShowSetting.swift */,
+				15F520302514DBA300EF4B98 /* ObjectSettings.swift */,
 			);
 			path = ShowSettings;
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 			files = (
 				15DA26B425123D200063E236 /* SelectShow.swift in Sources */,
 				15DA2683251237D70063E236 /* iHog.xcdatamodeld in Sources */,
+				15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */,
 				1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */,
 				1578D3312512F460001E1BDF /* Device.swift in Sources */,
 				15DA2680251237D70063E236 /* Persistence.swift in Sources */,
@@ -349,6 +356,7 @@
 				15DA26BA25123EEB0063E236 /* Show.swift in Sources */,
 				15DA2677251237D60063E236 /* iHogApp.swift in Sources */,
 				15DA26AC251238980063E236 /* Settings.swift in Sources */,
+				15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
