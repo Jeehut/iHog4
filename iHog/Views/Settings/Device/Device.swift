@@ -55,6 +55,12 @@ struct Device: View {
                 HStack{
                     Toggle("Nano Mode is \(isNanoModeOn ? "on" : "off")", isOn: $isNanoModeOn)
                 }
+                HStack{
+                    Spacer()
+                    Button("Apply Settings") {
+                        print("Apply")
+                    }.foregroundColor(.green)
+                }
             }
         }.navigationTitle("Device Settings")
     }

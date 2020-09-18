@@ -96,21 +96,21 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		1578D3262512F3CF001E1BDF /* ShowSettings */ = {
+		1578D3262512F3CF001E1BDF /* ChooseShowSettings */ = {
 			isa = PBXGroup;
 			children = (
 				15DA26B325123D200063E236 /* SelectShow.swift */,
 				1578D3272512F3DF001E1BDF /* ShowBox.swift */,
 			);
-			path = ShowSettings;
+			path = ChooseShowSettings;
 			sourceTree = "<group>";
 		};
-		1578D32F2512F44F001E1BDF /* DeviceSettings */ = {
+		1578D32F2512F44F001E1BDF /* Device */ = {
 			isa = PBXGroup;
 			children = (
 				1578D3302512F460001E1BDF /* Device.swift */,
 			);
-			path = DeviceSettings;
+			path = Device;
 			sourceTree = "<group>";
 		};
 		15DA266A251237D60063E236 = {
@@ -187,8 +187,9 @@
 		15DA26AA251238830063E236 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				1578D32F2512F44F001E1BDF /* DeviceSettings */,
-				1578D3262512F3CF001E1BDF /* ShowSettings */,
+				15F5201B2514D95D00EF4B98 /* ShowSettings */,
+				1578D32F2512F44F001E1BDF /* Device */,
+				1578D3262512F3CF001E1BDF /* ChooseShowSettings */,
 				15DA26AB251238980063E236 /* Settings.swift */,
 			);
 			path = Settings;
@@ -200,6 +201,13 @@
 				15DA26B925123EEB0063E236 /* Show.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		15F5201B2514D95D00EF4B98 /* ShowSettings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ShowSettings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
