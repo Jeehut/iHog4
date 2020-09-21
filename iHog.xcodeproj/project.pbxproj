@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		155530D125138A5500CF48FD /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155530D025138A5500CF48FD /* UIDevice+Extensions.swift */; };
+		1557952B2518CB9C004FD603 /* ShowObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557952A2518CB9C004FD603 /* ShowObjectView.swift */; };
+		155795302518CBBF004FD603 /* ShowObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557952F2518CBBF004FD603 /* ShowObject.swift */; };
+		155795362518D49A004FD603 /* ObjectGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155795352518D49A004FD603 /* ObjectGrid.swift */; };
 		1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3272512F3DF001E1BDF /* ShowBox.swift */; };
 		1578D3312512F460001E1BDF /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3302512F460001E1BDF /* Device.swift */; };
+		15DA0B19251513BC006ADB27 /* ProgrammingObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA0B18251513BC006ADB27 /* ProgrammingObjects.swift */; };
 		15DA2677251237D60063E236 /* iHogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2676251237D60063E236 /* iHogApp.swift */; };
 		15DA2679251237D60063E236 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2678251237D60063E236 /* ContentView.swift */; };
 		15DA267B251237D70063E236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15DA267A251237D70063E236 /* Assets.xcassets */; };
@@ -44,8 +48,12 @@
 
 /* Begin PBXFileReference section */
 		155530D025138A5500CF48FD /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
+		1557952A2518CB9C004FD603 /* ShowObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowObjectView.swift; sourceTree = "<group>"; };
+		1557952F2518CBBF004FD603 /* ShowObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowObject.swift; sourceTree = "<group>"; };
+		155795352518D49A004FD603 /* ObjectGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectGrid.swift; sourceTree = "<group>"; };
 		1578D3272512F3DF001E1BDF /* ShowBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBox.swift; sourceTree = "<group>"; };
 		1578D3302512F460001E1BDF /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		15DA0B18251513BC006ADB27 /* ProgrammingObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammingObjects.swift; sourceTree = "<group>"; };
 		15DA2673251237D60063E236 /* iHog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iHog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DA2676251237D60063E236 /* iHogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogApp.swift; sourceTree = "<group>"; };
 		15DA2678251237D60063E236 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,6 +125,16 @@
 			path = Device;
 			sourceTree = "<group>";
 		};
+		15DA0B17251513AC006ADB27 /* ShowObjects */ = {
+			isa = PBXGroup;
+			children = (
+				15DA0B18251513BC006ADB27 /* ProgrammingObjects.swift */,
+				1557952A2518CB9C004FD603 /* ShowObjectView.swift */,
+				155795352518D49A004FD603 /* ObjectGrid.swift */,
+			);
+			path = ShowObjects;
+			sourceTree = "<group>";
+		};
 		15DA266A251237D60063E236 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +201,7 @@
 		15DA26A92512387D0063E236 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				15DA0B17251513AC006ADB27 /* ShowObjects */,
 				15DA26AA251238830063E236 /* Settings */,
 			);
 			path = Views;
@@ -203,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				15DA26B925123EEB0063E236 /* Show.swift */,
+				1557952F2518CBBF004FD603 /* ShowObject.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -345,18 +365,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15DA0B19251513BC006ADB27 /* ProgrammingObjects.swift in Sources */,
 				15DA26B425123D200063E236 /* SelectShow.swift in Sources */,
 				15DA2683251237D70063E236 /* iHog.xcdatamodeld in Sources */,
 				15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */,
+				1557952B2518CB9C004FD603 /* ShowObjectView.swift in Sources */,
 				1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */,
 				1578D3312512F460001E1BDF /* Device.swift in Sources */,
 				15DA2680251237D70063E236 /* Persistence.swift in Sources */,
+				155795362518D49A004FD603 /* ObjectGrid.swift in Sources */,
 				155530D125138A5500CF48FD /* UIDevice+Extensions.swift in Sources */,
 				15DA2679251237D60063E236 /* ContentView.swift in Sources */,
 				15DA26BA25123EEB0063E236 /* Show.swift in Sources */,
 				15DA2677251237D60063E236 /* iHogApp.swift in Sources */,
 				15DA26AC251238980063E236 /* Settings.swift in Sources */,
 				15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */,
+				155795302518CBBF004FD603 /* ShowObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
