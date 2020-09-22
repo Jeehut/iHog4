@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct iHogApp: App {
-    let persistenceController = PersistenceController.shared
+//    let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            ProgrammingObjects(groupObjects: testShowObjects, paletteObjects: testShowObjects)
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

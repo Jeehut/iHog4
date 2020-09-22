@@ -28,22 +28,21 @@ struct ShowObjectView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(getColor(), lineWidth: 5)
-        )
-        .padding()
+        ).padding()
     }
     
     func getSize() -> CGFloat{
         switch size {
         case "small":
-            return 100.0
+            return 50.0
         case "medium":
-            return 150.0
+            return 100.0
         case "large":
-            return 200.0
-        case "extra large":
-            return 250.0
-        default:
             return 150.0
+        case "extra large":
+            return 200.0
+        default:
+            return 100.0
         }
     }
     

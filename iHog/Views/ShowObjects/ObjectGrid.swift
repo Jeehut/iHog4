@@ -13,7 +13,7 @@ struct ObjectGrid: View {
     var objects: [ShowObject]
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: getColumns(), spacing: 20.0){
+            LazyVGrid(columns: getColumns(), spacing: 10.0){
                 ForEach(objects, id: \.self) { obj in
                     ShowObjectView(obj: obj, size: size)
                 }
