@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProgrammingObjects: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @State private var chosenPaletteType: Int = 0
     var groupObjects: [ShowObject]
     var paletteObjects: [ShowObject]
@@ -15,6 +16,7 @@ struct ProgrammingObjects: View {
     
     var body: some View {
         VStack{
+            // MARK: Toolbar
             HStack{
                 Button(action: {
                     print("Add group")
@@ -39,14 +41,14 @@ struct ProgrammingObjects: View {
                 }, label: {
                     VStack{
                         Image(systemName: "plus.rectangle")
-                        Text("Add \(paletteTypes[chosenPaletteType].rawValue.localizedCapitalized) Palette")
+                        Text("Add \(paletteTypes[chosenPaletteType].rawValue.localizedCapitalized)")
                     }
                 })
             }
             // MARK: Groups
             ObjectGrid(
                 size: "small",
-                buttonsAcross: 5,
+                buttonsAcross: 3,
                 objects: groupObjects
             ).padding()
             // MARK: Pallets
@@ -56,8 +58,8 @@ struct ProgrammingObjects: View {
                 }
             }.pickerStyle(SegmentedPickerStyle())
             ObjectGrid(
-                size: "small",
-                buttonsAcross: 5,
+                size: "medium",
+                buttonsAcross: 3,
                 objects: paletteObjects
             )
             Spacer()

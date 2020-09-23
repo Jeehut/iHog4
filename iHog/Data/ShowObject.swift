@@ -42,13 +42,51 @@ struct ShowObject: Identifiable, Hashable {
         if let objectName = name {
             return objectName
         }
-        return objType.rawValue.localizedCapitalized + " \(number)"
+        return objType.rawValue.localizedCapitalized + " " + getObjNumber()
+    }
+    
+    func getObjNumber() -> String {
+        var numString: String = ""
+        let objNum = number
+        let isInt = objNum.truncatingRemainder(dividingBy: 1) == 0
+        
+        if isInt {
+            numString = String(format: "%.0f", number)
+        } else {
+            numString = String(format: "%.3f", number)
+        }
+        
+        return numString
+    }
+    
+    func getShortType() -> String {
+        switch objType {
+        case .group:
+            return "GRP"
+        case .intensity:
+            return "INT"
+        case .position:
+            return "POS"
+        case .color:
+            return "COL"
+        case .beam:
+            return "BEM"
+        case .effect:
+            return "EFF"
+        case .list:
+            return "LST"
+        case .scene:
+            return "SCN"
+        default:
+            // NO TYPE FOUND
+            return "NTF"
+        }
     }
 }
 
 let testShowObjects: [ShowObject] = [
-    ShowObject(objType: ShowObjectType.group, number: 1.0, objColor: "red"),
-    ShowObject(objType: ShowObjectType.position, number: 1.0, objColor: "red", isOutlined: false),
+    ShowObject(objType: ShowObjectType.group, number: 1, objColor: "red"),
+    ShowObject(objType: ShowObjectType.position, number: 1, objColor: "red", isOutlined: false),
     ShowObject(objType: ShowObjectType.position, number: 2.0, objColor: "red"),
     ShowObject(objType: ShowObjectType.position, number: 10.0, objColor: "red"),
     ShowObject(objType: ShowObjectType.position, number: 21.0, objColor: "red", isOutlined: false),

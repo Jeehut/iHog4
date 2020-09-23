@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Settings: View {
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @State var selectedSetting: SettingsNav? = .chooseShow
     
     enum SettingsNav:Hashable {

@@ -13,10 +13,10 @@ struct ShowObjectView: View {
     var body: some View {
         VStack(alignment: .leading){
             HStack{
-                Text(obj.objType.rawValue.localizedCapitalized)
+                Text(obj.getShortType())
                 Spacer()
-                Text("\(obj.number)")
-            }.font(.subheadline)
+                Text("\(obj.getObjNumber())")
+            }
             Spacer()
             Text(obj.getName())
                 .font(.headline)
@@ -60,7 +60,7 @@ struct ShowObjectView_Previews: PreviewProvider {
     static var previews: some View {
         ShowObjectView(
             obj: testShowObjects[1],
-            size: "medium"
+            size: "small"
         )
     }
 }
