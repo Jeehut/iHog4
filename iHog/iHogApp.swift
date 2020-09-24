@@ -13,7 +13,7 @@ struct iHogApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ProgrammingObjects(groupObjects: testShowObjects, paletteObjects: testShowObjects)
+            FPProgramming()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
