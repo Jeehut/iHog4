@@ -13,4 +13,4 @@ Are you wondering how you can support further development? Well, here's how!
 
 - [Download the app](https://apps.apple.com/us/app/ihog-osc-lighting-remote/id1487580623?ls=1)
 - [Buy Me a Coffee one time](https://ko-fi.com/appsbymw)
-- [Buy Me a Coffee monthly](https://patreon.com/maeganwilson)
+- [Buy Me a Coffee monthly](https://www.patreon.com/maeganwilson_)
