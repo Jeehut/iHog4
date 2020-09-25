@@ -1,5 +1,5 @@
 //
-//  FPProgramming.swift
+//  RegRegFPProgramming.swift
 //  iHog
 //
 //  Created by Maegan Wilson on 9/23/20.
@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct RegRegFPProgramming: View {
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @Environment(\.verticalSizeClass) var verticalSizeClass
     
     var body: some View {
         VStack{
-            Text("Horizontal \(horizontalSizeClass.debugDescription) \n Vertical: \(verticalSizeClass.debugDescription)")
+            CommandLineView(commandLineText: "SolaSpot 1000 1 > 10 @ 100%")
             EncoderWheelsView()
             HStack(alignment: .bottom){
                 VStack{
@@ -33,18 +31,10 @@ struct RegRegFPProgramming: View {
                 }
                     .padding(.horizontal)
                 VStack(alignment: .leading){
-                    HStack{
-                        FPButton(buttonText: "Blind")
-                        FPButton(buttonText: "High Light")
-                        FPButton(buttonText: "Clear")
-                    }
+                    HBCButtonView()
                     Spacer()
                         .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 80, maxHeight: 80, alignment: .center)
-                    HStack{
-                        FPButton(buttonText: "Back")
-                        FPButton(buttonText: "All")
-                        FPButton(buttonText: "Next")
-                    }
+                    SelectButtonView()
                     Spacer()
                         .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
                     FunctionKeyView()
