@@ -13,9 +13,10 @@ struct EncoderWheel: View {
     var body: some View {
         VStack{
             Text("+")
+                .fontWeight(.heavy)
                 .frame(width: 50, height: 50, alignment: .center)
-                .background(Color.gray)
-                .foregroundColor(.white)
+                .background(Color.blue)
+                .foregroundColor(.primary)
                 .cornerRadius(5.0)
             VStack{
                 Text(paramName)
@@ -26,9 +27,10 @@ struct EncoderWheel: View {
             }
             .frame(width: 90, height: 75, alignment: .center)
             Text("-")
+                .fontWeight(.heavy)
                 .frame(width: 50, height: 50, alignment: .center)
-                .background(Color.gray)
-                .foregroundColor(.white)
+                .background(Color.blue)
+                .foregroundColor(.primary)
                 .cornerRadius(5.0)
         }
         .frame(width: 100, height: 175, alignment: .center)
@@ -38,12 +40,22 @@ struct EncoderWheel: View {
 
 struct EncoderWheel_Previews: PreviewProvider {
     static var previews: some View {
-        HStack{
-            EncoderWheel(paramName: "Pan", paramValue: "0")
-            EncoderWheel(paramName: "Pan", paramValue: "0")
-            EncoderWheel(paramName: "Pan", paramValue: "0")
-            EncoderWheel(paramName: "Pan", paramValue: "0")
-            EncoderWheel(paramName: "Gobo 2 <>", paramValue: "0")
+        Group {
+            HStack{
+                EncoderWheel(paramName: "Pan", paramValue: "0")
+                EncoderWheel(paramName: "Tilt", paramValue: "0")
+                EncoderWheel(paramName: "Zoom", paramValue: "0")
+                EncoderWheel(paramName: "Focus", paramValue: "0")
+                EncoderWheel(paramName: "Gobo 2 <>", paramValue: "0")
+            }
+            HStack{
+                EncoderWheel(paramName: "Pan", paramValue: "0")
+                EncoderWheel(paramName: "Tilt", paramValue: "0")
+                EncoderWheel(paramName: "Zoom", paramValue: "0")
+                EncoderWheel(paramName: "Focus", paramValue: "0")
+                EncoderWheel(paramName: "Gobo 2 <>", paramValue: "0")
+            }
+            .preferredColorScheme(.dark)
         }
     }
 }

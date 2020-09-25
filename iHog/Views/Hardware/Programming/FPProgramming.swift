@@ -14,21 +14,39 @@ struct FPProgramming: View {
         VStack{
             Text("Command Line \(horizontalSizeClass.debugDescription)")
             EncoderWheelsView()
-            HStack{
+            HStack(alignment: .bottom){
                 VStack{
                     ObjectButtonView()
                     Spacer()
-                        .frame(width: 50, height: 64, alignment: .center)
+                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
                     ActionButtonView()
                     Spacer()
-                        .frame(width: 100, height: 72, alignment: .center)
+                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 80, maxHeight: 80, alignment: .center)
                     UtilityButtonView()
-                }.padding(.trailing)
+                }
                 VStack{
                     KindButtonView()
                     Spacer()
-                        .frame(width: 100, height: 60, alignment: .center)
+                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
                     NumericKeypadView()
+                }
+                    .padding(.horizontal)
+                VStack(alignment: .leading){
+                    HStack{
+                        FPButton(buttonText: "Blind")
+                        FPButton(buttonText: "High Light")
+                        FPButton(buttonText: "Clear")
+                    }
+                    Spacer()
+                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 80, maxHeight: 80, alignment: .center)
+                    HStack{
+                        FPButton(buttonText: "Back")
+                        FPButton(buttonText: "All")
+                        FPButton(buttonText: "Next")
+                    }
+                    Spacer()
+                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
+                    FunctionKeyView()
                 }
             }
         }
@@ -38,5 +56,6 @@ struct FPProgramming: View {
 struct FPProgramming_Previews: PreviewProvider {
     static var previews: some View {
         FPProgramming()
+            
     }
 }

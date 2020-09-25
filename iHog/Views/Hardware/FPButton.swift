@@ -18,9 +18,16 @@ struct FPButton: View {
         }
         .frame(width: 55, height: 55, alignment: .center)
         .padding(5)
-        .foregroundColor(.white)
-        .background(Color.gray)
+        .foregroundColor(.primary)
+        .background(setBackGroundColor())
         .cornerRadius(5.0)
+    }
+    
+    func setBackGroundColor() -> Color {
+        if buttonText.lowercased() == "pig" {
+            return Color.pink
+        }
+        return Color.gray
     }
 }
 
