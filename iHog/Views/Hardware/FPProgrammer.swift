@@ -20,9 +20,9 @@ struct FPProgrammer: View {
             }
         default: // compact
             if verticalSizeClass == .regular {
-                Text("\(horizontalSizeClass.debugDescription) x \(verticalSizeClass.debugDescription)")
+                CompRegFPprogramming()
             } else {
-                Text("comp x comp")
+                RegCompFPProgramming()
             }
         }
     }
