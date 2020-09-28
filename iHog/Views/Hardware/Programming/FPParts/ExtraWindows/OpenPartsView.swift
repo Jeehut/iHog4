@@ -8,29 +8,44 @@
 import SwiftUI
 
 struct OpenPartsView: View {
+    @State private var selectedPartView: Int = 4
+    @State private var isEncoderShown: Bool = false
+    @State private var isFunctionShown: Bool = false
+    @State private var isUtilityShown: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading){
             Button(action: {
-                print("Open Kind Keys and Encoders")
+                self.selectedPartView = 0
+                self.isEncoderShown = true
             }){
                 Text("Kind Keys & Encoders")
             }
             .buttonStyle(OpenButtonStyle())
+            .sheet(isPresented: $isEncoderShown, content: {
+                EncodersKindsSheet()
+            })
             Spacer()
             Button(action: {
-                print("Open Function Keys")
+                self.isFunctionShown = true
             }){
                 Text("Function Keys")
             }
             .buttonStyle(OpenButtonStyle())
+            .sheet(isPresented: $isFunctionShown, content: {
+                FunctionKeySheet()
+            })
             Spacer()
             
             Button(action: {
-                print("Open Utility Keys")
+                self.isUtilityShown = true
             }){
                 Text("Utility Keys")
             }
             .buttonStyle(OpenButtonStyle())
+            .sheet(isPresented: $isUtilityShown, content: {
+                UtilityKeySheet()
+            })
         }
     }
     
@@ -48,5 +63,6 @@ struct OpenButtonStyle: ButtonStyle {
             .frame(width: 200, height: 55, alignment: .center)
             .background(Color.gray)
             .cornerRadius(5.0)
+            .foregroundColor(configuration.isPressed ? .secondary : .primary)
     }
 }

@@ -23,6 +23,8 @@
 		159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BAED3251B7BDB00A81EA1 /* RegRegFPProgramming.swift */; };
 		15AB35D9251CC1C5008FC212 /* FPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB35D8251CC1C5008FC212 /* FPButton.swift */; };
 		15AB35DF251CC354008FC212 /* ObjectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB35DE251CC354008FC212 /* ObjectButtonView.swift */; };
+		15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */; };
+		15CA428B25220DBD00C56FE0 /* FunctionKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */; };
 		15D07DF0251E0EB400A80DC4 /* FunctionKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */; };
 		15D07DF8251E16FA00A80DC4 /* FPProgrammer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07DF7251E16FA00A80DC4 /* FPProgrammer.swift */; };
 		15D07E01251E197800A80DC4 /* RegCompFPProgrammer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07E00251E197800A80DC4 /* RegCompFPProgrammer.swift */; };
@@ -44,6 +46,7 @@
 		15DA26BA25123EEB0063E236 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26B925123EEB0063E236 /* Show.swift */; };
 		15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520252514DA7500EF4B98 /* ShowSetting.swift */; };
 		15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520302514DBA300EF4B98 /* ObjectSettings.swift */; };
+		15FB201725220F52007EDC36 /* UtilityKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201625220F52007EDC36 /* UtilityKeySheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,8 @@
 		159BAED3251B7BDB00A81EA1 /* RegRegFPProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegRegFPProgramming.swift; sourceTree = "<group>"; };
 		15AB35D8251CC1C5008FC212 /* FPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPButton.swift; sourceTree = "<group>"; };
 		15AB35DE251CC354008FC212 /* ObjectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectButtonView.swift; sourceTree = "<group>"; };
+		15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodersKindsSheet.swift; sourceTree = "<group>"; };
+		15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionKeySheet.swift; sourceTree = "<group>"; };
 		15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionKeyView.swift; sourceTree = "<group>"; };
 		15D07DF7251E16FA00A80DC4 /* FPProgrammer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPProgrammer.swift; sourceTree = "<group>"; };
 		15D07E00251E197800A80DC4 /* RegCompFPProgrammer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegCompFPProgrammer.swift; sourceTree = "<group>"; };
@@ -107,6 +112,7 @@
 		15DA26B925123EEB0063E236 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		15F520252514DA7500EF4B98 /* ShowSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSetting.swift; sourceTree = "<group>"; };
 		15F520302514DBA300EF4B98 /* ObjectSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSettings.swift; sourceTree = "<group>"; };
+		15FB201625220F52007EDC36 /* UtilityKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityKeySheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,9 +185,21 @@
 			path = Programming;
 			sourceTree = "<group>";
 		};
+		15CA428625220D6C00C56FE0 /* ExtraWindows */ = {
+			isa = PBXGroup;
+			children = (
+				15D07E12251E1E7F00A80DC4 /* OpenPartsView.swift */,
+				15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */,
+				15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */,
+				15FB201625220F52007EDC36 /* UtilityKeySheet.swift */,
+			);
+			path = ExtraWindows;
+			sourceTree = "<group>";
+		};
 		15D07DFC251E183200A80DC4 /* FPParts */ = {
 			isa = PBXGroup;
 			children = (
+				15CA428625220D6C00C56FE0 /* ExtraWindows */,
 				15AB35DE251CC354008FC212 /* ObjectButtonView.swift */,
 				1502F624251CC43900BAC5EE /* ActionButtonView.swift */,
 				1502F629251CC4A200BAC5EE /* UtilityButtonView.swift */,
@@ -192,7 +210,6 @@
 				15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */,
 				15D07E05251E1B2500A80DC4 /* SelectButtonView.swift */,
 				15D07E0D251E1B7400A80DC4 /* HBCButtonView.swift */,
-				15D07E12251E1E7F00A80DC4 /* OpenPartsView.swift */,
 				15D07E17251E209100A80DC4 /* CommandLineView.swift */,
 			);
 			path = FPParts;
@@ -447,6 +464,7 @@
 				15D07DF0251E0EB400A80DC4 /* FunctionKeyView.swift in Sources */,
 				15D07E13251E1E7F00A80DC4 /* OpenPartsView.swift in Sources */,
 				15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */,
+				15CA428B25220DBD00C56FE0 /* FunctionKeySheet.swift in Sources */,
 				1557952B2518CB9C004FD603 /* ShowObjectView.swift in Sources */,
 				15D07E01251E197800A80DC4 /* RegCompFPProgrammer.swift in Sources */,
 				1502F634251CC5BF00BAC5EE /* NumericKeypadView.swift in Sources */,
@@ -455,6 +473,7 @@
 				159BAECB251B722700A81EA1 /* PlaybackObjects.swift in Sources */,
 				15D07DF8251E16FA00A80DC4 /* FPProgrammer.swift in Sources */,
 				1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */,
+				15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */,
 				1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */,
 				1578D3312512F460001E1BDF /* Device.swift in Sources */,
 				15D07E06251E1B2500A80DC4 /* SelectButtonView.swift in Sources */,
@@ -464,6 +483,7 @@
 				155795362518D49A004FD603 /* ObjectGrid.swift in Sources */,
 				155530D125138A5500CF48FD /* UIDevice+Extensions.swift in Sources */,
 				15DA2679251237D60063E236 /* ContentView.swift in Sources */,
+				15FB201725220F52007EDC36 /* UtilityKeySheet.swift in Sources */,
 				1502F62F251CC53100BAC5EE /* KindButtonView.swift in Sources */,
 				15DA26BA25123EEB0063E236 /* Show.swift in Sources */,
 				1502F625251CC43900BAC5EE /* ActionButtonView.swift in Sources */,

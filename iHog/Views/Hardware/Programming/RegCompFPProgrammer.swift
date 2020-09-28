@@ -9,18 +9,18 @@ import SwiftUI
 
 struct RegCompFPProgrammer: View {
     var body: some View {
-        VStack{
-            CommandLineView(commandLineText: "SolaSpot 1000 1 > 10 @ 100%")
-            HStack(alignment: .bottom){
+        HStack(alignment: .bottom){
+            VStack{
+                CommandLineView(commandLineText: "SolaSpot 1000 1 > 10 @ 100%")
                 OpenPartsView()
-                VStack{
-                    SelectButtonView()
-                    HBCButtonView()
-                    Spacer().frame(width: 80, height: 80, alignment: .center)
-                    ActionButtonView()
-                }.padding(.horizontal)
-                NumericKeypadView()
             }
+            VStack{
+                SelectButtonView()
+                HBCButtonView()
+                Spacer().frame(width: 80, height: 80, alignment: .center)
+                ActionButtonView()
+            }.padding(.horizontal)
+            NumericKeypadView()
         }
     }
 }

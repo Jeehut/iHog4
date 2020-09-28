@@ -11,8 +11,7 @@ struct CommandLineView: View {
     var commandLineText: String
     var body: some View {
         Text(commandLineText)
-            .frame(width: .infinity, height: 30, alignment: .center)
-            .padding()
+            .padding(10)
             .background(Color.purple)
             .cornerRadius(5.0)
             .foregroundColor(.black)
