@@ -15,6 +15,11 @@ struct Settings: View {
         case device
         case showSettings
         case about
+        case programmerHardware
+        case playbackHardware
+        case playbackObject
+        case programObject
+        case custom
     }
     
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
@@ -25,11 +30,33 @@ struct Settings: View {
         NavigationView{
             List{
                 NavigationLink("Show", destination: SelectShow(), tag: SettingsNav.chooseShow, selection: $selectedSetting)
-                NavigationLink("Device", destination: Device(), tag: SettingsNav.device, selection: $selectedSetting)
-                NavigationLink("Show Settings", destination: ShowSetting(), tag: SettingsNav.showSettings, selection: $selectedSetting)
-                NavigationLink("About", destination: Text("About the app options"), tag: SettingsNav.about, selection: $selectedSetting)
-                Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")
-            }
+                NavigationLink(
+                    "Programming",
+                    destination: FPProgrammer(),
+                    tag: SettingsNav.programmerHardware,
+                    selection: $selectedSetting)
+                NavigationLink(
+                    "Playback",
+                    destination: Text("Playback Hardware"),
+                    tag: SettingsNav.playbackHardware,
+                    selection: $selectedSetting)
+                NavigationLink(
+                    "Lists & Scenes",
+                    destination: PlaybackObjects(listObjects: testShowObjects, sceneObjects: testShowObjects),
+                    tag: SettingsNav.playbackObject,
+                    selection: $selectedSetting)
+                NavigationLink(
+                    "Groups & Palettes",
+                    destination: ProgrammingObjects(groupObjects: testShowObjects, paletteObjects: testShowObjects),
+                    tag: SettingsNav.programObject,
+                    selection: $selectedSetting)
+                Section(header: Text("Settings"), footer:
+                            Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")){
+                    NavigationLink("Device", destination: Device(), tag: SettingsNav.device, selection: $selectedSetting)
+                    NavigationLink("Show Settings", destination: ShowSetting(), tag: SettingsNav.showSettings, selection: $selectedSetting)
+                    NavigationLink("About", destination: Text("About the app options"), tag: SettingsNav.about, selection: $selectedSetting)
+                }
+            }.listStyle(GroupedListStyle())
         }
     }
 }
