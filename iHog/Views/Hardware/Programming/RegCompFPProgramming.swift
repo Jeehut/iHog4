@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RegCompFPProgrammer: View {
+struct RegCompFPProgramming: View {
     var body: some View {
         HStack(alignment: .bottom){
             VStack{
@@ -27,6 +27,6 @@ struct RegCompFPProgrammer: View {
 
 struct RegCompFPProgrammer_Previews: PreviewProvider {
     static var previews: some View {
-        RegCompFPProgrammer()
+        RegCompFPProgramming()
     }
 }

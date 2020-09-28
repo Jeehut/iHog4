@@ -27,7 +27,7 @@
 		15CA428B25220DBD00C56FE0 /* FunctionKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */; };
 		15D07DF0251E0EB400A80DC4 /* FunctionKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */; };
 		15D07DF8251E16FA00A80DC4 /* FPProgrammer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07DF7251E16FA00A80DC4 /* FPProgrammer.swift */; };
-		15D07E01251E197800A80DC4 /* RegCompFPProgrammer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07E00251E197800A80DC4 /* RegCompFPProgrammer.swift */; };
+		15D07E01251E197800A80DC4 /* RegCompFPProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07E00251E197800A80DC4 /* RegCompFPProgramming.swift */; };
 		15D07E06251E1B2500A80DC4 /* SelectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07E05251E1B2500A80DC4 /* SelectButtonView.swift */; };
 		15D07E0E251E1B7400A80DC4 /* HBCButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07E0D251E1B7400A80DC4 /* HBCButtonView.swift */; };
 		15D07E13251E1E7F00A80DC4 /* OpenPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07E12251E1E7F00A80DC4 /* OpenPartsView.swift */; };
@@ -47,6 +47,7 @@
 		15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520252514DA7500EF4B98 /* ShowSetting.swift */; };
 		15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520302514DBA300EF4B98 /* ObjectSettings.swift */; };
 		15FB201725220F52007EDC36 /* UtilityKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201625220F52007EDC36 /* UtilityKeySheet.swift */; };
+		15FB201C252212B0007EDC36 /* CompRegFPprogramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +88,7 @@
 		15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionKeySheet.swift; sourceTree = "<group>"; };
 		15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionKeyView.swift; sourceTree = "<group>"; };
 		15D07DF7251E16FA00A80DC4 /* FPProgrammer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPProgrammer.swift; sourceTree = "<group>"; };
-		15D07E00251E197800A80DC4 /* RegCompFPProgrammer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegCompFPProgrammer.swift; sourceTree = "<group>"; };
+		15D07E00251E197800A80DC4 /* RegCompFPProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegCompFPProgramming.swift; sourceTree = "<group>"; };
 		15D07E05251E1B2500A80DC4 /* SelectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButtonView.swift; sourceTree = "<group>"; };
 		15D07E0D251E1B7400A80DC4 /* HBCButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBCButtonView.swift; sourceTree = "<group>"; };
 		15D07E12251E1E7F00A80DC4 /* OpenPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPartsView.swift; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 		15F520252514DA7500EF4B98 /* ShowSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSetting.swift; sourceTree = "<group>"; };
 		15F520302514DBA300EF4B98 /* ObjectSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSettings.swift; sourceTree = "<group>"; };
 		15FB201625220F52007EDC36 /* UtilityKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityKeySheet.swift; sourceTree = "<group>"; };
+		15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRegFPprogramming.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +182,8 @@
 			children = (
 				15D07DFC251E183200A80DC4 /* FPParts */,
 				159BAED3251B7BDB00A81EA1 /* RegRegFPProgramming.swift */,
-				15D07E00251E197800A80DC4 /* RegCompFPProgrammer.swift */,
+				15D07E00251E197800A80DC4 /* RegCompFPProgramming.swift */,
+				15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */,
 			);
 			path = Programming;
 			sourceTree = "<group>";
@@ -466,10 +469,11 @@
 				15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */,
 				15CA428B25220DBD00C56FE0 /* FunctionKeySheet.swift in Sources */,
 				1557952B2518CB9C004FD603 /* ShowObjectView.swift in Sources */,
-				15D07E01251E197800A80DC4 /* RegCompFPProgrammer.swift in Sources */,
+				15D07E01251E197800A80DC4 /* RegCompFPProgramming.swift in Sources */,
 				1502F634251CC5BF00BAC5EE /* NumericKeypadView.swift in Sources */,
 				15AB35D9251CC1C5008FC212 /* FPButton.swift in Sources */,
 				1502F63E251CCB0700BAC5EE /* EncoderWheelsView.swift in Sources */,
+				15FB201C252212B0007EDC36 /* CompRegFPprogramming.swift in Sources */,
 				159BAECB251B722700A81EA1 /* PlaybackObjects.swift in Sources */,
 				15D07DF8251E16FA00A80DC4 /* FPProgrammer.swift in Sources */,
 				1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */,
