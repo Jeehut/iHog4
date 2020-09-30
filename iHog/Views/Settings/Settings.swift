@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Settings: View {
-    @State var selectedSetting: SettingsNav? = .chooseShow
+    @State var selectedSetting: SettingsNav? = SettingsNav.device
     
     enum SettingsNav:Hashable {
         case chooseShow
@@ -29,35 +29,31 @@ struct Settings: View {
     var body: some View {
         NavigationView{
             List{
-                NavigationLink("Show", destination: SelectShow(), tag: SettingsNav.chooseShow, selection: $selectedSetting)
-                NavigationLink(
-                    "Programming",
-                    destination: FPProgrammer(),
-                    tag: SettingsNav.programmerHardware,
-                    selection: $selectedSetting)
-                NavigationLink(
-                    "Playback",
-                    destination: Text("Playback Hardware"),
-                    tag: SettingsNav.playbackHardware,
-                    selection: $selectedSetting)
-                NavigationLink(
-                    "Lists & Scenes",
-                    destination: PlaybackObjects(listObjects: testShowObjects, sceneObjects: testShowObjects),
-                    tag: SettingsNav.playbackObject,
-                    selection: $selectedSetting)
-                NavigationLink(
-                    "Groups & Palettes",
-                    destination: ProgrammingObjects(groupObjects: testShowObjects, paletteObjects: testShowObjects),
-                    tag: SettingsNav.programObject,
-                    selection: $selectedSetting)
-                Section(header: Text("Settings"), footer:
-                            Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")){
+                Section(header: Text("Shows")) {
+                    ForEach(testShows) { show in
+                        NavigationLink(show.name, destination: FPProgrammer())
+                    }
+                }
+                Section(header: Text("Hardware")){
+                    NavigationLink(
+                        "Programming",
+                        destination: FPProgrammer(),
+                        tag: SettingsNav.programmerHardware,
+                        selection: $selectedSetting)
+                    NavigationLink(
+                        "Playback",
+                        destination: FPPlayback().navigationTitle("Playback").navigationBarHidden(true),
+                        tag: SettingsNav.playbackHardware,
+                        selection: $selectedSetting)
+                }
+                Section(header: Text("Settings")){
                     NavigationLink("Device", destination: Device(), tag: SettingsNav.device, selection: $selectedSetting)
                     NavigationLink("Show Settings", destination: ShowSetting(), tag: SettingsNav.showSettings, selection: $selectedSetting)
                     NavigationLink("About", destination: Text("About the app options"), tag: SettingsNav.about, selection: $selectedSetting)
                 }
-            }.listStyle(GroupedListStyle())
-        }
+                Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")
+            }.listStyle( SidebarListStyle())
+        }.navigationViewStyle( DoubleColumnNavigationViewStyle())
     }
 }
 

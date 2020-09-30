@@ -13,6 +13,10 @@
 		1502F634251CC5BF00BAC5EE /* NumericKeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F633251CC5BF00BAC5EE /* NumericKeypadView.swift */; };
 		1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F638251CC83F00BAC5EE /* EncoderWheel.swift */; };
 		1502F63E251CCB0700BAC5EE /* EncoderWheelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F63D251CCB0700BAC5EE /* EncoderWheelsView.swift */; };
+		155450132524B0E60025DCAA /* FPPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450122524B0E50025DCAA /* FPPlayback.swift */; };
+		1554501B2524B1390025DCAA /* VerticalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554501A2524B1390025DCAA /* VerticalSlider.swift */; };
+		155450212524B63D0025DCAA /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450202524B63D0025DCAA /* MasterView.swift */; };
+		155450262524B72E0025DCAA /* RegRegPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450252524B72E0025DCAA /* RegRegPlayback.swift */; };
 		155530D125138A5500CF48FD /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155530D025138A5500CF48FD /* UIDevice+Extensions.swift */; };
 		1557952B2518CB9C004FD603 /* ShowObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557952A2518CB9C004FD603 /* ShowObjectView.swift */; };
 		155795302518CBBF004FD603 /* ShowObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557952F2518CBBF004FD603 /* ShowObject.swift */; };
@@ -74,6 +78,10 @@
 		1502F633251CC5BF00BAC5EE /* NumericKeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeypadView.swift; sourceTree = "<group>"; };
 		1502F638251CC83F00BAC5EE /* EncoderWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderWheel.swift; sourceTree = "<group>"; };
 		1502F63D251CCB0700BAC5EE /* EncoderWheelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderWheelsView.swift; sourceTree = "<group>"; };
+		155450122524B0E50025DCAA /* FPPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPPlayback.swift; sourceTree = "<group>"; };
+		1554501A2524B1390025DCAA /* VerticalSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalSlider.swift; sourceTree = "<group>"; };
+		155450202524B63D0025DCAA /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
+		155450252524B72E0025DCAA /* RegRegPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegRegPlayback.swift; sourceTree = "<group>"; };
 		155530D025138A5500CF48FD /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		1557952A2518CB9C004FD603 /* ShowObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowObjectView.swift; sourceTree = "<group>"; };
 		1557952F2518CBBF004FD603 /* ShowObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowObject.swift; sourceTree = "<group>"; };
@@ -142,6 +150,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		155450112524B05C0025DCAA /* Playback */ = {
+			isa = PBXGroup;
+			children = (
+				1554501A2524B1390025DCAA /* VerticalSlider.swift */,
+				155450202524B63D0025DCAA /* MasterView.swift */,
+				155450252524B72E0025DCAA /* RegRegPlayback.swift */,
+			);
+			path = Playback;
+			sourceTree = "<group>";
+		};
 		155530CF25138A2D00CF48FD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,9 +188,11 @@
 		159BAED2251B7BC700A81EA1 /* Hardware */ = {
 			isa = PBXGroup;
 			children = (
+				155450112524B05C0025DCAA /* Playback */,
 				15AB35DD251CC336008FC212 /* Programming */,
 				15AB35D8251CC1C5008FC212 /* FPButton.swift */,
 				15D07DF7251E16FA00A80DC4 /* FPProgrammer.swift */,
+				155450122524B0E50025DCAA /* FPPlayback.swift */,
 			);
 			path = Hardware;
 			sourceTree = "<group>";
@@ -470,12 +490,15 @@
 				15CA428B25220DBD00C56FE0 /* FunctionKeySheet.swift in Sources */,
 				1557952B2518CB9C004FD603 /* ShowObjectView.swift in Sources */,
 				15D07E01251E197800A80DC4 /* RegCompFPProgramming.swift in Sources */,
+				155450132524B0E60025DCAA /* FPPlayback.swift in Sources */,
+				1554501B2524B1390025DCAA /* VerticalSlider.swift in Sources */,
 				1502F634251CC5BF00BAC5EE /* NumericKeypadView.swift in Sources */,
 				15AB35D9251CC1C5008FC212 /* FPButton.swift in Sources */,
 				1502F63E251CCB0700BAC5EE /* EncoderWheelsView.swift in Sources */,
 				15FB201C252212B0007EDC36 /* CompRegFPprogramming.swift in Sources */,
 				159BAECB251B722700A81EA1 /* PlaybackObjects.swift in Sources */,
 				15D07DF8251E16FA00A80DC4 /* FPProgrammer.swift in Sources */,
+				155450212524B63D0025DCAA /* MasterView.swift in Sources */,
 				1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */,
 				15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */,
 				1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */,
@@ -483,6 +506,7 @@
 				15D07E06251E1B2500A80DC4 /* SelectButtonView.swift in Sources */,
 				15DA2680251237D70063E236 /* Persistence.swift in Sources */,
 				15D07E0E251E1B7400A80DC4 /* HBCButtonView.swift in Sources */,
+				155450262524B72E0025DCAA /* RegRegPlayback.swift in Sources */,
 				15D07E18251E209100A80DC4 /* CommandLineView.swift in Sources */,
 				155795362518D49A004FD603 /* ObjectGrid.swift in Sources */,
 				155530D125138A5500CF48FD /* UIDevice+Extensions.swift in Sources */,

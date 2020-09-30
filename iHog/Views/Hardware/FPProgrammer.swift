@@ -15,14 +15,18 @@ struct FPProgrammer: View {
         case .regular:
             if verticalSizeClass == .regular {
                 RegRegFPProgramming()
+                    .navigationBarHidden(true)
             } else {
                 RegCompFPProgramming()
+                    .navigationBarHidden(true)
             }
         default: // compact
             if verticalSizeClass == .regular {
                 CompRegFPprogramming()
+                    .navigationBarHidden(true)
             } else {
                 RegCompFPProgramming()
+                    .navigationBarHidden(true)
             }
         }
     }
