@@ -46,12 +46,18 @@ struct ProgrammingObjects: View {
                 })
             }
             // MARK: Groups
+            Text("Groups")
+                .font(.largeTitle)
+                .fontWeight(.black)
             ObjectGrid(
                 size: "small",
                 buttonsAcross: 3,
                 objects: groupObjects
             ).padding()
             // MARK: Pallets
+            Text("Pallets")
+                .font(.largeTitle)
+                .fontWeight(.black)
             Picker("palette selection", selection: $chosenPaletteType) {
                 ForEach(0 ..< paletteTypes.count) {
                     Text(paletteTypes[$0].rawValue.capitalized)

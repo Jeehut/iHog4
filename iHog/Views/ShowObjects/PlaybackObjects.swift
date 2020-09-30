@@ -42,11 +42,17 @@ struct PlaybackObjects: View {
                     }
                 })
             }
+            Text("Lists")
+                .font(.largeTitle)
+                .fontWeight(.black)
             // MARK: Lists
             ObjectGrid(size: "medium",
                        buttonsAcross: 3,
                        objects: listObjects)
             // MARK: Scenes
+            Text("Scenes")
+                .font(.largeTitle)
+                .fontWeight(.black)
             ObjectGrid(size: "medium",
                        buttonsAcross: 1,
                        objects: sceneObjects)
