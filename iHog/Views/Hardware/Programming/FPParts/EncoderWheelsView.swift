@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct EncoderWheelsView: View {
+    var isNanoOn: Bool = false
     var body: some View {
         HStack{
-            EncoderWheel(paramName: "Cyan", paramValue: "0")
-            EncoderWheel(paramName: "Magenta", paramValue: "0")
-            EncoderWheel(paramName: "Yellow", paramValue: "0")
-            EncoderWheel(paramName: "White", paramValue: "0")
-        }
+            EncoderWheel(paramName: "Pan", paramValue: "-100")
+            EncoderWheel(paramName: "Tilt", paramValue: "95")
+            EncoderWheel(paramName: "Zoom", paramValue: "100")
+            EncoderWheel(paramName: "Focus", paramValue: "100")
+            EncoderWheel(paramName: "Iris", paramValue: "50")
+        }.padding()
     }
 }
 

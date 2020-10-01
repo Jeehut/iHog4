@@ -12,7 +12,7 @@ struct RegRegFPProgramming: View {
     var body: some View {
         VStack{
 //            CommandLineView(commandLineText: "SolaSpot 1000 1 > 10 @ 100%")
-            EncoderWheelsView()
+            EncoderWheelsView().padding()
             HStack(alignment: .bottom){
                 VStack{
                     ObjectButtonView()

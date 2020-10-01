@@ -8,33 +8,37 @@
 import SwiftUI
 
 struct EncoderWheel: View {
+    @State private var yOffSet: CGFloat = 0
     var paramName: String
     var paramValue: String
     var body: some View {
-        VStack{
-            Text("+")
-                .fontWeight(.heavy)
-                .frame(width: 50, height: 50, alignment: .center)
-                .background(Color.blue)
-                .foregroundColor(.primary)
-                .cornerRadius(5.0)
+        ZStack{
+            RoundedRectangle(cornerRadius: 20.0)
+                .fill(Color.gray)
+                .aspectRatio(1.0, contentMode: .fit)
             VStack{
                 Text(paramName)
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .lineLimit(2)
-                Text(paramValue)
+                    .font(.headline)
+                Text("\(yOffSet)")
+                    .font(.subheadline)
             }
-            .frame(width: 90, height: 75, alignment: .center)
-            Text("-")
-                .fontWeight(.heavy)
-                .frame(width: 50, height: 50, alignment: .center)
-                .background(Color.blue)
-                .foregroundColor(.primary)
-                .cornerRadius(5.0)
-        }
-        .frame(width: 100, height: 175, alignment: .center)
-        .padding()
+            RoundedRectangle(cornerRadius: 5.0)
+                .fill(Color.secondary)
+                .frame(width: 25, height: 15, alignment: .center)
+                .offset(y: yOffSet)
+                .gesture(DragGesture()
+                            .onEnded({value in
+                                print("Ended")
+                                yOffSet = 0
+                            })
+                            .onChanged({value in
+                    sendEncoder(newValue: value.location.y)
+                }))
+        }.padding()
+    }
+    
+    func sendEncoder(newValue: CGFloat){
+        yOffSet = newValue
     }
 }
 
@@ -46,7 +50,7 @@ struct EncoderWheel_Previews: PreviewProvider {
                 EncoderWheel(paramName: "Tilt", paramValue: "0")
                 EncoderWheel(paramName: "Zoom", paramValue: "0")
                 EncoderWheel(paramName: "Focus", paramValue: "0")
-                EncoderWheel(paramName: "Gobo 2 <>", paramValue: "0")
+                EncoderWheel(paramName: "Gobo 2", paramValue: "Slots")
             }
             HStack{
                 EncoderWheel(paramName: "Pan", paramValue: "0")
