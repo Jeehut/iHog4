@@ -11,9 +11,9 @@ struct RegRegPlayback: View {
     var body: some View {
         HStack{
                 ScrollView(.horizontal){
-                    HStack{
+                    LazyHStack{
                         ForEach(1 ..< 90) { num in
-                            MasterView(masterNumber: num).padding(.all, 10.0)
+                            VerticalMasterView(masterNumber: num).padding(.all, 10.0)
                         }
                     }
                 }.padding(.horizontal)

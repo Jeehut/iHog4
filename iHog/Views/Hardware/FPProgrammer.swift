@@ -15,18 +15,22 @@ struct FPProgrammer: View {
         case .regular:
             if verticalSizeClass == .regular {
                 RegRegFPProgramming()
-                    .navigationBarHidden(true)
+                    .navigationTitle("SolaSpot 1000 1 > 10 @ 100%")
+                    .navigationBarTitleDisplayMode(.inline)
             } else {
                 RegCompFPProgramming()
-                    .navigationBarHidden(true)
+                    .navigationTitle("SolaSpot 1000 1 > 10 @ 100%")
+                    .navigationBarTitleDisplayMode(.inline)
             }
         default: // compact
             if verticalSizeClass == .regular {
                 CompRegFPprogramming()
-                    .navigationBarHidden(true)
+                    .navigationTitle("SolaSpot 1000 1 > 10 @ 100%")
+                    .navigationBarTitleDisplayMode(.inline)
             } else {
                 RegCompFPProgramming()
-                    .navigationBarHidden(true)
+                    .navigationTitle("SolaSpot 1000 1 > 10 @ 100%")
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
     }

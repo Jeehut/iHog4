@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct FPPlayback: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     var body: some View {
-        RegRegPlayback()
+        if horizontalSizeClass == .regular {
+            RegRegPlayback()
+                .navigationBarTitleDisplayMode(.inline)
+        } else {
+            CompPlayback()
+                .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 

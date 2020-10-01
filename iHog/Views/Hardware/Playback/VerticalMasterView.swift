@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MasterView: View {
+struct VerticalMasterView: View {
     var masterNumber: Int
     
     var body: some View {
@@ -24,6 +24,6 @@ struct MasterView: View {
 
 struct MasterView_Previews: PreviewProvider {
     static var previews: some View {
-        MasterView(masterNumber: 1)
+        VerticalMasterView(masterNumber: 1)
     }
 }

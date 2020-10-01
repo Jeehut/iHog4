@@ -11,7 +11,7 @@ struct RegCompFPProgramming: View {
     var body: some View {
         HStack(alignment: .bottom){
             VStack{
-                CommandLineView(commandLineText: "SolaSpot 1000 1 > 10 @ 100%")
+//                CommandLineView(commandLineText: "SolaSpot 1000 1 > 10 @ 100%")
                 OpenPartsView()
             }
             VStack{

@@ -15,7 +15,7 @@
 		1502F63E251CCB0700BAC5EE /* EncoderWheelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F63D251CCB0700BAC5EE /* EncoderWheelsView.swift */; };
 		155450132524B0E60025DCAA /* FPPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450122524B0E50025DCAA /* FPPlayback.swift */; };
 		1554501B2524B1390025DCAA /* VerticalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554501A2524B1390025DCAA /* VerticalSlider.swift */; };
-		155450212524B63D0025DCAA /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450202524B63D0025DCAA /* MasterView.swift */; };
+		155450212524B63D0025DCAA /* VerticalMasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450202524B63D0025DCAA /* VerticalMasterView.swift */; };
 		155450262524B72E0025DCAA /* RegRegPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450252524B72E0025DCAA /* RegRegPlayback.swift */; };
 		155530D125138A5500CF48FD /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155530D025138A5500CF48FD /* UIDevice+Extensions.swift */; };
 		1557952B2518CB9C004FD603 /* ShowObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557952A2518CB9C004FD603 /* ShowObjectView.swift */; };
@@ -50,6 +50,9 @@
 		15DA26BA25123EEB0063E236 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26B925123EEB0063E236 /* Show.swift */; };
 		15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520252514DA7500EF4B98 /* ShowSetting.swift */; };
 		15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520302514DBA300EF4B98 /* ObjectSettings.swift */; };
+		15FA5F0E2525FF3400DF1A3C /* HorizontalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FA5F0D2525FF3400DF1A3C /* HorizontalSlider.swift */; };
+		15FA5F192526006E00DF1A3C /* HorizontalMasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FA5F182526006E00DF1A3C /* HorizontalMasterView.swift */; };
+		15FA5F292526025100DF1A3C /* CompPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FA5F282526025100DF1A3C /* CompPlayback.swift */; };
 		15FB201725220F52007EDC36 /* UtilityKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201625220F52007EDC36 /* UtilityKeySheet.swift */; };
 		15FB201C252212B0007EDC36 /* CompRegFPprogramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */; };
 /* End PBXBuildFile section */
@@ -80,7 +83,7 @@
 		1502F63D251CCB0700BAC5EE /* EncoderWheelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderWheelsView.swift; sourceTree = "<group>"; };
 		155450122524B0E50025DCAA /* FPPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPPlayback.swift; sourceTree = "<group>"; };
 		1554501A2524B1390025DCAA /* VerticalSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalSlider.swift; sourceTree = "<group>"; };
-		155450202524B63D0025DCAA /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
+		155450202524B63D0025DCAA /* VerticalMasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalMasterView.swift; sourceTree = "<group>"; };
 		155450252524B72E0025DCAA /* RegRegPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegRegPlayback.swift; sourceTree = "<group>"; };
 		155530D025138A5500CF48FD /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		1557952A2518CB9C004FD603 /* ShowObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowObjectView.swift; sourceTree = "<group>"; };
@@ -121,6 +124,9 @@
 		15DA26B925123EEB0063E236 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		15F520252514DA7500EF4B98 /* ShowSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSetting.swift; sourceTree = "<group>"; };
 		15F520302514DBA300EF4B98 /* ObjectSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSettings.swift; sourceTree = "<group>"; };
+		15FA5F0D2525FF3400DF1A3C /* HorizontalSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSlider.swift; sourceTree = "<group>"; };
+		15FA5F182526006E00DF1A3C /* HorizontalMasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMasterView.swift; sourceTree = "<group>"; };
+		15FA5F282526025100DF1A3C /* CompPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompPlayback.swift; sourceTree = "<group>"; };
 		15FB201625220F52007EDC36 /* UtilityKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityKeySheet.swift; sourceTree = "<group>"; };
 		15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRegFPprogramming.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,8 +160,11 @@
 			isa = PBXGroup;
 			children = (
 				1554501A2524B1390025DCAA /* VerticalSlider.swift */,
-				155450202524B63D0025DCAA /* MasterView.swift */,
+				15FA5F0D2525FF3400DF1A3C /* HorizontalSlider.swift */,
+				155450202524B63D0025DCAA /* VerticalMasterView.swift */,
+				15FA5F182526006E00DF1A3C /* HorizontalMasterView.swift */,
 				155450252524B72E0025DCAA /* RegRegPlayback.swift */,
+				15FA5F282526025100DF1A3C /* CompPlayback.swift */,
 			);
 			path = Playback;
 			sourceTree = "<group>";
@@ -482,6 +491,7 @@
 			files = (
 				15DA0B19251513BC006ADB27 /* ProgrammingObjects.swift in Sources */,
 				15DA26B425123D200063E236 /* SelectShow.swift in Sources */,
+				15FA5F0E2525FF3400DF1A3C /* HorizontalSlider.swift in Sources */,
 				159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */,
 				15DA2683251237D70063E236 /* iHog.xcdatamodeld in Sources */,
 				15D07DF0251E0EB400A80DC4 /* FunctionKeyView.swift in Sources */,
@@ -494,11 +504,12 @@
 				1554501B2524B1390025DCAA /* VerticalSlider.swift in Sources */,
 				1502F634251CC5BF00BAC5EE /* NumericKeypadView.swift in Sources */,
 				15AB35D9251CC1C5008FC212 /* FPButton.swift in Sources */,
+				15FA5F292526025100DF1A3C /* CompPlayback.swift in Sources */,
 				1502F63E251CCB0700BAC5EE /* EncoderWheelsView.swift in Sources */,
 				15FB201C252212B0007EDC36 /* CompRegFPprogramming.swift in Sources */,
 				159BAECB251B722700A81EA1 /* PlaybackObjects.swift in Sources */,
 				15D07DF8251E16FA00A80DC4 /* FPProgrammer.swift in Sources */,
-				155450212524B63D0025DCAA /* MasterView.swift in Sources */,
+				155450212524B63D0025DCAA /* VerticalMasterView.swift in Sources */,
 				1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */,
 				15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */,
 				1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */,
@@ -521,6 +532,7 @@
 				1502F62A251CC4A200BAC5EE /* UtilityButtonView.swift in Sources */,
 				155795302518CBBF004FD603 /* ShowObject.swift in Sources */,
 				15AB35DF251CC354008FC212 /* ObjectButtonView.swift in Sources */,
+				15FA5F192526006E00DF1A3C /* HorizontalMasterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

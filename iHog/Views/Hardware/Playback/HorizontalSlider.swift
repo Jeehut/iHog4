@@ -1,34 +1,34 @@
 //
-//  VerticalSlider.swift
+//  HorizontalSlider.swift
 //  iHog
 //
-//  Created by Maegan Wilson on 9/30/20.
+//  Created by Maegan Wilson on 10/1/20.
 //
 
 import SwiftUI
 
-// +y value for offset = up
-// -y value for offset = down
-struct VerticalSlider: View {
-    @State private var faderLevel: Double = 110
+// +x = right
+// -x = left
+struct HorizontalSlider: View {
+    @State private var faderLevel: Double = -110
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 5.0)
                 .fill(Color.gray)
-                .frame(width: 25, height: 250, alignment: .center)
+                .frame(width: 250, height: 25, alignment: .center)
             RoundedRectangle(cornerRadius: 5.0)
                 .frame(width: 30, height: 30, alignment: .center)
-                .offset(y: CGFloat(faderLevel))
+                .offset(x: CGFloat(faderLevel))
                 .gesture(DragGesture().onChanged({value in
-                    setFaderLevel(newValue: value.location.y)
+                    setFaderLevel(newValue: value.location.x)
                 }))
 //            Text("\(faderLevel)").foregroundColor(.red)
         }
     }
     
     func setFaderLevel(newValue: CGFloat) {
-        // 110 is min
-        //-110 is max
+        // 110 is max
+        //-110 is min
         if newValue >= 110 {
             faderLevel = 110.0
             // send OSC for max which is 255
@@ -42,8 +42,8 @@ struct VerticalSlider: View {
     }
 }
 
-struct VerticalSlider_Previews: PreviewProvider {
+struct HorizontalSlider_Previews: PreviewProvider {
     static var previews: some View {
-        VerticalSlider()
+        HorizontalSlider()
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct CompRegFPprogramming: View {
     var body: some View {
         VStack{
-            CommandLineView(commandLineText: "SolaSpot Pro 2000 1 > 101 @ 50%").padding(.vertical)
+//            CommandLineView(commandLineText: "SolaSpot Pro 2000 1 > 101 @ 50%").padding(.vertical)
             NumericKeypadView()
             HBCButtonView()
                 .padding(.vertical)

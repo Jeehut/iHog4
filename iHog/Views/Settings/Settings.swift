@@ -34,7 +34,7 @@ struct Settings: View {
                         NavigationLink(show.name, destination: FPProgrammer())
                     }
                 }
-                Section(header: Text("Hardware")){
+                Section(header: Text("Front Panel")){
                     NavigationLink(
                         "Programming",
                         destination: FPProgrammer(),
@@ -42,7 +42,7 @@ struct Settings: View {
                         selection: $selectedSetting)
                     NavigationLink(
                         "Playback",
-                        destination: FPPlayback().navigationTitle("Playback").navigationBarHidden(true),
+                        destination: FPPlayback(),
                         tag: SettingsNav.playbackHardware,
                         selection: $selectedSetting)
                 }
