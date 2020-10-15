@@ -13,7 +13,7 @@ struct RegRegPlayback: View {
                 ScrollView(.horizontal){
                     LazyHStack{
                         ForEach(1 ..< 90) { num in
-                            VerticalMasterView(masterNumber: num).padding(.all, 10.0)
+                            VerticalMasterView(masterNumber: num).padding(.all, BASE_PADDING)
                         }
                     }
                 }.padding(.horizontal)
@@ -34,7 +34,7 @@ struct RegRegPlayback: View {
             }
             .padding()
             .background(Color.primary)
-            .cornerRadius(5.0)
+            .cornerRadius(BASE_CORNER_RADIUS)
         }
     }
 }

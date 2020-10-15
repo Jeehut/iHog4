@@ -19,6 +19,7 @@ struct EncodersKindsSheet: View {
                     Text("Close")
                 }
                 .foregroundColor(.red)
+                .padding(.horizontal)
             }.padding(.vertical)
             Spacer()
             EncoderWheelsView()

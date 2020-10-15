@@ -21,10 +21,10 @@ struct EncoderWheel: View {
                     .font(.headline)
                 Text("\(yOffSet)")
                     .font(.subheadline)
-            }
+            }.foregroundColor(.primary)
             RoundedRectangle(cornerRadius: 5.0)
-                .fill(Color.secondary)
-                .frame(width: 25, height: 15, alignment: .center)
+                .fill(Color.init(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.25))
+                .frame(width: 30, height: 20, alignment: .center)
                 .offset(y: yOffSet)
                 .gesture(DragGesture()
                             .onEnded({value in

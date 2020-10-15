@@ -19,6 +19,7 @@ struct UtilityKeySheet: View {
                     Text("Close")
                 }
                 .foregroundColor(.red)
+                .padding(.horizontal)
             }.padding(.vertical)
             Spacer()
             UtilityButtonView()

@@ -60,9 +60,12 @@ struct OpenPartsView_Previews: PreviewProvider {
 struct OpenButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .frame(width: 200, height: 55, alignment: .center)
+            .frame(width: XL_BUTTON_WIDTH,
+                   height: BASE_BUTTON_SIZE,
+                   alignment: .center
+            )
             .background(Color.gray)
-            .cornerRadius(5.0)
+            .cornerRadius(BASE_CORNER_RADIUS)
             .foregroundColor(configuration.isPressed ? .secondary : .primary)
     }
 }

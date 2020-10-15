@@ -20,7 +20,7 @@ struct CompPlayback: View {
             ScrollView(.vertical){
                 LazyVStack{
                     ForEach(1 ..< 90) { num in
-                        HorizontalMasterView(masterNumber: num).padding(.all, 10.0)
+                        HorizontalMasterView(masterNumber: num).padding(.all, BASE_PADDING)
                     }
                 }
             }

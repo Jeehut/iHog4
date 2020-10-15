@@ -11,17 +11,25 @@ import SwiftUI
 // -x = left
 struct HorizontalSlider: View {
     @State private var faderLevel: Double = -110
+    
     var body: some View {
         ZStack{
-            RoundedRectangle(cornerRadius: 5.0)
+            RoundedRectangle(cornerRadius: BASE_CORNER_RADIUS)
                 .fill(Color.gray)
-                .frame(width: 250, height: 25, alignment: .center)
-            RoundedRectangle(cornerRadius: 5.0)
-                .frame(width: 30, height: 30, alignment: .center)
+                .frame(width: BASE_SLIDER_HEIGHT,
+                    height: BASE_SLIDER_WIDTH,
+                    alignment: .center
+                )
+            RoundedRectangle(cornerRadius: BASE_CORNER_RADIUS)
+                .frame(width: BASE_THUMB_SIZE,
+                       height: BASE_THUMB_SIZE,
+                       alignment: .center
+                )
                 .offset(x: CGFloat(faderLevel))
-                .gesture(DragGesture().onChanged({value in
-                    setFaderLevel(newValue: value.location.x)
-                }))
+                .gesture(
+                    DragGesture().onChanged({value in
+                        setFaderLevel(newValue: value.location.x)
+                    }))
 //            Text("\(faderLevel)").foregroundColor(.red)
         }
     }

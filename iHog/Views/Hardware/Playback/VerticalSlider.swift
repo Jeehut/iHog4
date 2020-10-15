@@ -13,15 +13,21 @@ struct VerticalSlider: View {
     @State private var faderLevel: Double = 110
     var body: some View {
         ZStack{
-            RoundedRectangle(cornerRadius: 5.0)
+            RoundedRectangle(cornerRadius: BASE_CORNER_RADIUS)
                 .fill(Color.gray)
-                .frame(width: 25, height: 250, alignment: .center)
-            RoundedRectangle(cornerRadius: 5.0)
-                .frame(width: 30, height: 30, alignment: .center)
+                .frame(width: BASE_SLIDER_WIDTH,
+                    height: BASE_SLIDER_HEIGHT,
+                    alignment: .center
+                )
+            RoundedRectangle(cornerRadius: BASE_CORNER_RADIUS)
+                .frame(width: BASE_THUMB_SIZE,
+                       height: BASE_THUMB_SIZE,
+                       alignment: .center)
                 .offset(y: CGFloat(faderLevel))
-                .gesture(DragGesture().onChanged({value in
-                    setFaderLevel(newValue: value.location.y)
-                }))
+                .gesture(DragGesture()
+                            .onChanged({value in
+                                setFaderLevel(newValue: value.location.y)
+                            }))
 //            Text("\(faderLevel)").foregroundColor(.red)
         }
     }

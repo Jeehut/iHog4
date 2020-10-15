@@ -14,6 +14,7 @@ struct Device: View {
     @State private var isOSCOn: Bool = false
     @State private var encoderWheelPrecision: Double = 2.00
     @State private var isNanoModeOn: Bool = false
+    @State private var isHapticOn: Bool = true
     
     var body: some View {
         Form{
@@ -54,6 +55,9 @@ struct Device: View {
                 }
                 HStack{
                     Toggle("Nano Mode is \(isNanoModeOn ? "on" : "off")", isOn: $isNanoModeOn)
+                }
+                HStack{
+                    Toggle("Haptic Feedback for encoders is \(isHapticOn ? "on" : "off")", isOn: $isHapticOn)
                 }
                 HStack{
                     Spacer()

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FPButton: View {
     var buttonText: String
+    var size: Int = 1
     
     var body: some View {
         Button(action: {
@@ -16,11 +17,14 @@ struct FPButton: View {
         }){
             Text(buttonText)
         }
-        .frame(width: 55, height: 55, alignment: .center)
-        .padding(5)
+        .frame(width: setSize(),
+               height: BASE_BUTTON_SIZE,
+               alignment: .center
+        )
+        .padding(HALF_PADDING)
         .foregroundColor(.primary)
         .background(setBackGroundColor())
-        .cornerRadius(5.0)
+        .cornerRadius(BASE_CORNER_RADIUS)
     }
     
     func setBackGroundColor() -> Color {
@@ -28,6 +32,19 @@ struct FPButton: View {
             return Color.pink
         }
         return Color.gray
+    }
+    
+    func setSize() -> CGFloat {
+        switch size {
+        case 0:
+            return SMALL_BUTTON_SIZE
+        case 1:
+            return BASE_BUTTON_SIZE
+        case 3:
+            return L_BUTTON_WIDTH
+        default:
+            return BASE_BUTTON_SIZE
+        }
     }
 }
 

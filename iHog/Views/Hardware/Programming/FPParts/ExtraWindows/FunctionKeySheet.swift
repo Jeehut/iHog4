@@ -19,6 +19,7 @@ struct FunctionKeySheet: View {
                     Text("Close")
                 }
                 .foregroundColor(.red)
+                .padding(.horizontal)
             }.padding(.vertical)
             Spacer()
             FunctionKeyView()

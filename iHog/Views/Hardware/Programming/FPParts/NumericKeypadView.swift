@@ -37,8 +37,7 @@ struct NumericKeypadView: View {
             HStack{
                 FPButton(buttonText: "0")
                 FPButton(buttonText: ".")
-                FPButton(buttonText: "Enter")
-                FPButton(buttonText: "Enter")
+                FPButton(buttonText: "Enter", size: 3)
             }
         }
     }
