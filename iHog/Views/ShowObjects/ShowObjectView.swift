@@ -24,25 +24,25 @@ struct ShowObjectView: View {
         .frame(width: getSize(), height: getSize(), alignment: .leading)
         .padding()
         .background(obj.isOutlined ? Color.clear : getColor())
-        .cornerRadius(4.0)
+        .cornerRadius(BASE_CORNER_RADIUS)
         .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(getColor(), lineWidth: 5)
+            RoundedRectangle(cornerRadius: (DOUBLE_CORNER_RADIUS))
+                .stroke(getColor(), lineWidth: BASE_LINE_WIDTH)
         ).padding()
     }
     
     func getSize() -> CGFloat{
         switch size {
         case "small":
-            return 50.0
+            return SMALL_OBJ_BUTTON_SIZE
         case "medium":
-            return 100.0
+            return MEDIUM_OBJ_BUTTON_SIZE
         case "large":
-            return 150.0
+            return LARGE_OBJ_BUTTON_SIZE
         case "extra large":
-            return 200.0
+            return XL_OBJ_BUTTON_SIZE
         default:
-            return 100.0
+            return MEDIUM_OBJ_BUTTON_SIZE
         }
     }
     

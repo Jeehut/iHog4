@@ -13,6 +13,7 @@
 		1502F634251CC5BF00BAC5EE /* NumericKeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F633251CC5BF00BAC5EE /* NumericKeypadView.swift */; };
 		1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F638251CC83F00BAC5EE /* EncoderWheel.swift */; };
 		1502F63E251CCB0700BAC5EE /* EncoderWheelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F63D251CCB0700BAC5EE /* EncoderWheelsView.swift */; };
+		152902552538727A002D4F2E /* ShowNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152902542538727A002D4F2E /* ShowNavigation.swift */; };
 		155450132524B0E60025DCAA /* FPPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450122524B0E50025DCAA /* FPPlayback.swift */; };
 		1554501B2524B1390025DCAA /* VerticalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554501A2524B1390025DCAA /* VerticalSlider.swift */; };
 		155450212524B63D0025DCAA /* VerticalMasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450202524B63D0025DCAA /* VerticalMasterView.swift */; };
@@ -82,6 +83,7 @@
 		1502F633251CC5BF00BAC5EE /* NumericKeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeypadView.swift; sourceTree = "<group>"; };
 		1502F638251CC83F00BAC5EE /* EncoderWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderWheel.swift; sourceTree = "<group>"; };
 		1502F63D251CCB0700BAC5EE /* EncoderWheelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderWheelsView.swift; sourceTree = "<group>"; };
+		152902542538727A002D4F2E /* ShowNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNavigation.swift; sourceTree = "<group>"; };
 		155450122524B0E50025DCAA /* FPPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPPlayback.swift; sourceTree = "<group>"; };
 		1554501A2524B1390025DCAA /* VerticalSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalSlider.swift; sourceTree = "<group>"; };
 		155450202524B63D0025DCAA /* VerticalMasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalMasterView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1529025325387225002D4F2E /* ShowViews */ = {
+			isa = PBXGroup;
+			children = (
+				152902542538727A002D4F2E /* ShowNavigation.swift */,
+			);
+			path = ShowViews;
+			sourceTree = "<group>";
+		};
 		155450112524B05C0025DCAA /* Playback */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +337,7 @@
 		15DA26A92512387D0063E236 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1529025325387225002D4F2E /* ShowViews */,
 				159BAED2251B7BC700A81EA1 /* Hardware */,
 				15DA0B17251513AC006ADB27 /* ShowObjects */,
 				15DA26AA251238830063E236 /* Settings */,
@@ -516,6 +527,7 @@
 				1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */,
 				15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */,
 				1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */,
+				152902552538727A002D4F2E /* ShowNavigation.swift in Sources */,
 				1578D3312512F460001E1BDF /* Device.swift in Sources */,
 				15D07E06251E1B2500A80DC4 /* SelectButtonView.swift in Sources */,
 				15DA2680251237D70063E236 /* Persistence.swift in Sources */,
