@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Settings: View {
     @State var selectedSetting: SettingsNav? = SettingsNav.device
+    @State private var isAddingShow: Bool = false
     
     enum SettingsNav:Hashable {
         case chooseShow
@@ -28,31 +29,43 @@ struct Settings: View {
     
     var body: some View {
         NavigationView{
-            List{
-                Section(header: Text("Shows")) {
-                    ForEach(testShows) { show in
-                        NavigationLink(show.name, destination: ShowNavigation(selectedShow: show))
+            ZStack{
+                List{
+                    Section(header: Text("Shows")) {
+                        ForEach(testShows) { show in
+                            NavigationLink(show.name, destination: ShowNavigation(selectedShow: show))
+                        }
+                        Button(action: {
+                            isAddingShow = true
+                        }){
+                            Text("Add Show")
+                        }
                     }
+                    Section(header: Text("Front Panel")){
+                        NavigationLink(
+                            "Programming",
+                            destination: FPProgrammer(),
+                            tag: SettingsNav.programmerHardware,
+                            selection: $selectedSetting)
+                        NavigationLink(
+                            "Playback",
+                            destination: FPPlayback(),
+                            tag: SettingsNav.playbackHardware,
+                            selection: $selectedSetting)
+                    }
+                    Section(header: Text("Settings")){
+                        NavigationLink("Device", destination: Device(), tag: SettingsNav.device, selection: $selectedSetting)
+                        NavigationLink("Show Settings", destination: ShowSetting(), tag: SettingsNav.showSettings, selection: $selectedSetting)
+                        NavigationLink("About", destination: Text("About the app options"), tag: SettingsNav.about, selection: $selectedSetting)
+                    }
+                    Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")
+                }.listStyle( SidebarListStyle())
+                if isAddingShow{
+                    NewShowView()
+                        .cornerRadius(BASE_CORNER_RADIUS)
+                        .shadow(radius: 10)
                 }
-                Section(header: Text("Front Panel")){
-                    NavigationLink(
-                        "Programming",
-                        destination: FPProgrammer(),
-                        tag: SettingsNav.programmerHardware,
-                        selection: $selectedSetting)
-                    NavigationLink(
-                        "Playback",
-                        destination: FPPlayback(),
-                        tag: SettingsNav.playbackHardware,
-                        selection: $selectedSetting)
-                }
-                Section(header: Text("Settings")){
-                    NavigationLink("Device", destination: Device(), tag: SettingsNav.device, selection: $selectedSetting)
-                    NavigationLink("Show Settings", destination: ShowSetting(), tag: SettingsNav.showSettings, selection: $selectedSetting)
-                    NavigationLink("About", destination: Text("About the app options"), tag: SettingsNav.about, selection: $selectedSetting)
-                }
-                Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")
-            }.listStyle( SidebarListStyle())
+            }
         }.navigationViewStyle( DoubleColumnNavigationViewStyle())
     }
 }

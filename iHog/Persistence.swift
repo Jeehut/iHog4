@@ -8,14 +8,28 @@
 import CoreData
 
 struct PersistenceController {
+    // app uses
     static let shared = PersistenceController()
 
+    //preview uses
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = ShowEntity(context: viewContext)
+            newItem.dateCreated = Date()
+            newItem.dateLastModified = Date()
+            newItem.name = "TEST SHOW 101"
+            newItem.id = UUID()
+            newItem.note = "Show notes go here"
+            
+            let newObject = ShowObjectEntity(context: viewContext)
+            newObject.id = UUID()
+            newObject.number = 1.2
+            newObject.name = "All Stage Wash"
+            newObject.objColor = "red"
+            newObject.objType = "group"
+            newObject.isOutlined = true
         }
         do {
             try viewContext.save()
