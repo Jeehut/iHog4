@@ -31,7 +31,7 @@ struct Settings: View {
             List{
                 Section(header: Text("Shows")) {
                     ForEach(testShows) { show in
-                        NavigationLink(show.name, destination: FPProgrammer())
+                        NavigationLink(show.name, destination: ShowNavigation(selectedShow: show))
                     }
                 }
                 Section(header: Text("Front Panel")){
