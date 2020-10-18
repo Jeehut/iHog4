@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShowNavigation: View {
-    var selectedShow: Show
+    var selectedShow: ShowEntity
     @State private var selectedView: Views = Views.programmingObjects
     
     enum Views: Hashable {
@@ -29,13 +29,13 @@ struct ShowNavigation: View {
                 }
                 .tag(Views.programmingObjects)
         }
-        .navigationBarTitle(selectedShow.name)
+        .navigationBarTitle(selectedShow.name!)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-struct ShowNavigation_Previews: PreviewProvider {
-    static var previews: some View {
-        ShowNavigation(selectedShow: testShows[2])
-    }
-}
+//struct ShowNavigation_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ShowNavigation(selectedShow: testShows[2])
+//    }
+//}
