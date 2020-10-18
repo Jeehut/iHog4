@@ -8,36 +8,50 @@
 import SwiftUI
 
 struct NewShowView: View {
+    @Binding var isShowing: Bool
     @State private var showName: String = "New Show"
     var body: some View {
-        Form{
+        VStack{
+            HStack{
+                Spacer()
+                Button(action: {
+                    isShowing.toggle()
+                }){
+                    Text("Cancel")
+                }
+            }
+            .foregroundColor(.red)
+            .padding()
+
             HStack{
                 Text("Show Name")
+                    .foregroundColor(.black)
                 TextField("Show Name", text: $showName)
                     .multilineTextAlignment(.trailing)
                     .foregroundColor(.blue)
             }
+            .padding()
+
             HStack{
-                Button(action: {
-                    print("Cancel")
-                }){
-                    Text("Cancel")
-                        .foregroundColor(.red)
-                }
                 Spacer()
                 Button(action: {
                     print("Save in CoreData and close window")
+                    isShowing.toggle()
                 }){
-                    Text("Save")
+                    Text("Add Show")
                         .foregroundColor(.green)
                 }
             }
-        }.frame(maxHeight: 150, alignment: .center)
+            .padding()
+
+        }
+        .background(Color.white.opacity(0.80))
     }
 }
 
 struct NewShowView_Previews: PreviewProvider {
     static var previews: some View {
-        NewShowView()
+        NewShowView(isShowing: .constant(true))
     }
 }
+

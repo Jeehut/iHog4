@@ -39,7 +39,7 @@ struct Settings: View {
                             isAddingShow = true
                         }){
                             Text("Add Show")
-                        }
+                        }.foregroundColor(.blue)
                     }
                     Section(header: Text("Front Panel")){
                         NavigationLink(
@@ -59,11 +59,13 @@ struct Settings: View {
                         NavigationLink("About", destination: Text("About the app options"), tag: SettingsNav.about, selection: $selectedSetting)
                     }
                     Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")
-                }.listStyle( SidebarListStyle())
+                }
+                .listStyle( SidebarListStyle())
+                .blur(radius: isAddingShow ? 1.5 : 0.0)
                 if isAddingShow{
-                    NewShowView()
+                    NewShowView(isShowing: $isAddingShow)
                         .cornerRadius(BASE_CORNER_RADIUS)
-                        .shadow(radius: 10)
+                        .shadow(radius: DOUBLE_CORNER_RADIUS)
                 }
             }
         }.navigationViewStyle( DoubleColumnNavigationViewStyle())
