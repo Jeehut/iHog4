@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ShowNavigation: View {
+    @AppStorage(Settings.chosenShowID) var chosenShowID: String = ""
     var selectedShow: ShowEntity
     @State private var selectedView: Views = Views.programmingObjects
     
@@ -18,7 +19,7 @@ struct ShowNavigation: View {
     }
     var body: some View {
         TabView(selection: $selectedView) {
-            ProgrammingObjects(groupObjects: testShowObjects, paletteObjects: testShowObjects)
+            ProgrammingObjects()
                 .tabItem{
                     Image(systemName: "square.grid.2x2")
                 }
@@ -31,6 +32,9 @@ struct ShowNavigation: View {
         }
         .navigationBarTitle(selectedShow.name!)
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear{
+            chosenShowID = selectedShow.id!.uuidString
+        }
     }
 }
 

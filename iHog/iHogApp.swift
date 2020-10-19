@@ -13,7 +13,7 @@ struct iHogApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Settings()
+            SettingsView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

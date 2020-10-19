@@ -27,7 +27,7 @@ public enum ShowObjectType: String {
 }
 
 struct ShowObject: Identifiable, Hashable {
-    let id: UUID = UUID()
+    var id: UUID = UUID()
     var objType: ShowObjectType
     var number: Double
     var name: String?

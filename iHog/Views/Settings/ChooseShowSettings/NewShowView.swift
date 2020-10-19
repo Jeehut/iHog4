@@ -59,6 +59,13 @@ struct NewShowView: View {
             newShow.name = showName
             newShow.note = ""
             isShowing.toggle()
+            
+            do{
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
         }
     }
 }

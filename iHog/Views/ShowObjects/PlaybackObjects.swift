@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PlaybackObjects: View {
+    @Environment(\.managedObjectContext) private var viewContext
     var listObjects: [ShowObject]
     var sceneObjects: [ShowObject]
     

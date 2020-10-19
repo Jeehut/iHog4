@@ -48,7 +48,7 @@
 		15DA2683251237D70063E236 /* iHog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2681251237D70063E236 /* iHog.xcdatamodeld */; };
 		15DA268E251237D70063E236 /* iHogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA268D251237D70063E236 /* iHogTests.swift */; };
 		15DA2699251237D70063E236 /* iHogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2698251237D70063E236 /* iHogUITests.swift */; };
-		15DA26AC251238980063E236 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26AB251238980063E236 /* Settings.swift */; };
+		15DA26AC251238980063E236 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26AB251238980063E236 /* SettingsView.swift */; };
 		15DA26B425123D200063E236 /* SelectShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26B325123D200063E236 /* SelectShow.swift */; };
 		15DA26BA25123EEB0063E236 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26B925123EEB0063E236 /* Show.swift */; };
 		15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520252514DA7500EF4B98 /* ShowSetting.swift */; };
@@ -125,7 +125,7 @@
 		15DA2694251237D70063E236 /* iHogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iHogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DA2698251237D70063E236 /* iHogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogUITests.swift; sourceTree = "<group>"; };
 		15DA269A251237D70063E236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15DA26AB251238980063E236 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		15DA26AB251238980063E236 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		15DA26B325123D200063E236 /* SelectShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectShow.swift; sourceTree = "<group>"; };
 		15DA26B925123EEB0063E236 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		15F520252514DA7500EF4B98 /* ShowSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSetting.swift; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 				15F5201B2514D95D00EF4B98 /* ShowSettings */,
 				1578D32F2512F44F001E1BDF /* Device */,
 				1578D3262512F3CF001E1BDF /* ChooseShowSettings */,
-				15DA26AB251238980063E236 /* Settings.swift */,
+				15DA26AB251238980063E236 /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -547,7 +547,7 @@
 				15DA26BA25123EEB0063E236 /* Show.swift in Sources */,
 				1502F625251CC43900BAC5EE /* ActionButtonView.swift in Sources */,
 				15DA2677251237D60063E236 /* iHogApp.swift in Sources */,
-				15DA26AC251238980063E236 /* Settings.swift in Sources */,
+				15DA26AC251238980063E236 /* SettingsView.swift in Sources */,
 				15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */,
 				1502F62A251CC4A200BAC5EE /* UtilityButtonView.swift in Sources */,
 				155795302518CBBF004FD603 /* ShowObject.swift in Sources */,

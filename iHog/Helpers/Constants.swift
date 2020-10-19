@@ -32,3 +32,7 @@ let MEDIUM_OBJ_BUTTON_SIZE: CGFloat = 100.0
 let LARGE_OBJ_BUTTON_SIZE: CGFloat  = 150.0
 let XL_OBJ_BUTTON_SIZE: CGFloat     = 200.0
 
+// MARK: SETTING ENUMS
+enum Settings {
+    static let chosenShowID = "chosenShowID"
+}
