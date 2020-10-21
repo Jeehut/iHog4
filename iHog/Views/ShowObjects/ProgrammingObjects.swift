@@ -204,7 +204,7 @@ struct ProgrammingObjects: View {
                     )
                     paletteObjects.append(newObj)
                 default:
-                    print("Object is a playback object")
+                    continue
                 }
             }
             groupObjects.sort(by: {$0.number < $1.number})

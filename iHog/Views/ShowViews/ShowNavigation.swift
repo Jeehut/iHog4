@@ -24,7 +24,7 @@ struct ShowNavigation: View {
                     Image(systemName: "square.grid.2x2")
                 }
                 .tag(Views.programmingObjects)
-            PlaybackObjects(listObjects: testShowObjects, sceneObjects: testShowObjects)
+            PlaybackObjects()
                 .tabItem{
                     Image(systemName: "square.grid.3x2")
                 }
