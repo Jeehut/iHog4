@@ -134,6 +134,8 @@ struct ProgrammingObjects: View {
     }
     
     func getAllObjects(){
+        groupObjects = []
+        paletteObjects = []
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShowObjectEntity")
         fetchRequest.predicate = NSPredicate(format: "showID == %@", chosenShowID)
         
