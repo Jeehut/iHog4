@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShowNavigation: View {
-    @AppStorage(Settings.chosenShowID) var chosenShowID: String = ""
+    @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
     var selectedShow: ShowEntity
     @State private var selectedView: Views = Views.programmingObjects
     

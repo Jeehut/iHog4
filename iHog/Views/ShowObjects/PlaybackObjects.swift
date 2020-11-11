@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct PlaybackObjects: View {
-    @AppStorage(Settings.chosenShowID) var chosenShowID: String = ""
+    @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
     @Environment(\.managedObjectContext) private var viewContext
     @State private var listObjects: [ShowObject] = []
     @State private var sceneObjects: [ShowObject] = []

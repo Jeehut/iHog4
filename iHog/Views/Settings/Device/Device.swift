@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct Device: View {
-    @State private var consoleIP: String = "172.31.0.1"
-    @State private var serverPort: String = "7001"
-    @State private var clientPort: String = "7002"
-    @State private var isOSCOn: Bool = false
-    @State private var encoderWheelPrecision: Double = 2.00
-    @State private var isNanoModeOn: Bool = false
-    @State private var isHapticOn: Bool = true
+    @AppStorage(Settings.consoleIP.rawValue) var consoleIP: String = "172.31.0.1"
+    @AppStorage(Settings.serverPort.rawValue) var serverPort: String = "7001"
+    @AppStorage(Settings.clientPort.rawValue) var clientPort: String = "7002"
+    @AppStorage(Settings.isOSCOn.rawValue) var isOSCOn: Bool = false
+    @AppStorage(Settings.encoderWheelPrecision.rawValue) var encoderWheelPrecision: Double = 2.00
+    @AppStorage(Settings.isNanoModeOn.rawValue) var isNanoModeOn: Bool = false
+    @AppStorage(Settings.isHapticOn.rawValue) var isHapticOn: Bool = true
     
     var body: some View {
         Form{

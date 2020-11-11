@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ProgrammingObjects: View {
-    @AppStorage(Settings.chosenShowID) var chosenShowID: String = ""
+    @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.managedObjectContext) private var viewContext
     

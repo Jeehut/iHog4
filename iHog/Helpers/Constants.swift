@@ -33,38 +33,39 @@ let LARGE_OBJ_BUTTON_SIZE: CGFloat  = 150.0
 let XL_OBJ_BUTTON_SIZE: CGFloat     = 200.0
 
 // MARK: SETTING ENUMS
-enum Settings {
-    static let chosenShowID = "chosenShowID"
+enum Settings: String {
+    case chosenShowID
     
-    static let hognetIPAddress = "172.31.0.1"
-    static let inputPort = 7001
-    static let outputPort = 7002
-    static let isOSCOn = false
+    case consoleIP
+    case serverPort
+    case clientPort
+    case isOSCOn
     
-    static let encoderWheelPrecision = 2.0
-    static let isNanoModeOn = false
+    case encoderWheelPrecision
+    case isNanoModeOn
+    case isHapticOn
     
     // MARK: Button Group
-    static let buttonColorGroup = "red"
-    static let buttonSizeGroup = "small"
-    static let buttonsAcrossGroup = 3
-    static let isButtonFilledGroup = true
+    case buttonColorGroup
+    case buttonSizeGroup
+    case buttonsAcrossGroup
+    case isButtonFilledGroup
     
     // MARK: Button Palette
-    static let buttonColorPalette = "blue"
-    static let buttonSizePalette = "small"
-    static let buttonsAcrossPalette = 3
-    static let isButtonFilledPalette = true
+    case buttonColorPalette
+    case buttonSizePalette
+    case buttonsAcrossPalette
+    case isButtonFilledPalette
     
     // MARK: Button List
-    static let buttonColorList = "green"
-    static let buttonSizeList = "small"
-    static let buttonsAcrossList = 3
-    static let isButtonFilledList = true
+    case buttonColorList
+    case buttonSizeList
+    case buttonsAcrossList
+    case isButtonFilledList
     
     // MARK: Button Scene
-    static let buttonColorScene = "gray"
-    static let buttonSizeScene = "small"
-    static let buttonsAcrossScene = 3
-    static let isButtonFilledScene = true
+    case buttonColorScene
+    case buttonSizeScene
+    case buttonsAcrossScene
+    case isButtonFilledScene
 }
