@@ -8,9 +8,60 @@
 import SwiftUI
 
 struct ShowSetting: View {
+    // MARK: GROUP
+    @AppStorage(Settings.buttonColorGroup.rawValue) var buttonColorGroup = 0
+    @AppStorage(Settings.buttonSizeGroup.rawValue) var buttonSizeGroup = 0
+    @AppStorage(Settings.buttonsAcrossGroup.rawValue) var buttonsAcrossGroup = 3
+    @AppStorage(Settings.isButtonFilledGroup.rawValue) var buttonFilledGroup = false
+    // MARK: PALETTE
+    @AppStorage(Settings.buttonColorPalette.rawValue) var buttonColorPalette = 0
+    @AppStorage(Settings.buttonSizePalette.rawValue) var buttonSizePalette = 0
+    @AppStorage(Settings.buttonsAcrossPalette.rawValue) var buttonsAcrossPalette = 3
+    @AppStorage(Settings.isButtonFilledPalette.rawValue) var buttonFilledPalette = false
+    // MARK: LIST
+    @AppStorage(Settings.buttonColorList.rawValue) var buttonColorList = 0
+    @AppStorage(Settings.buttonSizeList.rawValue) var buttonSizeList = 0
+    @AppStorage(Settings.buttonsAcrossList.rawValue) var buttonsAcrossList = 3
+    @AppStorage(Settings.isButtonFilledList.rawValue) var buttonFilledList = false
+    // MARK: SCENE
+    @AppStorage(Settings.buttonColorScene.rawValue) var buttonColorScene = 0
+    @AppStorage(Settings.buttonSizeScene.rawValue) var buttonSizeScene = 0
+    @AppStorage(Settings.buttonsAcrossScene.rawValue) var buttonsAcrossScene = 3
+    @AppStorage(Settings.isButtonFilledScene.rawValue) var buttonFilledScene = false
+    
+    // Picker selections
+    let colors: [Color] = [.red, .green, .blue, .yellow, .gray]
+    let sizes: [String] = ["small", "medium", "large", "extra large"]
+    
     var body: some View {
         Form{
-            ObjectSettings(objectName: "group")
+            // MARK: Group Settings
+            Section(header: Text("Groups")){
+                // MARK: Color
+                VStack(alignment: .leading){
+                    Text("Button color".capitalized)
+                    Picker("Button Color", selection: $buttonColorGroup) {
+                        ForEach(0 ..< colors.count) {
+                            Text(self.colors[$0].description.capitalized)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+                // MARK: Size
+                VStack(alignment: .leading){
+                    Text("Button Size".capitalized)
+                    Picker("Button Size", selection: $buttonSizeGroup) {
+                        ForEach(0 ..< sizes.count) {
+                            Text(self.sizes[$0].capitalized)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+                // MARK: Buttons Across
+                Stepper(value: $buttonsAcrossGroup, in: 1...5){
+                    Text("\(buttonsAcrossGroup) buttons across".capitalized)
+                }
+                // MARK: Outline or filled
+                Toggle("Buttons are \(buttonFilledGroup ? "filled" : "outlined")".capitalized, isOn: $buttonFilledGroup)
+            }
             ObjectSettings(objectName: "palette")
             ObjectSettings(objectName: "list")
             ObjectSettings(objectName: "scene")
