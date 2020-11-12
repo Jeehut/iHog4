@@ -62,12 +62,90 @@ struct ShowSetting: View {
                 // MARK: Outline or filled
                 Toggle("Buttons are \(buttonFilledGroup ? "filled" : "outlined")".capitalized, isOn: $buttonFilledGroup)
             }
-            ObjectSettings(objectName: "palette")
-            ObjectSettings(objectName: "list")
-            ObjectSettings(objectName: "scene")
-            Button("Save All") {
-                print("save settings")
-            }.foregroundColor(.green)
+            
+            // MARK: Palette Settings
+            Section(header: Text("Palettes")){
+                // MARK: Color
+                VStack(alignment: .leading){
+                    Text("Button color".capitalized)
+                    Picker("Button Color", selection: $buttonColorPalette) {
+                        ForEach(0 ..< colors.count) {
+                            Text(self.colors[$0].description.capitalized)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+                // MARK: Size
+                VStack(alignment: .leading){
+                    Text("Button Size".capitalized)
+                    Picker("Button Size", selection: $buttonSizePalette) {
+                        ForEach(0 ..< sizes.count) {
+                            Text(self.sizes[$0].capitalized)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+                // MARK: Buttons Across
+                Stepper(value: $buttonsAcrossPalette, in: 1...5){
+                    Text("\(buttonsAcrossPalette) buttons across".capitalized)
+                }
+                // MARK: Outline or filled
+                Toggle("Buttons are \(buttonFilledPalette ? "filled" : "outlined")".capitalized, isOn: $buttonFilledPalette)
+            }
+            
+            // MARK: List Settings
+            Section(header: Text("Lists")){
+                // MARK: Color
+                VStack(alignment: .leading){
+                    Text("Button color".capitalized)
+                    Picker("Button Color", selection: $buttonColorList) {
+                        ForEach(0 ..< colors.count) {
+                            Text(self.colors[$0].description.capitalized)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+                // MARK: Size
+                VStack(alignment: .leading){
+                    Text("Button Size".capitalized)
+                    Picker("Button Size", selection: $buttonSizeList) {
+                        ForEach(0 ..< sizes.count) {
+                            Text(self.sizes[$0].capitalized)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+                // MARK: Buttons Across
+                Stepper(value: $buttonsAcrossList, in: 1...5){
+                    Text("\(buttonsAcrossList) buttons across".capitalized)
+                }
+                // MARK: Outline or filled
+                Toggle("Buttons are \(buttonFilledList ? "filled" : "outlined")".capitalized, isOn: $buttonFilledList)
+            }
+            
+            // MARK: Scene Settings
+            Section(header: Text("Scenes")){
+                // MARK: Color
+                VStack(alignment: .leading){
+                    Text("Button color".capitalized)
+                    Picker("Button Color", selection: $buttonColorScene) {
+                        ForEach(0 ..< colors.count) {
+                            Text(self.colors[$0].description.capitalized)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+                // MARK: Size
+                VStack(alignment: .leading){
+                    Text("Button Size".capitalized)
+                    Picker("Button Size", selection: $buttonSizeScene) {
+                        ForEach(0 ..< sizes.count) {
+                            Text(self.sizes[$0].capitalized)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+                // MARK: Buttons Across
+                Stepper(value: $buttonsAcrossScene, in: 1...5){
+                    Text("\(buttonsAcrossScene) buttons across".capitalized)
+                }
+                // MARK: Outline or filled
+                Toggle("Buttons are \(buttonFilledScene ? "filled" : "outlined")".capitalized, isOn: $buttonFilledScene)
+            }
         }.navigationTitle("Show Settings")
     }
 }
