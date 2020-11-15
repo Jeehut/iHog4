@@ -10,9 +10,24 @@ import CoreData
 
 struct PlaybackObjects: View {
     @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
+    // MARK: LIST
+    @AppStorage(Settings.buttonColorList.rawValue) var buttonColorList = 0
+    @AppStorage(Settings.buttonSizeList.rawValue) var buttonSizeList = 0
+    @AppStorage(Settings.buttonsAcrossList.rawValue) var buttonsAcrossList = 3
+    @AppStorage(Settings.isButtonFilledList.rawValue) var buttonFilledList = false
+    // MARK: SCENE
+    @AppStorage(Settings.buttonColorScene.rawValue) var buttonColorScene = 0
+    @AppStorage(Settings.buttonSizeScene.rawValue) var buttonSizeScene = 0
+    @AppStorage(Settings.buttonsAcrossScene.rawValue) var buttonsAcrossScene = 3
+    @AppStorage(Settings.isButtonFilledScene.rawValue) var buttonFilledScene = false
+    
     @Environment(\.managedObjectContext) private var viewContext
     @State private var listObjects: [ShowObject] = []
     @State private var sceneObjects: [ShowObject] = []
+    
+    // Sice and Color selections
+    let colors: [Color] = [.red, .green, .blue, .yellow, .gray]
+    let sizes: [String] = ["small", "medium", "large", "extra large"]
     
     var body: some View {
         VStack{
@@ -43,15 +58,15 @@ struct PlaybackObjects: View {
                 .font(.largeTitle)
                 .fontWeight(.black)
             // MARK: Lists
-            ObjectGrid(size: "medium",
-                       buttonsAcross: 3,
+            ObjectGrid(size: sizes[buttonSizeList],
+                       buttonsAcross: buttonsAcrossList,
                        objects: listObjects)
             // MARK: Scenes
             Text("Scenes")
                 .font(.largeTitle)
                 .fontWeight(.black)
-            ObjectGrid(size: "medium",
-                       buttonsAcross: 1,
+            ObjectGrid(size: sizes[buttonSizeScene],
+                       buttonsAcross: buttonsAcrossScene,
                        objects: sceneObjects)
         }.padding()
         .onAppear{
@@ -64,8 +79,8 @@ struct PlaybackObjects: View {
             id: UUID(),
             objType: .list,
             number: Double(listObjects.count+1),
-            objColor: "gray",
-            isOutlined: true)
+            objColor: colors[buttonColorList].description,
+            isOutlined: !buttonFilledList)
         
         listObjects.append(newList)
         
@@ -91,8 +106,8 @@ struct PlaybackObjects: View {
             id: UUID(),
             objType: .scene,
             number: Double(sceneObjects.count+1),
-            objColor: "yellow",
-            isOutlined: true)
+            objColor: colors[buttonColorScene].description,
+            isOutlined: !buttonFilledScene)
         
         sceneObjects.append(newScene)
         
