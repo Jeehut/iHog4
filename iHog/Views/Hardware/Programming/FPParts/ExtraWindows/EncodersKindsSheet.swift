@@ -21,7 +21,7 @@ struct EncodersKindsSheet: View {
                 .foregroundColor(.red)
                 .padding(.horizontal)
             }.padding(.vertical)
-            Spacer()
+//            Spacer()
             EncoderWheelsView()
             Spacer()
             KindButtonView()

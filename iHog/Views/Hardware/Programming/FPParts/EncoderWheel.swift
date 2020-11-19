@@ -35,6 +35,8 @@ struct EncoderWheel: View {
                             .onChanged({value in
                     sendEncoder(newValue: value.location.y)
                 }))
+        }.onTapGesture {
+            print("DO SOMETHING")
         }.padding()
     }
     
