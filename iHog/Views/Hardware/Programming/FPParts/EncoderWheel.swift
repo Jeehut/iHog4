@@ -22,6 +22,7 @@ struct EncoderWheel: View {
                 Text("\(yOffSet)")
                     .font(.subheadline)
             }.foregroundColor(.primary)
+            // Small Grab thing
             RoundedRectangle(cornerRadius: 5.0)
                 .fill(Color.init(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.25))
                 .frame(width: 30, height: 20, alignment: .center)
