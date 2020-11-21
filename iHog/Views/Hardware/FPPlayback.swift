@@ -12,11 +12,22 @@ struct FPPlayback: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     var body: some View {
         if horizontalSizeClass == .regular {
+            if verticalSizeClass == .compact {
+                RegCompPlayback()
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            else {
             RegRegPlayback()
                 .navigationBarTitleDisplayMode(.inline)
+            }
         } else {
-            CompPlayback()
-                .navigationBarTitleDisplayMode(.inline)
+            if verticalSizeClass == .compact {
+                RegCompPlayback()
+                    .navigationBarTitleDisplayMode(.inline)
+            } else {
+                CompPlayback()
+                    .navigationBarTitleDisplayMode(.inline)
+            }
         }
     }
 }
