@@ -135,7 +135,9 @@ struct ShowSetting: View {
                     Text("Button Size".capitalized)
                     Picker("Button Size", selection: $buttonSizeScene) {
                         ForEach(0 ..< sizes.count) {
-                            Text(self.sizes[$0].capitalized)
+                            if $0 < 4 {
+                                Text(self.sizes[$0].capitalized)
+                            }
                         }
                     }.pickerStyle(SegmentedPickerStyle())
                 }
