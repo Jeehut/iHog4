@@ -11,11 +11,12 @@ struct ObjectGrid: View {
     var size: String
     var buttonsAcross: Int
     var objects: [ShowObject]
+    @Binding var allObjects: [ShowObject]
     var body: some View {
         ScrollView {
             LazyVGrid(columns: getColumns(), spacing: 0.0){
                 ForEach(objects, id: \.self) { obj in
-                    ShowObjectView(obj: obj, size: size)
+                    ShowObjectView(allObjects: $allObjects, obj: obj, size: size)
                 }
             }
         }
@@ -34,11 +35,11 @@ struct ObjectGrid: View {
     }
 }
 
-struct ObjectGrid_Previews: PreviewProvider {
-    static var previews: some View {
-        ObjectGrid(
-            size: "small",
-            buttonsAcross: 5,
-            objects: testShowObjects)
-    }
-}
+//struct ObjectGrid_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ObjectGrid(
+//            size: "small",
+//            buttonsAcross: 5,
+//            objects: testShowObjects)
+//    }
+//}

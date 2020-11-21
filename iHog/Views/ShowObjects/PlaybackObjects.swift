@@ -60,14 +60,14 @@ struct PlaybackObjects: View {
             // MARK: Lists
             ObjectGrid(size: sizes[buttonSizeList],
                        buttonsAcross: buttonsAcrossList,
-                       objects: listObjects)
+                       objects: listObjects, allObjects: $listObjects)
             // MARK: Scenes
             Text("Scenes")
                 .font(.title)
                 .fontWeight(.black)
             ObjectGrid(size: sizes[buttonSizeScene],
                        buttonsAcross: buttonsAcrossScene,
-                       objects: sceneObjects)
+                       objects: sceneObjects, allObjects: $sceneObjects)
         }.padding()
         .onAppear{
             getAllObjects()

@@ -12,6 +12,7 @@ struct ShowObjectView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var showEditWindow: Bool = false
+    @Binding var allObjects: [ShowObject]
     var obj: ShowObject
     var size: String
     var body: some View {
@@ -88,6 +89,7 @@ struct ShowObjectView: View {
             let objectToDelete = test[0] as! NSManagedObject
             viewContext.delete(objectToDelete)
             try viewContext.save()
+            allObjects.removeAll{$0 == obj}
         } catch {
             print(error)
         }
@@ -95,11 +97,11 @@ struct ShowObjectView: View {
     }
 }
 
-struct ShowObjectView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShowObjectView(
-            obj: testShowObjects[1],
-            size: "small"
-        )
-    }
-}
+//struct ShowObjectView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ShowObjectView(
+//            obj: testShowObjects[1],
+//            size: "small"
+//        )
+//    }
+//}

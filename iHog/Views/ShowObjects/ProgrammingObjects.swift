@@ -45,18 +45,18 @@ struct ProgrammingObjects: View {
                 }
             }
             // MARK: Groups
-//            Text("Groups")
-//                .font(.largeTitle)
-//                .fontWeight(.black)
+            //            Text("Groups")
+            //                .font(.largeTitle)
+            //                .fontWeight(.black)
             ObjectGrid(
                 size: "small",
                 buttonsAcross: 3,
-                objects: groupObjects
+                objects: groupObjects, allObjects: $groupObjects
             ).padding()
             // MARK: Pallets
-//            Text("Pallets")
-//                .font(.largeTitle)
-//                .fontWeight(.black)
+            //            Text("Pallets")
+            //                .font(.largeTitle)
+            //                .fontWeight(.black)
             Picker("palette selection", selection: $chosenPaletteType) {
                 ForEach(0 ..< paletteTypes.count) {
                     Text(paletteTypes[$0].rawValue.capitalized)
@@ -67,7 +67,7 @@ struct ProgrammingObjects: View {
                 buttonsAcross: 3,
                 objects: paletteObjects.filter({ obj in
                     return obj.objType == paletteTypes[chosenPaletteType]
-                })
+                }), allObjects: $paletteObjects
             )
             Spacer()
         }.padding()
@@ -106,7 +106,7 @@ struct ProgrammingObjects: View {
             objType: paletteTypes[chosenPaletteType],
             number: Double((
                             paletteObjects.filter({ obj in
-                                return obj.objType == paletteTypes[chosenPaletteType]})
+                                                    return obj.objType == paletteTypes[chosenPaletteType]})
                                 .count)
                             + 1
             ),
