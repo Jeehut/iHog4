@@ -55,7 +55,7 @@ struct PlaybackObjects: View {
                 }
             }
             Text("Lists")
-                .font(.largeTitle)
+                .font(.title)
                 .fontWeight(.black)
             // MARK: Lists
             ObjectGrid(size: sizes[buttonSizeList],
@@ -63,7 +63,7 @@ struct PlaybackObjects: View {
                        objects: listObjects)
             // MARK: Scenes
             Text("Scenes")
-                .font(.largeTitle)
+                .font(.title)
                 .fontWeight(.black)
             ObjectGrid(size: sizes[buttonSizeScene],
                        buttonsAcross: buttonsAcrossScene,

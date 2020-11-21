@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ShowObjectView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @State private var showEditWindow: Bool = false
     var obj: ShowObject
     var size: String
     var body: some View {
@@ -29,6 +33,25 @@ struct ShowObjectView: View {
             RoundedRectangle(cornerRadius: (DOUBLE_CORNER_RADIUS))
                 .stroke(getColor(), lineWidth: BASE_LINE_WIDTH)
         ).padding()
+        .contextMenu{
+            if obj.objType == .scene || obj.objType == .list {
+                Button(action: {print("release thing")}){
+                    Image(systemName: "stop.fill")
+                    Text("Release")
+                }
+            }
+            Button(action: {self.showEditWindow.toggle()}){
+                Image(systemName: "pencil")
+                Text("Edit")
+            }
+            Button(action: deleteObject){
+                Image(systemName: "trash")
+                Text("Delete")
+            }
+        }
+        .sheet(isPresented: $showEditWindow){
+            EditObjectView()
+        }
     }
     
     func getSize() -> CGFloat{
@@ -53,6 +76,22 @@ struct ShowObjectView: View {
         default:
             return .gray
         }
+    }
+    
+    func deleteObject(){
+        let objID: NSUUID = obj.id as NSUUID
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "ShowObjectEntity")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", objID as CVarArg)
+        fetchRequest.fetchLimit = 1
+        do {
+            let test = try viewContext.fetch(fetchRequest)
+            let objectToDelete = test[0] as! NSManagedObject
+            viewContext.delete(objectToDelete)
+            try viewContext.save()
+        } catch {
+            print(error)
+        }
+        
     }
 }
 

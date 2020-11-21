@@ -21,14 +21,14 @@ struct ShowNavigation: View {
         TabView(selection: $selectedView) {
             ProgrammingObjects()
                 .tabItem{
-                    Image(systemName: "square.grid.2x2")
+                    Image(systemName: "wand.and.rays")
                 }
                 .tag(Views.programmingObjects)
             PlaybackObjects()
                 .tabItem{
-                    Image(systemName: "square.grid.3x2")
+                    Image(systemName: "play.rectangle")
                 }
-                .tag(Views.programmingObjects)
+                .tag(Views.playbackObjects)
         }
         .navigationBarTitle(selectedShow.name!)
         .navigationBarTitleDisplayMode(.inline)
