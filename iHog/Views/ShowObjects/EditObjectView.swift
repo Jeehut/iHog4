@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EditObjectView: View {
+    var obj: ShowObject
+    
     var body: some View {
         Text("Hello, World!")
     }
@@ -15,6 +17,6 @@ struct EditObjectView: View {
 
 struct EditObjectView_Previews: PreviewProvider {
     static var previews: some View {
-        EditObjectView()
+        EditObjectView(obj: testShowObjects[0])
     }
 }

@@ -51,7 +51,7 @@ struct ShowObjectView: View {
             }
         }
         .sheet(isPresented: $showEditWindow){
-            EditObjectView()
+            EditObjectView(obj: obj)
         }
     }
     
@@ -74,6 +74,8 @@ struct ShowObjectView: View {
         switch obj.objColor {
         case "red":
             return .red
+        case "yellow":
+            return .yellow
         default:
             return .gray
         }
