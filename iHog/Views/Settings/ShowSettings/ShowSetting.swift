@@ -30,7 +30,6 @@ struct ShowSetting: View {
     @AppStorage(Settings.isButtonFilledScene.rawValue) var buttonFilledScene = false
     
     // Picker selections
-    let colors: [Color] = [.red, .green, .blue, .yellow, .gray]
     let sizes: [String] = ["small", "medium", "large", "extra large"]
     
     var body: some View {
@@ -41,10 +40,10 @@ struct ShowSetting: View {
                 VStack(alignment: .leading){
                     Text("Button color".capitalized)
                     Picker("Button Color", selection: $buttonColorGroup) {
-                        ForEach(0 ..< colors.count) {
-                            Text(self.colors[$0].description.capitalized)
+                        ForEach(0 ..< OBJ_COLORS.count) {
+                            Text(OBJ_COLORS[$0].description.capitalized)
                         }
-                    }.pickerStyle(SegmentedPickerStyle())
+                    }.pickerStyle(MenuPickerStyle())
                 }
                 // MARK: Size
                 VStack(alignment: .leading){
@@ -69,10 +68,10 @@ struct ShowSetting: View {
                 VStack(alignment: .leading){
                     Text("Button color".capitalized)
                     Picker("Button Color", selection: $buttonColorPalette) {
-                        ForEach(0 ..< colors.count) {
-                            Text(self.colors[$0].description.capitalized)
+                        ForEach(0 ..< OBJ_COLORS.count) {
+                            Text(OBJ_COLORS[$0].description.capitalized)
                         }
-                    }.pickerStyle(SegmentedPickerStyle())
+                    }.pickerStyle(MenuPickerStyle())
                 }
                 // MARK: Size
                 VStack(alignment: .leading){
@@ -97,10 +96,10 @@ struct ShowSetting: View {
                 VStack(alignment: .leading){
                     Text("Button color".capitalized)
                     Picker("Button Color", selection: $buttonColorList) {
-                        ForEach(0 ..< colors.count) {
-                            Text(self.colors[$0].description.capitalized)
+                        ForEach(0 ..< OBJ_COLORS.count) {
+                            Text(OBJ_COLORS[$0].description.capitalized)
                         }
-                    }.pickerStyle(SegmentedPickerStyle())
+                    }.pickerStyle(MenuPickerStyle())
                 }
                 // MARK: Size
                 VStack(alignment: .leading){
@@ -125,10 +124,10 @@ struct ShowSetting: View {
                 VStack(alignment: .leading){
                     Text("Button color".capitalized)
                     Picker("Button Color", selection: $buttonColorScene) {
-                        ForEach(0 ..< colors.count) {
-                            Text(self.colors[$0].description.capitalized)
+                        ForEach(0 ..< OBJ_COLORS.count) {
+                            Text(OBJ_COLORS[$0].description.capitalized)
                         }
-                    }.pickerStyle(SegmentedPickerStyle())
+                    }.pickerStyle(MenuPickerStyle())
                 }
                 // MARK: Size
                 VStack(alignment: .leading){

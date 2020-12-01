@@ -28,12 +28,15 @@ struct ShowObjectView: View {
         }
         .frame(width: getSize(), height: getSize(), alignment: .leading)
         .padding()
-        .background(obj.isOutlined ? Color.clear : getColor())
+        .background(obj.isOutlined ? Color.clear : OBJ_COLORS[obj.getColor()])
         .cornerRadius(BASE_CORNER_RADIUS)
         .overlay(
             RoundedRectangle(cornerRadius: (DOUBLE_CORNER_RADIUS))
-                .stroke(getColor(), lineWidth: BASE_LINE_WIDTH)
+                .stroke(OBJ_COLORS[obj.getColor()], lineWidth: BASE_LINE_WIDTH)
         ).padding()
+        .sheet(isPresented: $showEditWindow){
+            EditObjectView(allObjects: $allObjects, obj: obj)
+        }
         .contextMenu{
             if obj.objType == .scene || obj.objType == .list {
                 Button(action: {print("release thing")}){
@@ -49,9 +52,6 @@ struct ShowObjectView: View {
                 Image(systemName: "trash")
                 Text("Delete")
             }
-        }
-        .sheet(isPresented: $showEditWindow){
-            EditObjectView(obj: obj)
         }
     }
     

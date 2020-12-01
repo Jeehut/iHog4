@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 //MARK: GENERAL
 let BASE_CORNER_RADIUS: CGFloat = 5
@@ -31,6 +32,9 @@ let SMALL_OBJ_BUTTON_SIZE: CGFloat  = 50.0
 let MEDIUM_OBJ_BUTTON_SIZE: CGFloat = 100.0
 let LARGE_OBJ_BUTTON_SIZE: CGFloat  = 150.0
 let XL_OBJ_BUTTON_SIZE: CGFloat     = 200.0
+
+// MARK: COLOR OPTIONS
+let OBJ_COLORS: [Color] = [.red, .green, .blue, .yellow, .gray, .orange, .pink, .purple]
 
 // MARK: SETTING ENUMS
 enum Settings: String {

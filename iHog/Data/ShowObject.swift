@@ -82,6 +82,32 @@ struct ShowObject: Identifiable, Hashable {
             return "NTF"
         }
     }
+    
+    func getColor() -> Int {
+        var colorIndex = 0
+        switch objColor {
+        case "red":
+            colorIndex = 0
+        case "green":
+            colorIndex = 1
+        case "blue":
+            colorIndex = 2
+        case "yellow":
+            colorIndex = 3
+        case "gray":
+            colorIndex = 4
+        case "orange":
+            colorIndex = 5
+        case "pink":
+            colorIndex = 6
+        case "purple":
+            colorIndex = 7
+        default:
+            colorIndex = 0
+        }
+        
+        return colorIndex
+    }
 }
 
 let testShowObjects: [ShowObject] = [
