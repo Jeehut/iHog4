@@ -9,15 +9,33 @@ import SwiftUI
 import CoreData
 
 struct ProgrammingObjects: View {
+    // MARK: Default values
     @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
+    
+    // MARK: Palette defaults
+    @AppStorage(Settings.buttonColorPalette.rawValue) var buttonColorPalette = 0
+    @AppStorage(Settings.buttonSizePalette.rawValue) var buttonSizePalette = 0
+    @AppStorage(Settings.buttonsAcrossPalette.rawValue) var buttonsAcrossPallete = 3
+    @AppStorage(Settings.isButtonFilledPalette.rawValue) var isButtonFilledPalette = false
+    
+    // MARK: Group defaults
+    @AppStorage(Settings.buttonColorPalette.rawValue) var buttonColorGroup = 0
+    @AppStorage(Settings.buttonSizePalette.rawValue) var buttonSizeGroup = 0
+    @AppStorage(Settings.buttonsAcrossPalette.rawValue) var buttonsAcrossGroup = 3
+    @AppStorage(Settings.isButtonFilledPalette.rawValue) var isButtonFilledGroup = false
+    
+    // MARK: Environment variables
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.managedObjectContext) private var viewContext
     
+    // MARK: State
     @State private var chosenPaletteType: Int = 0
     @State private var groupObjects: [ShowObject] = []
     @State private var paletteObjects: [ShowObject] = []
     
+    // MARK: Local constants
     let paletteTypes: [ShowObjectType] = [.intensity, .position, .color, .beam, .effect]
+    let sizes: [String] = ["small", "medium", "large", "extra large"]
     
     var body: some View {
         VStack{
@@ -44,27 +62,24 @@ struct ProgrammingObjects: View {
                     }
                 }
             }
+            
             // MARK: Groups
-            //            Text("Groups")
-            //                .font(.largeTitle)
-            //                .fontWeight(.black)
             ObjectGrid(
-                size: "small",
-                buttonsAcross: 3,
+                size: sizes[buttonSizeGroup],
+                buttonsAcross: buttonsAcrossGroup,
                 objects: groupObjects, allObjects: $groupObjects
             ).padding()
+            
             // MARK: Pallets
-            //            Text("Pallets")
-            //                .font(.largeTitle)
-            //                .fontWeight(.black)
             Picker("palette selection", selection: $chosenPaletteType) {
                 ForEach(0 ..< paletteTypes.count) {
                     Text(paletteTypes[$0].rawValue.capitalized)
                 }
             }.pickerStyle(SegmentedPickerStyle())
+            
             ObjectGrid(
-                size: "small",
-                buttonsAcross: 3,
+                size: sizes[buttonSizePalette],
+                buttonsAcross: buttonsAcrossPallete,
                 objects: paletteObjects.filter({ obj in
                     return obj.objType == paletteTypes[chosenPaletteType]
                 }), allObjects: $paletteObjects
@@ -81,8 +96,8 @@ struct ProgrammingObjects: View {
             id: UUID(),
             objType: .group,
             number: (Double((groupObjects.count + 1))),
-            objColor: "red",
-            isOutlined: true)
+            objColor: OBJ_COLORS[buttonColorGroup].description,
+            isOutlined: isButtonFilledGroup)
         groupObjects.append(newGroup)
         
         let obj = ShowObjectEntity(context: viewContext)
@@ -110,8 +125,8 @@ struct ProgrammingObjects: View {
                                 .count)
                             + 1
             ),
-            objColor: "blue",
-            isOutlined: true)
+            objColor: OBJ_COLORS[buttonColorPalette].description,
+            isOutlined: isButtonFilledPalette)
         paletteObjects.append(newPalette)
         
         let obj = ShowObjectEntity(context: viewContext)

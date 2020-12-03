@@ -37,14 +37,11 @@ struct ShowSetting: View {
             // MARK: Group Settings
             Section(header: Text("Groups")){
                 // MARK: Color
-                VStack(alignment: .leading){
-                    Text("Button color".capitalized)
                     Picker("Button Color", selection: $buttonColorGroup) {
                         ForEach(0 ..< OBJ_COLORS.count) {
                             Text(OBJ_COLORS[$0].description.capitalized)
                         }
                     }.pickerStyle(MenuPickerStyle())
-                }
                 // MARK: Size
                 VStack(alignment: .leading){
                     Text("Button Size".capitalized)
@@ -65,14 +62,11 @@ struct ShowSetting: View {
             // MARK: Palette Settings
             Section(header: Text("Palettes")){
                 // MARK: Color
-                VStack(alignment: .leading){
-                    Text("Button color".capitalized)
                     Picker("Button Color", selection: $buttonColorPalette) {
                         ForEach(0 ..< OBJ_COLORS.count) {
                             Text(OBJ_COLORS[$0].description.capitalized)
                         }
                     }.pickerStyle(MenuPickerStyle())
-                }
                 // MARK: Size
                 VStack(alignment: .leading){
                     Text("Button Size".capitalized)
@@ -93,14 +87,11 @@ struct ShowSetting: View {
             // MARK: List Settings
             Section(header: Text("Lists")){
                 // MARK: Color
-                VStack(alignment: .leading){
-                    Text("Button color".capitalized)
                     Picker("Button Color", selection: $buttonColorList) {
                         ForEach(0 ..< OBJ_COLORS.count) {
                             Text(OBJ_COLORS[$0].description.capitalized)
                         }
                     }.pickerStyle(MenuPickerStyle())
-                }
                 // MARK: Size
                 VStack(alignment: .leading){
                     Text("Button Size".capitalized)
@@ -121,14 +112,11 @@ struct ShowSetting: View {
             // MARK: Scene Settings
             Section(header: Text("Scenes")){
                 // MARK: Color
-                VStack(alignment: .leading){
-                    Text("Button color".capitalized)
                     Picker("Button Color", selection: $buttonColorScene) {
                         ForEach(0 ..< OBJ_COLORS.count) {
                             Text(OBJ_COLORS[$0].description.capitalized)
                         }
                     }.pickerStyle(MenuPickerStyle())
-                }
                 // MARK: Size
                 VStack(alignment: .leading){
                     Text("Button Size".capitalized)

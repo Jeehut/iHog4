@@ -10,12 +10,12 @@ import CoreData
 
 struct PlaybackObjects: View {
     @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
-    // MARK: LIST
+    // MARK: LIST Default Values
     @AppStorage(Settings.buttonColorList.rawValue) var buttonColorList = 0
     @AppStorage(Settings.buttonSizeList.rawValue) var buttonSizeList = 0
     @AppStorage(Settings.buttonsAcrossList.rawValue) var buttonsAcrossList = 3
     @AppStorage(Settings.isButtonFilledList.rawValue) var buttonFilledList = false
-    // MARK: SCENE
+    // MARK: SCENE Default Values
     @AppStorage(Settings.buttonColorScene.rawValue) var buttonColorScene = 0
     @AppStorage(Settings.buttonSizeScene.rawValue) var buttonSizeScene = 0
     @AppStorage(Settings.buttonsAcrossScene.rawValue) var buttonsAcrossScene = 3
@@ -25,8 +25,7 @@ struct PlaybackObjects: View {
     @State private var listObjects: [ShowObject] = []
     @State private var sceneObjects: [ShowObject] = []
     
-    // Sice and Color selections
-    let colors: [Color] = [.red, .green, .blue, .yellow, .gray]
+    // Size selections
     let sizes: [String] = ["small", "medium", "large", "extra large"]
     
     var body: some View {
@@ -74,12 +73,13 @@ struct PlaybackObjects: View {
         }
     }
     
+    // MARK: add List
     func addList(){
         let newList = ShowObject(
             id: UUID(),
             objType: .list,
             number: Double(listObjects.count+1),
-            objColor: colors[buttonColorList].description,
+            objColor: OBJ_COLORS[buttonColorList].description,
             isOutlined: !buttonFilledList)
         
         listObjects.append(newList)
@@ -101,12 +101,13 @@ struct PlaybackObjects: View {
         }
     }
     
+    // MARK: add Scene
     func addScene(){
         let newScene = ShowObject(
             id: UUID(),
             objType: .scene,
             number: Double(sceneObjects.count+1),
-            objColor: colors[buttonColorScene].description,
+            objColor: OBJ_COLORS[buttonColorScene].description,
             isOutlined: !buttonFilledScene)
         
         sceneObjects.append(newScene)
@@ -127,10 +128,13 @@ struct PlaybackObjects: View {
         }
     }
     
+    // MARK: Release all function
+    // TODO: Add OSC
     func releaseAll(){
         print("Release all")
     }
     
+    // MARK: Get all objects
     func getAllObjects(){
         listObjects = []
         sceneObjects = []
@@ -173,6 +177,7 @@ struct PlaybackObjects: View {
     }
 }
 
+// MARK: PREVIEW
 struct PlaybackObjects_Previews: PreviewProvider {
     static var previews: some View {
         PlaybackObjects()
