@@ -29,9 +29,15 @@ let L_BUTTON_WIDTH: CGFloat     = 125
 
 // MARK: OBJ BUTTON SIZES
 let SMALL_OBJ_BUTTON_SIZE: CGFloat  = 50.0
-let MEDIUM_OBJ_BUTTON_SIZE: CGFloat = 100.0
-let LARGE_OBJ_BUTTON_SIZE: CGFloat  = 150.0
-let XL_OBJ_BUTTON_SIZE: CGFloat     = 200.0
+let MEDIUM_OBJ_BUTTON_SIZE: CGFloat = 75.0
+let LARGE_OBJ_BUTTON_SIZE: CGFloat  = 100.0
+let XL_OBJ_BUTTON_SIZE: CGFloat     = 150.0
+
+// MARK: MAX BUTTONS ACROSS
+let SMALL_MAX_BUTTONS_ACROSS: Int = 4
+let MEDIUM_MAX_BUTTONS_ACROSS: Int = 3
+let LARGE_MAX_BUTTONS_ACROSS: Int = 1
+let XL_MAX_BUTTONS_ACROSS: Int = 1
 
 // MARK: COLOR OPTIONS
 let OBJ_COLORS: [Color] = [.red, .green, .blue, .yellow, .gray, .orange, .pink, .purple]

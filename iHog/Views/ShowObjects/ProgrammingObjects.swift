@@ -66,7 +66,7 @@ struct ProgrammingObjects: View {
             // MARK: Groups
             ObjectGrid(
                 size: sizes[buttonSizeGroup],
-                buttonsAcross: buttonsAcrossGroup,
+                buttonsAcross: getMaxButtonSize()[0],
                 objects: groupObjects, allObjects: $groupObjects
             ).padding()
             
@@ -79,7 +79,7 @@ struct ProgrammingObjects: View {
             
             ObjectGrid(
                 size: sizes[buttonSizePalette],
-                buttonsAcross: buttonsAcrossPallete,
+                buttonsAcross: getMaxButtonSize()[1],
                 objects: paletteObjects.filter({ obj in
                     return obj.objType == paletteTypes[chosenPaletteType]
                 }), allObjects: $paletteObjects
@@ -88,7 +88,6 @@ struct ProgrammingObjects: View {
         }.padding()
         .onAppear{
             getAllObjects()
-            print(buttonSizeGroup)
         }
     }
     
@@ -234,7 +233,62 @@ struct ProgrammingObjects: View {
         }
     }
     
-    // MARK: Get palette buttons across
+    // Returns: Integer array of 2. First index is groups
+    //          Second index is palettes
+    func getMaxButtonSize() -> [Int]{
+        switch horizontalSizeClass {
+        case .compact:
+            return [getGroupButtonsAcross(), getPaletteButtonsAcross()]
+        default:
+            return [getGroupButtonsAcross(), getPaletteButtonsAcross()]
+        }
+    }
+    
+    func getPaletteButtonsAcross() -> Int{
+        switch buttonSizePalette {
+        // small
+        case 0:
+            if buttonsAcrossPallete <= SMALL_MAX_BUTTONS_ACROSS {
+                return buttonsAcrossPallete
+            }
+            return SMALL_MAX_BUTTONS_ACROSS
+        // medium
+        case 1:
+            if buttonsAcrossPallete <= MEDIUM_MAX_BUTTONS_ACROSS {
+                return buttonsAcrossPallete
+            }
+            return MEDIUM_MAX_BUTTONS_ACROSS
+        // large
+        case 2:
+            return LARGE_MAX_BUTTONS_ACROSS
+        // extra large
+        default:
+            return XL_MAX_BUTTONS_ACROSS
+        }
+    }
+    
+    func getGroupButtonsAcross() -> Int{
+        switch buttonSizeGroup {
+        // small
+        case 0:
+            if buttonsAcrossGroup <= SMALL_MAX_BUTTONS_ACROSS {
+                return buttonsAcrossGroup
+            }
+            return SMALL_MAX_BUTTONS_ACROSS
+        // medium
+        case 1:
+            if buttonsAcrossGroup <= MEDIUM_MAX_BUTTONS_ACROSS {
+                return buttonsAcrossGroup
+            }
+            return MEDIUM_MAX_BUTTONS_ACROSS
+        // large
+        case 2:
+            return LARGE_MAX_BUTTONS_ACROSS
+        // extra large
+        default:
+            return XL_MAX_BUTTONS_ACROSS
+        }
+    }
 }
 
 struct ProgrammingObjects_Previews: PreviewProvider {

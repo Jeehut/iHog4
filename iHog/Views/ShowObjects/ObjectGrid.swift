@@ -13,7 +13,7 @@ struct ObjectGrid: View {
     var objects: [ShowObject]
     @Binding var allObjects: [ShowObject]
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical) {
             LazyVGrid(columns: getColumns(), spacing: 0.0){
                 ForEach(objects, id: \.self) { obj in
                     ShowObjectView(allObjects: $allObjects, obj: obj, size: size)
@@ -27,7 +27,7 @@ struct ObjectGrid: View {
         var i = 0
         while i < buttonsAcross {
             columns.append(
-                GridItem(.flexible(minimum: 100, maximum: 500))
+                GridItem(.flexible(minimum: 100, maximum: 400))
                 )
             i = i + 1
         }
