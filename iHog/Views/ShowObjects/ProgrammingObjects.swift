@@ -19,10 +19,10 @@ struct ProgrammingObjects: View {
     @AppStorage(Settings.isButtonFilledPalette.rawValue) var isButtonFilledPalette = false
     
     // MARK: Group defaults
-    @AppStorage(Settings.buttonColorPalette.rawValue) var buttonColorGroup = 0
-    @AppStorage(Settings.buttonSizePalette.rawValue) var buttonSizeGroup = 0
-    @AppStorage(Settings.buttonsAcrossPalette.rawValue) var buttonsAcrossGroup = 3
-    @AppStorage(Settings.isButtonFilledPalette.rawValue) var isButtonFilledGroup = false
+    @AppStorage(Settings.buttonColorGroup.rawValue) var buttonColorGroup = 0
+    @AppStorage(Settings.buttonSizeGroup.rawValue) var buttonSizeGroup = 0
+    @AppStorage(Settings.buttonsAcrossGroup.rawValue) var buttonsAcrossGroup = 3
+    @AppStorage(Settings.isButtonFilledGroup.rawValue) var isButtonFilledGroup = false
     
     // MARK: Environment variables
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
@@ -88,9 +88,11 @@ struct ProgrammingObjects: View {
         }.padding()
         .onAppear{
             getAllObjects()
+            print(buttonSizeGroup)
         }
     }
     
+    // MARK: Add Group
     func addGroup() {
         let newGroup = ShowObject(
             id: UUID(),
@@ -115,6 +117,7 @@ struct ProgrammingObjects: View {
         }
     }
     
+    // MARK: Add Palette
     func addPalette(){
         let newPalette = ShowObject(
             id: UUID(),
@@ -144,10 +147,12 @@ struct ProgrammingObjects: View {
         }
     }
     
+    // TODO: Add OSC
     func clear(){
         print("Clear")
     }
     
+    // MARK: Get all objects
     func getAllObjects(){
         groupObjects = []
         paletteObjects = []
@@ -228,6 +233,8 @@ struct ProgrammingObjects: View {
             print(error)
         }
     }
+    
+    // MARK: Get palette buttons across
 }
 
 struct ProgrammingObjects_Previews: PreviewProvider {
