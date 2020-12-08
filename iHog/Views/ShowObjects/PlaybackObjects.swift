@@ -22,6 +22,8 @@ struct PlaybackObjects: View {
     @AppStorage(Settings.isButtonFilledScene.rawValue) var buttonFilledScene = false
     
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     @State private var listObjects: [ShowObject] = []
     @State private var sceneObjects: [ShowObject] = []
     
@@ -58,14 +60,14 @@ struct PlaybackObjects: View {
                 .fontWeight(.black)
             // MARK: Lists
             ObjectGrid(size: sizes[buttonSizeList],
-                       buttonsAcross: buttonsAcrossList,
+                       buttonsAcross: getMaxButtonSize()[0],
                        objects: listObjects, allObjects: $listObjects)
             // MARK: Scenes
             Text("Scenes")
                 .font(.title)
                 .fontWeight(.black)
             ObjectGrid(size: sizes[buttonSizeScene],
-                       buttonsAcross: buttonsAcrossScene,
+                       buttonsAcross: getMaxButtonSize()[1],
                        objects: sceneObjects, allObjects: $sceneObjects)
         }.padding()
         .onAppear{
@@ -173,6 +175,65 @@ struct PlaybackObjects: View {
             sceneObjects.sort(by: {$0.number < $1.number})
         } catch {
             print(error)
+        }
+    }
+    
+    // Returns: Integer array of 2. First index is List
+    //          Second index is Scene
+    func getMaxButtonSize() -> [Int]{
+        switch horizontalSizeClass {
+        case .compact:
+            return [getListButtonsAcross(), getSceneButtonsAcross()]
+        default:
+            return [getListButtonsAcross(), getSceneButtonsAcross()]
+        }
+    }
+    
+    func getSceneButtonsAcross() -> Int{
+        print("Scene buttons \(buttonsAcrossScene)")
+        switch buttonSizeScene {
+        // small
+        case 0:
+            if buttonsAcrossScene <= SMALL_MAX_BUTTONS_ACROSS {
+                return buttonsAcrossScene
+            }
+            return SMALL_MAX_BUTTONS_ACROSS
+        // medium
+        case 1:
+            if buttonsAcrossScene <= MEDIUM_MAX_BUTTONS_ACROSS {
+                return buttonsAcrossScene
+            }
+            return MEDIUM_MAX_BUTTONS_ACROSS
+        // large
+        case 2:
+            return LARGE_MAX_BUTTONS_ACROSS
+        // extra large
+        default:
+            return XL_MAX_BUTTONS_ACROSS
+        }
+    }
+    
+    func getListButtonsAcross() -> Int{
+        print("List buttons \(buttonsAcrossList)")
+        switch buttonSizeList {
+        // small
+        case 0:
+            if buttonsAcrossList <= SMALL_MAX_BUTTONS_ACROSS {
+                return buttonsAcrossList
+            }
+            return SMALL_MAX_BUTTONS_ACROSS
+        // medium
+        case 1:
+            if buttonsAcrossList <= MEDIUM_MAX_BUTTONS_ACROSS {
+                return buttonsAcrossList
+            }
+            return MEDIUM_MAX_BUTTONS_ACROSS
+        // large
+        case 2:
+            return LARGE_MAX_BUTTONS_ACROSS
+        // extra large
+        default:
+            return XL_MAX_BUTTONS_ACROSS
         }
     }
 }
