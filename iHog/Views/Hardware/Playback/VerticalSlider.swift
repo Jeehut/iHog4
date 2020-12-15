@@ -30,7 +30,7 @@ struct VerticalSlider: View {
                             .onChanged({value in
                                 setFaderLevel(newValue: value.location.y)
                             }))
-            Text("\(faderLevel)").foregroundColor(.red)
+//            Text("\(faderLevel)").foregroundColor(.red)
         }
     }
     
