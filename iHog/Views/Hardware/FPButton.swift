@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct FPButton: View {
+    @EnvironmentObject var osc: OSCHelper
     var buttonText: String
     var size: Int = 1
     
     var body: some View {
         Button(action: {
-            print("Do Something")
+            pushButton()
         }){
             Text(buttonText)
         }
@@ -45,6 +46,10 @@ struct FPButton: View {
         default:
             return BASE_BUTTON_SIZE
         }
+    }
+    
+    func pushButton(){
+        osc.chooseButton(master: 1)
     }
 }
 

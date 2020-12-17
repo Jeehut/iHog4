@@ -10,6 +10,7 @@ import SwiftUI
 // +x = right
 // -x = left
 struct HorizontalSlider: View {
+    @EnvironmentObject var osc: OSCHelper
     @State private var faderLevel: Double = -110
     @State private var consoleFaderValue: Double = 0.0
     @State private var absoluteFaderLevel: Double = 0.0

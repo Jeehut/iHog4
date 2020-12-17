@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    @EnvironmentObject var osc: OSCHelper
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \ShowEntity.dateLastModified, ascending: true)],
         animation: .default)

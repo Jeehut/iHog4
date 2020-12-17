@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Device: View {
+    @EnvironmentObject var osc: OSCHelper
+    
     @AppStorage(Settings.consoleIP.rawValue) var consoleIP: String = "172.31.0.1"
     @AppStorage(Settings.serverPort.rawValue) var serverPort: String = "7001"
     @AppStorage(Settings.clientPort.rawValue) var clientPort: String = "7002"
@@ -42,7 +44,15 @@ struct Device: View {
                     TextField("Console's HogNet IP Address", text: $clientPort)
                         .multilineTextAlignment(.trailing)
                 }
-                Toggle("OSC is \(isOSCOn ? "on" : "off")", isOn: $isOSCOn)
+                Toggle("OSC is \(isOSCOn ? "on" : "off")", isOn: Binding(
+                        get: {
+                            isOSCOn
+                        },
+                        set:{(newValue) in
+                            isOSCOn = newValue
+                            turnOSCOn()
+                        }
+                ))
             }
             Section(header: Text("Programmer Settings")){
                 VStack(alignment: .leading){
@@ -67,6 +77,11 @@ struct Device: View {
                 }
             }
         }.navigationTitle("Device Settings")
+    }
+    
+    func turnOSCOn(){
+        print("turn osc on")
+        osc.setConsoleSettings(ip: consoleIP, port: Int(serverPort) ?? 7001)
     }
 }
 

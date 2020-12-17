@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F638251CC83F00BAC5EE /* EncoderWheel.swift */; };
 		1502F63E251CCB0700BAC5EE /* EncoderWheelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F63D251CCB0700BAC5EE /* EncoderWheelsView.swift */; };
 		152902552538727A002D4F2E /* ShowNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152902542538727A002D4F2E /* ShowNavigation.swift */; };
+		153009D0258B8A0D00311520 /* OSCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153009CF258B8A0D00311520 /* OSCHelper.swift */; };
 		1547E0C2256732B600E7FE98 /* RegCompPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547E0C1256732B600E7FE98 /* RegCompPlayback.swift */; };
 		155450132524B0E60025DCAA /* FPPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450122524B0E50025DCAA /* FPPlayback.swift */; };
 		1554501B2524B1390025DCAA /* VerticalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554501A2524B1390025DCAA /* VerticalSlider.swift */; };
@@ -30,6 +31,7 @@
 		159048312537DEED00910100 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159048302537DEED00910100 /* Constants.swift */; };
 		159BAECB251B722700A81EA1 /* PlaybackObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BAECA251B722700A81EA1 /* PlaybackObjects.swift */; };
 		159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BAED3251B7BDB00A81EA1 /* RegRegFPProgramming.swift */; };
+		15A316C52588F6BC00A4D67A /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 15A316C42588F6BC00A4D67A /* OSCKit */; };
 		15AB35D9251CC1C5008FC212 /* FPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB35D8251CC1C5008FC212 /* FPButton.swift */; };
 		15AB35DF251CC354008FC212 /* ObjectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB35DE251CC354008FC212 /* ObjectButtonView.swift */; };
 		15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */; };
@@ -88,6 +90,7 @@
 		1502F638251CC83F00BAC5EE /* EncoderWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderWheel.swift; sourceTree = "<group>"; };
 		1502F63D251CCB0700BAC5EE /* EncoderWheelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderWheelsView.swift; sourceTree = "<group>"; };
 		152902542538727A002D4F2E /* ShowNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNavigation.swift; sourceTree = "<group>"; };
+		153009CF258B8A0D00311520 /* OSCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSCHelper.swift; sourceTree = "<group>"; };
 		1547E0C1256732B600E7FE98 /* RegCompPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegCompPlayback.swift; sourceTree = "<group>"; };
 		155450122524B0E50025DCAA /* FPPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPPlayback.swift; sourceTree = "<group>"; };
 		1554501A2524B1390025DCAA /* VerticalSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalSlider.swift; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */,
+				15A316C52588F6BC00A4D67A /* OSCKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +201,7 @@
 			children = (
 				155530D025138A5500CF48FD /* UIDevice+Extensions.swift */,
 				159048302537DEED00910100 /* Constants.swift */,
+				153009CF258B8A0D00311520 /* OSCHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -413,6 +418,9 @@
 			dependencies = (
 			);
 			name = iHog;
+			packageProductDependencies = (
+				15A316C42588F6BC00A4D67A /* OSCKit */,
+			);
 			productName = iHog;
 			productReference = 15DA2673251237D60063E236 /* iHog.app */;
 			productType = "com.apple.product-type.application";
@@ -484,6 +492,9 @@
 				Base,
 			);
 			mainGroup = 15DA266A251237D60063E236;
+			packageReferences = (
+				15A316C32588F6BC00A4D67A /* XCRemoteSwiftPackageReference "OSCKit" */,
+			);
 			productRefGroup = 15DA2674251237D60063E236 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -551,6 +562,7 @@
 				1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */,
 				15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */,
 				1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */,
+				153009D0258B8A0D00311520 /* OSCHelper.swift in Sources */,
 				152902552538727A002D4F2E /* ShowNavigation.swift in Sources */,
 				1578D3312512F460001E1BDF /* Device.swift in Sources */,
 				15D07E06251E1B2500A80DC4 /* SelectButtonView.swift in Sources */,
@@ -898,6 +910,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		15A316C32588F6BC00A4D67A /* XCRemoteSwiftPackageReference "OSCKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SammySmallman/OSCKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		15A316C42588F6BC00A4D67A /* OSCKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15A316C32588F6BC00A4D67A /* XCRemoteSwiftPackageReference "OSCKit" */;
+			productName = OSCKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		15DA2681251237D70063E236 /* iHog.xcdatamodeld */ = {
