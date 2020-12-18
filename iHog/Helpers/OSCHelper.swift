@@ -16,6 +16,7 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
     private var consoleIP: String = "172.31.0.1"
     private var consoleInputPort: Int = 7001
     private var useTCP: Bool = false
+    
     // MARK: HOG OSC Command beginnings
     
     let hardware = "/hog/hardware/"
@@ -77,5 +78,17 @@ extension OSCHelper {
         let messageRelease = OSCMessage(with: "\(hardware)choose/\(master)", arguments: [0])
         client.send(packet: messagePushDown)
         client.send(packet: messageRelease)
+    }
+    
+    func playbackButton(button: String, master: Int){
+        let messagePushDown = OSCMessage(with: "\(hardware + button)/\(master)", arguments: [1])
+        client.send(packet: messagePushDown)
+        let messageRelease = OSCMessage(with: "\(hardware + button)/\(master)", arguments: [0])
+        client.send(packet: messageRelease)
+    }
+    
+    func encoderWheel(encoderNum: Int, value: Double) {
+        let message = OSCMessage(with: "\(hardware)encoderwheel/\(encoderNum)", arguments: [value])
+        client.send(packet: message)
     }
 }

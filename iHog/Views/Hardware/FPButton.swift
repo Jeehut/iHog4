@@ -10,6 +10,8 @@ import SwiftUI
 struct FPButton: View {
     @EnvironmentObject var osc: OSCHelper
     var buttonText: String
+    var buttonFunction: String = "master"
+    var buttonNumber: Int = 0
     var size: Int = 1
     
     var body: some View {
@@ -49,7 +51,17 @@ struct FPButton: View {
     }
     
     func pushButton(){
-        osc.chooseButton(master: 1)
+        switch buttonFunction {
+        case "choose", "goback", "pause", "go", "flash":
+            osc.playbackButton(button: buttonFunction, master: buttonNumber)
+        case "numberpad":
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .spellOut
+            let english = formatter.string(from: NSNumber(value: buttonNumber))
+            print(english ?? "NUMBER DIDN'T CONVERT")
+        default:
+            print("OSC needs to output something")
+        }
     }
 }
 

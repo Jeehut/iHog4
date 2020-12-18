@@ -12,12 +12,12 @@ struct VerticalMasterView: View {
     
     var body: some View {
         VStack{
-            FPButton(buttonText: "\(masterNumber)")
-            FPButton(buttonText: "Play")
-            FPButton(buttonText: "Pause")
-            FPButton(buttonText: "Back")
+            FPButton(buttonText: "\(masterNumber)", buttonFunction: "choose", buttonNumber: masterNumber)
+            FPButton(buttonText: "Play", buttonFunction: "go", buttonNumber: masterNumber)
+            FPButton(buttonText: "Pause", buttonFunction: "pause", buttonNumber: masterNumber)
+            FPButton(buttonText: "Back", buttonFunction: "goback", buttonNumber: masterNumber)
             VerticalSlider()
-            FPButton(buttonText: "")
+            FPButton(buttonText: "FLASH", buttonFunction: "flash", buttonNumber: masterNumber)
         }
     }
 }
