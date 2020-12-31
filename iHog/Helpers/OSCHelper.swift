@@ -19,12 +19,12 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
     
     // MARK: HOG OSC Command beginnings
     
-    let hardware = "/hog/hardware/"
-    let playbackGo = "/hog/playback/go/"
-    let playbackHalt = "/hog/playback/halt/"
-    let playbackBack = "/hog/playback/back/"
-    let playbackRelease = "/hog/playback/release/"
-    let status = "/hog/status/"
+    private let hardware = "/hog/hardware/"
+    private let playbackGo = "/hog/playback/go/"
+    private let playbackHalt = "/hog/playback/halt/"
+    private let playbackBack = "/hog/playback/back/"
+    private let playbackRelease = "/hog/playback/release/"
+    private let status = "/hog/status/"
     
     public var client = OSCClient(){
         willSet{
@@ -90,5 +90,13 @@ extension OSCHelper {
     func encoderWheel(encoderNum: Int, value: Double) {
         let message = OSCMessage(with: "\(hardware)encoderwheel/\(encoderNum)", arguments: [value])
         client.send(packet: message)
+    }
+    
+    func numericKeypad(button: String){
+        let messagePushDown = OSCMessage(with: "\(hardware)\(button)", arguments: [1])
+        client.send(packet: messagePushDown)
+        
+        let messageRelease = OSCMessage(with: "\(hardware)\(button)", arguments: [0])
+        client.send(packet: messageRelease)
     }
 }

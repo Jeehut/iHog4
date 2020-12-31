@@ -59,6 +59,7 @@ struct FPButton: View {
             formatter.numberStyle = .spellOut
             let english = formatter.string(from: NSNumber(value: buttonNumber))
             print(english ?? "NUMBER DIDN'T CONVERT")
+            osc.numericKeypad(button: english!)
         default:
             print("OSC needs to output something")
         }
