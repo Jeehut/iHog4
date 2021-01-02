@@ -11,10 +11,10 @@ struct NumericKeypadView: View {
     var body: some View {
         VStack{
             HStack{
-                FPButton(buttonText: "<-")
-                FPButton(buttonText: "/")
-                FPButton(buttonText: "-")
-                FPButton(buttonText: "+")
+                FPButton(buttonText: "<-", buttonFunction: "backspace")
+                FPButton(buttonText: "/", buttonFunction: "slash")
+                FPButton(buttonText: "-", buttonFunction: "minus")
+                FPButton(buttonText: "+", buttonFunction: "plus")
             }
             HStack{
                 FPButton(buttonText: "7", buttonFunction: "numberpad", buttonNumber: 7)
@@ -37,7 +37,7 @@ struct NumericKeypadView: View {
             HStack{
                 FPButton(buttonText: "0", buttonFunction: "numberpad", buttonNumber: 0)
                 FPButton(buttonText: ".")
-                FPButton(buttonText: "Enter", size: 3)
+                FPButton(buttonText: "Enter", buttonFunction: "Enter", size: 3)
             }
         }
     }

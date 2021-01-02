@@ -99,7 +99,7 @@ extension OSCHelper {
         client.send(packet: message)
     }
     
-    func numericKeypad(button: String){
+    func frontPanelButton(button: String){
         let messagePushDown = OSCMessage(with: "\(hardware)\(button)", arguments: [1])
         client.send(packet: messagePushDown)
         

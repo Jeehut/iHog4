@@ -11,14 +11,14 @@ struct ObjectButtonView: View {
     var body: some View {
         VStack{
             HStack{
-                FPButton(buttonText: "Live")
-                FPButton(buttonText: "Scene")
-                FPButton(buttonText: "Cue")
+                FPButton(buttonText: "Live", buttonFunction: "live")
+                FPButton(buttonText: "Scene", buttonFunction: "scene")
+                FPButton(buttonText: "Cue", buttonFunction: "cue")
             }
             HStack{
-                FPButton(buttonText: "Macro")
-                FPButton(buttonText: "List")
-                FPButton(buttonText: "Page")
+                FPButton(buttonText: "Macro", buttonFunction: "macro")
+                FPButton(buttonText: "List", buttonFunction: "list")
+                FPButton(buttonText: "Page", buttonFunction: "page")
             }
         }
     }
