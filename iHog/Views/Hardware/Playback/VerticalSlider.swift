@@ -10,9 +10,13 @@ import SwiftUI
 // +y value for offset = up
 // -y value for offset = down
 struct VerticalSlider: View {
+    @EnvironmentObject var osc: OSCHelper
     @State private var faderLevel: Double = 110
     @State private var consoleFaderValue: Double = 0.0
     @State private var absoluteFaderLevel: Double = 0.0
+    
+    var master: Int
+    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: BASE_CORNER_RADIUS)
@@ -35,7 +39,6 @@ struct VerticalSlider: View {
     }
     
     func setFaderLevel(newValue: CGFloat) {
-        // TODO: OUTPUT OSC
         // 110 is min
         //-110 is max
         if newValue >= 110 {
@@ -57,11 +60,12 @@ struct VerticalSlider: View {
             faderLevel = Double(newValue)
             consoleFaderValue = absoluteFaderLevel * 1.159
         }
+        osc.fader(master: master, value: Float(consoleFaderValue))
     }
 }
 
 struct VerticalSlider_Previews: PreviewProvider {
     static var previews: some View {
-        VerticalSlider()
+        VerticalSlider(master: 0)
     }
 }

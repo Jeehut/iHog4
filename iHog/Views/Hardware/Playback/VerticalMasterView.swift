@@ -16,7 +16,7 @@ struct VerticalMasterView: View {
             FPButton(buttonText: "Play", buttonFunction: "go", buttonNumber: masterNumber)
             FPButton(buttonText: "Pause", buttonFunction: "pause", buttonNumber: masterNumber)
             FPButton(buttonText: "Back", buttonFunction: "goback", buttonNumber: masterNumber)
-            VerticalSlider()
+            VerticalSlider(master: masterNumber)
             FPButton(buttonText: "FLASH", buttonFunction: "flash", buttonNumber: masterNumber)
         }
     }

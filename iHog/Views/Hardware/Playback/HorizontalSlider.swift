@@ -15,6 +15,8 @@ struct HorizontalSlider: View {
     @State private var consoleFaderValue: Double = 0.0
     @State private var absoluteFaderLevel: Double = 0.0
     
+    var master: Int
+    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: BASE_CORNER_RADIUS)
@@ -39,7 +41,6 @@ struct HorizontalSlider: View {
     }
     
     func setFaderLevel(newValue: CGFloat) {
-        // TODO: Add OSC
         // 110 is max
         //-110 is min
         if newValue <= -110 {
@@ -61,11 +62,12 @@ struct HorizontalSlider: View {
             faderLevel = Double(newValue)
             consoleFaderValue = absoluteFaderLevel * 1.159
         }
+        osc.fader(master: master, value: Float(consoleFaderValue))
     }
 }
 
 struct HorizontalSlider_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalSlider()
+        HorizontalSlider(master: 0)
     }
 }

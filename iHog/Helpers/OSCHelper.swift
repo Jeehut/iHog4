@@ -70,9 +70,10 @@ extension OSCHelper: OSCClientDelegate {
     }
 }
 
-// MARK: Button pushes
+// MARK: Hardware Messages
 
 extension OSCHelper {
+    // MARK: Playback
     func chooseButton(master: Int){
         let messagePushDown = OSCMessage(with: "\(hardware)choose/\(master)", arguments: [1])
         let messageRelease = OSCMessage(with: "\(hardware)choose/\(master)", arguments: [0])
@@ -87,6 +88,12 @@ extension OSCHelper {
         client.send(packet: messageRelease)
     }
     
+    func fader(master: Int, value: Float){
+        let message = OSCMessage(with: "\(hardware)\(master)", arguments: [value])
+        client.send(packet: message)
+    }
+    
+    // MARK: Programming OSC commands
     func encoderWheel(encoderNum: Int, value: Double) {
         let message = OSCMessage(with: "\(hardware)encoderwheel/\(encoderNum)", arguments: [value])
         client.send(packet: message)

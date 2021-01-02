@@ -20,7 +20,7 @@ struct HorizontalMasterView: View {
                 FPButton(buttonText: "FLASH", buttonFunction: "flash", buttonNumber: masterNumber)
             }
             HStack{
-                HorizontalSlider()
+                HorizontalSlider(master: masterNumber)
             }
             HStack {
             }
