@@ -16,6 +16,8 @@ struct OpenPartsView: View {
     
     var body: some View {
         VStack(alignment: .leading){
+            
+            // MARK: KIND KEYS & ENCODERS
             Button(action: {
                 self.selectedPartView = 0
                 self.isEncoderShown = true
@@ -28,6 +30,8 @@ struct OpenPartsView: View {
                     .environmentObject(osc)
             })
             Spacer()
+            
+            // MARK: FUNCTION KEYS
             Button(action: {
                 self.isFunctionShown = true
             }){
@@ -36,9 +40,11 @@ struct OpenPartsView: View {
             .buttonStyle(OpenButtonStyle())
             .sheet(isPresented: $isFunctionShown, content: {
                 FunctionKeySheet()
+                    .environmentObject(osc)
             })
             Spacer()
             
+            // MARK: UTILITY KEYS
             Button(action: {
                 self.isUtilityShown = true
             }){
@@ -47,6 +53,7 @@ struct OpenPartsView: View {
             .buttonStyle(OpenButtonStyle())
             .sheet(isPresented: $isUtilityShown, content: {
                 UtilityKeySheet()
+                    .environmentObject(osc)
             })
         }
     }

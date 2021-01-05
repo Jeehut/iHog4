@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FunctionKeySheet: View {
+    @EnvironmentObject var osc: OSCHelper
     @Environment(\.presentationMode) private var presentationMode
     var body: some View {
         VStack{
@@ -22,7 +23,7 @@ struct FunctionKeySheet: View {
                 .padding(.horizontal)
             }.padding(.vertical)
             Spacer()
-            FunctionKeyView()
+            FunctionKeyView().environmentObject(osc)
         }
     }
 }
