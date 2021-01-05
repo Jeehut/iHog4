@@ -10,9 +10,9 @@ import SwiftUI
 struct HBCButtonView: View {
     var body: some View {
         HStack{
-            FPButton(buttonText: "Blind")
-            FPButton(buttonText: "High Light")
-            FPButton(buttonText: "Clear")
+            FPButton(buttonText: "Blind", buttonFunction: "blind")
+            FPButton(buttonText: "High Light", buttonFunction: "highlight")
+            FPButton(buttonText: "Clear", buttonFunction: "clear")
         }
     }
 }

@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct RegCompFPProgramming: View {
+    @EnvironmentObject var osc: OSCHelper
     var body: some View {
         HStack(alignment: .bottom){
             VStack{
 //                CommandLineView(commandLineText: "SolaSpot 1000 1 > 10 @ 100%")
                 OpenPartsView()
+                    .environmentObject(osc)
             }
             VStack{
                 SelectButtonView()

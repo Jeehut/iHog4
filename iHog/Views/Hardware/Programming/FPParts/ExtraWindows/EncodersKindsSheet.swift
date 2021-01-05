@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EncodersKindsSheet: View {
+    @EnvironmentObject var osc: OSCHelper
     @Environment(\.presentationMode) private var presentationMode
     var body: some View {
         VStack{
@@ -22,9 +23,9 @@ struct EncodersKindsSheet: View {
                 .padding(.horizontal)
             }.padding(.vertical)
 //            Spacer()
-            EncoderWheelsView()
+            EncoderWheelsView().environmentObject(osc)
             Spacer()
-            KindButtonView()
+            KindButtonView().environmentObject(osc)
             Spacer()
         }
     }

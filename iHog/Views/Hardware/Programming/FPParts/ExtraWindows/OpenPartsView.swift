@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OpenPartsView: View {
+    @EnvironmentObject var osc: OSCHelper
     @State private var selectedPartView: Int = 4
     @State private var isEncoderShown: Bool = false
     @State private var isFunctionShown: Bool = false
@@ -24,6 +25,7 @@ struct OpenPartsView: View {
             .buttonStyle(OpenButtonStyle())
             .sheet(isPresented: $isEncoderShown, content: {
                 EncodersKindsSheet()
+                    .environmentObject(osc)
             })
             Spacer()
             Button(action: {

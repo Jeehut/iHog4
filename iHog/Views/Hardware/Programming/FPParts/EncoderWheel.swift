@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct EncoderWheel: View {
+    @EnvironmentObject var osc: OSCHelper
+    @AppStorage(Settings.encoderWheelPrecision.rawValue) var encoderWheelPrecision: Double = 2.00
     @State private var yOffSet: CGFloat = 0
+    var encoderWheelNum: Int
     var paramName: String
     var paramValue: String
     var body: some View {
@@ -41,7 +44,16 @@ struct EncoderWheel: View {
     }
     
     func sendEncoder(newValue: CGFloat){
-        yOffSet = newValue
+        print(encoderWheelPrecision)
+        if newValue < yOffSet {
+            osc.encoderWheel(encoderNum: encoderWheelNum, value: encoderWheelPrecision)
+            yOffSet = newValue
+        } else {
+            osc.encoderWheel(encoderNum: encoderWheelNum, value: -(encoderWheelPrecision))
+            yOffSet = newValue
+        }
+//        yOffSet = newValue
+        print(yOffSet.description)
     }
 }
 
@@ -49,18 +61,18 @@ struct EncoderWheel_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             HStack{
-                EncoderWheel(paramName: "Pan", paramValue: "0")
-                EncoderWheel(paramName: "Tilt", paramValue: "0")
-                EncoderWheel(paramName: "Zoom", paramValue: "0")
-                EncoderWheel(paramName: "Focus", paramValue: "0")
-                EncoderWheel(paramName: "Gobo 2", paramValue: "Slots")
+                EncoderWheel(encoderWheelNum: 1, paramName: "Pan", paramValue: "0")
+                EncoderWheel(encoderWheelNum: 1, paramName: "Tilt", paramValue: "0")
+                EncoderWheel(encoderWheelNum: 1, paramName: "Zoom", paramValue: "0")
+                EncoderWheel(encoderWheelNum: 1, paramName: "Focus", paramValue: "0")
+                EncoderWheel(encoderWheelNum: 1, paramName: "Gobo 2", paramValue: "Slots")
             }
             HStack{
-                EncoderWheel(paramName: "Pan", paramValue: "0")
-                EncoderWheel(paramName: "Tilt", paramValue: "0")
-                EncoderWheel(paramName: "Zoom", paramValue: "0")
-                EncoderWheel(paramName: "Focus", paramValue: "0")
-                EncoderWheel(paramName: "Gobo 2 <>", paramValue: "0")
+                EncoderWheel(encoderWheelNum: 1, paramName: "Pan", paramValue: "0")
+                EncoderWheel(encoderWheelNum: 1, paramName: "Tilt", paramValue: "0")
+                EncoderWheel(encoderWheelNum: 1, paramName: "Zoom", paramValue: "0")
+                EncoderWheel(encoderWheelNum: 1, paramName: "Focus", paramValue: "0")
+                EncoderWheel(encoderWheelNum: 1, paramName: "Gobo 2 <>", paramValue: "0")
             }
             .preferredColorScheme(.dark)
         }

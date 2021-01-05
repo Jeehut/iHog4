@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct RegRegFPProgramming: View {
-    
+    @EnvironmentObject var osc: OSCHelper
     var body: some View {
         VStack{
 //            CommandLineView(commandLineText: "SolaSpot 1000 1 > 10 @ 100%")
-            EncoderWheelsView().padding()
+            EncoderWheelsView()
+                .environmentObject(osc)
+                .padding()
             HStack(alignment: .bottom){
                 VStack{
                     ObjectButtonView()

@@ -35,7 +35,7 @@ struct Device: View {
                 }
                 // MARK: Port Settings
                 HStack{
-                    Text("Console's HogNet IP Address")
+                    Text("Console's Input Port")
                     TextField("Console's Input Port", text: $serverPort)
                         .multilineTextAlignment(.trailing)
                 }

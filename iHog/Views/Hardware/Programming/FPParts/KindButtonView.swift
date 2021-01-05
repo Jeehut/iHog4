@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct KindButtonView: View {
+    @EnvironmentObject var osc: OSCHelper
     var body: some View {
         VStack{
             HStack{
