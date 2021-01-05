@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ShowObjectView: View {
+    @EnvironmentObject var osc: OSCHelper
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var showEditWindow: Bool = false
@@ -16,43 +17,45 @@ struct ShowObjectView: View {
     var obj: ShowObject
     var size: String
     var body: some View {
-        VStack(alignment: .leading){
-            HStack{
-                Text(obj.getShortType())
+        Button(action: {sendOSC()}) {
+            VStack(alignment: .leading){
+                HStack{
+                    Text(obj.getShortType())
+                    Spacer()
+                    Text("\(obj.getObjNumber())")
+                }
                 Spacer()
-                Text("\(obj.getObjNumber())")
+                Text(obj.getName())
+                    .font(.headline)
             }
-            Spacer()
-            Text(obj.getName())
-                .font(.headline)
-        }
-        .frame(width: getSize(), height: getSize(), alignment: .leading)
-        .padding()
-        .background(obj.isOutlined ? Color.clear : OBJ_COLORS[obj.getColor()])
-        .cornerRadius(BASE_CORNER_RADIUS)
-        .overlay(
-            RoundedRectangle(cornerRadius: (DOUBLE_CORNER_RADIUS))
-                .stroke(OBJ_COLORS[obj.getColor()], lineWidth: BASE_LINE_WIDTH)
-        ).padding()
-        .sheet(isPresented: $showEditWindow){
-            EditObjectView(allObjects: $allObjects, obj: obj)
-        }
-        .contextMenu{
-            if obj.objType == .scene || obj.objType == .list {
-                Button(action: {print("release thing")}){
-                    Image(systemName: "stop.fill")
-                    Text("Release")
+            .frame(width: getSize(), height: getSize(), alignment: .leading)
+            .padding()
+            .background(obj.isOutlined ? Color.clear : OBJ_COLORS[obj.getColor()])
+            .cornerRadius(BASE_CORNER_RADIUS)
+            .overlay(
+                RoundedRectangle(cornerRadius: (DOUBLE_CORNER_RADIUS))
+                    .stroke(OBJ_COLORS[obj.getColor()], lineWidth: BASE_LINE_WIDTH)
+            ).padding()
+            .sheet(isPresented: $showEditWindow){
+                EditObjectView(allObjects: $allObjects, obj: obj)
+            }
+            .contextMenu{
+                if obj.objType == .scene || obj.objType == .list {
+                    Button(action: {print("release thing")}){
+                        Image(systemName: "stop.fill")
+                        Text("Release")
+                    }
+                }
+                Button(action: {self.showEditWindow.toggle()}){
+                    Image(systemName: "pencil")
+                    Text("Edit")
+                }
+                Button(action: deleteObject){
+                    Image(systemName: "trash")
+                    Text("Delete")
                 }
             }
-            Button(action: {self.showEditWindow.toggle()}){
-                Image(systemName: "pencil")
-                Text("Edit")
-            }
-            Button(action: deleteObject){
-                Image(systemName: "trash")
-                Text("Delete")
-            }
-        }
+        }.foregroundColor(.primary)
     }
     
     func getSize() -> CGFloat{
@@ -96,6 +99,16 @@ struct ShowObjectView: View {
             print(error)
         }
         
+    }
+    
+    func sendOSC(){
+        let objectType = obj.objType
+        switch objectType {
+        case ShowObjectType.group:
+            osc.selectGroup(objNumber: obj.getObjNumber())
+        default:
+            print("MAKE OSC OUT FOR THIS GROUP")
+        }
     }
 }
 

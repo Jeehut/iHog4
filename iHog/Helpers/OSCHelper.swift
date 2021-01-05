@@ -107,3 +107,10 @@ extension OSCHelper {
         client.send(packet: messageRelease)
     }
 }
+
+// MARK: Show Objects
+extension OSCHelper {
+    func selectGroup(objNumber: String) {
+        print("push group button")
+    }
+}
