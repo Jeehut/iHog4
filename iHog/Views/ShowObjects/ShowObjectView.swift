@@ -102,12 +102,15 @@ struct ShowObjectView: View {
     }
     
     func sendOSC(){
-        let objectType = obj.objType
-        switch objectType {
-        case ShowObjectType.group:
-            osc.selectGroup(objNumber: obj.getObjNumber())
+        switch obj.objType {
+        case .group, .intensity, .position, .color, .beam, .effect:
+            osc.selectProgrammingObject(objNumber: obj.getObjNumber(), objType: obj.objType)
+        case .list:
+            osc.goListOrScene(objNumber: obj.getObjNumber(), objType: "0")
+        case .scene:
+            osc.goListOrScene(objNumber: obj.getObjNumber(), objType: "1")
         default:
-            print("MAKE OSC OUT FOR THIS GROUP")
+            print("Need a proper object type")
         }
     }
 }

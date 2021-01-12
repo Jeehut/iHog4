@@ -64,7 +64,7 @@ extension OSCHelper: OSCClientDelegate {
     func take(message: OSCMessage) {
         print("Received message - \(message.addressPattern)")
     }
-
+    
     func take(bundle: OSCBundle) {
         print("Received bundle - time tag: \(bundle.timeTag.hex()) elements: \(bundle.elements.count)")
     }
@@ -110,7 +110,27 @@ extension OSCHelper {
 
 // MARK: Show Objects
 extension OSCHelper {
-    func selectGroup(objNumber: String) {
-        print("push group button")
+    func selectProgrammingObject(objNumber: String, objType: ShowObjectType) {
+        // double tap backspace
+        frontPanelButton(button: "backspace")
+        frontPanelButton(button: "backspace")
+        // object type
+        frontPanelButton(button: objType.rawValue)
+        print(objType.rawValue)
+        // number
+        for strng in objNumber {
+            if strng == "." {
+                frontPanelButton(button: "period")
+            } else {
+                frontPanelButton(button: String(strng))
+            }
+        }
+        // enter
+        frontPanelButton(button: "enter")
+        print("push group button \(objNumber)")
+    }
+    func goListOrScene(objNumber: String, objType: String) {
+        let message = OSCMessage(with: "\(playbackGo)\(objType)", arguments: [Float(objNumber)!])
+        client.send(packet: message)
     }
 }
