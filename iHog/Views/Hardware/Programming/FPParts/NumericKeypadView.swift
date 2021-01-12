@@ -20,24 +20,24 @@ struct NumericKeypadView: View {
                 FPButton(buttonText: "7", buttonFunction: "numberpad", buttonNumber: 7)
                 FPButton(buttonText: "8", buttonFunction: "numberpad", buttonNumber: 8)
                 FPButton(buttonText: "9", buttonFunction: "numberpad", buttonNumber: 9)
-                FPButton(buttonText: "Thru")
+                FPButton(buttonText: "Thru", buttonFunction: "thru")
             }
             HStack{
                 FPButton(buttonText: "4", buttonFunction: "numberpad", buttonNumber: 4)
                 FPButton(buttonText: "5", buttonFunction: "numberpad", buttonNumber: 5)
                 FPButton(buttonText: "6", buttonFunction: "numberpad", buttonNumber: 6)
-                FPButton(buttonText: "Full")
+                FPButton(buttonText: "Full", buttonFunction: "full")
             }
             HStack{
                 FPButton(buttonText: "1", buttonFunction: "numberpad", buttonNumber: 1)
                 FPButton(buttonText: "2", buttonFunction: "numberpad", buttonNumber: 2)
                 FPButton(buttonText: "3", buttonFunction: "numberpad", buttonNumber: 3)
-                FPButton(buttonText: "@")
+                FPButton(buttonText: "@", buttonFunction: "at")
             }
             HStack{
                 FPButton(buttonText: "0", buttonFunction: "numberpad", buttonNumber: 0)
-                FPButton(buttonText: ".")
-                FPButton(buttonText: "Enter", buttonFunction: "Enter", size: 3)
+                FPButton(buttonText: ".", buttonFunction: "period")
+                FPButton(buttonText: "Enter", buttonFunction: "enter", size: 3)
             }
         }
     }
