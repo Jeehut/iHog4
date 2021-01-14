@@ -77,7 +77,23 @@ extension OSCHelper: OSCClientDelegate {
     }
     
     func take(message: OSCMessage) {
-        print("Received message - \(message.addressPattern)")
+        print("Received message - \(message.addressParts)")
+        switch message.addressParts[2] {
+        case "led":
+            print("button should light up or turn off")
+        case "commandline":
+            print("Change command line text")
+        case let encoder where encoder.contains("encoder"):
+            print("encoders will have a value and a label")
+            print(message.arguments)
+        case "h1":
+            print("function key will have two lines")
+        case "chatline1":
+            print("Chat line 1 message will be here")
+        default:
+            print("IDK What to do with this message")
+        }
+        
     }
     
     func take(bundle: OSCBundle) {
