@@ -80,8 +80,14 @@ struct Device: View {
     }
     
     func turnOSCOn(){
-        print("turn osc on")
+        print("toggle OSC")
         osc.setConsoleSettings(ip: consoleIP, port: Int(serverPort) ?? 7001)
+        print(osc.clientDidDisconnect(client: osc.client))
+        if isOSCOn {
+            osc.clientDidConnect(client: osc.client)
+        } else {
+            osc.clientDidDisconnect(client: osc.client)
+        }
     }
 }
 

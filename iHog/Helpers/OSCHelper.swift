@@ -15,6 +15,7 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
     
     private var consoleIP: String = "172.31.0.1"
     private var consoleInputPort: Int = 7001
+    private var consoleOutputPort: Int = 7002
     private var useTCP: Bool = false
     
     // MARK: HOG OSC Command beginnings
@@ -31,12 +32,20 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
             self.objectWillChange.send()
         }
     }
+    public var server = OSCServer(){
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
     
     init(){
         client.interface = "en0"
         client.host = consoleIP
         client.port = UInt16(consoleInputPort)
         client.delegate = self
+        // Server info
+        server.port = UInt16(consoleOutputPort)
+        server.delegate = self
     }
     
     func setConsoleSettings(ip: String, port: Int) {
@@ -46,8 +55,14 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
         client.port = UInt16(consoleInputPort)
         print(client.description)
         client.delegate = self
-        let message = OSCMessage(with: "/hog/playback", arguments: [1])
+        let message = OSCMessage(with: "/hog/OSCisConnected", arguments: ["True"])
         client.send(packet: message)
+        
+        do {
+            try server.startListening()
+        } catch {
+            print("Error from startListening \(error)")
+        }
     }
 }
 
@@ -122,7 +137,11 @@ extension OSCHelper {
             if strng == "." {
                 frontPanelButton(button: "period")
             } else {
-                frontPanelButton(button: String(strng))
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .spellOut
+                let english = formatter.string(from: NSNumber(value: Int(objNumber)!))
+                print(english ?? "NUMBER DIDN'T CONVERT")
+                frontPanelButton(button: english!)
             }
         }
         // enter
