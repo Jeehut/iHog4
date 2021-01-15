@@ -38,6 +38,69 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
         }
     }
     
+    // MARK: Hog Status Variables
+    
+    public var encoderWheelLabels = ["LABEL", "LABEL", "LABEL", "LABEL", "LABEL"]{
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
+    public var encoderWheelValues = ["VALUE", "VALUE", "VALUE", "VALUE","VALUE"]{
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
+    public var commandLine = "Command line text" {
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
+    public var blind = 0.0 {
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
+    public var highlight = 0.0 {
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
+    public var clear = 0.0 {
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
+    public var macro = 0.0 {
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
+    public var plays: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] {
+        willSet {
+            self.objectWillChange.send()
+        }
+    }
+    public var pauses: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] {
+        willSet {
+            self.objectWillChange.send()
+        }
+    }
+    public var backs: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] {
+        willSet {
+            self.objectWillChange.send()
+        }
+    }
+    public var flashes: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] {
+        willSet {
+            self.objectWillChange.send()
+        }
+    }
+    public var chooses: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] {
+        willSet {
+            self.objectWillChange.send()
+        }
+    }
+    // MARK: INIT
     init(){
         client.interface = "en0"
         client.host = consoleIP
@@ -77,10 +140,9 @@ extension OSCHelper: OSCClientDelegate {
     }
     
     func take(message: OSCMessage) {
-        print("Received message - \(message.addressParts)")
         switch message.addressParts[2] {
         case "led":
-            print("button should light up or turn off")
+            getStatusOfLEDButton(message)
         case "commandline":
             print("Change command line text")
         case let encoder where encoder.contains("encoder"):
@@ -100,7 +162,37 @@ extension OSCHelper: OSCClientDelegate {
         print("Received bundle - time tag: \(bundle.timeTag.hex()) elements: \(bundle.elements.count)")
     }
 }
-
+// MARK: Receiving statuses
+extension OSCHelper {
+    func getStatusOfLEDButton(_ message: OSCMessage) {
+        switch message.addressParts[3] {
+        case "pause":
+            let buttonIndex = Int(message.addressParts[4]) ?? 0
+            pauses[buttonIndex] = message.arguments[0] as! Float
+            print(pauses[buttonIndex])
+        case "choose":
+            let buttonIndex = Int(message.addressParts[4]) ?? 0
+            chooses[buttonIndex] = message.arguments[0] as! Float
+            print(chooses[buttonIndex])
+        case "go":
+            let buttonIndex = Int(message.addressParts[4]) ?? 0
+            plays[buttonIndex] = message.arguments[0] as! Float
+            print(plays[buttonIndex])
+        case "goback":
+            let buttonIndex = Int(message.addressParts[4]) ?? 0
+            backs[buttonIndex] = message.arguments[0] as! Float
+            print(backs[buttonIndex])
+            
+        case "flash":
+            let buttonIndex = Int(message.addressParts[4]) ?? 0
+            flashes[buttonIndex] = message.arguments[0] as! Float
+            print(flashes[buttonIndex])
+            
+        default:
+            print("THERES AN ERROR")
+        }
+    }
+}
 // MARK: Hardware Messages
 
 extension OSCHelper {

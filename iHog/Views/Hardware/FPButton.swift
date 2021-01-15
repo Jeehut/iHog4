@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FPButton: View {
     @EnvironmentObject var osc: OSCHelper
+    
     var buttonText: String
     var buttonFunction: String = "master"
     var buttonNumber: Int = 0
@@ -34,7 +35,35 @@ struct FPButton: View {
         if buttonText.lowercased() == "pig" {
             return Color.pink
         }
-        return Color.gray
+        switch buttonFunction {
+        case "choose":
+            if osc.chooses[buttonNumber] == 0.0 {
+                return Color.gray
+            }
+            return Color.blue
+        case "flash":
+            if osc.flashes[buttonNumber] == 0.0 {
+                return Color.gray
+            }
+            return Color.red
+        case "go":
+            if osc.plays[buttonNumber] == 0.0 {
+                return Color.gray
+            }
+            return Color.green
+        case "goback":
+            if osc.backs[buttonNumber] == 0.0 {
+                return Color.gray
+            }
+            return Color.green
+        case "pause":
+            if osc.pauses[buttonNumber] == 0.0 {
+                return Color.gray
+            }
+            return Color.red
+        default:
+            return Color.gray
+        }
     }
     
     func setSize() -> CGFloat {
