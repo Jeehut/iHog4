@@ -144,7 +144,7 @@ extension OSCHelper: OSCClientDelegate {
         case "led":
             getStatusOfLEDButton(message)
         case "commandline":
-            print("Change command line text")
+            commandLine = message.arguments[0] as! String
         case let encoder where encoder.contains("encoder"):
             print("encoders will have a value and a label")
             print(message.arguments)

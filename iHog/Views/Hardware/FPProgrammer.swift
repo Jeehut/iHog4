@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FPProgrammer: View {
+    @EnvironmentObject var osc: OSCHelper
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass
     var body: some View {
@@ -15,21 +16,21 @@ struct FPProgrammer: View {
         case .regular:
             if verticalSizeClass == .regular {
                 RegRegFPProgramming()
-                    .navigationTitle("SolaSpot 1000 1 > 10 @ 100%")
+                    .navigationTitle(osc.commandLine)
                     .navigationBarTitleDisplayMode(.inline)
             } else {
                 RegCompFPProgramming()
-                    .navigationTitle("SolaSpot 1000 1 > 10 @ 100%")
+                    .navigationTitle(osc.commandLine)
                     .navigationBarTitleDisplayMode(.inline)
             }
         default: // compact
             if verticalSizeClass == .regular {
                 CompRegFPprogramming()
-                    .navigationTitle("SolaSpot 1000 1 > 10 @ 100%")
+                    .navigationTitle(osc.commandLine)
                     .navigationBarTitleDisplayMode(.inline)
             } else {
                 RegCompFPProgramming()
-                    .navigationTitle("SolaSpot 1000 1 > 10 @ 100%")
+                    .navigationTitle(osc.commandLine)
                     .navigationBarTitleDisplayMode(.inline)
             }
         }
