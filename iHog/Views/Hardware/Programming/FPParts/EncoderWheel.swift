@@ -22,7 +22,7 @@ struct EncoderWheel: View {
             VStack{
                 Text(paramName)
                     .font(.headline)
-                Text("\(yOffSet)")
+                Text("\(paramValue)")
                     .font(.subheadline)
             }.foregroundColor(.primary)
             // Small Grab thing

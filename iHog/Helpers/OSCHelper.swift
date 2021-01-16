@@ -146,8 +146,7 @@ extension OSCHelper: OSCClientDelegate {
         case "commandline":
             commandLine = message.arguments[0] as! String
         case let encoder where encoder.contains("encoder"):
-            print("encoders will have a value and a label")
-            print(message.arguments)
+            getEncoderWheel(message)
         case "h1":
             print("function key will have two lines")
         case "chatline1":
@@ -191,6 +190,50 @@ extension OSCHelper {
         default:
             print("THERES AN ERROR")
         }
+    }
+    func getEncoderWheel(_ message: OSCMessage) {
+        let messageType = message.addressParts[3]
+        print(type(of: messageType))
+        switch message.addressParts[2] {
+        case "encoderwheel1":
+            if messageType == "label" {
+                setEncoderWheelLabel(0, label: message.arguments[0] as! String)
+            } else {
+                setEncdoerWheelValue(0, value: message.arguments[0] as! String)
+            }
+        case "encoderwheel2":
+            if messageType == "label" {
+                setEncoderWheelLabel(1, label: message.arguments[0] as! String)
+            } else {
+                setEncdoerWheelValue(1, value: message.arguments[0] as! String)
+            }
+        case "encoderwheel3":
+            if messageType == "label" {
+                setEncoderWheelLabel(2, label: message.arguments[0] as! String)
+            } else {
+                setEncdoerWheelValue(2, value: message.arguments[0] as! String)
+            }
+        case "encoderwheel4":
+            if messageType == "label" {
+                setEncoderWheelLabel(3, label: message.arguments[0] as! String)
+            } else {
+                setEncdoerWheelValue(3, value: message.arguments[0] as! String)
+            }
+        case "encoderwheel5":
+            if messageType == "label" {
+                setEncoderWheelLabel(4, label: message.arguments[0] as! String)
+            } else {
+                setEncdoerWheelValue(4, value: message.arguments[0] as! String)
+            }
+        default:
+            print("ENCODER WHEEL DOESN'T EXIST")
+        }
+    }
+    func setEncoderWheelLabel(_ encoder: Int, label: String){
+        encoderWheelLabels[encoder] = label
+    }
+    func setEncdoerWheelValue(_ encoder: Int, value: String) {
+        encoderWheelValues[encoder] = value
     }
 }
 // MARK: Hardware Messages
