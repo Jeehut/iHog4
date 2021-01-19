@@ -16,7 +16,7 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
     private var consoleIP: String = "172.31.0.1"
     private var consoleInputPort: Int = 7001
     private var consoleOutputPort: Int = 7002
-    private var useTCP: Bool = false
+    private var useTCP: Bool = true
     
     // MARK: HOG OSC Command beginnings
     
@@ -55,22 +55,22 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
             self.objectWillChange.send()
         }
     }
-    public var blind = 0.0 {
+    public var blind: Float = 0.0 {
         willSet{
             self.objectWillChange.send()
         }
     }
-    public var highlight = 0.0 {
+    public var highlight: Float = 0.0 {
         willSet{
             self.objectWillChange.send()
         }
     }
-    public var clear = 0.0 {
+    public var clear: Float = 0.0 {
         willSet{
             self.objectWillChange.send()
         }
     }
-    public var macro = 0.0 {
+    public var macro: Float = 0.0 {
         willSet{
             self.objectWillChange.send()
         }
@@ -140,25 +140,26 @@ extension OSCHelper: OSCClientDelegate {
     }
     
     func take(message: OSCMessage) {
-        switch message.addressParts[2] {
-        case "led":
-            getStatusOfLEDButton(message)
-        case "commandline":
-            commandLine = message.arguments[0] as! String
-        case let encoder where encoder.contains("encoder"):
-            getEncoderWheel(message)
-        case "h1":
-            print("function key will have two lines")
-        case "chatline1":
-            print("Chat line 1 message will be here")
-        default:
-            print("IDK What to do with this message")
-        }
+        print("message: \(message.addressParts)")
+//        switch message.addressParts[2] {
+//        case "led":
+//            getStatusOfLEDButton(message)
+//        case "commandline":
+//            commandLine = message.arguments[0] as! String
+//        case let encoder where encoder.contains("encoder"):
+//            getEncoderWheel(message)
+//        case "h1":
+//            print("function key will have two lines")
+//        case "chatline1":
+//            print("Chat line 1 message will be here")
+//        default:
+//            print("IDK What to do with this message")
+//        }
         
     }
     
     func take(bundle: OSCBundle) {
-        print("Received bundle - time tag: \(bundle.timeTag.hex()) elements: \(bundle.elements.count)")
+        print(bundle)
     }
 }
 // MARK: Receiving statuses
@@ -181,12 +182,12 @@ extension OSCHelper {
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             backs[buttonIndex] = message.arguments[0] as! Float
             print(backs[buttonIndex])
-            
         case "flash":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             flashes[buttonIndex] = message.arguments[0] as! Float
             print(flashes[buttonIndex])
-            
+        case "blind":
+            blind = message.arguments[0] as! Float
         default:
             print("THERES AN ERROR")
         }
