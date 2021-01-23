@@ -199,8 +199,14 @@ extension OSCHelper {
 //            print(flashes[buttonIndex])
         case "blind":
             blind = message.arguments[0] as! Float
+        case "highlight":
+            highlight = message.arguments[0] as! Float
+        case "clear":
+            clear = message.arguments[0] as! Float
         default:
             print("THERES AN ERROR")
+            print(message.addressParts)
+            print(message.arguments)
         }
     }
     func getEncoderWheel(_ message: OSCMessage) {
@@ -303,7 +309,7 @@ extension OSCHelper {
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .spellOut
                 let english = formatter.string(from: NSNumber(value: Int(objNumber)!))
-                print(english ?? "NUMBER DIDN'T CONVERT")
+//                print(english ?? "NUMBER DIDN'T CONVERT")
                 frontPanelButton(button: english!)
             }
         }

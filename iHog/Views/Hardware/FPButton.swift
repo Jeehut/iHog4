@@ -61,6 +61,21 @@ struct FPButton: View {
                 return Color.gray
             }
             return Color.red
+        case ButtonFunctionNames.highlight.rawValue:
+            if osc.highlight == 0.0 {
+                return Color.gray
+            }
+            return Color.blue
+        case ButtonFunctionNames.clear.rawValue:
+            if osc.clear == 0.0 {
+                return Color.gray
+            }
+            return Color.red
+        case ButtonFunctionNames.blind.rawValue:
+            if osc.blind == 0.0 {
+                return Color.gray
+            }
+            return Color.blue
         default:
             return Color.gray
         }
