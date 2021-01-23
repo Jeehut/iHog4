@@ -31,9 +31,9 @@
 		159048312537DEED00910100 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159048302537DEED00910100 /* Constants.swift */; };
 		159BAECB251B722700A81EA1 /* PlaybackObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BAECA251B722700A81EA1 /* PlaybackObjects.swift */; };
 		159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BAED3251B7BDB00A81EA1 /* RegRegFPProgramming.swift */; };
-		15A316C52588F6BC00A4D67A /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 15A316C42588F6BC00A4D67A /* OSCKit */; };
 		15AB35D9251CC1C5008FC212 /* FPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB35D8251CC1C5008FC212 /* FPButton.swift */; };
 		15AB35DF251CC354008FC212 /* ObjectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB35DE251CC354008FC212 /* ObjectButtonView.swift */; };
+		15BC8EC325BCD59F00309C8B /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 15BC8EC225BCD59F00309C8B /* OSCKit */; };
 		15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */; };
 		15CA428B25220DBD00C56FE0 /* FunctionKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */; };
 		15D07DF0251E0EB400A80DC4 /* FunctionKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */; };
@@ -153,7 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */,
-				15A316C52588F6BC00A4D67A /* OSCKit in Frameworks */,
+				15BC8EC325BCD59F00309C8B /* OSCKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +419,7 @@
 			);
 			name = iHog;
 			packageProductDependencies = (
-				15A316C42588F6BC00A4D67A /* OSCKit */,
+				15BC8EC225BCD59F00309C8B /* OSCKit */,
 			);
 			productName = iHog;
 			productReference = 15DA2673251237D60063E236 /* iHog.app */;
@@ -925,7 +925,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		15A316C42588F6BC00A4D67A /* OSCKit */ = {
+		15BC8EC225BCD59F00309C8B /* OSCKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 15A316C32588F6BC00A4D67A /* XCRemoteSwiftPackageReference "OSCKit" */;
 			productName = OSCKit;

@@ -36,27 +36,27 @@ struct FPButton: View {
             return Color.pink
         }
         switch buttonFunction {
-        case "choose":
+        case ButtonNames.choose.rawValue:
             if osc.chooses[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.blue
-        case "flash":
+        case ButtonNames.flash.rawValue:
             if osc.flashes[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.red
-        case "go":
+        case ButtonNames.go.rawValue:
             if osc.plays[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.green
-        case "goback":
+        case ButtonNames.goback.rawValue:
             if osc.backs[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.green
-        case "pause":
+        case ButtonNames.pause.rawValue:
             if osc.pauses[buttonNumber] == 0.0 {
                 return Color.gray
             }
@@ -81,13 +81,16 @@ struct FPButton: View {
     
     func pushButton(){
         switch buttonFunction {
-        case "choose", "goback", "pause", "go", "flash":
+        case ButtonNames.choose.rawValue,
+             ButtonNames.goback.rawValue,
+             ButtonNames.pause.rawValue,
+             ButtonNames.go.rawValue,
+             ButtonNames.flash.rawValue:
             osc.playbackButton(button: buttonFunction, master: buttonNumber)
         case "numberpad":
             let formatter = NumberFormatter()
             formatter.numberStyle = .spellOut
             let english = formatter.string(from: NSNumber(value: buttonNumber))
-            print(english ?? "NUMBER DIDN'T CONVERT")
             osc.frontPanelButton(button: english!)
         default:
             osc.frontPanelButton(button: buttonFunction)

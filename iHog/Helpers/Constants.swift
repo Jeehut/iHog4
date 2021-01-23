@@ -79,3 +79,24 @@ enum Settings: String {
     case buttonsAcrossScene
     case isButtonFilledScene
 }
+
+// MARK: BUTTON NAME ENUMS
+enum ButtonNames: String {
+    // MARK: PLAYBACKS
+    case pause
+    case goback
+    case go
+    case flash
+    case choose
+    case pig
+    // MARK: PROGRAMMING
+    // OBJECT BUTTONS
+    case live
+    case scene
+    case cue
+    case macro
+    case list
+    case page
+    
+    case highlight
+}
