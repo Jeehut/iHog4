@@ -36,27 +36,27 @@ struct FPButton: View {
             return Color.pink
         }
         switch buttonFunction {
-        case ButtonNames.choose.rawValue:
+        case ButtonFunctionNames.choose.rawValue:
             if osc.chooses[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.blue
-        case ButtonNames.flash.rawValue:
+        case ButtonFunctionNames.flash.rawValue:
             if osc.flashes[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.red
-        case ButtonNames.go.rawValue:
+        case ButtonFunctionNames.go.rawValue:
             if osc.plays[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.green
-        case ButtonNames.goback.rawValue:
+        case ButtonFunctionNames.goback.rawValue:
             if osc.backs[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.green
-        case ButtonNames.pause.rawValue:
+        case ButtonFunctionNames.pause.rawValue:
             if osc.pauses[buttonNumber] == 0.0 {
                 return Color.gray
             }
@@ -81,11 +81,11 @@ struct FPButton: View {
     
     func pushButton(){
         switch buttonFunction {
-        case ButtonNames.choose.rawValue,
-             ButtonNames.goback.rawValue,
-             ButtonNames.pause.rawValue,
-             ButtonNames.go.rawValue,
-             ButtonNames.flash.rawValue:
+        case ButtonFunctionNames.choose.rawValue,
+             ButtonFunctionNames.goback.rawValue,
+             ButtonFunctionNames.pause.rawValue,
+             ButtonFunctionNames.go.rawValue,
+             ButtonFunctionNames.flash.rawValue:
             osc.playbackButton(button: buttonFunction, master: buttonNumber)
         case "numberpad":
             let formatter = NumberFormatter()

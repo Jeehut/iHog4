@@ -81,14 +81,13 @@ enum Settings: String {
 }
 
 // MARK: BUTTON NAME ENUMS
-enum ButtonNames: String {
+enum ButtonFunctionNames: String {
     // MARK: PLAYBACKS
     case pause
     case goback
     case go
     case flash
     case choose
-    case pig
     // MARK: PROGRAMMING
     // OBJECT BUTTONS
     case live
@@ -97,6 +96,35 @@ enum ButtonNames: String {
     case macro
     case list
     case page
-    
+    // ACTION BUTTONS
+    case delete
+    case move
+    case copy
+    case update
+    case merge
+    case record
+    // UTILITY BUTTONS
+    case setup
+    case goto
+    case set
+    case pig
+    case fan
+    case open
+    // KIND KEYS
+    case intensity
+    case position
+    case colour
+    case beam
+    case effect
+    case time
+    case group
+    case fixture
+    // Select Buttons
+    case back
+    case all
+    case next
+    // HBC
     case highlight
+    case blind
+    case clear
 }
