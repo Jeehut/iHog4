@@ -40,12 +40,12 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
     
     // MARK: Hog Status Variables
     
-    public var encoderWheelLabels = ["LABEL", "LABEL", "LABEL", "LABEL", "LABEL"]{
+    public var encoderWheelLabels = ["", "", "", "", ""]{
         willSet{
             self.objectWillChange.send()
         }
     }
-    public var encoderWheelValues = ["VALUE", "VALUE", "VALUE", "VALUE","VALUE"]{
+    public var encoderWheelValues = ["", "", "", "",""]{
         willSet{
             self.objectWillChange.send()
         }
@@ -141,25 +141,36 @@ extension OSCHelper: OSCClientDelegate {
     
     func take(message: OSCMessage) {
         print("message: \(message.addressParts)")
-//        switch message.addressParts[2] {
-//        case "led":
-//            getStatusOfLEDButton(message)
-//        case "commandline":
-//            commandLine = message.arguments[0] as! String
-//        case let encoder where encoder.contains("encoder"):
-//            getEncoderWheel(message)
-//        case "h1":
-//            print("function key will have two lines")
-//        case "chatline1":
-//            print("Chat line 1 message will be here")
-//        default:
-//            print("IDK What to do with this message")
-//        }
         
     }
     
     func take(bundle: OSCBundle) {
-        print(bundle)
+        readBundle(bundle: bundle)
+    }
+    
+    func readBundle(bundle: OSCBundle){
+        for item in bundle.elements {
+            if let message = item as? OSCMessage {
+                switch message.addressParts[2] {
+                case "led":
+                    getStatusOfLEDButton(message)
+                case "commandline":
+                    commandLine = message.arguments[0] as! String
+                case let encoder where encoder.contains("encoder"):
+                    getEncoderWheel(message)
+                case "h1":
+                    print("function key will have two lines")
+                case "chatline1":
+                    print("Chat line 1 message will be here")
+                case "time":
+                    break
+                default:
+                    print("IDK What to do with this message")
+                }
+            } else {
+                readBundle(bundle: item as! OSCBundle)
+            }
+        }
     }
 }
 // MARK: Receiving statuses
@@ -169,23 +180,23 @@ extension OSCHelper {
         case "pause":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             pauses[buttonIndex] = message.arguments[0] as! Float
-            print(pauses[buttonIndex])
+//            print(pauses[buttonIndex])
         case "choose":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             chooses[buttonIndex] = message.arguments[0] as! Float
-            print(chooses[buttonIndex])
+//            print(chooses[buttonIndex])
         case "go":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             plays[buttonIndex] = message.arguments[0] as! Float
-            print(plays[buttonIndex])
+//            print(plays[buttonIndex])
         case "goback":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             backs[buttonIndex] = message.arguments[0] as! Float
-            print(backs[buttonIndex])
+//            print(backs[buttonIndex])
         case "flash":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             flashes[buttonIndex] = message.arguments[0] as! Float
-            print(flashes[buttonIndex])
+//            print(flashes[buttonIndex])
         case "blind":
             blind = message.arguments[0] as! Float
         default:
