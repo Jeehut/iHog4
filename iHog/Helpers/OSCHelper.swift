@@ -190,31 +190,31 @@ extension OSCHelper {
         case "pause":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             pauses[buttonIndex] = message.arguments[0] as! Float
-//            print(pauses[buttonIndex])
         case "choose":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             chooses[buttonIndex] = message.arguments[0] as! Float
-//            print(chooses[buttonIndex])
         case "go":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             plays[buttonIndex] = message.arguments[0] as! Float
-//            print(plays[buttonIndex])
         case "goback":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             backs[buttonIndex] = message.arguments[0] as! Float
-//            print(backs[buttonIndex])
         case "flash":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             flashes[buttonIndex] = message.arguments[0] as! Float
-//            print(flashes[buttonIndex])
         case "blind":
             blind = message.arguments[0] as! Float
         case "highlight":
             highlight = message.arguments[0] as! Float
         case "clear":
             clear = message.arguments[0] as! Float
-        case ButtonFunctionNames.beam.rawValue:
-            kindKeys[ButtonFunctionNames.beam.rawValue] = message.arguments[0] as? Float
+        case ButtonFunctionNames.intensity.rawValue,
+             ButtonFunctionNames.position.rawValue,
+             ButtonFunctionNames.colour.rawValue,
+             ButtonFunctionNames.beam.rawValue,
+//             ButtonFunctionNames.effect.rawValue,
+             ButtonFunctionNames.time.rawValue:
+            kindKeys[message.addressParts[3]] = message.arguments[0] as? Float
         default:
             print("THERES AN ERROR")
             print(message.addressParts)
