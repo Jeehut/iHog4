@@ -10,9 +10,9 @@ import SwiftUI
 struct SelectButtonView: View {
     var body: some View {
         HStack{
-            FPButton(buttonText: "Back", buttonFunction: ButtonFunctionNames.back.rawValue)
-            FPButton(buttonText: "All", buttonFunction: ButtonFunctionNames.all.rawValue)
-            FPButton(buttonText: "Next", buttonFunction: ButtonFunctionNames.next.rawValue)
+            FPButton(buttonText: "Back", buttonFunction: ButtonFunctionNames.back)
+            FPButton(buttonText: "All", buttonFunction: ButtonFunctionNames.all)
+            FPButton(buttonText: "Next", buttonFunction: ButtonFunctionNames.next)
         }
     }
 }

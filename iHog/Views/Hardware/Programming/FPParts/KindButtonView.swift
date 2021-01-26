@@ -12,16 +12,16 @@ struct KindButtonView: View {
     var body: some View {
         VStack{
             HStack{
-                FPButton(buttonText: "Intens", buttonFunction: ButtonFunctionNames.intensity.rawValue)
-                FPButton(buttonText: "Positn", buttonFunction: ButtonFunctionNames.position.rawValue)
-                FPButton(buttonText: "Colour", buttonFunction: ButtonFunctionNames.colour.rawValue)
-                FPButton(buttonText: "Beam", buttonFunction: ButtonFunctionNames.beam.rawValue)
+                FPButton(buttonText: "Intens", buttonFunction: ButtonFunctionNames.intensity)
+                FPButton(buttonText: "Positn", buttonFunction: ButtonFunctionNames.position)
+                FPButton(buttonText: "Colour", buttonFunction: ButtonFunctionNames.colour)
+                FPButton(buttonText: "Beam", buttonFunction: ButtonFunctionNames.beam)
             }
             HStack{
-                FPButton(buttonText: "Effect", buttonFunction: ButtonFunctionNames.effect.rawValue)
-                FPButton(buttonText: "Time", buttonFunction: ButtonFunctionNames.time.rawValue)
-                FPButton(buttonText: "Group", buttonFunction: ButtonFunctionNames.group.rawValue)
-                FPButton(buttonText: "Fixture", buttonFunction: ButtonFunctionNames.fixture.rawValue)
+                FPButton(buttonText: "Effect", buttonFunction: ButtonFunctionNames.effect)
+                FPButton(buttonText: "Time", buttonFunction: ButtonFunctionNames.time)
+                FPButton(buttonText: "Group", buttonFunction: ButtonFunctionNames.group)
+                FPButton(buttonText: "Fixture", buttonFunction: ButtonFunctionNames.fixture)
             }
         }
     }

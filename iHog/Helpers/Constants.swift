@@ -88,7 +88,18 @@ enum ButtonFunctionNames: String {
     case go
     case flash
     case choose
+    case master
     // MARK: PROGRAMMING
+    case numberpad
+    case backspace
+    case slash
+    case minus
+    case plus
+    case thru
+    case full
+    case at
+    case period
+    case enter
     // OBJECT BUTTONS
     case live
     case scene
@@ -127,4 +138,17 @@ enum ButtonFunctionNames: String {
     case highlight
     case blind
     case clear
+    // Function Keys
+    case h1
+    case h2
+    case h3
+    case h4
+    case h5
+    case h6
+    case h7
+    case h8
+    case h9
+    case h10
+    case h11
+    case h12
 }

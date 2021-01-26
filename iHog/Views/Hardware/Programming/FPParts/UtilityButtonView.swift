@@ -11,14 +11,14 @@ struct UtilityButtonView: View {
     var body: some View {
         VStack{
             HStack{
-                FPButton(buttonText: "Setup", buttonFunction: ButtonFunctionNames.setup.rawValue)
-                FPButton(buttonText: "Goto", buttonFunction: ButtonFunctionNames.goto.rawValue)
-                FPButton(buttonText: "Set", buttonFunction: ButtonFunctionNames.set.rawValue)
+                FPButton(buttonText: "Setup", buttonFunction: ButtonFunctionNames.setup)
+                FPButton(buttonText: "Goto", buttonFunction: ButtonFunctionNames.goto)
+                FPButton(buttonText: "Set", buttonFunction: ButtonFunctionNames.set)
             }
             HStack{
-                FPButton(buttonText: "Pig", buttonFunction: ButtonFunctionNames.pig.rawValue)
-                FPButton(buttonText: "Fan", buttonFunction: ButtonFunctionNames.fan.rawValue)
-                FPButton(buttonText: "Open", buttonFunction: ButtonFunctionNames.open.rawValue)
+                FPButton(buttonText: "Pig", buttonFunction: ButtonFunctionNames.pig)
+                FPButton(buttonText: "Fan", buttonFunction: ButtonFunctionNames.fan)
+                FPButton(buttonText: "Open", buttonFunction: ButtonFunctionNames.open)
             }
         }
     }

@@ -13,11 +13,11 @@ struct HorizontalMasterView: View {
     var body: some View {
         VStack{
             HStack{
-                FPButton(buttonText: "\(masterNumber)", buttonFunction: "choose", buttonNumber: masterNumber)
-                FPButton(buttonText: "Back", buttonFunction: "goback", buttonNumber: masterNumber)
-                FPButton(buttonText: "Pause", buttonFunction: "pause", buttonNumber: masterNumber)
-                FPButton(buttonText: "Play", buttonFunction: "go", buttonNumber: masterNumber)
-                FPButton(buttonText: "FLASH", buttonFunction: "flash", buttonNumber: masterNumber)
+                FPButton(buttonText: "\(masterNumber)", buttonFunction: .choose, buttonNumber: masterNumber)
+                FPButton(buttonText: "Back", buttonFunction: .goback, buttonNumber: masterNumber)
+                FPButton(buttonText: "Pause", buttonFunction: .pause, buttonNumber: masterNumber)
+                FPButton(buttonText: "Play", buttonFunction: .go, buttonNumber: masterNumber)
+                FPButton(buttonText: "FLASH", buttonFunction: .flash, buttonNumber: masterNumber)
             }
             HStack{
                 HorizontalSlider(master: masterNumber)

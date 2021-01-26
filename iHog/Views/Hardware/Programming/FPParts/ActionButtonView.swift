@@ -11,14 +11,14 @@ struct ActionButtonView: View {
     var body: some View {
         VStack{
             HStack{
-                FPButton(buttonText: "Delete", buttonFunction: ButtonFunctionNames.delete.rawValue)
-                FPButton(buttonText: "Move", buttonFunction: ButtonFunctionNames.move.rawValue)
-                FPButton(buttonText: "Copy", buttonFunction: ButtonFunctionNames.copy.rawValue)
+                FPButton(buttonText: "Delete", buttonFunction: ButtonFunctionNames.delete)
+                FPButton(buttonText: "Move", buttonFunction: ButtonFunctionNames.move)
+                FPButton(buttonText: "Copy", buttonFunction: ButtonFunctionNames.copy)
             }
             HStack{
-                FPButton(buttonText: "Update", buttonFunction: ButtonFunctionNames.update.rawValue)
-                FPButton(buttonText: "Merge", buttonFunction: ButtonFunctionNames.merge.rawValue)
-                FPButton(buttonText: "Record", buttonFunction: ButtonFunctionNames.record.rawValue)
+                FPButton(buttonText: "Update", buttonFunction: ButtonFunctionNames.update)
+                FPButton(buttonText: "Merge", buttonFunction: ButtonFunctionNames.merge)
+                FPButton(buttonText: "Record", buttonFunction: ButtonFunctionNames.record)
             }
         }
     }

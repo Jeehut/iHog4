@@ -11,7 +11,7 @@ struct FPButton: View {
     @EnvironmentObject var osc: OSCHelper
     
     var buttonText: String
-    var buttonFunction: String = "master"
+    var buttonFunction: ButtonFunctionNames = .master
     var buttonNumber: Int = 0
     var size: Int = 1
     
@@ -36,49 +36,52 @@ struct FPButton: View {
             return Color.pink
         }
         switch buttonFunction {
-        case ButtonFunctionNames.choose.rawValue:
+        case ButtonFunctionNames.choose:
             if osc.chooses[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.blue
-        case ButtonFunctionNames.flash.rawValue:
+        case ButtonFunctionNames.flash:
             if osc.flashes[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.red
-        case ButtonFunctionNames.go.rawValue:
+        case ButtonFunctionNames.go:
             if osc.plays[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.green
-        case ButtonFunctionNames.goback.rawValue:
+        case ButtonFunctionNames.goback:
             if osc.backs[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.green
-        case ButtonFunctionNames.pause.rawValue:
+        case ButtonFunctionNames.pause:
             if osc.pauses[buttonNumber] == 0.0 {
                 return Color.gray
             }
             return Color.red
-        case ButtonFunctionNames.highlight.rawValue:
+        case ButtonFunctionNames.highlight:
             if osc.highlight == 0.0 {
                 return Color.gray
             }
             return Color.blue
-        case ButtonFunctionNames.clear.rawValue:
+        case ButtonFunctionNames.clear:
             if osc.clear == 0.0 {
                 return Color.gray
             }
             return Color.red
-        case ButtonFunctionNames.blind.rawValue:
-            if osc.blind == 0.0 {
-                return Color.gray
-            }
-            return Color.blue
+        case ButtonFunctionNames.blind:
+            return color(for: osc.blind)
+        case ButtonFunctionNames.intensity, ButtonFunctionNames.position, ButtonFunctionNames.colour, ButtonFunctionNames.beam, ButtonFunctionNames.effect, ButtonFunctionNames.time:
+            return color(for: osc.kindKeys[buttonFunction.rawValue] ?? 0.0)
         default:
             return Color.gray
         }
+    }
+    
+    func color(for button: Float) -> Color {
+        button == 0.0 ? .gray : .blue
     }
     
     func setSize() -> CGFloat {
@@ -96,19 +99,19 @@ struct FPButton: View {
     
     func pushButton(){
         switch buttonFunction {
-        case ButtonFunctionNames.choose.rawValue,
-             ButtonFunctionNames.goback.rawValue,
-             ButtonFunctionNames.pause.rawValue,
-             ButtonFunctionNames.go.rawValue,
-             ButtonFunctionNames.flash.rawValue:
-            osc.playbackButton(button: buttonFunction, master: buttonNumber)
-        case "numberpad":
+        case ButtonFunctionNames.choose,
+             ButtonFunctionNames.goback,
+             ButtonFunctionNames.pause,
+             ButtonFunctionNames.go,
+             ButtonFunctionNames.flash:
+            osc.playbackButton(button: buttonFunction.rawValue, master: buttonNumber)
+        case ButtonFunctionNames.numberpad:
             let formatter = NumberFormatter()
             formatter.numberStyle = .spellOut
             let english = formatter.string(from: NSNumber(value: buttonNumber))
             osc.frontPanelButton(button: english!)
         default:
-            osc.frontPanelButton(button: buttonFunction)
+            osc.frontPanelButton(button: buttonFunction.rawValue)
         }
     }
 }

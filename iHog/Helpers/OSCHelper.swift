@@ -75,6 +75,16 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
             self.objectWillChange.send()
         }
     }
+    public var kindKeys: [String: Float] = [ButtonFunctionNames.intensity.rawValue: 0.0,
+                           ButtonFunctionNames.position.rawValue: 0.0,
+                           ButtonFunctionNames.colour.rawValue: 0.0,
+                           ButtonFunctionNames.beam.rawValue: 0.0,
+                           ButtonFunctionNames.effect.rawValue: 0.0,
+                           ButtonFunctionNames.time.rawValue: 0.0] {
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
     public var plays: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] {
         willSet {
             self.objectWillChange.send()
@@ -203,6 +213,8 @@ extension OSCHelper {
             highlight = message.arguments[0] as! Float
         case "clear":
             clear = message.arguments[0] as! Float
+        case ButtonFunctionNames.beam.rawValue:
+            kindKeys[ButtonFunctionNames.beam.rawValue] = message.arguments[0] as? Float
         default:
             print("THERES AN ERROR")
             print(message.addressParts)
