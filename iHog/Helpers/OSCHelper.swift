@@ -85,6 +85,24 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
             self.objectWillChange.send()
         }
     }
+    public var functionKeys: [String: [String]] = [
+        ButtonFunctionNames.h1.rawValue: ["", ""],
+        ButtonFunctionNames.h2.rawValue: ["", ""],
+        ButtonFunctionNames.h3.rawValue: ["", ""],
+        ButtonFunctionNames.h4.rawValue: ["", ""],
+        ButtonFunctionNames.h5.rawValue: ["", ""],
+        ButtonFunctionNames.h6.rawValue: ["", ""],
+        ButtonFunctionNames.h7.rawValue: ["", ""],
+        ButtonFunctionNames.h8.rawValue: ["", ""],
+        ButtonFunctionNames.h9.rawValue: ["", ""],
+        ButtonFunctionNames.h10.rawValue: ["", ""],
+        ButtonFunctionNames.h11.rawValue: ["", ""],
+        ButtonFunctionNames.h12.rawValue: ["", ""]
+    ] {
+        willSet {
+            self.objectWillChange.send()
+        }
+    }
     public var plays: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] {
         willSet {
             self.objectWillChange.send()
@@ -168,8 +186,22 @@ extension OSCHelper: OSCClientDelegate {
                     commandLine = message.arguments[0] as! String
                 case let encoder where encoder.contains("encoder"):
                     getEncoderWheel(message)
-                case "h1":
-                    print("function key will have two lines")
+                // Need to check all function keys
+                case ButtonFunctionNames.h1.rawValue,
+                     ButtonFunctionNames.h2.rawValue,
+                     ButtonFunctionNames.h3.rawValue,
+                     ButtonFunctionNames.h4.rawValue,
+                     ButtonFunctionNames.h5.rawValue,
+                     ButtonFunctionNames.h6.rawValue,
+                     ButtonFunctionNames.h7.rawValue,
+                     ButtonFunctionNames.h8.rawValue,
+                     ButtonFunctionNames.h9.rawValue,
+                     ButtonFunctionNames.h10.rawValue,
+                     ButtonFunctionNames.h11.rawValue,
+                     ButtonFunctionNames.h12.rawValue:
+                    setLinesForFunctionKey(message.addressParts[2],
+                                           line: message.addressParts[3],
+                                           text: message.arguments[0] as! String)
                 case "chatline1":
                     print("Chat line 1 message will be here")
                 case "time":
@@ -224,6 +256,7 @@ extension OSCHelper {
             print(message.arguments)
         }
     }
+    // MARK: ENCODER WHEELS
     func getEncoderWheel(_ message: OSCMessage) {
         let messageType = message.addressParts[3]
         print(type(of: messageType))
@@ -267,6 +300,14 @@ extension OSCHelper {
     }
     func setEncdoerWheelValue(_ encoder: Int, value: String) {
         encoderWheelValues[encoder] = value
+    }
+    // MARK: FUNCTION KEYS
+    func setLinesForFunctionKey(_ key: String, line: String, text: String) {
+        if line == "line1" {
+            functionKeys[key]?[0] = text
+        } else {
+            functionKeys[key]?[1] = text
+        }
     }
 }
 // MARK: Hardware Messages
