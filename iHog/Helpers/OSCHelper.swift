@@ -212,9 +212,12 @@ extension OSCHelper {
              ButtonFunctionNames.position.rawValue,
              ButtonFunctionNames.colour.rawValue,
              ButtonFunctionNames.beam.rawValue,
-//             ButtonFunctionNames.effect.rawValue,
              ButtonFunctionNames.time.rawValue:
             kindKeys[message.addressParts[3]] = message.arguments[0] as? Float
+        // Needed since Hog sends back /hog/status/led/effects and not effect.
+        // effect is needed for the button push
+        case "effects":
+            kindKeys[ButtonFunctionNames.effect.rawValue] = message.arguments[0] as? Float
         default:
             print("THERES AN ERROR")
             print(message.addressParts)

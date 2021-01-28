@@ -73,7 +73,8 @@ struct FPButton: View {
             return Color.red
         case ButtonFunctionNames.blind:
             return color(for: osc.blind)
-        case ButtonFunctionNames.intensity, ButtonFunctionNames.position, ButtonFunctionNames.colour, ButtonFunctionNames.beam, ButtonFunctionNames.effect, ButtonFunctionNames.time:
+        case ButtonFunctionNames.intensity, ButtonFunctionNames.position, ButtonFunctionNames.colour, ButtonFunctionNames.beam, ButtonFunctionNames.effect,
+            ButtonFunctionNames.time:
             return color(for: osc.kindKeys[buttonFunction.rawValue] ?? 0.0)
         default:
             return Color.gray
