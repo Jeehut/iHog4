@@ -13,24 +13,72 @@ struct FunctionKeyView: View {
     var body: some View {
         VStack{
             HStack{
-                FPButton(buttonText: "FX 1", buttonFunction: .h1)
-                FPButton(buttonText: "FX 2", buttonFunction: .h2)
-                FPButton(buttonText: "FX 3", buttonFunction: .h3)
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h1.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h1.rawValue]![1],
+                    buttonFunction: .h1
+                )
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h2.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h2.rawValue]![1],
+                    buttonFunction: .h2
+                )
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h3.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h3.rawValue]![1],
+                    buttonFunction: .h3
+                )
             }
             HStack{
-                FPButton(buttonText: "FX 4", buttonFunction: .h4)
-                FPButton(buttonText: "FX 5", buttonFunction: .h5)
-                FPButton(buttonText: "FX 6", buttonFunction: .h6)
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h4.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h4.rawValue]![1],
+                    buttonFunction: .h4
+                )
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h5.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h5.rawValue]![1],
+                    buttonFunction: .h5
+                )
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h6.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h6.rawValue]![1],
+                    buttonFunction: .h6
+                )
             }
             HStack{
-                FPButton(buttonText: "FX 7", buttonFunction: .h7)
-                FPButton(buttonText: "FX 8", buttonFunction: .h8)
-                FPButton(buttonText: "FX 9", buttonFunction: .h9)
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h7.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h7.rawValue]![1],
+                    buttonFunction: .h7
+                )
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h8.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h8.rawValue]![1],
+                    buttonFunction: .h8
+                )
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h9.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h9.rawValue]![1],
+                    buttonFunction: .h9
+                )
             }
             HStack{
-                FPButton(buttonText: "FX 10", buttonFunction: .h10)
-                FPButton(buttonText: "FX 11", buttonFunction: .h11)
-                FPButton(buttonText: "FX 12", buttonFunction: .h12)
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h10.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h10.rawValue]![1],
+                    buttonFunction: .h10
+                )
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h11.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h11.rawValue]![1],
+                    buttonFunction: .h11
+                )
+                FPButton(
+                    buttonText: osc.functionKeys[ButtonFunctionNames.h12.rawValue]![0] + "\n"
+                              + osc.functionKeys[ButtonFunctionNames.h12.rawValue]![1],
+                    buttonFunction: .h12
+                )
             }
         }
     }
