@@ -1,11 +1,13 @@
 {
   "images" : [
     {
+      "filename" : "20pt@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "20pt@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
@@ -65,93 +67,52 @@
       "size" : "20x20"
     },
     {
+      "filename" : "App Store iOS_iPhoneSettings_29.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
+      "filename" : "App Store iOS_iPhoneSettings_29@2x.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "40x40"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "40x40"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "76x76"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "76x76"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "83.5x83.5"
-    },
-    {
-      "idiom" : "ios-marketing",
-      "scale" : "1x",
-      "size" : "1024x1024"
-    },
-    {
-      "filename" : "App Store iOS.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "App Store iOS_iPadProApp_83.5@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
     },
     {
       "filename" : "App Store iOS_iPadSpotlight_40.png",
-      "idiom" : "universal",
+      "idiom" : "ipad",
       "scale" : "1x",
+      "size" : "40x40"
+    },
+    {
+      "filename" : "App Store iOS_iPhoneSpotlight_40@2x.png",
+      "idiom" : "ipad",
+      "scale" : "2x",
       "size" : "40x40"
     },
     {
       "filename" : "App Store iOS_iPadApp_76.png",
-      "idiom" : "universal",
+      "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
     },
     {
       "filename" : "App Store iOS_iPadApp_76@2x.png",
-      "idiom" : "universal",
+      "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "App Store iOS_iPhoneSettings_29.png",
-      "idiom" : "iphone",
+      "filename" : "App Store iOS_iPadProApp_83.5@2x.png",
+      "idiom" : "ipad",
+      "scale" : "2x",
+      "size" : "83.5x83.5"
+    },
+    {
+      "filename" : "App Store iOS.png",
+      "idiom" : "ios-marketing",
       "scale" : "1x",
-      "size" : "29x29",
-      "unassigned" : true
-    },
-    {
-      "filename" : "App Store iOS_iPhoneSettings_29@2x.png",
-      "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "29x29",
-      "unassigned" : true
-    },
-    {
-      "filename" : "App Store iOS_iPhoneSpotlight_40@2x.png",
-      "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "40x40",
-      "unassigned" : true
+      "size" : "1024x1024"
     }
   ],
   "info" : {
