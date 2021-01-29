@@ -158,16 +158,25 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
         server.delegate = self
     }
     
-    func setConsoleSettings(ip: String, port: Int) {
+    /// Used to start OSC connection
+    /// - Parameters:
+    ///   - ip: IP address of the console to know where OSC is going
+    ///   - inputPort: What port to send OSC on
+    ///   - outputPort: What port to receive OSC on
+    func setConsoleSettings(ip: String, inputPort: Int, outputPort: Int) {
         consoleIP = ip
-        consoleInputPort = port
+        consoleInputPort = inputPort
+        consoleOutputPort = outputPort
+        // Set OSC ports and IPs
         client.host = consoleIP
         client.port = UInt16(consoleInputPort)
-        print(client.description)
         client.delegate = self
+        server.port = UInt16(consoleOutputPort)
+        // Sends message to Hog so that the log viewer can see
         let message = OSCMessage(with: "/hog/OSCisConnected", arguments: ["True"])
         client.send(packet: message)
         
+        // Starts listening to the port for LED statuses
         do {
             try server.startListening()
         } catch {

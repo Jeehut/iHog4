@@ -50,7 +50,7 @@ struct Device: View {
                         },
                         set:{(newValue) in
                             isOSCOn = newValue
-                            turnOSCOn()
+                            toggleOSC()
                         }
                 ))
             }
@@ -77,12 +77,13 @@ struct Device: View {
                 }
             }
         }.navigationTitle("Device Settings")
+        .onAppear{toggleOSC()}
     }
     
-    func turnOSCOn(){
+    func toggleOSC(){
         print("toggle OSC")
         if isOSCOn {
-            osc.setConsoleSettings(ip: consoleIP, port: Int(serverPort) ?? 7001)
+            osc.setConsoleSettings(ip: consoleIP, inputPort: Int(serverPort) ?? 7001, outputPort: Int(clientPort) ?? 7002)
         } else {
             osc.server.stopListening()
         }
