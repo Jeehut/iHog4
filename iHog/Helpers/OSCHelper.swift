@@ -103,6 +103,25 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
             self.objectWillChange.send()
         }
     }
+    public var functionKeyStatus: [String: Float] = [
+        ButtonFunctionNames.h1.rawValue: 0.0,
+        ButtonFunctionNames.h2.rawValue: 0.0,
+        ButtonFunctionNames.h3.rawValue: 0.0,
+        ButtonFunctionNames.h4.rawValue: 0.0,
+        ButtonFunctionNames.h5.rawValue: 0.0,
+        ButtonFunctionNames.h6.rawValue: 0.0,
+        ButtonFunctionNames.h7.rawValue: 0.0,
+        ButtonFunctionNames.h8.rawValue: 0.0,
+        ButtonFunctionNames.h9.rawValue: 0.0,
+        ButtonFunctionNames.h10.rawValue: 0.0,
+        ButtonFunctionNames.h11.rawValue: 0.0,
+        ButtonFunctionNames.h12.rawValue: 0.0
+    ]{
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
+    
     public var plays: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] {
         willSet {
             self.objectWillChange.send()
@@ -240,6 +259,8 @@ extension OSCHelper {
             highlight = message.arguments[0] as! Float
         case "clear":
             clear = message.arguments[0] as! Float
+        case "macro":
+            macro = message.arguments[0] as! Float
         case ButtonFunctionNames.intensity.rawValue,
              ButtonFunctionNames.position.rawValue,
              ButtonFunctionNames.colour.rawValue,
@@ -250,6 +271,19 @@ extension OSCHelper {
         // effect is needed for the button push
         case "effects":
             kindKeys[ButtonFunctionNames.effect.rawValue] = message.arguments[0] as? Float
+        case ButtonFunctionNames.h1.rawValue,
+             ButtonFunctionNames.h2.rawValue,
+             ButtonFunctionNames.h3.rawValue,
+             ButtonFunctionNames.h4.rawValue,
+             ButtonFunctionNames.h5.rawValue,
+             ButtonFunctionNames.h6.rawValue,
+             ButtonFunctionNames.h7.rawValue,
+             ButtonFunctionNames.h8.rawValue,
+             ButtonFunctionNames.h9.rawValue,
+             ButtonFunctionNames.h10.rawValue,
+             ButtonFunctionNames.h11.rawValue,
+             ButtonFunctionNames.h12.rawValue:
+            functionKeyStatus[message.addressParts[3]] = message.arguments[0] as? Float
         default:
             print("THERES AN ERROR")
             print(message.addressParts)

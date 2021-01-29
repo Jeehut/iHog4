@@ -37,10 +37,7 @@ struct FPButton: View {
         }
         switch buttonFunction {
         case ButtonFunctionNames.choose:
-            if osc.chooses[buttonNumber] == 0.0 {
-                return Color.gray
-            }
-            return Color.blue
+            return color(for: osc.chooses[buttonNumber])
         case ButtonFunctionNames.flash:
             if osc.flashes[buttonNumber] == 0.0 {
                 return Color.gray
@@ -62,20 +59,36 @@ struct FPButton: View {
             }
             return Color.red
         case ButtonFunctionNames.highlight:
-            if osc.highlight == 0.0 {
-                return Color.gray
-            }
-            return Color.blue
+            return color(for: osc.highlight)
         case ButtonFunctionNames.clear:
             if osc.clear == 0.0 {
                 return Color.gray
             }
             return Color.red
+        case ButtonFunctionNames.macro:
+            return color(for: osc.macro)
         case ButtonFunctionNames.blind:
             return color(for: osc.blind)
-        case ButtonFunctionNames.intensity, ButtonFunctionNames.position, ButtonFunctionNames.colour, ButtonFunctionNames.beam, ButtonFunctionNames.effect,
-            ButtonFunctionNames.time:
+        case ButtonFunctionNames.intensity,
+             ButtonFunctionNames.position,
+             ButtonFunctionNames.colour,
+             ButtonFunctionNames.beam,
+             ButtonFunctionNames.effect,
+             ButtonFunctionNames.time:
             return color(for: osc.kindKeys[buttonFunction.rawValue] ?? 0.0)
+        case ButtonFunctionNames.h1,
+             ButtonFunctionNames.h2,
+             ButtonFunctionNames.h3,
+             ButtonFunctionNames.h4,
+             ButtonFunctionNames.h5,
+             ButtonFunctionNames.h6,
+             ButtonFunctionNames.h7,
+             ButtonFunctionNames.h8,
+             ButtonFunctionNames.h9,
+             ButtonFunctionNames.h10,
+             ButtonFunctionNames.h11,
+             ButtonFunctionNames.h12:
+            return color(for: osc.functionKeyStatus[buttonFunction.rawValue] ?? 0.0)
         default:
             return Color.gray
         }
