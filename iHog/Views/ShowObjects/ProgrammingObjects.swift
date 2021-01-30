@@ -26,6 +26,7 @@ struct ProgrammingObjects: View {
     
     // MARK: Environment variables
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.managedObjectContext) private var viewContext
     
     // MARK: State
@@ -36,6 +37,62 @@ struct ProgrammingObjects: View {
     // MARK: Local constants
     let paletteTypes: [ShowObjectType] = [.intensity, .position, .color, .beam, .effect]
     let sizes: [String] = ["small", "medium", "large", "extra large"]
+    
+    fileprivate func returnStackView() -> some View {
+        return Group{
+            HStack{
+                ObjectGrid(
+                    size: sizes[buttonSizeGroup],
+                    buttonsAcross: getMaxButtonSize()[0],
+                    objects: groupObjects, allObjects: $groupObjects
+                ).padding()
+                
+                // MARK: Pallets
+                VStack{
+                    Picker("palette selection", selection: $chosenPaletteType) {
+                        ForEach(0 ..< paletteTypes.count) {
+                            Text(paletteTypes[$0].rawValue.capitalized)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                    
+                    ObjectGrid(
+                        size: sizes[buttonSizePalette],
+                        buttonsAcross: getMaxButtonSize()[1],
+                        objects: paletteObjects.filter({ obj in
+                            return obj.objType == paletteTypes[chosenPaletteType]
+                        }), allObjects: $paletteObjects
+                    )
+                }
+                
+            }
+        }
+    }
+    
+    fileprivate func returnSideBySideView() -> some View {
+        return Group{
+            // MARK: Groups
+            ObjectGrid(
+                size: sizes[buttonSizeGroup],
+                buttonsAcross: getMaxButtonSize()[0],
+                objects: groupObjects, allObjects: $groupObjects
+            ).padding()
+            
+            // MARK: Pallets
+            Picker("palette selection", selection: $chosenPaletteType) {
+                ForEach(0 ..< paletteTypes.count) {
+                    Text(paletteTypes[$0].rawValue.capitalized)
+                }
+            }.pickerStyle(SegmentedPickerStyle())
+            
+            ObjectGrid(
+                size: sizes[buttonSizePalette],
+                buttonsAcross: getMaxButtonSize()[1],
+                objects: paletteObjects.filter({ obj in
+                    return obj.objType == paletteTypes[chosenPaletteType]
+                }), allObjects: $paletteObjects
+            )
+        }
+    }
     
     var body: some View {
         VStack{
@@ -63,31 +120,20 @@ struct ProgrammingObjects: View {
                 }
             }
             
-            // MARK: Groups
-            ObjectGrid(
-                size: sizes[buttonSizeGroup],
-                buttonsAcross: getMaxButtonSize()[0],
-                objects: groupObjects, allObjects: $groupObjects
-            ).padding()
-            
-            // MARK: Pallets
-            Picker("palette selection", selection: $chosenPaletteType) {
-                ForEach(0 ..< paletteTypes.count) {
-                    Text(paletteTypes[$0].rawValue.capitalized)
+            if horizontalSizeClass == .compact {
+                if verticalSizeClass == .compact {
+                    returnStackView()
+                } else {
+                returnSideBySideView()
                 }
-            }.pickerStyle(SegmentedPickerStyle())
-            
-            ObjectGrid(
-                size: sizes[buttonSizePalette],
-                buttonsAcross: getMaxButtonSize()[1],
-                objects: paletteObjects.filter({ obj in
-                    return obj.objType == paletteTypes[chosenPaletteType]
-                }), allObjects: $paletteObjects
-            )
-            Spacer()
+            }
+            else {
+                returnStackView()
+            }
         }.padding()
         .onAppear{
             getAllObjects()
+            print(horizontalSizeClass.debugDescription)
         }
     }
     
