@@ -302,7 +302,6 @@ extension OSCHelper {
     // MARK: ENCODER WHEELS
     func getEncoderWheel(_ message: OSCMessage) {
         let messageType = message.addressParts[3]
-        print(type(of: messageType))
         switch message.addressParts[2] {
         case "encoderwheel1":
             if messageType == "label" {
