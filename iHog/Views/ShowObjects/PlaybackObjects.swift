@@ -23,12 +23,40 @@ struct PlaybackObjects: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     
     @State private var listObjects: [ShowObject] = []
     @State private var sceneObjects: [ShowObject] = []
     
     // Size selections
     let sizes: [String] = ["small", "medium", "large", "extra large"]
+    
+    fileprivate func returnStackedView() -> some View {
+        return Group{
+            ObjectGrid(size: sizes[buttonSizeList],
+                       buttonsAcross: getMaxButtonSize()[0],
+                       objects: listObjects, allObjects: $listObjects)
+            // MARK: Scenes
+            ObjectGrid(size: sizes[buttonSizeScene],
+                       buttonsAcross: getMaxButtonSize()[1],
+                       objects: sceneObjects, allObjects: $sceneObjects)
+        }
+    }
+    
+    fileprivate func returnSideBySideView() -> some View {
+        return Group {
+            HStack{
+                
+                ObjectGrid(size: sizes[buttonSizeList],
+                           buttonsAcross: getMaxButtonSize()[0],
+                           objects: listObjects, allObjects: $listObjects)
+                // MARK: Scenes
+                ObjectGrid(size: sizes[buttonSizeScene],
+                           buttonsAcross: getMaxButtonSize()[1],
+                           objects: sceneObjects, allObjects: $sceneObjects)
+            }
+        }
+    }
     
     var body: some View {
         VStack{
@@ -55,20 +83,16 @@ struct PlaybackObjects: View {
                     }
                 }
             }
-            Text("Lists")
-                .font(.title)
-                .fontWeight(.black)
             // MARK: Lists
-            ObjectGrid(size: sizes[buttonSizeList],
-                       buttonsAcross: getMaxButtonSize()[0],
-                       objects: listObjects, allObjects: $listObjects)
-            // MARK: Scenes
-            Text("Scenes")
-                .font(.title)
-                .fontWeight(.black)
-            ObjectGrid(size: sizes[buttonSizeScene],
-                       buttonsAcross: getMaxButtonSize()[1],
-                       objects: sceneObjects, allObjects: $sceneObjects)
+            if horizontalSizeClass == .compact {
+                if verticalSizeClass == .compact{
+                    returnSideBySideView()
+                } else {
+                    returnStackedView()
+                }
+            } else {
+                returnSideBySideView()
+            }
         }.padding()
         .onAppear{
             getAllObjects()
