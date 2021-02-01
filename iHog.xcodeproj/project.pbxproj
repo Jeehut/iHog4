@@ -34,6 +34,8 @@
 		15AB35D9251CC1C5008FC212 /* FPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB35D8251CC1C5008FC212 /* FPButton.swift */; };
 		15AB35DF251CC354008FC212 /* ObjectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB35DE251CC354008FC212 /* ObjectButtonView.swift */; };
 		15BC8EC325BCD59F00309C8B /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 15BC8EC225BCD59F00309C8B /* OSCKit */; };
+		15BE2E5B25C88F35009D8E77 /* iHogUITestsScreenShots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE2E5A25C88F35009D8E77 /* iHogUITestsScreenShots.swift */; };
+		15BE2E6725C88FC7009D8E77 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE2E6625C88FC7009D8E77 /* SnapshotHelper.swift */; };
 		15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */; };
 		15CA428B25220DBD00C56FE0 /* FunctionKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */; };
 		15D07DF0251E0EB400A80DC4 /* FunctionKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */; };
@@ -66,6 +68,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		15BE2E5D25C88F35009D8E77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15DA266B251237D60063E236 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15DA2672251237D60063E236;
+			remoteInfo = iHog;
+		};
 		15DA268A251237D70063E236 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 15DA266B251237D60063E236 /* Project object */;
@@ -109,6 +118,10 @@
 		159BAED3251B7BDB00A81EA1 /* RegRegFPProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegRegFPProgramming.swift; sourceTree = "<group>"; };
 		15AB35D8251CC1C5008FC212 /* FPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPButton.swift; sourceTree = "<group>"; };
 		15AB35DE251CC354008FC212 /* ObjectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectButtonView.swift; sourceTree = "<group>"; };
+		15BE2E5825C88F35009D8E77 /* iHogUITestsScreenShots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iHogUITestsScreenShots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15BE2E5A25C88F35009D8E77 /* iHogUITestsScreenShots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogUITestsScreenShots.swift; sourceTree = "<group>"; };
+		15BE2E5C25C88F35009D8E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15BE2E6625C88FC7009D8E77 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodersKindsSheet.swift; sourceTree = "<group>"; };
 		15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionKeySheet.swift; sourceTree = "<group>"; };
 		15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionKeyView.swift; sourceTree = "<group>"; };
@@ -148,6 +161,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		15BE2E5525C88F35009D8E77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15DA2670251237D60063E236 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,6 +267,16 @@
 			path = Programming;
 			sourceTree = "<group>";
 		};
+		15BE2E5925C88F35009D8E77 /* iHogUITestsScreenShots */ = {
+			isa = PBXGroup;
+			children = (
+				15BE2E6625C88FC7009D8E77 /* SnapshotHelper.swift */,
+				15BE2E5A25C88F35009D8E77 /* iHogUITestsScreenShots.swift */,
+				15BE2E5C25C88F35009D8E77 /* Info.plist */,
+			);
+			path = iHogUITestsScreenShots;
+			sourceTree = "<group>";
+		};
 		15CA428625220D6C00C56FE0 /* ExtraWindows */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +325,7 @@
 				15DA2675251237D60063E236 /* iHog */,
 				15DA268C251237D70063E236 /* iHogTests */,
 				15DA2697251237D70063E236 /* iHogUITests */,
+				15BE2E5925C88F35009D8E77 /* iHogUITestsScreenShots */,
 				15DA2674251237D60063E236 /* Products */,
 				15E2D202253F14F900C7A453 /* Frameworks */,
 			);
@@ -306,6 +337,7 @@
 				15DA2673251237D60063E236 /* iHog.app */,
 				15DA2689251237D70063E236 /* iHogTests.xctest */,
 				15DA2694251237D70063E236 /* iHogUITests.xctest */,
+				15BE2E5825C88F35009D8E77 /* iHogUITestsScreenShots.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -405,6 +437,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		15BE2E5725C88F35009D8E77 /* iHogUITestsScreenShots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15BE2E6125C88F35009D8E77 /* Build configuration list for PBXNativeTarget "iHogUITestsScreenShots" */;
+			buildPhases = (
+				15BE2E5425C88F35009D8E77 /* Sources */,
+				15BE2E5525C88F35009D8E77 /* Frameworks */,
+				15BE2E5625C88F35009D8E77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15BE2E5E25C88F35009D8E77 /* PBXTargetDependency */,
+			);
+			name = iHogUITestsScreenShots;
+			productName = iHogUITestsScreenShots;
+			productReference = 15BE2E5825C88F35009D8E77 /* iHogUITestsScreenShots.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		15DA2672251237D60063E236 /* iHog */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15DA269D251237D70063E236 /* Build configuration list for PBXNativeTarget "iHog" */;
@@ -467,9 +517,13 @@
 		15DA266B251237D60063E236 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					15BE2E5725C88F35009D8E77 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 15DA2672251237D60063E236;
+					};
 					15DA2672251237D60063E236 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -502,11 +556,19 @@
 				15DA2672251237D60063E236 /* iHog */,
 				15DA2688251237D70063E236 /* iHogTests */,
 				15DA2693251237D70063E236 /* iHogUITests */,
+				15BE2E5725C88F35009D8E77 /* iHogUITestsScreenShots */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		15BE2E5625C88F35009D8E77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15DA2671251237D60063E236 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -533,6 +595,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		15BE2E5425C88F35009D8E77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15BE2E5B25C88F35009D8E77 /* iHogUITestsScreenShots.swift in Sources */,
+				15BE2E6725C88FC7009D8E77 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15DA266F251237D60063E236 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -609,6 +680,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		15BE2E5E25C88F35009D8E77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 15DA2672251237D60063E236 /* iHog */;
+			targetProxy = 15BE2E5D25C88F35009D8E77 /* PBXContainerItemProxy */;
+		};
 		15DA268B251237D70063E236 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 15DA2672251237D60063E236 /* iHog */;
@@ -622,6 +698,46 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		15BE2E5F25C88F35009D8E77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZDK82FGR3Z;
+				INFOPLIST_FILE = iHogUITestsScreenShots/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.parttimedeveloper.iHogUITestsScreenShots;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iHog;
+			};
+			name = Debug;
+		};
+		15BE2E6025C88F35009D8E77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZDK82FGR3Z;
+				INFOPLIST_FILE = iHogUITestsScreenShots/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.parttimedeveloper.iHogUITestsScreenShots;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iHog;
+			};
+			name = Release;
+		};
 		15DA269B251237D70063E236 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -875,6 +991,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		15BE2E6125C88F35009D8E77 /* Build configuration list for PBXNativeTarget "iHogUITestsScreenShots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15BE2E5F25C88F35009D8E77 /* Debug */,
+				15BE2E6025C88F35009D8E77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		15DA266E251237D60063E236 /* Build configuration list for PBXProject "iHog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
