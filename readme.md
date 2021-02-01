@@ -6,6 +6,7 @@ An iOS and iPadOS app to control [Hog 4](https://highend.com/products/consoles) 
 
 - Shoot me an email maegan [@] maeganwilson [.] com.
 - File an [issue](https://github.com/maeganwilson/iHog4/issues/new) right here!
+- Join Maegan's discord to get an update on builds and other things. [Discord Invite](https://discord.gg/HmGYbNHmun)!
 
 # Support development
 
