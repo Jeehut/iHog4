@@ -13,5 +13,5 @@ An iOS and iPadOS app to control [Hog 4](https://highend.com/products/consoles) 
 Are you wondering how you can support further development? Well, here's how!
 
 - [Download the app](https://apps.apple.com/us/app/ihog-osc-lighting-remote/id1487580623?ls=1)
-- [Buy Me a Coffee one time](https://ko-fi.com/appsbymw)
+- [Buy Me a Coffee one time](https://ko-fi.com/maeganwilson_)
 - [Buy Me a Coffee monthly](https://www.patreon.com/maeganwilson_)
