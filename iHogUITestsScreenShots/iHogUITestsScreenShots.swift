@@ -28,26 +28,22 @@ class iHogUITestsScreenShots: XCTestCase {
         setupSnapshot(app)
 
         // Use recording to get started writing UI tests.
-        app.navigationBars["_TtGC7SwiftUI19UIHosting"]/*@START_MENU_TOKEN@*/.buttons["BackButton"]/*[[".buttons[\"Back\"]",".buttons[\"BackButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.navigationBars["Device Settings"]/*@START_MENU_TOKEN@*/.buttons["BackButton"]/*[[".buttons[\"Back\"]",".buttons[\"BackButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        snapshot("0_Device_Settings")
-        let tablesQuery = app.tables
+        
+        let tablesQuery2 = app.tables
+        let oscIsOffSwitch = tablesQuery2/*@START_MENU_TOKEN@*/.switches["OSC is off"]/*[[".cells[\"OSC is off\"].switches[\"OSC is off\"]",".switches[\"OSC is off\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        oscIsOffSwitch.tap()
+        oscIsOffSwitch.tap()
+        app.navigationBars["Device Settings"].buttons["Back"].tap()
+        snapshot("device")
+        let tablesQuery = tablesQuery2
+        tablesQuery/*@START_MENU_TOKEN@*/.buttons["Programming"]/*[[".cells[\"Programming\"].buttons[\"Programming\"]",".buttons[\"Programming\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("programming")
+        app.navigationBars["Command line text"].buttons["Back"].tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.buttons["Playback"]/*[[".cells[\"Playback\"].buttons[\"Playback\"]",".buttons[\"Playback\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.navigationBars["_TtGC7SwiftUIP13$7fff57adc30428DestinationHosting"].buttons["Back"].tap()
         tablesQuery/*@START_MENU_TOKEN@*/.buttons["Add Show"]/*[[".cells[\"Add Show\"].buttons[\"Add Show\"]",".buttons[\"Add Show\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.textFields["Show Name"].tap()
-        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .button)["Add Show"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["New Show"]/*[[".cells[\"New Show\"].buttons[\"New Show\"]",".buttons[\"New Show\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        let addGroupButton = app.buttons["Add Group"]
-        addGroupButton.tap()
-        addGroupButton.tap()
-        addGroupButton.tap()
-        addGroupButton.tap()
-        addGroupButton.tap()
-        addGroupButton.tap()
-        addGroupButton.tap()
-        addGroupButton.tap()
-        addGroupButton.tap()
-        snapshot("1_Groups")
                 // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
