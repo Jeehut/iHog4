@@ -9,8 +9,18 @@ import SwiftUI
 
 struct EncoderWheel: View {
     @EnvironmentObject var osc: OSCHelper
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @AppStorage(Settings.encoderWheelPrecision.rawValue) var encoderWheelPrecision: Double = 2.00
     @State private var yOffSet: CGFloat = 0
+    
+    var widthHeight: CGFloat {
+        if horizontalSizeClass == .compact {
+            return CGFloat(100.0)
+        } else {
+            return CGFloat(150.0)
+        }
+    }
+    
     var encoderWheelNum: Int
     var paramName: String
     var paramValue: String
@@ -41,6 +51,7 @@ struct EncoderWheel: View {
         }.onTapGesture {
             print("DO SOMETHING")
         }.padding()
+        .frame(width: widthHeight, height: widthHeight, alignment: .center)
     }
     
     func sendEncoder(newValue: CGFloat){

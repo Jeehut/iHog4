@@ -11,10 +11,10 @@ struct RegRegFPProgramming: View {
     @EnvironmentObject var osc: OSCHelper
     var body: some View {
         VStack{
-//            CommandLineView(commandLineText: "SolaSpot 1000 1 > 10 @ 100%")
             EncoderWheelsView()
                 .environmentObject(osc)
                 .padding()
+            Spacer()
             HStack(alignment: .bottom){
                 VStack{
                     ObjectButtonView()
@@ -31,7 +31,7 @@ struct RegRegFPProgramming: View {
                         .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
                     NumericKeypadView()
                 }
-                    .padding(.horizontal)
+                .padding(.horizontal)
                 VStack(alignment: .leading){
                     HBCButtonView()
                     Spacer()
@@ -42,6 +42,7 @@ struct RegRegFPProgramming: View {
                     FunctionKeyView()
                 }
             }
+            .padding(.bottom)
         }
     }
 }
@@ -49,6 +50,6 @@ struct RegRegFPProgramming: View {
 struct FPProgramming_Previews: PreviewProvider {
     static var previews: some View {
         RegRegFPProgramming()
-            
+        
     }
 }
