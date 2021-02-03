@@ -27,10 +27,12 @@ struct RegCompPlayback: View {
             }
             .padding()
             VStack{
-                Spacer()
                 FPButton(buttonText: "Back")
+                    .padding(.bottom)
                 FPButton(buttonText: "Pause")
-                    .padding(.vertical)
+                    .padding(.bottom)
+                Spacer().frame(height: BASE_BUTTON_SIZE)
+                    .padding(HALF_PADDING)
                 FPButton(buttonText: "Play")
             }
             ScrollView(.vertical){
