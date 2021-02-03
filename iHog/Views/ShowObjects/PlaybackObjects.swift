@@ -16,7 +16,7 @@ struct PlaybackObjects: View {
     @AppStorage(Settings.buttonsAcrossList.rawValue) var buttonsAcrossList = 3
     @AppStorage(Settings.isButtonFilledList.rawValue) var buttonFilledList = false
     // MARK: SCENE Default Values
-    @AppStorage(Settings.buttonColorScene.rawValue) var buttonColorScene = 0
+    @AppStorage(Settings.buttonColorScene.rawValue) var buttonColorScene = 2
     @AppStorage(Settings.buttonSizeScene.rawValue) var buttonSizeScene = 0
     @AppStorage(Settings.buttonsAcrossScene.rawValue) var buttonsAcrossScene = 3
     @AppStorage(Settings.isButtonFilledScene.rawValue) var buttonFilledScene = false

@@ -13,7 +13,7 @@ struct ProgrammingObjects: View {
     @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
     
     // MARK: Palette defaults
-    @AppStorage(Settings.buttonColorPalette.rawValue) var buttonColorPalette = 0
+    @AppStorage(Settings.buttonColorPalette.rawValue) var buttonColorPalette = 2
     @AppStorage(Settings.buttonSizePalette.rawValue) var buttonSizePalette = 0
     @AppStorage(Settings.buttonsAcrossPalette.rawValue) var buttonsAcrossPallete = 3
     @AppStorage(Settings.isButtonFilledPalette.rawValue) var isButtonFilledPalette = false
@@ -133,7 +133,6 @@ struct ProgrammingObjects: View {
         }.padding()
         .onAppear{
             getAllObjects()
-            print(horizontalSizeClass.debugDescription)
         }
     }
     

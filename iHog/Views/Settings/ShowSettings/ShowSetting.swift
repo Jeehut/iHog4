@@ -14,7 +14,7 @@ struct ShowSetting: View {
     @AppStorage(Settings.buttonsAcrossGroup.rawValue) var buttonsAcrossGroup = 3
     @AppStorage(Settings.isButtonFilledGroup.rawValue) var buttonFilledGroup = false
     // MARK: PALETTE
-    @AppStorage(Settings.buttonColorPalette.rawValue) var buttonColorPalette = 0
+    @AppStorage(Settings.buttonColorPalette.rawValue) var buttonColorPalette = 2
     @AppStorage(Settings.buttonSizePalette.rawValue) var buttonSizePalette = 0
     @AppStorage(Settings.buttonsAcrossPalette.rawValue) var buttonsAcrossPalette = 3
     @AppStorage(Settings.isButtonFilledPalette.rawValue) var buttonFilledPalette = false
@@ -24,7 +24,7 @@ struct ShowSetting: View {
     @AppStorage(Settings.buttonsAcrossList.rawValue) var buttonsAcrossList = 3
     @AppStorage(Settings.isButtonFilledList.rawValue) var buttonFilledList = false
     // MARK: SCENE
-    @AppStorage(Settings.buttonColorScene.rawValue) var buttonColorScene = 0
+    @AppStorage(Settings.buttonColorScene.rawValue) var buttonColorScene = 2
     @AppStorage(Settings.buttonSizeScene.rawValue) var buttonSizeScene = 0
     @AppStorage(Settings.buttonsAcrossScene.rawValue) var buttonsAcrossScene = 3
     @AppStorage(Settings.isButtonFilledScene.rawValue) var buttonFilledScene = false
