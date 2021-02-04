@@ -29,6 +29,11 @@ struct ShowNavigation: View {
                     Image(systemName: "play.rectangle")
                 }
                 .tag(Views.playbackObjects)
+            PPPlayback()
+                .tabItem{
+                    Image(systemName: "play.rectangle")
+                }
+                .tag(Views.puntPage)
         }
         .navigationBarTitle(selectedShow.name!)
         .navigationBarTitleDisplayMode(.inline)

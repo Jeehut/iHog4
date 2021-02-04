@@ -24,6 +24,8 @@
 		1557952B2518CB9C004FD603 /* ShowObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557952A2518CB9C004FD603 /* ShowObjectView.swift */; };
 		155795302518CBBF004FD603 /* ShowObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557952F2518CBBF004FD603 /* ShowObject.swift */; };
 		155795362518D49A004FD603 /* ObjectGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155795352518D49A004FD603 /* ObjectGrid.swift */; };
+		1560710B25CC29F0000EB05F /* PuntPageNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560710A25CC29F0000EB05F /* PuntPageNav.swift */; };
+		1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560711425CC2A08000EB05F /* PPPlayback.swift */; };
 		1563789A2539C9BB00C22F0B /* NewShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156378992539C9BB00C22F0B /* NewShowView.swift */; };
 		156893812569B34C00BD6050 /* EditObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156893802569B34C00BD6050 /* EditObjectView.swift */; };
 		1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3272512F3DF001E1BDF /* ShowBox.swift */; };
@@ -109,6 +111,8 @@
 		1557952A2518CB9C004FD603 /* ShowObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowObjectView.swift; sourceTree = "<group>"; };
 		1557952F2518CBBF004FD603 /* ShowObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowObject.swift; sourceTree = "<group>"; };
 		155795352518D49A004FD603 /* ObjectGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectGrid.swift; sourceTree = "<group>"; };
+		1560710A25CC29F0000EB05F /* PuntPageNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuntPageNav.swift; sourceTree = "<group>"; };
+		1560711425CC2A08000EB05F /* PPPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPPlayback.swift; sourceTree = "<group>"; };
 		156378992539C9BB00C22F0B /* NewShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShowView.swift; sourceTree = "<group>"; };
 		156893802569B34C00BD6050 /* EditObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditObjectView.swift; sourceTree = "<group>"; };
 		1578D3272512F3DF001E1BDF /* ShowBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBox.swift; sourceTree = "<group>"; };
@@ -224,6 +228,15 @@
 				153009CF258B8A0D00311520 /* OSCHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1560710925CC29D1000EB05F /* PuntPageViews */ = {
+			isa = PBXGroup;
+			children = (
+				1560710A25CC29F0000EB05F /* PuntPageNav.swift */,
+				1560711425CC2A08000EB05F /* PPPlayback.swift */,
+			);
+			path = PuntPageViews;
 			sourceTree = "<group>";
 		};
 		1578D3262512F3CF001E1BDF /* ChooseShowSettings */ = {
@@ -389,6 +402,7 @@
 		15DA26A92512387D0063E236 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1560710925CC29D1000EB05F /* PuntPageViews */,
 				1529025325387225002D4F2E /* ShowViews */,
 				159BAED2251B7BC700A81EA1 /* Hardware */,
 				15DA0B17251513AC006ADB27 /* ShowObjects */,
@@ -610,6 +624,7 @@
 			files = (
 				15DA0B19251513BC006ADB27 /* ProgrammingObjects.swift in Sources */,
 				15DA26B425123D200063E236 /* SelectShow.swift in Sources */,
+				1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */,
 				15FA5F0E2525FF3400DF1A3C /* HorizontalSlider.swift in Sources */,
 				159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */,
 				1547E0C2256732B600E7FE98 /* RegCompPlayback.swift in Sources */,
@@ -644,6 +659,7 @@
 				1563789A2539C9BB00C22F0B /* NewShowView.swift in Sources */,
 				155795362518D49A004FD603 /* ObjectGrid.swift in Sources */,
 				155530D125138A5500CF48FD /* UIDevice+Extensions.swift in Sources */,
+				1560710B25CC29F0000EB05F /* PuntPageNav.swift in Sources */,
 				15DA2679251237D60063E236 /* ContentView.swift in Sources */,
 				15FB201725220F52007EDC36 /* UtilityKeySheet.swift in Sources */,
 				1502F62F251CC53100BAC5EE /* KindButtonView.swift in Sources */,
