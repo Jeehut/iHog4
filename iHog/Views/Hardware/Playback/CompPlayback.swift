@@ -11,9 +11,10 @@ struct CompPlayback: View {
     var body: some View {
         VStack{
             HStack{
-                FPButton(buttonText: "Next Page")
+                FPButton(buttonText: "Next Page",
+                         buttonFunction: .nextpage)
                 Spacer()
-                FPButton(buttonText: "Back Page")
+                FPButton(buttonText: "Back Page", buttonFunction: .backpage)
             }
             .padding(.horizontal)
             .padding(.bottom)
@@ -26,25 +27,25 @@ struct CompPlayback: View {
             }
             VStack{
                 HStack{
-                    FPButton(buttonText: "CH")
+                    FPButton(buttonText: "CH", buttonFunction: .mainchoose)
                     Spacer()
-                    FPButton(buttonText: "A")
+                    FPButton(buttonText: "A", buttonFunction: .assert)
                     Spacer()
-                    FPButton(buttonText: "R")
+                    FPButton(buttonText: "R", buttonFunction: .release)
                 }
                 HStack{
-                    FPButton(buttonText: "<<")
+                    FPButton(buttonText: "<<", buttonFunction: .skipback)
                     Spacer()
-                    FPButton(buttonText: "Pig")
+                    FPButton(buttonText: "Pig", buttonFunction: .pig)
                     Spacer()
-                    FPButton(buttonText: ">>")
+                    FPButton(buttonText: ">>", buttonFunction: .skipfwd)
                 }
                 HStack{
-                    FPButton(buttonText: "Back")
+                    FPButton(buttonText: "Back", buttonFunction: .mainback)
                     Spacer()
-                    FPButton(buttonText: "Pause")
+                    FPButton(buttonText: "Pause", buttonFunction: .mainhalt)
                     Spacer()
-                    FPButton(buttonText: "Play")
+                    FPButton(buttonText: "Play", buttonFunction: .maingo)
                 }
             }
             .padding(.horizontal)
