@@ -4,7 +4,8 @@
 //
 //  Created by Maegan Wilson on 9/16/20.
 //  Supporters:
-//  DustinDMiller2323 aka DustinD_Miller
+//  DustinD_Miller
+//  panjakesnbacon
 //
 
 import SwiftUI

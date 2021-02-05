@@ -67,6 +67,7 @@
 		15FA5F292526025100DF1A3C /* CompPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FA5F282526025100DF1A3C /* CompPlayback.swift */; };
 		15FB201725220F52007EDC36 /* UtilityKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201625220F52007EDC36 /* UtilityKeySheet.swift */; };
 		15FB201C252212B0007EDC36 /* CompRegFPprogramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */; };
+		379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B2C8225CD7CD6007447BB /* CompactFaders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,7 @@
 		15FA5F282526025100DF1A3C /* CompPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompPlayback.swift; sourceTree = "<group>"; };
 		15FB201625220F52007EDC36 /* UtilityKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityKeySheet.swift; sourceTree = "<group>"; };
 		15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRegFPprogramming.swift; sourceTree = "<group>"; };
+		379B2C8225CD7CD6007447BB /* CompactFaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactFaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 		1560710925CC29D1000EB05F /* PuntPageViews */ = {
 			isa = PBXGroup;
 			children = (
+				379B2C8125CD7CA1007447BB /* PPPlaybackViewParts */,
 				1560710A25CC29F0000EB05F /* PuntPageNav.swift */,
 				1560711425CC2A08000EB05F /* PPPlayback.swift */,
 			);
@@ -448,6 +451,14 @@
 			path = ShowSettings;
 			sourceTree = "<group>";
 		};
+		379B2C8125CD7CA1007447BB /* PPPlaybackViewParts */ = {
+			isa = PBXGroup;
+			children = (
+				379B2C8225CD7CD6007447BB /* CompactFaders.swift */,
+			);
+			path = PPPlaybackViewParts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -622,6 +633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */,
 				15DA0B19251513BC006ADB27 /* ProgrammingObjects.swift in Sources */,
 				15DA26B425123D200063E236 /* SelectShow.swift in Sources */,
 				1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */,

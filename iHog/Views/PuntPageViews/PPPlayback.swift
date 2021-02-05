@@ -10,18 +10,32 @@ import CoreData
 
 struct PPPlayback: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
     @State private var allPlaybackObjects: [ShowObject] = []
     
     var body: some View {
-        HStack{
-            CompPlayback()
-            ObjectGrid(size: "medium",
-                       buttonsAcross: 3,
-                       objects: allPlaybackObjects,
-                       allObjects: $allPlaybackObjects)
-        }.onAppear{
-            getAllObjects()
+        if horizontalSizeClass == .regular {
+            HStack{
+                CompPlayback()
+                ObjectGrid(size: "medium",
+                           buttonsAcross: 3,
+                           objects: allPlaybackObjects,
+                           allObjects: $allPlaybackObjects)
+            }.onAppear{
+                getAllObjects()
+            }
+        } else {
+            VStack{
+                CompactFaders()
+                ObjectGrid(size: "medium",
+                           buttonsAcross: 3,
+                           objects: allPlaybackObjects,
+                           allObjects: $allPlaybackObjects)
+            }.onAppear{
+                getAllObjects()
+            }
         }
     }
     
