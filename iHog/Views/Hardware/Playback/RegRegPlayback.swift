@@ -10,27 +10,32 @@ import SwiftUI
 struct RegRegPlayback: View {
     var body: some View {
         HStack{
-                ScrollView(.horizontal){
-                    LazyHStack{
-                        ForEach(1 ..< 90) { num in
-                            VerticalMasterView(masterNumber: num).padding(.all, BASE_PADDING)
-                        }
+            ScrollView(.horizontal){
+                LazyHStack{
+                    ForEach(1 ..< 90) { num in
+                        VerticalMasterView(masterNumber: num).padding(.all, BASE_PADDING)
                     }
-                }.padding(.horizontal)
+                }
+            }.padding(.horizontal)
             VStack{
-                FPButton(buttonText: "Choose")
+                FPButton(buttonText: "CH", buttonFunction: .mainchoose)
                     .padding(.bottom)
-                FPButton(buttonText: "Assert")
-                FPButton(buttonText: "Release")
+                FPButton(buttonText: "A", buttonFunction: .assert)
                     .padding(.bottom)
-                FPButton(buttonText: "Pig")
+                FPButton(buttonText: "R", buttonFunction: .release)
                     .padding(.bottom)
-                FPButton(buttonText: ">>")
-                FPButton(buttonText: "<<")
+                FPButton(buttonText: "Pig", buttonFunction: .pig)
                     .padding(.bottom)
-                FPButton(buttonText: "Back")
-                FPButton(buttonText: "Pause")
-                FPButton(buttonText: "Play")
+                FPButton(buttonText: ">>", buttonFunction: .skipfwd)
+                    .padding(.bottom)
+                FPButton(buttonText: "<<", buttonFunction: .skipback)
+                    .padding(.bottom)
+                FPButton(buttonText: "Back", buttonFunction: .mainback)
+                    .padding(.bottom)
+                FPButton(buttonText: "Pause", buttonFunction: .mainhalt)
+                    .padding(.bottom)
+                FPButton(buttonText: "Play", buttonFunction: .maingo)
+                    .padding(.bottom)
             }
             .padding()
             .background(Color.primary)

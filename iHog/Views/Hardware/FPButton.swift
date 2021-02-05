@@ -11,7 +11,7 @@ struct FPButton: View {
     @EnvironmentObject var osc: OSCHelper
     
     var buttonText: String
-    var buttonFunction: ButtonFunctionNames = .master
+    var buttonFunction: ButtonFunctionNames
     var buttonNumber: Int = 0
     var size: Int = 1
     
@@ -133,7 +133,8 @@ struct FPButton: View {
 struct FPButton_Previews: PreviewProvider {
     static var previews: some View {
         FPButton(
-            buttonText: "Record"
+            buttonText: "Record",
+            buttonFunction: .record
         )
     }
 }

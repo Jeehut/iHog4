@@ -89,6 +89,17 @@ enum ButtonFunctionNames: String {
     case flash
     case choose
     case master
+    // MARK: MAIN BUTTONS (AKA BIG PLAYBAK BUTTONS)
+    case mainchoose
+    case mainback
+    case mainhalt
+    case maingo
+    case assert
+    case release
+    case nextpage
+    case backpage
+    case skipback
+    case skipfwd
     // MARK: PROGRAMMING
     case numberpad
     case backspace
