@@ -62,6 +62,7 @@
 		15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E2D203253F14F900C7A453 /* CloudKit.framework */; };
 		15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520252514DA7500EF4B98 /* ShowSetting.swift */; };
 		15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520302514DBA300EF4B98 /* ObjectSettings.swift */; };
+		15F5D12D25CF36CB00EFAB4F /* PPProgramPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5D12C25CF36CB00EFAB4F /* PPProgramPlayback.swift */; };
 		15FA5F0E2525FF3400DF1A3C /* HorizontalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FA5F0D2525FF3400DF1A3C /* HorizontalSlider.swift */; };
 		15FA5F192526006E00DF1A3C /* HorizontalMasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FA5F182526006E00DF1A3C /* HorizontalMasterView.swift */; };
 		15FA5F292526025100DF1A3C /* CompPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FA5F282526025100DF1A3C /* CompPlayback.swift */; };
@@ -158,6 +159,7 @@
 		15E2D203253F14F900C7A453 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		15F520252514DA7500EF4B98 /* ShowSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSetting.swift; sourceTree = "<group>"; };
 		15F520302514DBA300EF4B98 /* ObjectSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSettings.swift; sourceTree = "<group>"; };
+		15F5D12C25CF36CB00EFAB4F /* PPProgramPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPProgramPlayback.swift; sourceTree = "<group>"; };
 		15FA5F0D2525FF3400DF1A3C /* HorizontalSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSlider.swift; sourceTree = "<group>"; };
 		15FA5F182526006E00DF1A3C /* HorizontalMasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMasterView.swift; sourceTree = "<group>"; };
 		15FA5F282526025100DF1A3C /* CompPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompPlayback.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				379B2C8125CD7CA1007447BB /* PPPlaybackViewParts */,
 				1560710A25CC29F0000EB05F /* PuntPageNav.swift */,
 				1560711425CC2A08000EB05F /* PPPlayback.swift */,
+				15F5D12C25CF36CB00EFAB4F /* PPProgramPlayback.swift */,
 			);
 			path = PuntPageViews;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				15FB201725220F52007EDC36 /* UtilityKeySheet.swift in Sources */,
 				1502F62F251CC53100BAC5EE /* KindButtonView.swift in Sources */,
 				159048312537DEED00910100 /* Constants.swift in Sources */,
+				15F5D12D25CF36CB00EFAB4F /* PPProgramPlayback.swift in Sources */,
 				15DA26BA25123EEB0063E236 /* Show.swift in Sources */,
 				1502F625251CC43900BAC5EE /* ActionButtonView.swift in Sources */,
 				156893812569B34C00BD6050 /* EditObjectView.swift in Sources */,
