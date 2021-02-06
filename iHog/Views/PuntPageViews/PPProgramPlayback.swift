@@ -53,11 +53,33 @@ struct PPProgramPlayback: View {
                 HStack{
                     CompactFaders(mainPlaybackIsShowing: $mainPlaybackIsShowing)
                     if mainPlaybackIsShowing == false {
-                        ObjectGrid(size: "medium",
-                                   buttonsAcross: 3,
-                                   objects: groupObjects,
-                                   allObjects: $groupObjects)
-                            .transition(.move(edge: .bottom))
+                        VStack{
+                            ObjectGrid(size: "medium",
+                                       buttonsAcross: 3,
+                                       objects: groupObjects,
+                                       allObjects: $groupObjects)
+                                .transition(.move(edge: .bottom))
+                            
+                            VStack{
+                                ObjectGrid(size: "medium",
+                                           buttonsAcross: 3,
+                                           objects: groupObjects,
+                                           allObjects: $groupObjects)
+                                Picker("palette selection", selection: $chosenPaletteType) {
+                                    ForEach(0 ..< paletteTypes.count) {
+                                        Text(paletteTypes[$0].rawValue.capitalized)
+                                    }
+                                }.pickerStyle(SegmentedPickerStyle())
+                                ObjectGrid(
+                                    size: "medium",
+                                    buttonsAcross: 3,
+                                    objects: paletteObjects.filter({ obj in
+                                        return obj.objType == paletteTypes[chosenPaletteType]
+                                    }), allObjects: $paletteObjects
+                                )
+                                
+                            }
+                        }
                     } else {
                         VertMainPlaybacks()
                             .transition(.move(edge: .bottom))
@@ -72,11 +94,25 @@ struct PPProgramPlayback: View {
                 VStack{
                     CompactFaders(mainPlaybackIsShowing: $mainPlaybackIsShowing)
                     if mainPlaybackIsShowing == false {
-                        ObjectGrid(size: "medium",
-                                   buttonsAcross: 3,
-                                   objects: groupObjects,
-                                   allObjects: $groupObjects)
-                            .transition(.move(edge: .bottom))
+                            VStack{
+                                ObjectGrid(size: "small",
+                                           buttonsAcross: 3,
+                                           objects: groupObjects,
+                                           allObjects: $groupObjects)
+                                Picker("palette selection", selection: $chosenPaletteType) {
+                                    ForEach(0 ..< paletteTypes.count) {
+                                        Text(paletteTypes[$0].rawValue.capitalized)
+                                    }
+                                }.pickerStyle(SegmentedPickerStyle())
+                                ObjectGrid(
+                                    size: "small",
+                                    buttonsAcross: 3,
+                                    objects: paletteObjects.filter({ obj in
+                                        return obj.objType == paletteTypes[chosenPaletteType]
+                                    }), allObjects: $paletteObjects
+                                )
+                                
+                            }
                     } else {
                         VertMainPlaybacks()
                             .transition(.move(edge: .bottom))
@@ -88,11 +124,25 @@ struct PPProgramPlayback: View {
                 HStack{
                     CompactFaders(mainPlaybackIsShowing: $mainPlaybackIsShowing)
                     if mainPlaybackIsShowing == false {
-                        ObjectGrid(size: "medium",
-                                   buttonsAcross: 3,
-                                   objects: groupObjects,
-                                   allObjects: $groupObjects)
-                            .transition(.move(edge: .bottom))
+                            VStack{
+                                ObjectGrid(size: "small",
+                                           buttonsAcross: 3,
+                                           objects: groupObjects,
+                                           allObjects: $groupObjects)
+                                Picker("palette selection", selection: $chosenPaletteType) {
+                                    ForEach(0 ..< paletteTypes.count) {
+                                        Text(paletteTypes[$0].rawValue.capitalized)
+                                    }
+                                }.pickerStyle(SegmentedPickerStyle())
+                                ObjectGrid(
+                                    size: "small",
+                                    buttonsAcross: 3,
+                                    objects: paletteObjects.filter({ obj in
+                                        return obj.objType == paletteTypes[chosenPaletteType]
+                                    }), allObjects: $paletteObjects
+                                )
+                                
+                            }
                     } else {
                         VertMainPlaybacks()
                             .transition(.move(edge: .bottom))
