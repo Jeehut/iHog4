@@ -18,30 +18,67 @@ struct PPPlayback: View {
     
     var body: some View {
         if horizontalSizeClass == .regular {
-            HStack{
-                CompPlayback()
-                ObjectGrid(size: "medium",
-                           buttonsAcross: 3,
-                           objects: allPlaybackObjects,
-                           allObjects: $allPlaybackObjects)
-            }.onAppear{
-                getAllObjects()
-            }
-        } else {
-            VStack{
-                CompactFaders(mainPlaybackIsShowing: $mainPlaybackIsShowing)
-                if mainPlaybackIsShowing == false {
+            if verticalSizeClass == .regular {
+                HStack{
+                    CompPlayback()
                     ObjectGrid(size: "medium",
                                buttonsAcross: 3,
                                objects: allPlaybackObjects,
                                allObjects: $allPlaybackObjects)
-                        .transition(.move(edge: .bottom))
-                } else {
-                    VertMainPlaybacks()
-                        .transition(.move(edge: .bottom))
+                }.onAppear{
+                    getAllObjects()
                 }
-            }.onAppear{
-                getAllObjects()
+            } else {
+                HStack{
+                    CompactFaders(mainPlaybackIsShowing: $mainPlaybackIsShowing)
+                    if mainPlaybackIsShowing == false {
+                        ObjectGrid(size: "medium",
+                                   buttonsAcross: 3,
+                                   objects: allPlaybackObjects,
+                                   allObjects: $allPlaybackObjects)
+                            .transition(.move(edge: .bottom))
+                    } else {
+                        VertMainPlaybacks()
+                            .transition(.move(edge: .bottom))
+                    }
+                }.onAppear{
+                    getAllObjects()
+                }
+                
+            }
+        } else {
+            if verticalSizeClass == .regular {
+                VStack{
+                    CompactFaders(mainPlaybackIsShowing: $mainPlaybackIsShowing)
+                    if mainPlaybackIsShowing == false {
+                        ObjectGrid(size: "medium",
+                                   buttonsAcross: 3,
+                                   objects: allPlaybackObjects,
+                                   allObjects: $allPlaybackObjects)
+                            .transition(.move(edge: .bottom))
+                    } else {
+                        VertMainPlaybacks()
+                            .transition(.move(edge: .bottom))
+                    }
+                }.onAppear{
+                    getAllObjects()
+                }
+            } else {
+                HStack{
+                    CompactFaders(mainPlaybackIsShowing: $mainPlaybackIsShowing)
+                    if mainPlaybackIsShowing == false {
+                        ObjectGrid(size: "medium",
+                                   buttonsAcross: 3,
+                                   objects: allPlaybackObjects,
+                                   allObjects: $allPlaybackObjects)
+                            .transition(.move(edge: .bottom))
+                    } else {
+                        VertMainPlaybacks()
+                            .transition(.move(edge: .bottom))
+                    }
+                }.onAppear{
+                    getAllObjects()
+                }
             }
         }
     }
