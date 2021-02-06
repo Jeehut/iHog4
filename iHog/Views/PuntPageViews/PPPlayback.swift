@@ -14,6 +14,7 @@ struct PPPlayback: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
     @State private var allPlaybackObjects: [ShowObject] = []
+    @State private var mainPlaybackIsShowing = false
     
     var body: some View {
         if horizontalSizeClass == .regular {
@@ -28,11 +29,17 @@ struct PPPlayback: View {
             }
         } else {
             VStack{
-                CompactFaders()
-                ObjectGrid(size: "medium",
-                           buttonsAcross: 3,
-                           objects: allPlaybackObjects,
-                           allObjects: $allPlaybackObjects)
+                CompactFaders(mainPlaybackIsShowing: $mainPlaybackIsShowing)
+                if mainPlaybackIsShowing == false {
+                    ObjectGrid(size: "medium",
+                               buttonsAcross: 3,
+                               objects: allPlaybackObjects,
+                               allObjects: $allPlaybackObjects)
+                        .transition(.move(edge: .bottom))
+                } else {
+                    VertMainPlaybacks()
+                        .transition(.move(edge: .bottom))
+                }
             }.onAppear{
                 getAllObjects()
             }

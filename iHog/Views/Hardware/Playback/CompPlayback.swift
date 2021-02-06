@@ -11,10 +11,10 @@ struct CompPlayback: View {
     var body: some View {
         VStack{
             HStack{
+                FPButton(buttonText: "Back Page", buttonFunction: .backpage)
+                Spacer()
                 FPButton(buttonText: "Next Page",
                          buttonFunction: .nextpage)
-                Spacer()
-                FPButton(buttonText: "Back Page", buttonFunction: .backpage)
             }
             .padding(.horizontal)
             .padding(.bottom)
@@ -25,37 +25,43 @@ struct CompPlayback: View {
                     }
                 }
             }
-            VStack{
-                HStack{
-                    FPButton(buttonText: "CH", buttonFunction: .mainchoose)
-                    Spacer()
-                    FPButton(buttonText: "A", buttonFunction: .assert)
-                    Spacer()
-                    FPButton(buttonText: "R", buttonFunction: .release)
-                }
-                HStack{
-                    FPButton(buttonText: "<<", buttonFunction: .skipback)
-                    Spacer()
-                    FPButton(buttonText: "Pig", buttonFunction: .pig)
-                    Spacer()
-                    FPButton(buttonText: ">>", buttonFunction: .skipfwd)
-                }
-                HStack{
-                    FPButton(buttonText: "Back", buttonFunction: .mainback)
-                    Spacer()
-                    FPButton(buttonText: "Pause", buttonFunction: .mainhalt)
-                    Spacer()
-                    FPButton(buttonText: "Play", buttonFunction: .maingo)
-                }
-            }
-            .padding(.horizontal)
-            .padding(.bottom)
+            VertMainPlaybacks()
         }
     }
 }
 
 struct CompPlayback_Previews: PreviewProvider {
     static var previews: some View {
-        CompPlayback()
+        CompPlayback().environmentObject(OSCHelper())
+    }
+}
+
+struct VertMainPlaybacks: View {
+    var body: some View {
+        VStack{
+            HStack{
+                FPButton(buttonText: "CH", buttonFunction: .mainchoose)
+                Spacer()
+                FPButton(buttonText: "A", buttonFunction: .assert)
+                Spacer()
+                FPButton(buttonText: "R", buttonFunction: .release)
+            }
+            HStack{
+                FPButton(buttonText: "<<", buttonFunction: .skipback)
+                Spacer()
+                FPButton(buttonText: "Pig", buttonFunction: .pig)
+                Spacer()
+                FPButton(buttonText: ">>", buttonFunction: .skipfwd)
+            }
+            HStack{
+                FPButton(buttonText: "Back", buttonFunction: .mainback)
+                Spacer()
+                FPButton(buttonText: "Pause", buttonFunction: .mainhalt)
+                Spacer()
+                FPButton(buttonText: "Play", buttonFunction: .maingo)
+            }
+        }
+        .padding(.horizontal)
+        .padding(.bottom)
     }
 }

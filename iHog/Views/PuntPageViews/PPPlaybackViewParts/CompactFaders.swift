@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct CompactFaders: View {
+    @EnvironmentObject var osc: OSCHelper
+    @Binding var mainPlaybackIsShowing: Bool
     var body: some View {
         VStack{
             HStack{
+                FPButton(buttonText: "Back Page",
+                         buttonFunction: .backpage)
+                Spacer()
+                Button("Main Buttons"){
+                    openMainPlaybackSheet()
+                }
+                .buttonStyle(OpenButtonStyle())
+                Spacer()
                 FPButton(buttonText: "Next Page",
-                         buttonFunction: ButtonFunctionNames.nextpage)
-            }
+                         buttonFunction: .nextpage)
+            }.padding(.horizontal)
             ScrollView(.vertical){
                 LazyVStack{
                     ForEach(1 ..< 90) { num in
@@ -23,10 +33,16 @@ struct CompactFaders: View {
             }
         }
     }
+    
+    func openMainPlaybackSheet() {
+        withAnimation{
+                mainPlaybackIsShowing.toggle()
+        }
+    }
 }
 
 struct CompactFaders_Previews: PreviewProvider {
     static var previews: some View {
-        CompactFaders()
+        CompactFaders( mainPlaybackIsShowing: .constant(true)).environmentObject(OSCHelper())
     }
 }
