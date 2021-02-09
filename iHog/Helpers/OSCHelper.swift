@@ -245,6 +245,8 @@ extension OSCHelper: OSCClientDelegate {
 }
 // MARK: Receiving statuses
 extension OSCHelper {
+    /// Switch case for LED buttton status
+    /// - Parameter message: OSC Message received from the console
     func getStatusOfLEDButton(_ message: OSCMessage) {
         switch message.addressParts[3] {
         case "pause":
@@ -381,7 +383,9 @@ extension OSCHelper {
         client.send(packet: message)
     }
     
-    func frontPanelButton(button: String){
+    /// Sends OSC Messages for a front panel button push
+    /// - Parameter button: button name to push on console
+    func pushFrontPanelButton(button: String){
         let messagePushDown = OSCMessage(with: "\(hardware)\(button)", arguments: [1])
         client.send(packet: messagePushDown)
         
@@ -394,25 +398,25 @@ extension OSCHelper {
 extension OSCHelper {
     func selectProgrammingObject(objNumber: String, objType: ShowObjectType) {
         // double tap backspace
-        frontPanelButton(button: "backspace")
-        frontPanelButton(button: "backspace")
+        pushFrontPanelButton(button: "backspace")
+        pushFrontPanelButton(button: "backspace")
         // object type
-        frontPanelButton(button: objType.rawValue)
+        pushFrontPanelButton(button: objType.rawValue)
         print(objType.rawValue)
         // number
         for strng in objNumber {
             if strng == "." {
-                frontPanelButton(button: "period")
+                pushFrontPanelButton(button: "period")
             } else {
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .spellOut
                 let english = formatter.string(from: NSNumber(value: Int(objNumber)!))
 //                print(english ?? "NUMBER DIDN'T CONVERT")
-                frontPanelButton(button: english!)
+                pushFrontPanelButton(button: english!)
             }
         }
         // enter
-        frontPanelButton(button: "enter")
+        pushFrontPanelButton(button: "enter")
         print("push group button \(objNumber)")
     }
     func goListOrScene(objNumber: String, objType: String) {

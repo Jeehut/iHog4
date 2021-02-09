@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Front panel button
 struct FPButton: View {
     @EnvironmentObject var osc: OSCHelper
     
@@ -123,9 +124,9 @@ struct FPButton: View {
             let formatter = NumberFormatter()
             formatter.numberStyle = .spellOut
             let english = formatter.string(from: NSNumber(value: buttonNumber))
-            osc.frontPanelButton(button: english!)
+            osc.pushFrontPanelButton(button: english!)
         default:
-            osc.frontPanelButton(button: buttonFunction.rawValue)
+            osc.pushFrontPanelButton(button: buttonFunction.rawValue)
         }
     }
 }
