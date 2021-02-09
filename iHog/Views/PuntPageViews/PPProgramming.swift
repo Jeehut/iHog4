@@ -24,29 +24,74 @@ struct PPProgramming: View {
     
     var body: some View {
         if horizontalSizeClass == .regular {
-            HStack{
-                CompRegFPprogramming()
-                    .padding(.all)
-                VStack{
-                    ObjectGrid(size: "small",
-                               buttonsAcross: 3,
-                               objects: groupObjects,
-                               allObjects: $groupObjects)
-                    Picker("palette selection", selection: $chosenPaletteType) {
-                        ForEach(0 ..< paletteTypes.count) {
-                            Text(paletteTypes[$0].rawValue.capitalized)
+            if verticalSizeClass == .regular {
+                HStack{
+                    CompRegFPprogramming()
+                        .padding(.all)
+                    VStack{
+                        ObjectGrid(size: "small",
+                                   buttonsAcross: 3,
+                                   objects: groupObjects,
+                                   allObjects: $groupObjects)
+                        Picker("palette selection", selection: $chosenPaletteType) {
+                            ForEach(0 ..< paletteTypes.count) {
+                                Text(paletteTypes[$0].rawValue.capitalized)
+                            }
+                        }.pickerStyle(SegmentedPickerStyle())
+                        ObjectGrid(
+                            size: "small",
+                            buttonsAcross: 3,
+                            objects: paletteObjects.filter({ obj in
+                                return obj.objType == paletteTypes[chosenPaletteType]
+                            }), allObjects: $paletteObjects
+                        )
+                        
+                    }.onAppear{
+                        getAllObjects()
+                    }
+                }
+            } else {
+                HStack{
+                    VStack{
+        //                CommandLineView(commandLineText: "SolaSpot 1000 1 > 10 @ 100%")
+                        OpenPartsView()
+                        Button(action: {
+                            withAnimation{
+                                numericKeypadIsShowing.toggle()
+                            }
+                        }) {
+                            Text("\(numericKeypadIsShowing ? "Hide" : "Show") Numeric Keypad")
                         }
-                    }.pickerStyle(SegmentedPickerStyle())
-                    ObjectGrid(
-                        size: "small",
-                        buttonsAcross: 3,
-                        objects: paletteObjects.filter({ obj in
-                            return obj.objType == paletteTypes[chosenPaletteType]
-                        }), allObjects: $paletteObjects
-                    )
-                    
-                }.onAppear{
-                    getAllObjects()
+                        .buttonStyle(OpenButtonStyle())
+                    }
+                    VStack{
+                        SelectButtonView()
+                        HBCButtonView()
+                        ActionButtonView()
+                    }
+                    if numericKeypadIsShowing {
+                        NumericKeypadView()
+                    } else {
+                        VStack{
+                            ObjectGrid(size: "small",
+                                       buttonsAcross: 3,
+                                       objects: groupObjects,
+                                       allObjects: $groupObjects)
+                            Picker("palette selection", selection: $chosenPaletteType) {
+                                ForEach(0 ..< paletteTypes.count) {
+                                    Text(paletteTypes[$0].rawValue.capitalized)
+                                }
+                            }.pickerStyle(SegmentedPickerStyle())
+                            ObjectGrid(
+                                size: "small",
+                                buttonsAcross: 3,
+                                objects: paletteObjects.filter({ obj in
+                                    return obj.objType == paletteTypes[chosenPaletteType]
+                                }), allObjects: $paletteObjects
+                            )
+                            
+                        }
+                    }
                 }
             }
         } else {
