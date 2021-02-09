@@ -29,7 +29,7 @@ struct ShowNavigation: View {
                     Image(systemName: "play.rectangle")
                 }
                 .tag(Views.playbackObjects)
-            PPProgramPlayback()
+            PPProgramming()
                 .tabItem{
                     Image(systemName: "play.rectangle")
                 }

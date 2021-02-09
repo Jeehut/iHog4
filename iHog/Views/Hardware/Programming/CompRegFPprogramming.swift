@@ -10,13 +10,17 @@ import SwiftUI
 struct CompRegFPprogramming: View {
     var body: some View {
         VStack{
-            NumericKeypadView()
             ScrollView{
+                HStack{
+                    Spacer().frame(height: 0)
+                }
                 HBCButtonView()
                 SelectButtonView()
                     .padding(.vertical)
                 OpenPartsView()
-            }.padding(.bottom)
+            }
+            .padding(.bottom)
+            NumericKeypadView()
         }
     }
 }

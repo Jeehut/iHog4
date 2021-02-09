@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PuntPageNav: View {
+    @State private var count = 0
     var body: some View {
         Text("Hello, World!")
     }
