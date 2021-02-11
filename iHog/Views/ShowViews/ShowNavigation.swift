@@ -15,7 +15,9 @@ struct ShowNavigation: View {
     enum Views: Hashable {
         case programmingObjects
         case playbackObjects
-        case puntPage
+        case puntPageProgramming
+        case puntPagePlayback
+        case puntPageProgPlay
     }
     var body: some View {
         TabView(selection: $selectedView) {
@@ -29,11 +31,21 @@ struct ShowNavigation: View {
                     Image(systemName: "play.rectangle")
                 }
                 .tag(Views.playbackObjects)
+            PPPlayback()
+                .tabItem{
+                    Image(systemName: "slider.horizontal.below.square.fill.and.square")
+                }
+                .tag(Views.puntPagePlayback)
+            PPProgramPlayback()
+                .tabItem{
+                    Image(systemName: "esim")
+                }
+                .tag(Views.puntPageProgPlay)
             PPProgramming()
                 .tabItem{
-                    Image(systemName: "play.rectangle")
+                    Image(systemName: "paintbrush")
                 }
-                .tag(Views.puntPage)
+                .tag(Views.puntPageProgramming)
         }
         .navigationBarTitle(selectedShow.name!)
         .navigationBarTitleDisplayMode(.inline)
