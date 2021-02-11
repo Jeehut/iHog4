@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ShowNavigation: View {
     @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
+    @AppStorage(Settings.isPuntPagePurchased.rawValue) var isPuntPagePurchased: Bool = false
     var selectedShow: ShowEntity
     @State private var selectedView: Views = Views.programmingObjects
     
@@ -31,21 +32,30 @@ struct ShowNavigation: View {
                     Image(systemName: "play.rectangle")
                 }
                 .tag(Views.playbackObjects)
-            PPPlayback()
-                .tabItem{
-                    Image(systemName: "slider.horizontal.below.square.fill.and.square")
-                }
-                .tag(Views.puntPagePlayback)
-            PPProgramPlayback()
-                .tabItem{
-                    Image(systemName: "esim")
-                }
-                .tag(Views.puntPageProgPlay)
-            PPProgramming()
-                .tabItem{
-                    Image(systemName: "paintbrush")
-                }
-                .tag(Views.puntPageProgramming)
+            if isPuntPagePurchased {
+                PPPlayback()
+                    .tabItem{
+                        Image(systemName: "slider.horizontal.below.square.fill.and.square")
+                    }
+                    .tag(Views.puntPagePlayback)
+                PPProgramPlayback()
+                    .tabItem{
+                        Image(systemName: "esim")
+                    }
+                    .tag(Views.puntPageProgPlay)
+                PPProgramming()
+                    .tabItem{
+                        Image(systemName: "paintbrush")
+                    }
+                    .tag(Views.puntPageProgramming)
+            } else {
+                PPPurchaseView()
+                    .tabItem{
+                        Image(systemName: "slider.horizontal.below.square.fill.and.square")
+                        Text("Punt Page Unlock")
+                    }
+                    .tag(Views.puntPagePlayback)
+            }
         }
         .navigationBarTitle(selectedShow.name!)
         .navigationBarTitleDisplayMode(.inline)

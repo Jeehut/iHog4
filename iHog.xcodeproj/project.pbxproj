@@ -14,6 +14,7 @@
 		1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F638251CC83F00BAC5EE /* EncoderWheel.swift */; };
 		1502F63E251CCB0700BAC5EE /* EncoderWheelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502F63D251CCB0700BAC5EE /* EncoderWheelsView.swift */; };
 		152902552538727A002D4F2E /* ShowNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152902542538727A002D4F2E /* ShowNavigation.swift */; };
+		152EECDA25D56CCF00136CC7 /* PPPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EECD925D56CCF00136CC7 /* PPPurchaseView.swift */; };
 		153009D0258B8A0D00311520 /* OSCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153009CF258B8A0D00311520 /* OSCHelper.swift */; };
 		1547E0C2256732B600E7FE98 /* RegCompPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547E0C1256732B600E7FE98 /* RegCompPlayback.swift */; };
 		155450132524B0E60025DCAA /* FPPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450122524B0E50025DCAA /* FPPlayback.swift */; };
@@ -24,7 +25,6 @@
 		1557952B2518CB9C004FD603 /* ShowObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557952A2518CB9C004FD603 /* ShowObjectView.swift */; };
 		155795302518CBBF004FD603 /* ShowObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557952F2518CBBF004FD603 /* ShowObject.swift */; };
 		155795362518D49A004FD603 /* ObjectGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155795352518D49A004FD603 /* ObjectGrid.swift */; };
-		1560710B25CC29F0000EB05F /* PuntPageNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560710A25CC29F0000EB05F /* PuntPageNav.swift */; };
 		1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560711425CC2A08000EB05F /* PPPlayback.swift */; };
 		1563789A2539C9BB00C22F0B /* NewShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156378992539C9BB00C22F0B /* NewShowView.swift */; };
 		156893812569B34C00BD6050 /* EditObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156893802569B34C00BD6050 /* EditObjectView.swift */; };
@@ -104,6 +104,7 @@
 		1502F638251CC83F00BAC5EE /* EncoderWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderWheel.swift; sourceTree = "<group>"; };
 		1502F63D251CCB0700BAC5EE /* EncoderWheelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderWheelsView.swift; sourceTree = "<group>"; };
 		152902542538727A002D4F2E /* ShowNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNavigation.swift; sourceTree = "<group>"; };
+		152EECD925D56CCF00136CC7 /* PPPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPPurchaseView.swift; sourceTree = "<group>"; };
 		153009CF258B8A0D00311520 /* OSCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSCHelper.swift; sourceTree = "<group>"; };
 		1547E0C1256732B600E7FE98 /* RegCompPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegCompPlayback.swift; sourceTree = "<group>"; };
 		155450122524B0E50025DCAA /* FPPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPPlayback.swift; sourceTree = "<group>"; };
@@ -114,7 +115,6 @@
 		1557952A2518CB9C004FD603 /* ShowObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowObjectView.swift; sourceTree = "<group>"; };
 		1557952F2518CBBF004FD603 /* ShowObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowObject.swift; sourceTree = "<group>"; };
 		155795352518D49A004FD603 /* ObjectGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectGrid.swift; sourceTree = "<group>"; };
-		1560710A25CC29F0000EB05F /* PuntPageNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuntPageNav.swift; sourceTree = "<group>"; };
 		1560711425CC2A08000EB05F /* PPPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPPlayback.swift; sourceTree = "<group>"; };
 		156378992539C9BB00C22F0B /* NewShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShowView.swift; sourceTree = "<group>"; };
 		156893802569B34C00BD6050 /* EditObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditObjectView.swift; sourceTree = "<group>"; };
@@ -240,10 +240,10 @@
 			isa = PBXGroup;
 			children = (
 				379B2C8125CD7CA1007447BB /* PPPlaybackViewParts */,
-				1560710A25CC29F0000EB05F /* PuntPageNav.swift */,
 				1560711425CC2A08000EB05F /* PPPlayback.swift */,
 				15F5D12C25CF36CB00EFAB4F /* PPProgramPlayback.swift */,
 				1577808E25D2BDEB009AE8CE /* PPProgramming.swift */,
+				152EECD925D56CCF00136CC7 /* PPPurchaseView.swift */,
 			);
 			path = PuntPageViews;
 			sourceTree = "<group>";
@@ -671,13 +671,13 @@
 				1578D3312512F460001E1BDF /* Device.swift in Sources */,
 				15D07E06251E1B2500A80DC4 /* SelectButtonView.swift in Sources */,
 				15DA2680251237D70063E236 /* Persistence.swift in Sources */,
+				152EECDA25D56CCF00136CC7 /* PPPurchaseView.swift in Sources */,
 				15D07E0E251E1B7400A80DC4 /* HBCButtonView.swift in Sources */,
 				155450262524B72E0025DCAA /* RegRegPlayback.swift in Sources */,
 				15D07E18251E209100A80DC4 /* CommandLineView.swift in Sources */,
 				1563789A2539C9BB00C22F0B /* NewShowView.swift in Sources */,
 				155795362518D49A004FD603 /* ObjectGrid.swift in Sources */,
 				155530D125138A5500CF48FD /* UIDevice+Extensions.swift in Sources */,
-				1560710B25CC29F0000EB05F /* PuntPageNav.swift in Sources */,
 				15DA2679251237D60063E236 /* ContentView.swift in Sources */,
 				15FB201725220F52007EDC36 /* UtilityKeySheet.swift in Sources */,
 				1502F62F251CC53100BAC5EE /* KindButtonView.swift in Sources */,
