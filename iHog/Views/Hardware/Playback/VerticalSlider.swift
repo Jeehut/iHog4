@@ -29,12 +29,11 @@ struct VerticalSlider: View {
                 .frame(width: BASE_THUMB_SIZE,
                        height: BASE_THUMB_SIZE,
                        alignment: .center)
-                .offset(y: CGFloat(faderLevel))
+                .offset(y: CGFloat(-(osc.faders[master])))
                 .gesture(DragGesture()
                             .onChanged({value in
                                 setFaderLevel(newValue: value.location.y)
                             }))
-//            Text("\(faderLevel)").foregroundColor(.red)
         }
     }
     

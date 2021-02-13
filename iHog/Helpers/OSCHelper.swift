@@ -76,11 +76,11 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
         }
     }
     public var kindKeys: [String: Float] = [ButtonFunctionNames.intensity.rawValue: 0.0,
-                           ButtonFunctionNames.position.rawValue: 0.0,
-                           ButtonFunctionNames.colour.rawValue: 0.0,
-                           ButtonFunctionNames.beam.rawValue: 0.0,
-                           ButtonFunctionNames.effect.rawValue: 0.0,
-                           ButtonFunctionNames.time.rawValue: 0.0] {
+                                            ButtonFunctionNames.position.rawValue: 0.0,
+                                            ButtonFunctionNames.colour.rawValue: 0.0,
+                                            ButtonFunctionNames.beam.rawValue: 0.0,
+                                            ButtonFunctionNames.effect.rawValue: 0.0,
+                                            ButtonFunctionNames.time.rawValue: 0.0] {
         willSet{
             self.objectWillChange.send()
         }
@@ -143,6 +143,11 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
         }
     }
     public var chooses: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] {
+        willSet {
+            self.objectWillChange.send()
+        }
+    }
+    public var faders: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] {
         willSet {
             self.objectWillChange.send()
         }
@@ -215,6 +220,10 @@ extension OSCHelper: OSCClientDelegate {
                 case let encoder where encoder.contains("encoder"):
                     getEncoderWheel(message)
                 // Need to check all function keys
+                case "fader":
+                    let faderIndex = Int(message.addressParts[3]) ?? 0
+                    let level = message.arguments[0] as! Float
+                    setFaderLevel(value: level, fader: faderIndex)
                 case ButtonFunctionNames.h1.rawValue,
                      ButtonFunctionNames.h2.rawValue,
                      ButtonFunctionNames.h3.rawValue,
@@ -235,7 +244,7 @@ extension OSCHelper: OSCClientDelegate {
                 case "time":
                     break
                 default:
-                    print("IDK What to do with this message")
+                    print("\(message.addressPattern) - \(message.arguments)")
                 }
             } else {
                 readBundle(bundle: item as! OSCBundle)
@@ -353,6 +362,11 @@ extension OSCHelper {
             functionKeys[key]?[1] = text
         }
     }
+    func setFaderLevel(value: Float, fader: Int) {
+        let y = 0.86274509803922 * value - 110.0
+        print(" val: \(value) || y: \(y)")
+        faders[fader] = y
+    }
 }
 // MARK: Hardware Messages
 
@@ -411,7 +425,7 @@ extension OSCHelper {
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .spellOut
                 let english = formatter.string(from: NSNumber(value: Int(objNumber)!))
-//                print(english ?? "NUMBER DIDN'T CONVERT")
+                //                print(english ?? "NUMBER DIDN'T CONVERT")
                 pushFrontPanelButton(button: english!)
             }
         }

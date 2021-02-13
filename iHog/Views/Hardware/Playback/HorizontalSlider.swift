@@ -30,7 +30,7 @@ struct HorizontalSlider: View {
                        height: BASE_THUMB_SIZE,
                        alignment: .center
                 )
-                .offset(x: CGFloat(faderLevel))
+                .offset(x: CGFloat((osc.faders[master])))
                 .gesture(
                     DragGesture().onChanged({value in
 //                        print("New value: \(value.location.x)")
