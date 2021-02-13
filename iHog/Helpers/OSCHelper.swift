@@ -373,7 +373,7 @@ extension OSCHelper {
     }
     
     func fader(master: Int, value: Float){
-        let message = OSCMessage(with: "\(hardware)\(master)", arguments: [value])
+        let message = OSCMessage(with: "\(hardware)fader/\(master)", arguments: [value])
         client.send(packet: message)
     }
     
