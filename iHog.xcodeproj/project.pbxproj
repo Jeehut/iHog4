@@ -28,6 +28,9 @@
 		1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560711425CC2A08000EB05F /* PPPlayback.swift */; };
 		1563789A2539C9BB00C22F0B /* NewShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156378992539C9BB00C22F0B /* NewShowView.swift */; };
 		156893812569B34C00BD6050 /* EditObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156893802569B34C00BD6050 /* EditObjectView.swift */; };
+		15727F2625D742A200B67505 /* HogOSCProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15727F2525D742A200B67505 /* HogOSCProducts.swift */; };
+		15727F2C25D742DF00B67505 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15727F2B25D742DF00B67505 /* IAPHelper.swift */; };
+		15727F3A25D7471400B67505 /* IAPViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15727F3925D7471400B67505 /* IAPViews.swift */; };
 		1577808F25D2BDEB009AE8CE /* PPProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1577808E25D2BDEB009AE8CE /* PPProgramming.swift */; };
 		1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3272512F3DF001E1BDF /* ShowBox.swift */; };
 		1578D3312512F460001E1BDF /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3302512F460001E1BDF /* Device.swift */; };
@@ -118,6 +121,9 @@
 		1560711425CC2A08000EB05F /* PPPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPPlayback.swift; sourceTree = "<group>"; };
 		156378992539C9BB00C22F0B /* NewShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShowView.swift; sourceTree = "<group>"; };
 		156893802569B34C00BD6050 /* EditObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditObjectView.swift; sourceTree = "<group>"; };
+		15727F2525D742A200B67505 /* HogOSCProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogOSCProducts.swift; sourceTree = "<group>"; };
+		15727F2B25D742DF00B67505 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		15727F3925D7471400B67505 /* IAPViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPViews.swift; sourceTree = "<group>"; };
 		1577808E25D2BDEB009AE8CE /* PPProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPProgramming.swift; sourceTree = "<group>"; };
 		1578D3272512F3DF001E1BDF /* ShowBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBox.swift; sourceTree = "<group>"; };
 		1578D3302512F460001E1BDF /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -229,6 +235,7 @@
 		155530CF25138A2D00CF48FD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				15727F2425D7428400B67505 /* InAppPurchases */,
 				155530D025138A5500CF48FD /* UIDevice+Extensions.swift */,
 				159048302537DEED00910100 /* Constants.swift */,
 				153009CF258B8A0D00311520 /* OSCHelper.swift */,
@@ -246,6 +253,15 @@
 				152EECD925D56CCF00136CC7 /* PPPurchaseView.swift */,
 			);
 			path = PuntPageViews;
+			sourceTree = "<group>";
+		};
+		15727F2425D7428400B67505 /* InAppPurchases */ = {
+			isa = PBXGroup;
+			children = (
+				15727F2525D742A200B67505 /* HogOSCProducts.swift */,
+				15727F2B25D742DF00B67505 /* IAPHelper.swift */,
+			);
+			path = InAppPurchases;
 			sourceTree = "<group>";
 		};
 		1578D3262512F3CF001E1BDF /* ChooseShowSettings */ = {
@@ -427,6 +443,7 @@
 				1578D32F2512F44F001E1BDF /* Device */,
 				1578D3262512F3CF001E1BDF /* ChooseShowSettings */,
 				15DA26AB251238980063E236 /* SettingsView.swift */,
+				15727F3925D7471400B67505 /* IAPViews.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -648,6 +665,7 @@
 				1547E0C2256732B600E7FE98 /* RegCompPlayback.swift in Sources */,
 				15DA2683251237D70063E236 /* iHog.xcdatamodeld in Sources */,
 				15D07DF0251E0EB400A80DC4 /* FunctionKeyView.swift in Sources */,
+				15727F2625D742A200B67505 /* HogOSCProducts.swift in Sources */,
 				15D07E13251E1E7F00A80DC4 /* OpenPartsView.swift in Sources */,
 				15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */,
 				15CA428B25220DBD00C56FE0 /* FunctionKeySheet.swift in Sources */,
@@ -687,7 +705,9 @@
 				1502F625251CC43900BAC5EE /* ActionButtonView.swift in Sources */,
 				1577808F25D2BDEB009AE8CE /* PPProgramming.swift in Sources */,
 				156893812569B34C00BD6050 /* EditObjectView.swift in Sources */,
+				15727F2C25D742DF00B67505 /* IAPHelper.swift in Sources */,
 				15DA2677251237D60063E236 /* iHogApp.swift in Sources */,
+				15727F3A25D7471400B67505 /* IAPViews.swift in Sources */,
 				15DA26AC251238980063E236 /* SettingsView.swift in Sources */,
 				15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */,
 				1502F62A251CC4A200BAC5EE /* UtilityButtonView.swift in Sources */,

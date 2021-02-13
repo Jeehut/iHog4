@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShowNavigation: View {
     @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
-    @AppStorage(Settings.isPuntPagePurchased.rawValue) var isPuntPagePurchased: Bool = false
+    @AppStorage(Settings.puntPageIsEnabled.rawValue) var puntPageIsEnabled: Bool = false
     var selectedShow: ShowEntity
     @State private var selectedView: Views = Views.programmingObjects
     
@@ -32,7 +32,7 @@ struct ShowNavigation: View {
                     Image(systemName: "play.rectangle")
                 }
                 .tag(Views.playbackObjects)
-            if isPuntPagePurchased {
+            if puntPageIsEnabled {
                 PPPlayback()
                     .tabItem{
                         Image(systemName: "slider.horizontal.below.square.fill.and.square")

@@ -79,7 +79,7 @@ enum Settings: String {
     case buttonsAcrossScene
     case isButtonFilledScene
     
-    case isPuntPagePurchased
+    case puntPageIsEnabled
 }
 
 // MARK: BUTTON NAME ENUMS
