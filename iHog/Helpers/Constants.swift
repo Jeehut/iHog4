@@ -52,6 +52,7 @@ enum Settings: String {
     case isOSCOn
     
     case encoderWheelPrecision
+    case isEncoderFine
     case isNanoModeOn
     case isHapticOn
     
