@@ -50,7 +50,7 @@ struct EncoderWheel: View {
                 }))
         }.onTapGesture {
             print("DO SOMETHING")
-        }.padding()
+        }.padding(2)
         .frame(width: widthHeight, height: widthHeight, alignment: .center)
     }
     
