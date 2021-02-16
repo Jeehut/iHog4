@@ -8,10 +8,19 @@
 import SwiftUI
 
 struct CompPlayback: View {
+    @EnvironmentObject var osc: OSCHelper
+    
     var body: some View {
         VStack{
             HStack{
                 FPButton(buttonText: "Back Page", buttonFunction: .backpage)
+                Spacer()
+                Button(action: {
+                    osc.sendReleaseAllMessage()
+                }) {
+                    Text("Release All")
+                }
+                .buttonStyle(OpenButtonStyle())
                 Spacer()
                 FPButton(buttonText: "Next Page",
                          buttonFunction: .nextpage)

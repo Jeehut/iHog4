@@ -368,8 +368,8 @@ extension OSCHelper {
         faders[fader] = y
     }
 }
-// MARK: Hardware Messages
 
+// MARK: Hardware Messages
 extension OSCHelper {
     // MARK: Playback
     func chooseButton(master: Int){
@@ -405,6 +405,20 @@ extension OSCHelper {
         
         let messageRelease = OSCMessage(with: "\(hardware)\(button)", arguments: [0])
         client.send(packet: messageRelease)
+    }
+    
+    func sendReleaseAllMessage(){
+        var pigButton = OSCMessage(with: "\(hardware)pig", arguments: [1])
+        var releaseButton = OSCMessage(with: "\(hardware)release", arguments: [1])
+        
+        client.send(packet: pigButton)
+        client.send(packet: releaseButton)
+        
+        pigButton = OSCMessage(with: "\(hardware)pig", arguments: [0])
+        releaseButton = OSCMessage(with: "\(hardware)release", arguments: [0])
+        
+        client.send(packet: pigButton)
+        client.send(packet: releaseButton)
     }
 }
 
