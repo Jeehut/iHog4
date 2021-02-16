@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SettingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -42,7 +43,7 @@ struct SettingsView: View {
                     Section(header: Text("Shows")) {
                         ForEach(shows) { show in
                             NavigationLink(show.name!, destination: ShowNavigation(selectedShow: show))
-                        }
+                        }.onDelete(perform: delete)
                         Button(action: {
                             isAddingShow = true
                         }){
@@ -78,6 +79,25 @@ struct SettingsView: View {
                 }
             }
         }.navigationViewStyle( DoubleColumnNavigationViewStyle())
+    }
+    
+    
+    func delete(at offsets: IndexSet) {
+        let indexOfShow: Int = offsets.first ?? 0
+        
+        let showID: NSUUID = shows[indexOfShow].id! as NSUUID
+        
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "ShowEntity")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", showID as CVarArg)
+        fetchRequest.fetchLimit = 1
+        do{
+            let test = try viewContext.fetch(fetchRequest)
+            let showToDelete = test[0] as! NSManagedObject
+            viewContext.delete(showToDelete)
+            try viewContext.save()
+        } catch{
+            print(error)
+        }
     }
 }
 
