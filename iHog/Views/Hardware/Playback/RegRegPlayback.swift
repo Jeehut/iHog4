@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegRegPlayback: View {
+    @EnvironmentObject var osc: OSCHelper
     var body: some View {
         HStack{
             ScrollView(.horizontal){
@@ -24,8 +25,14 @@ struct RegRegPlayback: View {
                     .padding(.bottom)
                 FPButton(buttonText: "R", buttonFunction: .release)
                     .padding(.bottom)
-                FPButton(buttonText: "Pig", buttonFunction: .pig)
-                    .padding(.bottom)
+                    .contextMenu{
+                        Button(action: {
+                            print("Release All")
+                            osc.sendReleaseAllMessage()
+                        }, label: {
+                            Text("Release All")
+                        })
+                    }
                 FPButton(buttonText: ">>", buttonFunction: .skipfwd)
                     .padding(.bottom)
                 FPButton(buttonText: "<<", buttonFunction: .skipback)
