@@ -15,13 +15,6 @@ struct CompPlayback: View {
             HStack{
                 FPButton(buttonText: "Back Page", buttonFunction: .backpage)
                 Spacer()
-                Button(action: {
-                    osc.sendReleaseAllMessage()
-                }) {
-                    Text("Release All")
-                }
-                .buttonStyle(OpenButtonStyle())
-                Spacer()
                 FPButton(buttonText: "Next Page",
                          buttonFunction: .nextpage)
             }
@@ -46,6 +39,7 @@ struct CompPlayback_Previews: PreviewProvider {
 }
 
 struct VertMainPlaybacks: View {
+    @EnvironmentObject var osc: OSCHelper
     var body: some View {
         VStack{
             HStack{
@@ -54,11 +48,18 @@ struct VertMainPlaybacks: View {
                 FPButton(buttonText: "A", buttonFunction: .assert)
                 Spacer()
                 FPButton(buttonText: "R", buttonFunction: .release)
+                    .contextMenu{
+                        Button(action: {
+                            osc.sendReleaseAllMessage()
+                        }, label: {
+                            Text("Release All")
+                        })
+                    }
             }
             HStack{
                 FPButton(buttonText: "<<", buttonFunction: .skipback)
                 Spacer()
-                FPButton(buttonText: "Pig", buttonFunction: .pig)
+//                FPButton(buttonText: "Pig", buttonFunction: .pig)
                 Spacer()
                 FPButton(buttonText: ">>", buttonFunction: .skipfwd)
             }

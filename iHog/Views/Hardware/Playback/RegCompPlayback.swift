@@ -8,15 +8,24 @@
 import SwiftUI
 
 struct RegCompPlayback: View {
+    @EnvironmentObject var osc: OSCHelper
     var body: some View {
         HStack{
             VStack{
                 FPButton(buttonText: "CH", buttonFunction: .mainchoose)
                     .padding(.bottom)
+                Spacer().frame(height: BASE_BUTTON_SIZE)
+                    .padding(HALF_PADDING)
                 FPButton(buttonText: "A", buttonFunction: .assert)
-                FPButton(buttonText: "R", buttonFunction: .release)
                     .padding(.bottom)
-                FPButton(buttonText: "Pig", buttonFunction: .pig)
+                FPButton(buttonText: "R", buttonFunction: .release)
+                    .contextMenu{
+                        Button(action: {
+                            osc.sendReleaseAllMessage()
+                        }, label: {
+                            Text("Release All")
+                        })
+                    }
             }
             VStack{
                 FPButton(buttonText: "Next Page", buttonFunction: .nextpage)
