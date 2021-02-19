@@ -46,7 +46,6 @@ struct PlaybackObjects: View {
     fileprivate func returnSideBySideView() -> some View {
         return Group {
             HStack{
-                
                 ObjectGrid(size: sizes[buttonSizeList],
                            buttonsAcross: getMaxButtonSize()[0],
                            objects: listObjects, allObjects: $listObjects)
@@ -202,8 +201,8 @@ struct PlaybackObjects: View {
         }
     }
     
-    // Returns: Integer array of 2. First index is List
-    //          Second index is Scene
+    /// Sets a max button size
+    /// - Returns: Integer array with 2 items inside. First index is lists, second index is scenes
     func getMaxButtonSize() -> [Int]{
         switch horizontalSizeClass {
         case .compact:
@@ -214,7 +213,7 @@ struct PlaybackObjects: View {
     }
     
     func getSceneButtonsAcross() -> Int{
-        print("Scene buttons \(buttonsAcrossScene)")
+//        print("Scene buttons \(buttonsAcrossScene)")
         switch buttonSizeScene {
         // small
         case 0:
@@ -238,7 +237,7 @@ struct PlaybackObjects: View {
     }
     
     func getListButtonsAcross() -> Int{
-        print("List buttons \(buttonsAcrossList)")
+//        print("List buttons \(buttonsAcrossList)")
         switch buttonSizeList {
         // small
         case 0:

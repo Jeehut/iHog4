@@ -451,4 +451,14 @@ extension OSCHelper {
         let message = OSCMessage(with: "\(playbackGo)\(objType)", arguments: [Float(objNumber)!])
         client.send(packet: message)
     }
+    
+    func releaseList(_ objNumber: String) {
+        let message = OSCMessage(with: "\(playbackRelease)1", arguments: [Float(objNumber)!])
+        client.send(packet: message)
+    }
+    
+    func releaseScene(_ objNumber: String) {
+        let message = OSCMessage(with: "\(playbackRelease)2", arguments: [Float(objNumber)!])
+        client.send(packet: message)
+    }
 }

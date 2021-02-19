@@ -113,6 +113,16 @@ struct ShowObjectView: View {
             print("Need a proper object type")
         }
     }
+    
+    func sendReleaseOSC(){
+        let objNum = obj.getObjNumber()
+        
+        if obj.objType == .list {
+            osc.releaseList(objNum)
+        } else {
+            osc.releaseScene(objNum)
+        }
+    }
 }
 
 //struct ShowObjectView_Previews: PreviewProvider {
