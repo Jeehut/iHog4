@@ -9,12 +9,12 @@ import Foundation
 
 public struct HogOSCProducts {
     
-    public static let coffee = "h4tier3"
-    public static let heart = "h4tier2"
-    public static let hundred = "h4tier4"
-    public static let smile = "h4tier1"
+    public static let h4tier3 = "h4tier3"
+    public static let h4tier2 = "h4tier2"
+    public static let h4tier4 = "h4tier4"
+    public static let h4tier1 = "h4tier1"
     
-    private static let productIdentifiers: Set<ProductIdentifier> = [HogOSCProducts.smile, HogOSCProducts.heart, HogOSCProducts.coffee, HogOSCProducts.hundred]
+    private static let productIdentifiers: Set<ProductIdentifier> = [HogOSCProducts.h4tier1, HogOSCProducts.h4tier2, HogOSCProducts.h4tier3, HogOSCProducts.h4tier4]
     
     public static let store = IAPHelper(productIds: HogOSCProducts.productIdentifiers)
 }

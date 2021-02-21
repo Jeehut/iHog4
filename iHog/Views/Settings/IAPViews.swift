@@ -49,44 +49,46 @@ struct PurchRow: View {
     
     func getProductTitle() -> String {
         switch product.productIdentifier {
-        case "fp1":
+        case "fp1", "h4tier1":
             return "😊"
-        case "fp2":
-            return "☕"
-        case "fp3":
+        case "fp2", "h4tier2":
             return "❤️"
-        case "fp4":
+        case "fp3", "h4tier3":
+            return "☕"
+        case "fp4", "h4tier4":
             return "💯"
         default:
             return product.localizedTitle
         }
-//        switch product.localizedTitle{
-//        case "Tip - Smiles":
-//            return "😊"
-//        case "Tip - buy a coffee for Maegan":
-//            return "☕"
-//        case "Tip - hearts":
-//            return "❤️"
-//        case "Tip - 10 for Maegan":
-//            return "💯"
-//        default:
-//            print(product.productIdentifier)
-//            return product.localizedTitle
-//        }
     }
     
     func getProductDescription() -> String {
-        switch product.productIdentifier {
-        case "fp1":
-            return "Lowest price for \(reasonToPurchase)"
-        case "fp2":
-            return "Medium price for \(reasonToPurchase)"
-        case "fp3":
-            return "High price for \(reasonToPurchase)"
-        case "fp4":
-            return "Highest price for \(reasonToPurchase)"
-        default:
-            return product.localizedTitle
+        if reasonToPurchase != "tip" {
+            switch product.productIdentifier {
+            case "fp1":
+                return "Small price for \(reasonToPurchase)"
+            case "fp2":
+                return "Medium price for \(reasonToPurchase)"
+            case "fp3":
+                return "High price for \(reasonToPurchase)"
+            case "fp4":
+                return "Giant price for \(reasonToPurchase)"
+            default:
+                return product.localizedTitle
+            }
+        } else {
+            switch product.productIdentifier {
+            case "h4tier1":
+                return "Small Tip"
+            case "h4tier2":
+                return "Medium Tip"
+            case "h4tier3":
+                return "Large Tip"
+            case "h4tier4":
+                return "Giant Tip"
+            default:
+                return product.localizedTitle
+            }
         }
     }
     
