@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
@@ -21,9 +21,14 @@
         <attribute name="showID" optional="YES" attributeType="String"/>
         <relationship name="show" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ShowEntity" inverseName="objects" inverseEntity="ShowEntity"/>
     </entity>
+    <entity name="TipEntity" representedClassName="TipEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="dateTipped" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <elements>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="58"/>
         <element name="ShowEntity" positionX="-63" positionY="-18" width="128" height="133"/>
         <element name="ShowObjectEntity" positionX="257.61328125" positionY="68.59765625" width="128" height="163"/>
+        <element name="TipEntity" positionX="99" positionY="90" width="128" height="59"/>
     </elements>
 </model>

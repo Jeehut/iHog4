@@ -29,21 +29,12 @@ class iHogUITestsScreenShots: XCTestCase {
 
         // Use recording to get started writing UI tests.
         
-        let tablesQuery2 = app.tables
-        let oscIsOffSwitch = tablesQuery2/*@START_MENU_TOKEN@*/.switches["OSC is off"]/*[[".cells[\"OSC is off\"].switches[\"OSC is off\"]",".switches[\"OSC is off\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        oscIsOffSwitch.tap()
-        oscIsOffSwitch.tap()
-        app.navigationBars["Device Settings"].buttons["Back"].tap()
+        let tablesQuery = app.tables
         snapshot("device")
-        let tablesQuery = tablesQuery2
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["Programming"]/*[[".cells[\"Programming\"].buttons[\"Programming\"]",".buttons[\"Programming\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        snapshot("programming")
-        app.navigationBars["Command line text"].buttons["Back"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["Playback"]/*[[".cells[\"Playback\"].buttons[\"Playback\"]",".buttons[\"Playback\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.navigationBars["_TtGC7SwiftUIP13$7fff57adc30428DestinationHosting"].buttons["Back"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.buttons["Add Show"]/*[[".cells[\"Add Show\"].buttons[\"Add Show\"]",".buttons[\"Add Show\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.textFields["Show Name"].tap()
-        
+        app.navigationBars["Device Settings"].buttons["Back"].tap()
+        tablesQuery.cells["New Show"].children(matching: .other).element(boundBy: 0).tap()
+
+                        
                 // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 

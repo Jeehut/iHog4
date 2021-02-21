@@ -30,6 +30,7 @@ struct SettingsView: View {
         case playbackObject
         case programObject
         case custom
+        case tipJar
     }
     
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
@@ -65,9 +66,20 @@ struct SettingsView: View {
                     Section(header: Text("Settings")){
                         NavigationLink("Device", destination: Device(), tag: SettingsNav.device, selection: $selectedSetting)
                         NavigationLink("Show Settings", destination: ShowSetting(), tag: SettingsNav.showSettings, selection: $selectedSetting)
-                        NavigationLink("About", destination: Text("About the app options"), tag: SettingsNav.about, selection: $selectedSetting)
                     }
-                    Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")
+                    Section(header: Text("About"),
+                            footer: Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")){
+                        Link("ℹ️ About [iHog Website]", destination: URL(string: "https://ihogapp.com/")!)
+                        Link("📘 Guide [iHog Website]", destination: URL(string: "https://ihogapp.com/guide")!)
+                        Link("🐛 Report a bug [GitHub Account Required]", destination: URL(string: "https://github.com/maeganwilson/iHog4/issues/new?assignees=maeganwilson&labels=question&template=bug_report.md&title=%5BBUG%5D")!)
+                        Link("💡 Request a feature [GitHub Account Required]", destination: URL(string: "https://github.com/maeganwilson/iHog4/issues/new?assignees=maeganwilson&labels=question&template=feature_request.md&title=%5BREQUEST%5D")!)
+                        Link("💬 Chat about iHog [Dev's discord link]", destination: URL(string: "https://discord.gg/HmGYbNHmun")!)
+                        NavigationLink(
+                            "Tip Jar",
+                            destination: TipJarView(),
+                            tag: SettingsNav.tipJar,
+                            selection: $selectedSetting)
+                    }
                 }
                 .listStyle( SidebarListStyle())
                 .blur(radius: isAddingShow ? 2.5 : 0.0)
