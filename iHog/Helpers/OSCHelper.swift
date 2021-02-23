@@ -152,6 +152,12 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
             self.objectWillChange.send()
         }
     }
+    
+    public var oscLog: [[String: String]] = [] {
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
     // MARK: INIT
     init(){
         client.interface = "en0"
@@ -212,6 +218,9 @@ extension OSCHelper: OSCClientDelegate {
     func readBundle(bundle: OSCBundle){
         for item in bundle.elements {
             if let message = item as? OSCMessage {
+                oscLog.append(["sent" : "no",
+                               "message" : message.addressPattern,
+                               "argument": "\(message.arguments[0])"])
                 switch message.addressParts[2] {
                 case "led":
                     getStatusOfLEDButton(message)
