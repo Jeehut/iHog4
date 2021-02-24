@@ -400,11 +400,16 @@ extension OSCHelper {
     /// Sends OSC Messages for a front panel button push
     /// - Parameter button: button name to push on console
     func pushFrontPanelButton(button: String){
+        let second: Double = 1000000
         let messagePushDown = OSCMessage(with: "\(hardware)\(button)", arguments: [1])
         client.send(packet: messagePushDown)
+        print(messagePushDown.addressPattern)
+        
+        usleep(useconds_t(0.001 * second))
         
         let messageRelease = OSCMessage(with: "\(hardware)\(button)", arguments: [0])
         client.send(packet: messageRelease)
+        print(messageRelease.addressPattern)
     }
     
     func sendReleaseAllMessage(){
@@ -425,12 +430,16 @@ extension OSCHelper {
 // MARK: Show Objects
 extension OSCHelper {
     func selectProgrammingObject(objNumber: String, objType: ShowObjectType) {
-        // double tap backspace
-        pushFrontPanelButton(button: "backspace")
-        pushFrontPanelButton(button: "backspace")
-        // object type
+        let second: Double = 1000000
+//        // double tap backspace
+//        pushFrontPanelButton(button: "backspace")
+//        usleep(useconds_t(0.010 * second))
+//        pushFrontPanelButton(button: "backspace")
+//        usleep(useconds_t(0.010 * second))
+//        // object type
         pushFrontPanelButton(button: objType.rawValue)
-        print(objType.rawValue)
+        usleep(useconds_t(0.001 * second))
+//        print(objType.rawValue)
         // number
         for strng in objNumber {
             if strng == "." {
@@ -438,14 +447,15 @@ extension OSCHelper {
             } else {
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .spellOut
-                let english = formatter.string(from: NSNumber(value: Int(objNumber)!))
-                //                print(english ?? "NUMBER DIDN'T CONVERT")
+                let english = formatter.string(from: NSNumber(value: Int(String(strng))!))
+//                print(english ?? "NUMBER DIDN'T CONVERT")
                 pushFrontPanelButton(button: english!)
             }
+            usleep(useconds_t(0.001 * second))
         }
         // enter
+        usleep(useconds_t(0.001 * second))
         pushFrontPanelButton(button: "enter")
-        print("push group button \(objNumber)")
     }
     func goListOrScene(objNumber: String, objType: String) {
         let message = OSCMessage(with: "\(playbackGo)\(objType)", arguments: [Float(objNumber)!])
