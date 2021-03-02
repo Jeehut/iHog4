@@ -221,19 +221,25 @@ extension OSCHelper: OSCClientDelegate {
         readBundle(bundle: bundle)
     }
     
-    func logOSCMessage(sent: String, message: String, argument: Any){
+    func logOSCMessage(sent: String, message: String, argument: [Any]){
 //        print("\(type(of: argument))")
         if logIsPaused == false {
+            var tempArg = ""
+            if argument.isEmpty {
+                tempArg = ""
+            } else {
+                tempArg = "\(argument[0])"
+            }
             oscLog.append(["sent" : sent,
                            "message" : message,
-                           "argument": "\(argument)"])
+                           "argument": tempArg])
         }
     }
     
     func readBundle(bundle: OSCBundle){
         for item in bundle.elements {
             if let message = item as? OSCMessage {
-                logOSCMessage(sent: "no", message: message.addressPattern, argument: message.arguments[0])
+                logOSCMessage(sent: "no", message: message.addressPattern, argument: message.arguments)
                 switch message.addressParts[2] {
                 case "led":
                     getStatusOfLEDButton(message)
@@ -398,9 +404,9 @@ extension OSCHelper {
         let messagePushDown = OSCMessage(with: "\(hardware)choose/\(master)", arguments: [1])
         let messageRelease = OSCMessage(with: "\(hardware)choose/\(master)", arguments: [0])
         client.send(packet: messagePushDown)
-        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments[0])
+        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments)
         client.send(packet: messageRelease)
-        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments[0])
+        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments)
     }
     
     func playbackButton(button: String, master: Int){
@@ -408,7 +414,7 @@ extension OSCHelper {
         let messageRelease = OSCMessage(with: "\(hardware + button)/\(master)", arguments: [0])
         
         client.send(packet: messagePushDown)
-        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments[0])
+        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments)
         client.send(packet: messageRelease)
         logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments)
     }
@@ -416,14 +422,14 @@ extension OSCHelper {
     func fader(master: Int, value: Float){
         let message = OSCMessage(with: "\(hardware)fader/\(master)", arguments: [value])
         client.send(packet: message)
-        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0])
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments)
     }
     
     // MARK: Programming OSC commands
     func encoderWheel(encoderNum: Int, value: Double) {
         let message = OSCMessage(with: "\(hardware)encoderwheel/\(encoderNum)", arguments: [value])
         client.send(packet: message)
-        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0])
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments)
     }
     
     /// Sends OSC Messages for a front panel button push
@@ -434,9 +440,9 @@ extension OSCHelper {
         
         
         client.send(packet: messagePushDown)
-        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments[0])
+        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments)
         client.send(packet: messageRelease)
-        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments[0])
+        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments)
     }
     
     func sendReleaseAllMessage(){
@@ -444,17 +450,17 @@ extension OSCHelper {
         var releaseButton = OSCMessage(with: "\(hardware)release", arguments: [1])
         
         client.send(packet: pigButton)
-        logOSCMessage(sent: "yes", message: pigButton.addressPattern, argument: pigButton.arguments[0])
+        logOSCMessage(sent: "yes", message: pigButton.addressPattern, argument: pigButton.arguments)
         client.send(packet: releaseButton)
-        logOSCMessage(sent: "yes", message: releaseButton.addressPattern, argument: releaseButton.arguments[0])
+        logOSCMessage(sent: "yes", message: releaseButton.addressPattern, argument: releaseButton.arguments)
         
         pigButton = OSCMessage(with: "\(hardware)pig", arguments: [0])
         releaseButton = OSCMessage(with: "\(hardware)release", arguments: [0])
         
         client.send(packet: pigButton)
-        logOSCMessage(sent: "yes", message: pigButton.addressPattern, argument: pigButton.arguments[0] )
+        logOSCMessage(sent: "yes", message: pigButton.addressPattern, argument: pigButton.arguments )
         client.send(packet: releaseButton)
-        logOSCMessage(sent: "yes", message: releaseButton.addressPattern, argument: releaseButton.arguments[0])
+        logOSCMessage(sent: "yes", message: releaseButton.addressPattern, argument: releaseButton.arguments)
     }
 }
 
@@ -486,18 +492,18 @@ extension OSCHelper {
     func goListOrScene(objNumber: String, objType: String) {
         let message = OSCMessage(with: "\(playbackGo)\(objType)", arguments: [Float(objNumber)!])
         client.send(packet: message)
-        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0])
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments)
     }
     
     func releaseList(_ objNumber: String) {
         let message = OSCMessage(with: "\(playbackRelease)1", arguments: [Float(objNumber)!])
         client.send(packet: message)
-        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0])
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments)
     }
     
     func releaseScene(_ objNumber: String) {
         let message = OSCMessage(with: "\(playbackRelease)2", arguments: [Float(objNumber)!])
         client.send(packet: message)
-        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0])
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments)
     }
 }
