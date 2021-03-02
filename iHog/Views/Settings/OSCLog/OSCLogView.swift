@@ -22,8 +22,15 @@ struct OSCLogView: View {
             List{
                 ForEach(osc.oscLog.reversed(), id: \.self) { message in
                     HStack{
-                        Image(systemName: "arrow.down.square")
-                            .padding(.horizontal)
+                        if message["sent"] == "no" {
+                            Image(systemName: "arrow.down.square")
+                                .padding(.horizontal)
+                                .foregroundColor(.orange)
+                        } else {
+                            Image(systemName: "arrow.up.square")
+                                .padding(.horizontal)
+                                .foregroundColor(.purple)
+                        }
                         Text(message["message"] ?? "NO MESSAGE")
                         Spacer()
                         Text(message["argument"] ?? "NO MESSAGE")

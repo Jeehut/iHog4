@@ -398,9 +398,9 @@ extension OSCHelper {
         let messagePushDown = OSCMessage(with: "\(hardware)choose/\(master)", arguments: [1])
         let messageRelease = OSCMessage(with: "\(hardware)choose/\(master)", arguments: [0])
         client.send(packet: messagePushDown)
-        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments[0] as! String)
+        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments[0])
         client.send(packet: messageRelease)
-        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments[0] as! String)
+        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments[0])
     }
     
     func playbackButton(button: String, master: Int){
@@ -408,22 +408,22 @@ extension OSCHelper {
         let messageRelease = OSCMessage(with: "\(hardware + button)/\(master)", arguments: [0])
         
         client.send(packet: messagePushDown)
-        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments[0] as! String)
+        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments[0])
         client.send(packet: messageRelease)
-        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments[0] as! String)
+        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments)
     }
     
     func fader(master: Int, value: Float){
         let message = OSCMessage(with: "\(hardware)fader/\(master)", arguments: [value])
         client.send(packet: message)
-        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0] as! String)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0])
     }
     
     // MARK: Programming OSC commands
     func encoderWheel(encoderNum: Int, value: Double) {
         let message = OSCMessage(with: "\(hardware)encoderwheel/\(encoderNum)", arguments: [value])
         client.send(packet: message)
-        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0] as! String)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0])
     }
     
     /// Sends OSC Messages for a front panel button push
