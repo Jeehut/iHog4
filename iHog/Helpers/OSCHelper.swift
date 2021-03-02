@@ -221,14 +221,19 @@ extension OSCHelper: OSCClientDelegate {
         readBundle(bundle: bundle)
     }
     
+    func logOSCMessage(sent: String, message: String, argument: Any){
+//        print("\(type(of: argument))")
+        if logIsPaused == false {
+            oscLog.append(["sent" : sent,
+                           "message" : message,
+                           "argument": "\(argument)"])
+        }
+    }
+    
     func readBundle(bundle: OSCBundle){
         for item in bundle.elements {
             if let message = item as? OSCMessage {
-                if logIsPaused == false {
-                    oscLog.append(["sent" : "no",
-                                   "message" : message.addressPattern,
-                                   "argument": "\(message.arguments[0])"])
-                }
+                logOSCMessage(sent: "no", message: message.addressPattern, argument: message.arguments[0])
                 switch message.addressParts[2] {
                 case "led":
                     getStatusOfLEDButton(message)
@@ -393,35 +398,45 @@ extension OSCHelper {
         let messagePushDown = OSCMessage(with: "\(hardware)choose/\(master)", arguments: [1])
         let messageRelease = OSCMessage(with: "\(hardware)choose/\(master)", arguments: [0])
         client.send(packet: messagePushDown)
+        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments[0] as! String)
         client.send(packet: messageRelease)
+        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments[0] as! String)
     }
     
     func playbackButton(button: String, master: Int){
         let messagePushDown = OSCMessage(with: "\(hardware + button)/\(master)", arguments: [1])
-        client.send(packet: messagePushDown)
         let messageRelease = OSCMessage(with: "\(hardware + button)/\(master)", arguments: [0])
+        
+        client.send(packet: messagePushDown)
+        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments[0] as! String)
         client.send(packet: messageRelease)
+        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments[0] as! String)
     }
     
     func fader(master: Int, value: Float){
         let message = OSCMessage(with: "\(hardware)fader/\(master)", arguments: [value])
         client.send(packet: message)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0] as! String)
     }
     
     // MARK: Programming OSC commands
     func encoderWheel(encoderNum: Int, value: Double) {
         let message = OSCMessage(with: "\(hardware)encoderwheel/\(encoderNum)", arguments: [value])
         client.send(packet: message)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0] as! String)
     }
     
     /// Sends OSC Messages for a front panel button push
     /// - Parameter button: button name to push on console
     func pushFrontPanelButton(button: String){
         let messagePushDown = OSCMessage(with: "\(hardware)\(button)", arguments: [1])
-        client.send(packet: messagePushDown)
-        
         let messageRelease = OSCMessage(with: "\(hardware)\(button)", arguments: [0])
+        
+        
+        client.send(packet: messagePushDown)
+        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments[0])
         client.send(packet: messageRelease)
+        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments[0])
     }
     
     func sendReleaseAllMessage(){
@@ -429,13 +444,17 @@ extension OSCHelper {
         var releaseButton = OSCMessage(with: "\(hardware)release", arguments: [1])
         
         client.send(packet: pigButton)
+        logOSCMessage(sent: "yes", message: pigButton.addressPattern, argument: pigButton.arguments[0])
         client.send(packet: releaseButton)
+        logOSCMessage(sent: "yes", message: releaseButton.addressPattern, argument: releaseButton.arguments[0])
         
         pigButton = OSCMessage(with: "\(hardware)pig", arguments: [0])
         releaseButton = OSCMessage(with: "\(hardware)release", arguments: [0])
         
         client.send(packet: pigButton)
+        logOSCMessage(sent: "yes", message: pigButton.addressPattern, argument: pigButton.arguments[0] )
         client.send(packet: releaseButton)
+        logOSCMessage(sent: "yes", message: releaseButton.addressPattern, argument: releaseButton.arguments[0])
     }
 }
 
@@ -467,15 +486,18 @@ extension OSCHelper {
     func goListOrScene(objNumber: String, objType: String) {
         let message = OSCMessage(with: "\(playbackGo)\(objType)", arguments: [Float(objNumber)!])
         client.send(packet: message)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0])
     }
     
     func releaseList(_ objNumber: String) {
         let message = OSCMessage(with: "\(playbackRelease)1", arguments: [Float(objNumber)!])
         client.send(packet: message)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0])
     }
     
     func releaseScene(_ objNumber: String) {
         let message = OSCMessage(with: "\(playbackRelease)2", arguments: [Float(objNumber)!])
         client.send(packet: message)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments[0])
     }
 }
