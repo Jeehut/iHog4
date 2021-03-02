@@ -9,16 +9,25 @@ import SwiftUI
 
 struct OSCLogView: View {
     @EnvironmentObject var osc: OSCHelper
+    @State private var logIsPaused = false
     
     var body: some View {
-        List{
-            ForEach(osc.oscLog.reversed(), id: \.self) { message in
-                HStack{
-                    Image(systemName: "arrow.down.square")
-                        .padding(.horizontal)
-                    Text(message["message"] ?? "NO MESSAGE")
-                    Spacer()
-                    Text(message["argument"] ?? "NO MESSAGE")
+        VStack{
+            Toggle(isOn: $logIsPaused){
+                Text(logIsPaused ? "Resume OSC Log" : "Pause OSC Log")
+            }.onChange(of: logIsPaused){ newValue in
+                    osc.toggleLog(logIsPaused)
+                }
+                .padding(.horizontal)
+            List{
+                ForEach(osc.oscLog.reversed(), id: \.self) { message in
+                    HStack{
+                        Image(systemName: "arrow.down.square")
+                            .padding(.horizontal)
+                        Text(message["message"] ?? "NO MESSAGE")
+                        Spacer()
+                        Text(message["argument"] ?? "NO MESSAGE")
+                    }
                 }
             }
         }

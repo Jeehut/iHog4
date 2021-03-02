@@ -18,6 +18,8 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
     private var consoleOutputPort: Int = 7002
     private var useTCP: Bool = true
     
+    private var logIsPaused: Bool = false
+    
     // MARK: HOG OSC Command beginnings
     
     private let hardware = "/hog/hardware/"
@@ -194,6 +196,10 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
             print("Error from startListening \(error)")
         }
     }
+    
+    func toggleLog(_ logState: Bool) {
+        logIsPaused = logState
+    }
 }
 
 // MARK: Protocol stubs
@@ -218,9 +224,11 @@ extension OSCHelper: OSCClientDelegate {
     func readBundle(bundle: OSCBundle){
         for item in bundle.elements {
             if let message = item as? OSCMessage {
-                oscLog.append(["sent" : "no",
-                               "message" : message.addressPattern,
-                               "argument": "\(message.arguments[0])"])
+                if logIsPaused == false {
+                    oscLog.append(["sent" : "no",
+                                   "message" : message.addressPattern,
+                                   "argument": "\(message.arguments[0])"])
+                }
                 switch message.addressParts[2] {
                 case "led":
                     getStatusOfLEDButton(message)
