@@ -33,7 +33,7 @@ struct EncoderWheelsView: View {
                         if isEncoderFine {
                             encoderWheelPrecision = encoderWheelPrecision / 2.0
                         } else {
-                            encoderWheelPrecision = encoderWheelPrecision / 2.0
+                            encoderWheelPrecision = encoderWheelPrecision * 2.0
                         }
                     }) {
                         Text("Fine Control \(isEncoderFine ? "ON" : "OFF")")
