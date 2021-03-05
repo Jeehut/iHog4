@@ -12,7 +12,7 @@ public enum ShowObjectType: String {
     case group
     case intensity
     case position
-    case color
+    case color = "colour"
     case beam
     case effect
     
