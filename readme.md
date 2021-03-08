@@ -2,6 +2,8 @@
 
 An iOS and iPadOS app to control [Hog 4](https://highend.com/products/consoles) consoles.
 
+v2021.1 has been released!
+
 # Need support, found a bug, or have a feature request?
 
 - Shoot me an email maegan [@] maeganwilson [.] com.
