@@ -409,12 +409,14 @@ extension OSCHelper {
         logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments)
     }
     
-    func playbackButton(button: String, master: Int){
+    func playbackButtonPush(button: String, master: Int){
         let messagePushDown = OSCMessage(with: "\(hardware + button)/\(master)", arguments: [1])
-        let messageRelease = OSCMessage(with: "\(hardware + button)/\(master)", arguments: [0])
-        
         client.send(packet: messagePushDown)
         logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments)
+    }
+    
+    func playbackButtonRelease(button: String, master: Int){
+        let messageRelease = OSCMessage(with: "\(hardware + button)/\(master)", arguments: [0])
         client.send(packet: messageRelease)
         logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments)
     }
@@ -434,13 +436,16 @@ extension OSCHelper {
     
     /// Sends OSC Messages for a front panel button push
     /// - Parameter button: button name to push on console
-    func pushFrontPanelButton(button: String){
+    func pushFrontPanelButton(button: String) {
         let messagePushDown = OSCMessage(with: "\(hardware)\(button)", arguments: [1])
-        let messageRelease = OSCMessage(with: "\(hardware)\(button)", arguments: [0])
-        
-        
         client.send(packet: messagePushDown)
         logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments)
+    }
+    
+    /// Sends OSC Messages for a front panel button release
+    /// - Parameter button: button name to push on console
+    func releaseFrontPanelButton(button: String){
+        let messageRelease = OSCMessage(with: "\(hardware)\(button)", arguments: [0])
         client.send(packet: messageRelease)
         logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments)
     }
