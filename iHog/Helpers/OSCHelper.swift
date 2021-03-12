@@ -476,8 +476,6 @@ extension OSCHelper {
         // 1000000 = 1 sec
 //        let second: Double = 1000000
         let objTypeString = objType.rawValue
-        print(objTypeString)
-        usleep(1000)
         var pressedMessage: OSCMessage
         var releasedMessage: OSCMessage
         
@@ -508,6 +506,7 @@ extension OSCHelper {
         usleep(1000)
         client.send(packet: releasedMessage)
         logOSCMessage(sent: "yes", message: releasedMessage.addressPattern, argument: releasedMessage.arguments)
+        usleep(1000)
         for strng in objNumber {
             print(strng)
             if strng == "." {
@@ -532,10 +531,8 @@ extension OSCHelper {
                 logOSCMessage(sent: "yes", message: releasedMessage.addressPattern, argument: releasedMessage.arguments)
                 usleep(1000)
             }
-            usleep(1000)
         }
         // enter
-        usleep(1000)
         pressedMessage = OSCMessage(with: "\(hardware)enter", arguments: [1])
         releasedMessage = OSCMessage(with: "\(hardware)enter", arguments: [0])
         usleep(10000)
