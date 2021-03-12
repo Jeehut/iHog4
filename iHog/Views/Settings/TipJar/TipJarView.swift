@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StoreKit
+import Purchases
 import CoreData
 
 struct TipJarView: View {
@@ -15,7 +16,8 @@ struct TipJarView: View {
     @FetchRequest(entity: TipEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TipEntity.dateTipped, ascending: true)]) var tips: FetchedResults<TipEntity>
     
     @State private var totalTipped: Double = 0.0
-    @State private var products: [SKProduct] = []
+    //    @State private var products: [SKProduct] = []
+    @State private var packages: [Purchases.Package] = []
     
     var store = HogOSCProducts.store
     
@@ -41,7 +43,9 @@ struct TipJarView: View {
             Text("Any contribution is greatly welcomed to help added functionality and new versions remain free of charge.")
                 .padding()
             List{
-                ForEach(self.products, id: \.productIdentifier){ product in
+                ForEach(packages, id: \.identifier){ package in
+                    PurchRow(package: package, reasonToPurchase: "tip")
+                        .padding(.vertical)
 //                    PurchRow(product: product, store: store, reasonToPurchase: "tip").padding(.vertical)
                 }
             }
@@ -52,10 +56,13 @@ struct TipJarView: View {
         }
         .navigationBarTitle("Tip Jar")
         .onAppear {
-            store.requestProducts{ (success, products) in
-                if success {
-                    self.products = products!
+            Purchases.shared.offerings { (offerings, error) in
+                if let tipping = offerings?["tipping-default"]{
+                    packages = tipping.availablePackages
+                } else {
+                    print(error.debugDescription)
                 }
+            
             }
             getTotalTipped()
         }
@@ -65,13 +72,13 @@ struct TipJarView: View {
         var amountTipped = 0.0
         switch identifier ?? "not found" {
         case "h4tier1":
-            amountTipped = Double(truncating: products[0].price)
+            amountTipped = Double(truncating: packages[0].product.price)
         case "h4tier2":
-            amountTipped = Double(truncating: products[1].price)
+            amountTipped = Double(truncating: packages[1].product.price)
         case "h4tier3":
-            amountTipped = Double(truncating: products[2].price)
+            amountTipped = Double(truncating: packages[2].product.price)
         case "h4tier4":
-            amountTipped = Double(truncating: products[3].price)
+            amountTipped = Double(truncating: packages[3].product.price)
         default:
             print("DO NOTHING")
         }
