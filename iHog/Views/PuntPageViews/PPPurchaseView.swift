@@ -53,7 +53,7 @@ struct PPPurchaseView: View {
                         if purchaserInfo?.entitlements["punt-page"]?.isActive == true{
                             puntPageIsEnabled = true
                         } else {
-                            print(error)
+                            print(error as Any)
                         }
                     }
                 }) {

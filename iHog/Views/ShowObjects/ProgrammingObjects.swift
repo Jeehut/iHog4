@@ -30,8 +30,6 @@ struct ProgrammingObjects: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var osc: OSCHelper
     
-    @EnvironmentObject var osc: OSCHelper
-    
     // MARK: State
     @State private var chosenPaletteType: Int = 0
     @State private var groupObjects: [ShowObject] = []
