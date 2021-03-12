@@ -7,12 +7,15 @@
 
 import SwiftUI
 import StoreKit
+import Purchases
 
 struct PurchRow: View {
     @Environment(\.managedObjectContext) var context
+    @AppStorage(Settings.puntPageIsEnabled.rawValue) var puntPageIsEnabled: Bool = false
     
-    var product: SKProduct
-    var store: IAPHelper
+    var package: Purchases.Package
+//    var product: SKProduct
+//    var store: IAPHelper
     var reasonToPurchase: String
     
     
@@ -35,10 +38,15 @@ struct PurchRow: View {
             }
             Spacer()
             Button(action: {
-                print("Buy")
-                store.buyProduct(self.product)
+                Purchases.shared.purchasePackage(package) { (transaction, purchaserInfo, error, userCancelled) in
+                    if purchaserInfo?.entitlements["punt-page"]?.isActive == true {
+                    // Unlock that great "pro" content
+                        puntPageIsEnabled = true
+                  }
+                }
+
             }){
-                Text("\(PurchRow.priceFormatter.string(from: self.product.price) ?? "--")")
+                Text("\(PurchRow.priceFormatter.string(from: self.package.product.price) ?? "--")")
                     .padding(.all, 8)
                     .foregroundColor(.white)
                     .background(Color.green)
@@ -48,7 +56,7 @@ struct PurchRow: View {
     }
     
     func getProductTitle() -> String {
-        switch product.productIdentifier {
+        switch package.product.productIdentifier {
         case "fp1", "h4tier1":
             return "😊"
         case "fp2", "h4tier2":
@@ -58,13 +66,13 @@ struct PurchRow: View {
         case "fp4", "h4tier4":
             return "💯"
         default:
-            return product.localizedTitle
+            return package.product.localizedTitle
         }
     }
     
     func getProductDescription() -> String {
         if reasonToPurchase != "tip" {
-            switch product.productIdentifier {
+            switch package.product.productIdentifier {
             case "fp1":
                 return "Small price for \(reasonToPurchase)"
             case "fp2":
@@ -74,10 +82,10 @@ struct PurchRow: View {
             case "fp4":
                 return "Giant price for \(reasonToPurchase)"
             default:
-                return product.localizedTitle
+                return package.product.localizedTitle
             }
         } else {
-            switch product.productIdentifier {
+            switch package.product.productIdentifier {
             case "h4tier1":
                 return "Small Tip"
             case "h4tier2":
@@ -87,7 +95,7 @@ struct PurchRow: View {
             case "h4tier4":
                 return "Giant Tip"
             default:
-                return product.localizedTitle
+                return package.product.localizedTitle
             }
         }
     }

@@ -42,7 +42,7 @@ struct TipJarView: View {
                 .padding()
             List{
                 ForEach(self.products, id: \.productIdentifier){ product in
-                    PurchRow(product: product, store: store, reasonToPurchase: "tip").padding(.vertical)
+//                    PurchRow(product: product, store: store, reasonToPurchase: "tip").padding(.vertical)
                 }
             }
             .onReceive(pub) { (output) in

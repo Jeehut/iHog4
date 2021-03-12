@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "Purchases",
+        "repositoryURL": "https://github.com/RevenueCat/purchases-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "ce76602e23bba7ec34e06b9901e6454f42d38320",
+          "version": "3.10.6"
+        }
+      },
+      {
         "package": "NetUtils",
         "repositoryURL": "https://github.com/svdo/swift-netutils",
         "state": {
