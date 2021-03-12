@@ -28,6 +28,7 @@ struct ProgrammingObjects: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var osc: OSCHelper
     
     @EnvironmentObject var osc: OSCHelper
     
@@ -196,6 +197,7 @@ struct ProgrammingObjects: View {
     // TODO: Add OSC
     func clear(){
         osc.pushFrontPanelButton(button: ButtonFunctionNames.clear.rawValue)
+
         osc.releaseFrontPanelButton(button: ButtonFunctionNames.clear.rawValue)
     }
     

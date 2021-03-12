@@ -47,6 +47,8 @@
 		15BC8EC325BCD59F00309C8B /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 15BC8EC225BCD59F00309C8B /* OSCKit */; };
 		15BE2E5B25C88F35009D8E77 /* iHogUITestsScreenShots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE2E5A25C88F35009D8E77 /* iHogUITestsScreenShots.swift */; };
 		15BE2E6725C88FC7009D8E77 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE2E6625C88FC7009D8E77 /* SnapshotHelper.swift */; };
+		15C8284925FA4B15003FAEFA /* Purchases in Frameworks */ = {isa = PBXBuildFile; productRef = 15C8284825FA4B15003FAEFA /* Purchases */; };
+		15C8285125FA4B83003FAEFA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C8285025FA4B83003FAEFA /* StoreKit.framework */; };
 		15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */; };
 		15CA428B25220DBD00C56FE0 /* FunctionKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */; };
 		15D07DF0251E0EB400A80DC4 /* FunctionKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */; };
@@ -145,6 +147,7 @@
 		15BE2E5A25C88F35009D8E77 /* iHogUITestsScreenShots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogUITestsScreenShots.swift; sourceTree = "<group>"; };
 		15BE2E5C25C88F35009D8E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15BE2E6625C88FC7009D8E77 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		15C8285025FA4B83003FAEFA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodersKindsSheet.swift; sourceTree = "<group>"; };
 		15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionKeySheet.swift; sourceTree = "<group>"; };
 		15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionKeyView.swift; sourceTree = "<group>"; };
@@ -198,6 +201,8 @@
 			files = (
 				15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */,
 				15BC8EC325BCD59F00309C8B /* OSCKit in Frameworks */,
+				15C8284925FA4B15003FAEFA /* Purchases in Frameworks */,
+				15C8285125FA4B83003FAEFA /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +493,7 @@
 		15E2D202253F14F900C7A453 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15C8285025FA4B83003FAEFA /* StoreKit.framework */,
 				15E2D203253F14F900C7A453 /* CloudKit.framework */,
 			);
 			name = Frameworks;
@@ -546,6 +552,7 @@
 			name = iHog;
 			packageProductDependencies = (
 				15BC8EC225BCD59F00309C8B /* OSCKit */,
+				15C8284825FA4B15003FAEFA /* Purchases */,
 			);
 			productName = iHog;
 			productReference = 15DA2673251237D60063E236 /* iHog.app */;
@@ -624,6 +631,7 @@
 			mainGroup = 15DA266A251237D60063E236;
 			packageReferences = (
 				15A316C32588F6BC00A4D67A /* XCRemoteSwiftPackageReference "OSCKit" */,
+				15C8284725FA4B15003FAEFA /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = 15DA2674251237D60063E236 /* Products */;
 			projectDirPath = "";
@@ -1135,6 +1143,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		15C8284725FA4B15003FAEFA /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.10.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1142,6 +1158,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 15A316C32588F6BC00A4D67A /* XCRemoteSwiftPackageReference "OSCKit" */;
 			productName = OSCKit;
+		};
+		15C8284825FA4B15003FAEFA /* Purchases */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15C8284725FA4B15003FAEFA /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = Purchases;
 		};
 /* End XCSwiftPackageProductDependency section */
 

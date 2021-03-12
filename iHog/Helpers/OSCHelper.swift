@@ -472,6 +472,17 @@ extension OSCHelper {
 // MARK: Show Objects
 extension OSCHelper {
     func selectProgrammingObject(objNumber: String, objType: ShowObjectType) {
+
+        let second: Double = 1000000
+//        // double tap backspace
+//        pushFrontPanelButton(button: "backspace")
+//        usleep(useconds_t(0.010 * second))
+//        pushFrontPanelButton(button: "backspace")
+//        usleep(useconds_t(0.010 * second))
+//        // object type
+        pushFrontPanelButton(button: objType.rawValue)
+        usleep(useconds_t(0.001 * second))
+//        print(objType.rawValue)
         let objTypeString = objType.rawValue
         print(objTypeString)
         // 1000000 = 1 sec
@@ -501,8 +512,7 @@ extension OSCHelper {
         logOSCMessage(sent: "yes", message: pressedMessage.addressPattern, argument: pressedMessage.arguments)
         usleep(1000)
         client.send(packet: releasedMessage)
-        logOSCMessage(sent: "yes", message: releasedMessage.addressPattern, argument: releasedMessage.arguments)
-        // number
+        logOSCMessage(sent: "yes", message: releasedMessage.addressPattern, argument: releasedMessage.arguments)er
         for strng in objNumber {
             print(strng)
             if strng == "." {
@@ -528,8 +538,12 @@ extension OSCHelper {
                 logOSCMessage(sent: "yes", message: releasedMessage.addressPattern, argument: releasedMessage.arguments)
                 usleep(1000)
             }
+            usleep(useconds_t(0.001 * second))
         }
         // enter
+        usleep(useconds_t(0.001 * second))
+        pushFrontPanelButton(button: "enter")
+    }
         pressedMessage = OSCMessage(with: "\(hardware)enter", arguments: [1])
         releasedMessage = OSCMessage(with: "\(hardware)enter", arguments: [0])
         usleep(1000)
