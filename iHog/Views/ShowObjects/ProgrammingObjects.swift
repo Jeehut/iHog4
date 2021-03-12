@@ -30,6 +30,8 @@ struct ProgrammingObjects: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var osc: OSCHelper
     
+    @EnvironmentObject var osc: OSCHelper
+    
     // MARK: State
     @State private var chosenPaletteType: Int = 0
     @State private var groupObjects: [ShowObject] = []
@@ -195,6 +197,8 @@ struct ProgrammingObjects: View {
     // TODO: Add OSC
     func clear(){
         osc.pushFrontPanelButton(button: ButtonFunctionNames.clear.rawValue)
+
+        osc.releaseFrontPanelButton(button: ButtonFunctionNames.clear.rawValue)
     }
     
     // MARK: Get all objects
