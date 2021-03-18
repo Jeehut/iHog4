@@ -27,6 +27,7 @@ struct ShowObjectView: View {
                 Spacer()
                 Text(obj.getName())
                     .font(.headline)
+                
             }
             .frame(width: getSize(), height: getSize(), alignment: .leading)
             .padding()
@@ -39,23 +40,23 @@ struct ShowObjectView: View {
             .sheet(isPresented: $showEditWindow){
                 EditObjectView(allObjects: $allObjects, obj: obj)
             }
-            .contextMenu{
-                if obj.objType == .scene || obj.objType == .list {
-                    Button(action: {print("release thing")}){
-                        Image(systemName: "stop.fill")
-                        Text("Release")
-                    }
-                }
-                Button(action: {self.showEditWindow.toggle()}){
-                    Image(systemName: "pencil")
-                    Text("Edit")
-                }
-                Button(action: deleteObject){
-                    Image(systemName: "trash")
-                    Text("Delete")
+        }.foregroundColor(.primary)
+        .contextMenu{
+            if obj.objType == .scene || obj.objType == .list {
+                Button(action: {sendReleaseOSC()}){
+                    Image(systemName: "stop.fill")
+                    Text("Release")
                 }
             }
-        }.foregroundColor(.primary)
+            Button(action: {self.showEditWindow.toggle()}){
+                Image(systemName: "pencil")
+                Text("Edit")
+            }
+            Button(action: deleteObject){
+                Image(systemName: "trash")
+                Text("Delete")
+            }
+        }
     }
     
     func getSize() -> CGFloat{
