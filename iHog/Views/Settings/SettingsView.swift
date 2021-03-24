@@ -31,6 +31,7 @@ struct SettingsView: View {
         case programObject
         case custom
         case tipJar
+        case oscLogView
     }
     
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
@@ -41,6 +42,7 @@ struct SettingsView: View {
         NavigationView{
             ZStack{
                 List{
+                    // MARK: SHOW NAV
                     Section(header: Text("Shows")) {
                         ForEach(shows) { show in
                             NavigationLink(show.name!, destination: ShowNavigation(selectedShow: show))
@@ -51,6 +53,7 @@ struct SettingsView: View {
                             Text("Add Show")
                         }.foregroundColor(.blue)
                     }
+                    // MARK: HARDWARE
                     Section(header: Text("Front Panel")){
                         NavigationLink(
                             "Programming",
@@ -63,10 +66,13 @@ struct SettingsView: View {
                             tag: SettingsNav.playbackHardware,
                             selection: $selectedSetting)
                     }
+                    // MARK: SETTINGS
                     Section(header: Text("Settings")){
                         NavigationLink("Device", destination: Device(), tag: SettingsNav.device, selection: $selectedSetting)
                         NavigationLink("Show Settings", destination: ShowSetting(), tag: SettingsNav.showSettings, selection: $selectedSetting)
+                        NavigationLink("OSC Log", destination: OSCLogView(), tag: SettingsNav.oscLogView, selection: $selectedSetting)
                     }
+                    // MARK: ABOUT
                     Section(header: Text("About"),
                             footer: Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")){
                         Link("ℹ️ About [iHog Website]", destination: URL(string: "https://ihogapp.com/about")!)

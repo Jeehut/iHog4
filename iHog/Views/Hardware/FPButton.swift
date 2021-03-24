@@ -18,7 +18,7 @@ struct FPButton: View {
     
     var body: some View {
         Button(action: {
-            pushButton()
+//            pushButton()
         }){
             Text(buttonText)
                 .frame(width: setSize(),
@@ -27,9 +27,14 @@ struct FPButton: View {
                 )
                 .padding(HALF_PADDING)
                 .foregroundColor(.primary)
-                .background(setBackGroundColor())
         }
+        .background(setBackGroundColor())
         .cornerRadius(BASE_CORNER_RADIUS)
+        .pressActions{
+            pushButton()
+        } onRelease: {
+            releaseButton()
+        }
     }
     
     func setBackGroundColor() -> Color {
@@ -119,7 +124,7 @@ struct FPButton: View {
              ButtonFunctionNames.pause,
              ButtonFunctionNames.go,
              ButtonFunctionNames.flash:
-            osc.playbackButton(button: buttonFunction.rawValue, master: buttonNumber)
+            osc.playbackButtonPush(button: buttonFunction.rawValue, master: buttonNumber)
         case ButtonFunctionNames.numberpad:
             let formatter = NumberFormatter()
             formatter.numberStyle = .spellOut
@@ -127,6 +132,24 @@ struct FPButton: View {
             osc.pushFrontPanelButton(button: english!)
         default:
             osc.pushFrontPanelButton(button: buttonFunction.rawValue)
+        }
+    }
+    
+    func releaseButton(){
+        switch buttonFunction {
+        case ButtonFunctionNames.choose,
+             ButtonFunctionNames.goback,
+             ButtonFunctionNames.pause,
+             ButtonFunctionNames.go,
+             ButtonFunctionNames.flash:
+            osc.playbackButtonRelease(button: buttonFunction.rawValue, master: buttonNumber)
+        case ButtonFunctionNames.numberpad:
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .spellOut
+            let english = formatter.string(from: NSNumber(value: buttonNumber))
+            osc.releaseFrontPanelButton(button: english!)
+        default:
+            osc.releaseFrontPanelButton(button: buttonFunction.rawValue)
         }
     }
 }

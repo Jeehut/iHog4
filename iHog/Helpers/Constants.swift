@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 import SwiftUI
 
+// API KEYS
+
+let RC_API_KEY = "EuGbKEEcnwYqhQQyjCXqSVYpQSxovOwM"
+
 // MARK: GENERAL
 let BASE_CORNER_RADIUS: CGFloat = 5
 let DOUBLE_CORNER_RADIUS: CGFloat = 10

@@ -36,7 +36,9 @@
 		1577808F25D2BDEB009AE8CE /* PPProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1577808E25D2BDEB009AE8CE /* PPProgramming.swift */; };
 		1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3272512F3DF001E1BDF /* ShowBox.swift */; };
 		1578D3312512F460001E1BDF /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3302512F460001E1BDF /* Device.swift */; };
+		158362D925F7AF9600EEC8F7 /* PressAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158362D825F7AF9600EEC8F7 /* PressAction.swift */; };
 		159048312537DEED00910100 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159048302537DEED00910100 /* Constants.swift */; };
+		1592F4C725E53BBC004D4FE6 /* OSCLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1592F4C625E53BBC004D4FE6 /* OSCLogView.swift */; };
 		1598BDCB25E2D1BA0060793F /* iHog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1598BDC925E2D1BA0060793F /* iHog.xcdatamodeld */; };
 		159BAECB251B722700A81EA1 /* PlaybackObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BAECA251B722700A81EA1 /* PlaybackObjects.swift */; };
 		159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BAED3251B7BDB00A81EA1 /* RegRegFPProgramming.swift */; };
@@ -45,6 +47,8 @@
 		15BC8EC325BCD59F00309C8B /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 15BC8EC225BCD59F00309C8B /* OSCKit */; };
 		15BE2E5B25C88F35009D8E77 /* iHogUITestsScreenShots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE2E5A25C88F35009D8E77 /* iHogUITestsScreenShots.swift */; };
 		15BE2E6725C88FC7009D8E77 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE2E6625C88FC7009D8E77 /* SnapshotHelper.swift */; };
+		15C8284925FA4B15003FAEFA /* Purchases in Frameworks */ = {isa = PBXBuildFile; productRef = 15C8284825FA4B15003FAEFA /* Purchases */; };
+		15C8285125FA4B83003FAEFA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C8285025FA4B83003FAEFA /* StoreKit.framework */; };
 		15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */; };
 		15CA428B25220DBD00C56FE0 /* FunctionKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */; };
 		15D07DF0251E0EB400A80DC4 /* FunctionKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */; };
@@ -131,7 +135,9 @@
 		1577808E25D2BDEB009AE8CE /* PPProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPProgramming.swift; sourceTree = "<group>"; };
 		1578D3272512F3DF001E1BDF /* ShowBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBox.swift; sourceTree = "<group>"; };
 		1578D3302512F460001E1BDF /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		158362D825F7AF9600EEC8F7 /* PressAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressAction.swift; sourceTree = "<group>"; };
 		159048302537DEED00910100 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1592F4C625E53BBC004D4FE6 /* OSCLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSCLogView.swift; sourceTree = "<group>"; };
 		1598BDCA25E2D1BA0060793F /* iHog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iHog.xcdatamodel; sourceTree = "<group>"; };
 		159BAECA251B722700A81EA1 /* PlaybackObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackObjects.swift; sourceTree = "<group>"; };
 		159BAED3251B7BDB00A81EA1 /* RegRegFPProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegRegFPProgramming.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 		15BE2E5A25C88F35009D8E77 /* iHogUITestsScreenShots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogUITestsScreenShots.swift; sourceTree = "<group>"; };
 		15BE2E5C25C88F35009D8E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15BE2E6625C88FC7009D8E77 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		15C8285025FA4B83003FAEFA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodersKindsSheet.swift; sourceTree = "<group>"; };
 		15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionKeySheet.swift; sourceTree = "<group>"; };
 		15D07DEF251E0EB400A80DC4 /* FunctionKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionKeyView.swift; sourceTree = "<group>"; };
@@ -194,6 +201,8 @@
 			files = (
 				15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */,
 				15BC8EC325BCD59F00309C8B /* OSCKit in Frameworks */,
+				15C8284925FA4B15003FAEFA /* Purchases in Frameworks */,
+				15C8285125FA4B83003FAEFA /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +260,7 @@
 				155530D025138A5500CF48FD /* UIDevice+Extensions.swift */,
 				159048302537DEED00910100 /* Constants.swift */,
 				153009CF258B8A0D00311520 /* OSCHelper.swift */,
+				158362D825F7AF9600EEC8F7 /* PressAction.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -292,6 +302,14 @@
 				1578D3302512F460001E1BDF /* Device.swift */,
 			);
 			path = Device;
+			sourceTree = "<group>";
+		};
+		1592F4C525E53BB0004D4FE6 /* OSCLog */ = {
+			isa = PBXGroup;
+			children = (
+				1592F4C625E53BBC004D4FE6 /* OSCLogView.swift */,
+			);
+			path = OSCLog;
 			sourceTree = "<group>";
 		};
 		159BAED2251B7BC700A81EA1 /* Hardware */ = {
@@ -451,6 +469,7 @@
 		15DA26AA251238830063E236 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				1592F4C525E53BB0004D4FE6 /* OSCLog */,
 				151E061225E20E2600B3844A /* TipJar */,
 				15F5201B2514D95D00EF4B98 /* ShowSettings */,
 				1578D32F2512F44F001E1BDF /* Device */,
@@ -474,6 +493,7 @@
 		15E2D202253F14F900C7A453 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15C8285025FA4B83003FAEFA /* StoreKit.framework */,
 				15E2D203253F14F900C7A453 /* CloudKit.framework */,
 			);
 			name = Frameworks;
@@ -532,6 +552,7 @@
 			name = iHog;
 			packageProductDependencies = (
 				15BC8EC225BCD59F00309C8B /* OSCKit */,
+				15C8284825FA4B15003FAEFA /* Purchases */,
 			);
 			productName = iHog;
 			productReference = 15DA2673251237D60063E236 /* iHog.app */;
@@ -610,6 +631,7 @@
 			mainGroup = 15DA266A251237D60063E236;
 			packageReferences = (
 				15A316C32588F6BC00A4D67A /* XCRemoteSwiftPackageReference "OSCKit" */,
+				15C8284725FA4B15003FAEFA /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = 15DA2674251237D60063E236 /* Products */;
 			projectDirPath = "";
@@ -673,6 +695,7 @@
 				1598BDCB25E2D1BA0060793F /* iHog.xcdatamodeld in Sources */,
 				155A2A8C25E1FE98006EB60E /* About.swift in Sources */,
 				379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */,
+				158362D925F7AF9600EEC8F7 /* PressAction.swift in Sources */,
 				15DA0B19251513BC006ADB27 /* ProgrammingObjects.swift in Sources */,
 				15DA26B425123D200063E236 /* SelectShow.swift in Sources */,
 				1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */,
@@ -727,6 +750,7 @@
 				15DA26AC251238980063E236 /* SettingsView.swift in Sources */,
 				15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */,
 				1502F62A251CC4A200BAC5EE /* UtilityButtonView.swift in Sources */,
+				1592F4C725E53BBC004D4FE6 /* OSCLogView.swift in Sources */,
 				155795302518CBBF004FD603 /* ShowObject.swift in Sources */,
 				15AB35DF251CC354008FC212 /* ObjectButtonView.swift in Sources */,
 				15FA5F192526006E00DF1A3C /* HorizontalMasterView.swift in Sources */,
@@ -933,7 +957,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iHog/iHog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 002;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_ASSET_PATHS = "\"iHog/Preview Content\"";
 				DEVELOPMENT_TEAM = ZDK82FGR3Z;
 				ENABLE_PREVIEWS = YES;
@@ -943,7 +967,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.1;
+				MARKETING_VERSION = 2021.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appsbymw.hogosc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -958,7 +982,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iHog/iHog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 002;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_ASSET_PATHS = "\"iHog/Preview Content\"";
 				DEVELOPMENT_TEAM = ZDK82FGR3Z;
 				ENABLE_PREVIEWS = YES;
@@ -968,7 +992,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.1;
+				MARKETING_VERSION = 2021.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appsbymw.hogosc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1119,6 +1143,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		15C8284725FA4B15003FAEFA /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.10.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1126,6 +1158,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 15A316C32588F6BC00A4D67A /* XCRemoteSwiftPackageReference "OSCKit" */;
 			productName = OSCKit;
+		};
+		15C8284825FA4B15003FAEFA /* Purchases */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15C8284725FA4B15003FAEFA /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = Purchases;
 		};
 /* End XCSwiftPackageProductDependency section */
 

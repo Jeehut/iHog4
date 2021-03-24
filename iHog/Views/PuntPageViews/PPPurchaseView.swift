@@ -7,10 +7,12 @@
 
 import SwiftUI
 import StoreKit
+import Purchases
 
 struct PPPurchaseView: View {
     @AppStorage(Settings.puntPageIsEnabled.rawValue) var puntPageIsEnabled: Bool = false
     @State private var products: [SKProduct] = []
+    @State private var packages: [Purchases.Package] = []
     var store = FeaturePack.store
     
     static let priceFormatter: NumberFormatter = {
@@ -45,7 +47,15 @@ struct PPPurchaseView: View {
             Text("Please pay what you think the Punt Page is worth. A lot of time and effort went into making sure these screens will look good and function on your device.")
             List{
                 Button(action: {
-                    self.store.restorePurchases()
+                    print("Trying to restore")
+                    Purchases.shared.restoreTransactions { (purchaserInfo, error) in
+                        //... check purchaserInfo to see if entitlement is now active
+                        if purchaserInfo?.entitlements["punt-page"]?.isActive == true{
+                            puntPageIsEnabled = true
+                        } else {
+                            print(error as Any)
+                        }
+                    }
                 }) {
                     Text("Restore purchases")
                         .padding(.all, 8)
@@ -53,20 +63,26 @@ struct PPPurchaseView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                 }
-                ForEach(self.products, id: \.productIdentifier){ product in
-                    PurchRow(product: product, store: store, reasonToPurchase: "Punt Page Feature").padding(.vertical)
+                ForEach(packages, id: \.identifier){ package in
+                    PurchRow(package: package, reasonToPurchase: "Punt Page Feature")
+                        .padding(.vertical)
                 }
+//                ForEach(self.products, id: \.productIdentifier){ product in
+//                    PurchRow(package: product, store: store, reasonToPurchase: "Punt Page Feature").padding(.vertical)
+//                }
             }
             Spacer()
         }
         .padding()
         .onAppear{
-            self.store.requestProducts { (success, products) in
-                if success {
-                    self.products = products!
+            print("HELLO")
+            Purchases.shared.offerings { (offerings, error) in
+                if let puntPage = offerings?["punt-page-default"] {
+                    packages = puntPage.availablePackages
+                } else {
+                    print(error.debugDescription)
                 }
             }
-            
         }
     }
 }

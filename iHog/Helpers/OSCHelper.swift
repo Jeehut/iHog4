@@ -18,6 +18,8 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
     private var consoleOutputPort: Int = 7002
     private var useTCP: Bool = true
     
+    private var logIsPaused: Bool = false
+    
     // MARK: HOG OSC Command beginnings
     
     private let hardware = "/hog/hardware/"
@@ -152,6 +154,12 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
             self.objectWillChange.send()
         }
     }
+    
+    public var oscLog: [[String: String]] = [] {
+        willSet{
+            self.objectWillChange.send()
+        }
+    }
     // MARK: INIT
     init(){
         client.interface = "en0"
@@ -188,6 +196,10 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
             print("Error from startListening \(error)")
         }
     }
+    
+    func toggleLog(_ logState: Bool) {
+        logIsPaused = logState
+    }
 }
 
 // MARK: Protocol stubs
@@ -209,9 +221,25 @@ extension OSCHelper: OSCClientDelegate {
         readBundle(bundle: bundle)
     }
     
+    func logOSCMessage(sent: String, message: String, argument: [Any]){
+//        print("\(type(of: argument))")
+        if logIsPaused == false {
+            var tempArg = ""
+            if argument.isEmpty {
+                tempArg = ""
+            } else {
+                tempArg = "\(argument[0])"
+            }
+            oscLog.append(["sent" : sent,
+                           "message" : message,
+                           "argument": tempArg])
+        }
+    }
+    
     func readBundle(bundle: OSCBundle){
         for item in bundle.elements {
             if let message = item as? OSCMessage {
+                logOSCMessage(sent: "no", message: message.addressPattern, argument: message.arguments)
                 switch message.addressParts[2] {
                 case "led":
                     getStatusOfLEDButton(message)
@@ -266,7 +294,9 @@ extension OSCHelper {
             chooses[buttonIndex] = message.arguments[0] as! Float
         case "go":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
-            plays[buttonIndex] = message.arguments[0] as! Float
+            if buttonIndex < 101 {
+                plays[buttonIndex] = message.arguments[0] as! Float
+            }
         case "goback":
             let buttonIndex = Int(message.addressParts[4]) ?? 0
             backs[buttonIndex] = message.arguments[0] as! Float
@@ -305,9 +335,7 @@ extension OSCHelper {
              ButtonFunctionNames.h12.rawValue:
             functionKeyStatus[message.addressParts[3]] = message.arguments[0] as? Float
         default:
-            print("THERES AN ERROR")
-            print(message.addressParts)
-            print(message.arguments)
+            break
         }
     }
     // MARK: ENCODER WHEELS
@@ -376,40 +404,50 @@ extension OSCHelper {
         let messagePushDown = OSCMessage(with: "\(hardware)choose/\(master)", arguments: [1])
         let messageRelease = OSCMessage(with: "\(hardware)choose/\(master)", arguments: [0])
         client.send(packet: messagePushDown)
+        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments)
         client.send(packet: messageRelease)
+        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments)
     }
     
-    func playbackButton(button: String, master: Int){
+    func playbackButtonPush(button: String, master: Int){
         let messagePushDown = OSCMessage(with: "\(hardware + button)/\(master)", arguments: [1])
         client.send(packet: messagePushDown)
+        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments)
+    }
+    
+    func playbackButtonRelease(button: String, master: Int){
         let messageRelease = OSCMessage(with: "\(hardware + button)/\(master)", arguments: [0])
         client.send(packet: messageRelease)
+        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments)
     }
     
     func fader(master: Int, value: Float){
         let message = OSCMessage(with: "\(hardware)fader/\(master)", arguments: [value])
         client.send(packet: message)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments)
     }
     
     // MARK: Programming OSC commands
     func encoderWheel(encoderNum: Int, value: Double) {
         let message = OSCMessage(with: "\(hardware)encoderwheel/\(encoderNum)", arguments: [value])
         client.send(packet: message)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments)
     }
     
     /// Sends OSC Messages for a front panel button push
     /// - Parameter button: button name to push on console
-    func pushFrontPanelButton(button: String){
-        let second: Double = 1000000
+    func pushFrontPanelButton(button: String) {
         let messagePushDown = OSCMessage(with: "\(hardware)\(button)", arguments: [1])
         client.send(packet: messagePushDown)
-        print(messagePushDown.addressPattern)
-        
-        usleep(useconds_t(0.001 * second))
-        
+        logOSCMessage(sent: "yes", message: messagePushDown.addressPattern, argument: messagePushDown.arguments)
+    }
+    
+    /// Sends OSC Messages for a front panel button release
+    /// - Parameter button: button name to push on console
+    func releaseFrontPanelButton(button: String){
         let messageRelease = OSCMessage(with: "\(hardware)\(button)", arguments: [0])
         client.send(packet: messageRelease)
-        print(messageRelease.addressPattern)
+        logOSCMessage(sent: "yes", message: messageRelease.addressPattern, argument: messageRelease.arguments)
     }
     
     func sendReleaseAllMessage(){
@@ -417,58 +455,139 @@ extension OSCHelper {
         var releaseButton = OSCMessage(with: "\(hardware)release", arguments: [1])
         
         client.send(packet: pigButton)
+        logOSCMessage(sent: "yes", message: pigButton.addressPattern, argument: pigButton.arguments)
         client.send(packet: releaseButton)
+        logOSCMessage(sent: "yes", message: releaseButton.addressPattern, argument: releaseButton.arguments)
         
         pigButton = OSCMessage(with: "\(hardware)pig", arguments: [0])
         releaseButton = OSCMessage(with: "\(hardware)release", arguments: [0])
         
         client.send(packet: pigButton)
+        logOSCMessage(sent: "yes", message: pigButton.addressPattern, argument: pigButton.arguments )
         client.send(packet: releaseButton)
+        logOSCMessage(sent: "yes", message: releaseButton.addressPattern, argument: releaseButton.arguments)
     }
 }
 
 // MARK: Show Objects
 extension OSCHelper {
     func selectProgrammingObject(objNumber: String, objType: ShowObjectType) {
-        let second: Double = 1000000
-//        // double tap backspace
-//        pushFrontPanelButton(button: "backspace")
-//        usleep(useconds_t(0.010 * second))
-//        pushFrontPanelButton(button: "backspace")
-//        usleep(useconds_t(0.010 * second))
-//        // object type
-        pushFrontPanelButton(button: objType.rawValue)
-        usleep(useconds_t(0.001 * second))
-//        print(objType.rawValue)
-        // number
+        
+        // 1000000 = 1 sec
+//        let second: Double = 1000000
+        let objTypeString = objType.rawValue
+        var pressedMessage: OSCMessage
+        var releasedMessage: OSCMessage
+        
+        if objType == .group {
+            pressedMessage = OSCMessage(with: "\(hardware)backspace", arguments: [1])
+            releasedMessage = OSCMessage(with: "\(hardware)backspace", arguments: [0])
+            // BACKSPACE
+            client.send(packet: pressedMessage)
+            logOSCMessage(sent: "yes", message: pressedMessage.addressPattern, argument: pressedMessage.arguments)
+            usleep(1000)
+            client.send(packet: releasedMessage)
+            logOSCMessage(sent: "yes", message: releasedMessage.addressPattern, argument: releasedMessage.arguments)
+            usleep(1000)
+            // BACKSPACE
+            client.send(packet: pressedMessage)
+            logOSCMessage(sent: "yes", message: pressedMessage.addressPattern, argument: pressedMessage.arguments)
+            usleep(1000)
+            client.send(packet: releasedMessage)
+            logOSCMessage(sent: "yes", message: releasedMessage.addressPattern, argument: releasedMessage.arguments)
+            usleep(1000)
+        }
+        
+        // object type
+        pressedMessage = OSCMessage(with: "\(hardware)\(objTypeString)", arguments: [1])
+        releasedMessage = OSCMessage(with: "\(hardware)\(objTypeString)", arguments: [0])
+        client.send(packet: pressedMessage)
+        logOSCMessage(sent: "yes", message: pressedMessage.addressPattern, argument: pressedMessage.arguments)
+        usleep(1000)
+        client.send(packet: releasedMessage)
+        logOSCMessage(sent: "yes", message: releasedMessage.addressPattern, argument: releasedMessage.arguments)
+        usleep(1000)
         for strng in objNumber {
+            print(strng)
             if strng == "." {
-                pushFrontPanelButton(button: "period")
+                pressedMessage = OSCMessage(with: "\(hardware)period", arguments: [1])
+                releasedMessage = OSCMessage(with: "\(hardware)period", arguments: [0])
+                client.send(packet: pressedMessage)
+                logOSCMessage(sent: "yes", message: pressedMessage.addressPattern, argument: pressedMessage.arguments)
+                usleep(1000)
+                client.send(packet: releasedMessage)
+                logOSCMessage(sent: "yes", message: releasedMessage.addressPattern, argument: releasedMessage.arguments)
+                usleep(1000)
             } else {
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .spellOut
                 let english = formatter.string(from: NSNumber(value: Int(String(strng))!))
-//                print(english ?? "NUMBER DIDN'T CONVERT")
-                pushFrontPanelButton(button: english!)
+                pressedMessage = OSCMessage(with: "\(hardware)\(english!)", arguments: [1])
+                releasedMessage = OSCMessage(with: "\(hardware)\(english!)", arguments: [0])
+                client.send(packet: pressedMessage)
+                logOSCMessage(sent: "yes", message: pressedMessage.addressPattern, argument: pressedMessage.arguments)
+                usleep(1000)
+                client.send(packet: releasedMessage)
+                logOSCMessage(sent: "yes", message: releasedMessage.addressPattern, argument: releasedMessage.arguments)
+                usleep(1000)
             }
-            usleep(useconds_t(0.001 * second))
         }
         // enter
-        usleep(useconds_t(0.001 * second))
-        pushFrontPanelButton(button: "enter")
+        pressedMessage = OSCMessage(with: "\(hardware)enter", arguments: [1])
+        releasedMessage = OSCMessage(with: "\(hardware)enter", arguments: [0])
+        usleep(10000)
+        client.send(packet: pressedMessage)
+        logOSCMessage(sent: "yes", message: pressedMessage.addressPattern, argument: pressedMessage.arguments)
+        usleep(1000)
+        client.send(packet: releasedMessage)
+        logOSCMessage(sent: "yes", message: releasedMessage.addressPattern, argument: releasedMessage.arguments)
+        print("push \(objType) button \(objNumber)")
     }
+//    func selectProgrammingObject(objNumber: String, objType: ShowObjectType) {
+//        // double tap backspace
+//        pushFrontPanelButton(button: "backspace")
+//        releaseFrontPanelButton(button: "backspace")
+//        pushFrontPanelButton(button: "backspace")
+//        releaseFrontPanelButton(button: "backspace")
+//        // object type
+//        pushFrontPanelButton(button: objType.rawValue)
+//        releaseFrontPanelButton(button: objType.rawValue)
+//        print(objType.rawValue)
+//        // number
+//        for strng in objNumber {
+//            if strng == "." {
+//                pushFrontPanelButton(button: "period")
+//                releaseFrontPanelButton(button: "period")
+//            } else {
+//                let formatter = NumberFormatter()
+//                formatter.numberStyle = .spellOut
+//                let english = formatter.string(from: NSNumber(value: Int(objNumber)!))
+//                //                print(english ?? "NUMBER DIDN'T CONVERT")
+//                pushFrontPanelButton(button: english!)
+//                releaseFrontPanelButton(button: english!)
+//            }
+//        }
+//        // enter
+//        pushFrontPanelButton(button: "enter")
+//        releaseFrontPanelButton(button: "enter")
+//        print("push \(objType) button \(objNumber)")
+//    }
     func goListOrScene(objNumber: String, objType: String) {
         let message = OSCMessage(with: "\(playbackGo)\(objType)", arguments: [Float(objNumber)!])
         client.send(packet: message)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments)
     }
     
     func releaseList(_ objNumber: String) {
         let message = OSCMessage(with: "\(playbackRelease)1", arguments: [Float(objNumber)!])
         client.send(packet: message)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments)
     }
     
     func releaseScene(_ objNumber: String) {
         let message = OSCMessage(with: "\(playbackRelease)2", arguments: [Float(objNumber)!])
         client.send(packet: message)
+        logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments)
     }
 }
+
