@@ -82,6 +82,7 @@ struct EditObjectView: View {
             let test = try viewContext.fetch(fetchRequest)
             let objectToUpdate = test[0] as! NSManagedObject
             objectToUpdate.setValue(name, forKey: "name")
+            objectToUpdate.setValue(num, forKey: "number")
             objectToUpdate.setValue(OBJ_COLORS[objColor].description, forKey: "objColor")
             objectToUpdate.setValue(isOutlined, forKey: "isOutlined")
             try viewContext.save()
