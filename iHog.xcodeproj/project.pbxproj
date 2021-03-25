@@ -58,6 +58,9 @@
 		15D07E0E251E1B7400A80DC4 /* HBCButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07E0D251E1B7400A80DC4 /* HBCButtonView.swift */; };
 		15D07E13251E1E7F00A80DC4 /* OpenPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07E12251E1E7F00A80DC4 /* OpenPartsView.swift */; };
 		15D07E18251E209100A80DC4 /* CommandLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D07E17251E209100A80DC4 /* CommandLineView.swift */; };
+		15D0850C260B656900C4DA58 /* OSCSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D0850B260B656900C4DA58 /* OSCSettings.swift */; };
+		15D08512260B663800C4DA58 /* ProgrammerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D08511260B663800C4DA58 /* ProgrammerSettings.swift */; };
+		15D08518260B69BF00C4DA58 /* GameControllerSettigns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D08517260B69BF00C4DA58 /* GameControllerSettigns.swift */; };
 		15DA0B19251513BC006ADB27 /* ProgrammingObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA0B18251513BC006ADB27 /* ProgrammingObjects.swift */; };
 		15DA2677251237D60063E236 /* iHogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2676251237D60063E236 /* iHogApp.swift */; };
 		15DA2679251237D60063E236 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2678251237D60063E236 /* ContentView.swift */; };
@@ -157,6 +160,9 @@
 		15D07E0D251E1B7400A80DC4 /* HBCButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBCButtonView.swift; sourceTree = "<group>"; };
 		15D07E12251E1E7F00A80DC4 /* OpenPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPartsView.swift; sourceTree = "<group>"; };
 		15D07E17251E209100A80DC4 /* CommandLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineView.swift; sourceTree = "<group>"; };
+		15D0850B260B656900C4DA58 /* OSCSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSCSettings.swift; sourceTree = "<group>"; };
+		15D08511260B663800C4DA58 /* ProgrammerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammerSettings.swift; sourceTree = "<group>"; };
+		15D08517260B69BF00C4DA58 /* GameControllerSettigns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControllerSettigns.swift; sourceTree = "<group>"; };
 		15DA0B18251513BC006ADB27 /* ProgrammingObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammingObjects.swift; sourceTree = "<group>"; };
 		15DA2673251237D60063E236 /* iHog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iHog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DA2676251237D60063E236 /* iHogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogApp.swift; sourceTree = "<group>"; };
@@ -300,6 +306,9 @@
 			isa = PBXGroup;
 			children = (
 				1578D3302512F460001E1BDF /* Device.swift */,
+				15D0850B260B656900C4DA58 /* OSCSettings.swift */,
+				15D08511260B663800C4DA58 /* ProgrammerSettings.swift */,
+				15D08517260B69BF00C4DA58 /* GameControllerSettigns.swift */,
 			);
 			path = Device;
 			sourceTree = "<group>";
@@ -724,7 +733,9 @@
 				1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */,
 				153009D0258B8A0D00311520 /* OSCHelper.swift in Sources */,
 				152902552538727A002D4F2E /* ShowNavigation.swift in Sources */,
+				15D08512260B663800C4DA58 /* ProgrammerSettings.swift in Sources */,
 				1578D3312512F460001E1BDF /* Device.swift in Sources */,
+				15D0850C260B656900C4DA58 /* OSCSettings.swift in Sources */,
 				15D07E06251E1B2500A80DC4 /* SelectButtonView.swift in Sources */,
 				15DA2680251237D70063E236 /* Persistence.swift in Sources */,
 				152EECDA25D56CCF00136CC7 /* PPPurchaseView.swift in Sources */,
@@ -754,6 +765,7 @@
 				155795302518CBBF004FD603 /* ShowObject.swift in Sources */,
 				15AB35DF251CC354008FC212 /* ObjectButtonView.swift in Sources */,
 				15FA5F192526006E00DF1A3C /* HorizontalMasterView.swift in Sources */,
+				15D08518260B69BF00C4DA58 /* GameControllerSettigns.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -967,7 +979,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.2;
+				MARKETING_VERSION = 2021.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appsbymw.hogosc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -992,7 +1004,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.2;
+				MARKETING_VERSION = 2021.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appsbymw.hogosc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
