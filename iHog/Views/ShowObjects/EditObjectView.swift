@@ -16,6 +16,7 @@ struct EditObjectView: View {
     var obj: ShowObject
     
     @State private var name = ""
+    @State private var number = ""
     @State private var isOutlined = false
     @State private var objColor = 1
     @State private var indexOfOBJ = 0
@@ -40,6 +41,8 @@ struct EditObjectView: View {
             }.padding(.vertical)
             Form{
                 TextField("Name", text: $name)
+                TextField("Number", text: $number)
+                    .keyboardType(.decimalPad)
                 Toggle("Is Outlined", isOn: $isOutlined)
                 Picker("Color", selection: $objColor) {
                     ForEach(0..<OBJ_COLORS.count){
@@ -64,11 +67,13 @@ struct EditObjectView: View {
     func getInitialValues() {
         print("Getting initial values")
         name = obj.getName()
+        number = obj.getObjNumber()
         isOutlined = obj.isOutlined
         objColor = obj.getColor()
     }
     func saveValues(){
-        let updatedOBJ = ShowObject(id: obj.id, objType: obj.objType, number: obj.number, name: name, objColor: OBJ_COLORS[objColor].description, isOutlined: isOutlined)
+        let num = Double(number) ?? obj.number
+        let updatedOBJ = ShowObject(id: obj.id, objType: obj.objType, number: num, name: name, objColor: OBJ_COLORS[objColor].description, isOutlined: isOutlined)
         let savedOBJID: NSUUID = obj.id as NSUUID
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "ShowObjectEntity")
         fetchRequest.predicate = NSPredicate(format: "id == %@", savedOBJID as CVarArg)

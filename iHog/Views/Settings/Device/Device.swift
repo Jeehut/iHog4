@@ -13,7 +13,7 @@ struct Device: View {
         Form{
             OSCSettings()
             ProgrammerSettings()
-            GameControllerSettigns()
+//            GameControllerSettigns()
         }.navigationTitle("Device Settings")
     }
 }
