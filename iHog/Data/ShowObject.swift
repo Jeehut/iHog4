@@ -46,15 +46,7 @@ struct ShowObject: Identifiable, Hashable {
     }
     
     func getObjNumber() -> String {
-        var numString: String = ""
-        let objNum = number
-        let isInt = objNum.truncatingRemainder(dividingBy: 1) == 0
-        
-        if isInt {
-            numString = String(format: "%.0f", number)
-        } else {
-            numString = String(format: "%.3f", number)
-        }
+        let numString: String = String(format: "%g", number)
         
         return numString
     }
@@ -62,21 +54,21 @@ struct ShowObject: Identifiable, Hashable {
     func getShortType() -> String {
         switch objType {
         case .group:
-            return "GRP"
+            return "G"
         case .intensity:
-            return "INT"
+            return "I"
         case .position:
-            return "POS"
+            return "P"
         case .color:
-            return "COL"
+            return "C"
         case .beam:
-            return "BEM"
+            return "B"
         case .effect:
-            return "EFF"
+            return "E"
         case .list:
-            return "LST"
+            return "L"
         case .scene:
-            return "SCN"
+            return "S"
         default:
             // NO TYPE FOUND
             return "NTF"
