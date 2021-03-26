@@ -392,7 +392,7 @@ extension OSCHelper {
     }
     func setFaderLevel(value: Float, fader: Int) {
         let y = 0.86274509803922 * value - 110.0
-        print(" val: \(value) || y: \(y)")
+//        print(" val: \(value) || y: \(y)")
         faders[fader] = y
     }
 }

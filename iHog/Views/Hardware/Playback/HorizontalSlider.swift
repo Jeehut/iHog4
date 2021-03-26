@@ -11,7 +11,7 @@ import SwiftUI
 // -x = left
 struct HorizontalSlider: View {
     @EnvironmentObject var osc: OSCHelper
-    @State private var faderLevel: Double = -110
+    @State private var faderLevel: Double = 0.0
     @State private var consoleFaderValue: Double = 0.0
     @State private var absoluteFaderLevel: Double = 0.0
     
@@ -30,13 +30,18 @@ struct HorizontalSlider: View {
                        height: BASE_THUMB_SIZE,
                        alignment: .center
                 )
-                .offset(x: CGFloat((osc.faders[master])))
+                .offset(x: CGFloat(osc.faders[master]))
                 .gesture(
                     DragGesture().onChanged({value in
 //                        print("New value: \(value.location.x)")
                         setFaderLevel(newValue: value.location.x)
+                    }).onEnded({ value in
+                        setIncomingFaderLevel()
                     }))
 //            Text("\(consoleFaderValue)").foregroundColor(.red)
+        }
+        .onAppear{
+            setIncomingFaderLevel()
         }
     }
     
@@ -63,6 +68,11 @@ struct HorizontalSlider: View {
             consoleFaderValue = absoluteFaderLevel * 1.159
         }
         osc.fader(master: master, value: Float(consoleFaderValue))
+        osc.setFaderLevel(value: Float(consoleFaderValue), fader: master)
+    }
+    
+    func setIncomingFaderLevel() {
+        faderLevel = Double(osc.faders[master])
     }
 }
 

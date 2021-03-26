@@ -33,6 +33,9 @@ struct VerticalSlider: View {
                 .gesture(DragGesture()
                             .onChanged({value in
                                 setFaderLevel(newValue: value.location.y)
+                            })
+                            .onEnded({ value in
+                                setIncomingFaderLevel()
                             }))
         }
     }
@@ -60,6 +63,11 @@ struct VerticalSlider: View {
             consoleFaderValue = absoluteFaderLevel * 1.159
         }
         osc.fader(master: master, value: Float(consoleFaderValue))
+        osc.setFaderLevel(value: Float(consoleFaderValue), fader: master)
+    }
+    
+    func setIncomingFaderLevel() {
+        faderLevel = Double(osc.faders[master])
     }
 }
 
