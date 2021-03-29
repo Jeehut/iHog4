@@ -17,22 +17,20 @@ struct SettingsView: View {
         animation: .default)
     private var shows: FetchedResults<ShowEntity>
     
+    @FetchRequest(entity: TipEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TipEntity.dateTipped, ascending: true)]) private var tips: FetchedResults<TipEntity>
+    
     @State var selectedSetting: SettingsNav? = SettingsNav.device
     @State private var isAddingShow: Bool = false
+    @State private var totalTipped: Double = 0.0
     
-    enum SettingsNav:Hashable {
-        case chooseShow
-        case device
-        case showSettings
-        case about
-        case programmerHardware
-        case playbackHardware
-        case playbackObject
-        case programObject
-        case custom
-        case tipJar
-        case oscLogView
-    }
+    static let priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        
+        formatter.formatterBehavior = .behavior10_4
+        formatter.numberStyle = .currency
+        
+        return formatter
+    }()
     
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     let appBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
@@ -76,15 +74,15 @@ struct SettingsView: View {
                     Section(header: Text("About"),
                             footer: Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")){
                         Link("ℹ️ About [iHog Website]", destination: URL(string: "https://ihogapp.com/about")!)
-                        Link("📘 Guide [iHog Website]", destination: URL(string: "https://ihogapp.com/guide")!)
                         Link("🐛 Report a bug [GitHub Account Required]", destination: URL(string: "https://github.com/maeganwilson/iHog4/issues/new?assignees=maeganwilson&labels=question&template=bug_report.md&title=%5BBUG%5D")!)
                         Link("💡 Request a feature [GitHub Account Required]", destination: URL(string: "https://github.com/maeganwilson/iHog4/issues/new?assignees=maeganwilson&labels=question&template=feature_request.md&title=%5BREQUEST%5D")!)
-                        Link("💬 Chat about iHog [Dev's discord link]", destination: URL(string: "https://discord.gg/HmGYbNHmun")!)
                         NavigationLink(
-                            "Tip Jar",
+                            "💰 Tip Jar (\(SettingsView.priceFormatter.string(from: NSNumber(value: totalTipped)) ?? "NONE"))",
                             destination: TipJarView(),
                             tag: SettingsNav.tipJar,
                             selection: $selectedSetting)
+                        Link("📘 Guide [iHog Website]", destination: URL(string: "https://ihogapp.com/guide")!)
+                        Link("💬 Chat about iHog [Dev's discord link]", destination: URL(string: "https://discord.gg/HmGYbNHmun")!)
                     }
                 }
                 .listStyle( SidebarListStyle())
@@ -97,6 +95,9 @@ struct SettingsView: View {
                 }
             }
         }.navigationViewStyle( DoubleColumnNavigationViewStyle())
+        .onAppear {
+            getTotalTipped()
+        }
     }
     
     
@@ -116,6 +117,14 @@ struct SettingsView: View {
         } catch{
             print(error)
         }
+    }
+    func getTotalTipped() {
+        var total = 0.0
+        for tip in tips {
+            total += tip.amount
+        }
+        
+        totalTipped = total
     }
 }
 

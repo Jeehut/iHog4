@@ -10,9 +10,12 @@
 
 import SwiftUI
 import Purchases
+import StoreKit
 
 @main
 struct iHogApp: App {
+    @AppStorage(Settings.timesLaunched.rawValue) var timesLaunced: Int = 0
+    
     let persistenceController = PersistenceController.shared
     let osc = OSCHelper()
     
@@ -23,9 +26,15 @@ struct iHogApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SettingsView()
+            SettingsView(selectedSetting: SettingsNav.device)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(osc)
+                .onAppear {
+                    timesLaunced += 1
+                    if timesLaunced > 5 {
+                        if let windowScene = UIApplication.shared.windows.first?.windowScene { SKStoreReviewController.requestReview(in: windowScene) }
+                    }
+                }
         }
     }
 }

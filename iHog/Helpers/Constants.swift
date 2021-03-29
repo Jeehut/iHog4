@@ -46,8 +46,26 @@ let XL_MAX_BUTTONS_ACROSS: Int = 1
 // MARK: COLOR OPTIONS
 let OBJ_COLORS: [Color] = [.red, .green, .blue, .yellow, .gray, .orange, .pink, .purple]
 
+// MARK: SETTINGS NAV
+
+enum SettingsNav:Hashable {
+    case chooseShow
+    case device
+    case showSettings
+    case about
+    case programmerHardware
+    case playbackHardware
+    case playbackObject
+    case programObject
+    case custom
+    case tipJar
+    case oscLogView
+}
+
 // MARK: SETTING ENUMS
 enum Settings: String {
+    case timesLaunched
+    
     case chosenShowID
     
     case consoleIP
@@ -84,6 +102,7 @@ enum Settings: String {
     case buttonsAcrossScene
     case isButtonFilledScene
     
+    // MARK: Feature Unlocks
     case puntPageIsEnabled
 }
 

@@ -40,7 +40,7 @@ struct TipJarView: View {
                 .font(.title)
                 .foregroundColor((totalTipped > 0) ? .green : .primary)
                 .padding()
-            Text("Any contribution is greatly welcomed to help added functionality and new versions remain free of charge.")
+            Text("Any contribution is greatly welcomed, but please don't feel like you must tip.")
                 .padding()
             List{
                 ForEach(packages, id: \.identifier){ package in
