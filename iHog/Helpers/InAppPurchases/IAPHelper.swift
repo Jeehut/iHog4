@@ -11,10 +11,6 @@ import StoreKit
 public typealias ProductIdentifier = String
 public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products: [SKProduct]?) -> Void
 
-extension Notification.Name {
-    static let IAPHelperPurchaseNotification = Notification.Name("IAPHelperPurchaseNotification")
-}
-
 open class IAPHelper: NSObject  {
     var purchaseAmount: NSDecimalNumber = 0
     private let productIdentifiers: Set<ProductIdentifier>

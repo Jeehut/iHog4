@@ -37,6 +37,8 @@
 		1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3272512F3DF001E1BDF /* ShowBox.swift */; };
 		1578D3312512F460001E1BDF /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3302512F460001E1BDF /* Device.swift */; };
 		158362D925F7AF9600EEC8F7 /* PressAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158362D825F7AF9600EEC8F7 /* PressAction.swift */; };
+		15894C172613493800C0780B /* NotificationCenter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15894C162613493800C0780B /* NotificationCenter+Extensions.swift */; };
+		15894C1D26134B1800C0780B /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15894C1C26134B1800C0780B /* GameController.framework */; };
 		159048312537DEED00910100 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159048302537DEED00910100 /* Constants.swift */; };
 		1592F4C725E53BBC004D4FE6 /* OSCLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1592F4C625E53BBC004D4FE6 /* OSCLogView.swift */; };
 		1598BDCB25E2D1BA0060793F /* iHog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1598BDC925E2D1BA0060793F /* iHog.xcdatamodeld */; };
@@ -139,6 +141,8 @@
 		1578D3272512F3DF001E1BDF /* ShowBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBox.swift; sourceTree = "<group>"; };
 		1578D3302512F460001E1BDF /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		158362D825F7AF9600EEC8F7 /* PressAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressAction.swift; sourceTree = "<group>"; };
+		15894C162613493800C0780B /* NotificationCenter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Extensions.swift"; sourceTree = "<group>"; };
+		15894C1C26134B1800C0780B /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 		159048302537DEED00910100 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1592F4C625E53BBC004D4FE6 /* OSCLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSCLogView.swift; sourceTree = "<group>"; };
 		1598BDCA25E2D1BA0060793F /* iHog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iHog.xcdatamodel; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 			files = (
 				15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */,
 				15BC8EC325BCD59F00309C8B /* OSCKit in Frameworks */,
+				15894C1D26134B1800C0780B /* GameController.framework in Frameworks */,
 				15C8284925FA4B15003FAEFA /* Purchases in Frameworks */,
 				15C8285125FA4B83003FAEFA /* StoreKit.framework in Frameworks */,
 			);
@@ -267,6 +272,7 @@
 				159048302537DEED00910100 /* Constants.swift */,
 				153009CF258B8A0D00311520 /* OSCHelper.swift */,
 				158362D825F7AF9600EEC8F7 /* PressAction.swift */,
+				15894C162613493800C0780B /* NotificationCenter+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -502,6 +508,7 @@
 		15E2D202253F14F900C7A453 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15894C1C26134B1800C0780B /* GameController.framework */,
 				15C8285025FA4B83003FAEFA /* StoreKit.framework */,
 				15E2D203253F14F900C7A453 /* CloudKit.framework */,
 			);
@@ -766,6 +773,7 @@
 				15AB35DF251CC354008FC212 /* ObjectButtonView.swift in Sources */,
 				15FA5F192526006E00DF1A3C /* HorizontalMasterView.swift in Sources */,
 				15D08518260B69BF00C4DA58 /* GameControllerSettigns.swift in Sources */,
+				15894C172613493800C0780B /* NotificationCenter+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
