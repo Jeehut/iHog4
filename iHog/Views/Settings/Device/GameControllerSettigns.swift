@@ -15,11 +15,14 @@ struct GameControllerSettigns: View {
     
     var body: some View {
         Section(header: Text("Game Controller Options")) {
+            // Button to look for game controllers
             HStack{
                 Text("Connect for game controller")
                 Button("Connect") {
                     print("Will CONNECT")
+                    print(GCController.controllers())
                     GCController.startWirelessControllerDiscovery {
+                        // completion handler
                         print("Did start")
                     }
                 }

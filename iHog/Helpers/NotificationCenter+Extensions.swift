@@ -9,4 +9,5 @@ import Foundation
 
 extension Notification.Name {
     static let IAPHelperPurchaseNotification = Notification.Name("IAPHelperPurchaseNotification")
+    static let GCConnectedNotification = Notification.Name("GCConnectedNotification")
 }
