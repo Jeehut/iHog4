@@ -11,7 +11,7 @@ import GameController
 struct GameControllerSettigns: View {
     @State private var isConntected = false
     @State private var controllers: [Any] = []
-    var gameController = GCController()
+    var gameController = GameController()
     
     var body: some View {
         Section(header: Text("Game Controller Options")) {
