@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct Device: View {
+    @EnvironmentObject var osc: OSCHelper
     
     var body: some View {
         Form{
             OSCSettings()
             ProgrammerSettings()
-            GameControllerSettigns()
+            GameControllerSettigns(gameController: GameController(osc: osc))
         }.navigationTitle("Device Settings")
     }
 }

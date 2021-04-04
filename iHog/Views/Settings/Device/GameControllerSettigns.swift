@@ -9,10 +9,12 @@ import SwiftUI
 import GameController
 
 struct GameControllerSettigns: View {
+    @EnvironmentObject var osc: OSCHelper
+    // Controller settings
     @State private var isConntected = false
     @State private var controllers: [Any] = []
-    var gameController = GameController()
-    
+    var gameController: GameController
+
     var body: some View {
         Section(header: Text("Game Controller Options")) {
             // Button to look for game controllers
@@ -31,8 +33,3 @@ struct GameControllerSettigns: View {
     }
 }
 
-struct GameControllerSettigns_Previews: PreviewProvider {
-    static var previews: some View {
-        GameControllerSettigns()
-    }
-}
