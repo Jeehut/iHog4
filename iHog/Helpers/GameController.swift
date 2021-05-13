@@ -142,7 +142,9 @@ class GameController: NSObject {
         encoder1?.valueChangedHandler = { (_ directionPad: GCControllerDirectionPad,
                                            _ xValue: Float,
                                            _ yValue: Float) -> Void in
-            print(xValue)
+            while(xValue >= 1.0 && xValue <= -1.0){
+                self.osc.encoderWheel(encoderNum: 1, value: Double(xValue))
+            }
         }
         encoder2?.valueChangedHandler = { (_ directionPad: GCControllerDirectionPad,
                                            _ xValue: Float,
