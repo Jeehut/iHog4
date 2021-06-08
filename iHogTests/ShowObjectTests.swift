@@ -31,6 +31,7 @@ class ShowObjectTests: XCTestCase {
         }
     }
     
+    // MARK: Name Tests
     // Test for initial obj with no name given
     func test_ShowObjectName_NoNameGiven_ShouldBeGroup10() throws {
         let name = sut.getName()
@@ -44,6 +45,7 @@ class ShowObjectTests: XCTestCase {
         XCTAssertEqual(name, "Wash")
     }
     
+    // MARK: Number Tests
     // Test for initial number
     func test_ShowObjectNumber_Initial_ShouldBe10() throws {
         let number = sut.getObjNumber()
@@ -53,7 +55,9 @@ class ShowObjectTests: XCTestCase {
     // Test for whole number change
     
     func test_ShowObjectNumber_AfterSetNum_ShouldBe5() throws {
-        
+        sut.setNumber(5)
+        let number = sut.getObjNumber()
+        XCTAssertEqual(number, "5")
     }
     
     // Test dot numbers
@@ -61,5 +65,40 @@ class ShowObjectTests: XCTestCase {
         sut.setNumber(10.1)
         let number = sut.getObjNumber()
         XCTAssertEqual(number, "10.1")
+    }
+    
+    // MARK: Outline Testing
+    
+    func test_ShowObjectOutline_Initial_ShouldBeTrue() throws {
+        let outline = sut.getOutlineState()
+        XCTAssertTrue(outline)
+    }
+    
+    func test_ShowObjectOutline_AfterSetOutline_ShouldBeFalse() throws {
+        sut.setOutline(false)
+        let outline = sut.getOutlineState()
+        XCTAssertFalse(outline)
+    }
+    
+    func test_ShowObjectOutline_AfterSetOutline_ShouldBeTrue() throws {
+        sut.setOutline(false)
+        let outlineFalse = sut.getOutlineState()
+        XCTAssertFalse(outlineFalse)
+        
+        sut.setOutline(true)
+        let outlineTrue = sut.getOutlineState()
+        XCTAssertTrue(outlineTrue)
+    }
+    
+    // MARK: Color Testing
+    func test_ShowObjectColor_Initial_ShouldBeRed() throws {
+        let color = sut.getColorString()
+        XCTAssertEqual(color, "red")
+    }
+
+    func test_ShowObjectColor_AfterSetColor_ShouldBeBlue() throws {
+        sut.setColor("blue")
+        let color = sut.getColorString()
+        XCTAssertEqual(color, "blue")
     }
 }

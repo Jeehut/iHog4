@@ -70,6 +70,10 @@ struct ShowObject: Identifiable, Hashable {
         return numString
     }
     
+    func getOutlineState() -> Bool {
+        return isOutlined
+    }
+    
     func getShortType() -> String {
         switch objType {
         case .group:
@@ -92,6 +96,10 @@ struct ShowObject: Identifiable, Hashable {
             // NO TYPE FOUND
             return "NTF"
         }
+    }
+    
+    func getColorString() -> String {
+        return objColor
     }
     
     func getColor() -> Int {
