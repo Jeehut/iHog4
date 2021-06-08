@@ -13,7 +13,7 @@ struct EditObjectView: View {
     @Environment(\.presentationMode) private var presentationMode
     @Binding var allObjects: [ShowObject]
     
-    var obj: ShowObject
+    @State var obj: ShowObject
     
     @State private var name = ""
     @State private var number = ""
@@ -61,23 +61,27 @@ struct EditObjectView: View {
         }.onAppear{
             getInitialValues()
         }
-//        .onDisappear(perform: saveValues)
     }
     
     func getInitialValues() {
-        print("Getting initial values")
         name = obj.getName()
         number = obj.getObjNumber()
         isOutlined = obj.isOutlined
         objColor = obj.getColor()
     }
+    
     func saveValues(){
         let num = Double(number) ?? obj.number
         let updatedOBJ = ShowObject(id: obj.id, objType: obj.objType, number: num, name: name, objColor: OBJ_COLORS[objColor].description, isOutlined: isOutlined)
+        
         let savedOBJID: NSUUID = obj.id as NSUUID
+        
+        // Gets the object from coredata/cloudkit
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "ShowObjectEntity")
         fetchRequest.predicate = NSPredicate(format: "id == %@", savedOBJID as CVarArg)
         fetchRequest.fetchLimit = 1
+        
+        // Updates objects in Core data/Cloud Kit
         do {
             let test = try viewContext.fetch(fetchRequest)
             let objectToUpdate = test[0] as! NSManagedObject
