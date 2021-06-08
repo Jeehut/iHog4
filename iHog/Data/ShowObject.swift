@@ -26,6 +26,7 @@ public enum ShowObjectType: String {
     case plot
 }
 
+/// An object in the show that is used for programming or playback.
 struct ShowObject: Identifiable, Hashable {
     var id: UUID = UUID()
     var objType: ShowObjectType
@@ -34,10 +35,26 @@ struct ShowObject: Identifiable, Hashable {
     var objColor: String
     var isOutlined: Bool = true
     
+    // Adjust values
     mutating func setName(_ newName: String){
         name = newName
     }
     
+    mutating func setNumber(_ newNumber: Double) {
+        number = newNumber
+    }
+    
+    mutating func setOutline(_ newOutlineState: Bool){
+        isOutlined = newOutlineState
+    }
+    
+    mutating func setColor(_ newColor: String){
+        objColor = newColor
+    }
+    
+    // Retrieve values
+    /// Used to return the name of the object
+    /// - Returns: Name of object
     func getName() -> String {
         if let objectName = name {
             return objectName
@@ -45,6 +62,8 @@ struct ShowObject: Identifiable, Hashable {
         return objType.rawValue.localizedCapitalized + " " + getObjNumber()
     }
     
+    /// Used to return the number of the object.
+    /// - Returns: Object Number
     func getObjNumber() -> String {
         let numString: String = String(format: "%g", number)
         
