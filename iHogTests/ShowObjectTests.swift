@@ -31,13 +31,35 @@ class ShowObjectTests: XCTestCase {
         }
     }
     
-    func test_showObjectName_NoNameGiven_ShouldBeGroup10() throws {
+    // Test for initial obj with no name given
+    func test_ShowObjectName_NoNameGiven_ShouldBeGroup10() throws {
         let name = sut.getName()
         XCTAssertEqual(name, "Group 10")
     }
     
-    func test_showObjectName_AfterSetName_ShouldBeWash() throws {
+    // Test for object name change
+    func test_ShowObjectName_AfterSetName_ShouldBeWash() throws {
         sut.setName("Wash")
-        XCTAssertEqual(sut.name, "Wash")
+        let name = sut.getName()
+        XCTAssertEqual(name, "Wash")
+    }
+    
+    // Test for initial number
+    func test_ShowObjectNumber_Initial_ShouldBe10() throws {
+        let number = sut.getObjNumber()
+        XCTAssertEqual(number, "10")
+    }
+    
+    // Test for whole number change
+    
+    func test_ShowObjectNumber_AfterSetNum_ShouldBe5() throws {
+        
+    }
+    
+    // Test dot numbers
+    func test_ShowObjectNumber_AfterSetNum_ShouldBe10dot1() throws {
+        sut.setNumber(10.1)
+        let number = sut.getObjNumber()
+        XCTAssertEqual(number, "10.1")
     }
 }
