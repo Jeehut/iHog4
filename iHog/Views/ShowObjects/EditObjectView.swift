@@ -72,7 +72,12 @@ struct EditObjectView: View {
     
     func saveValues(){
         let num = Double(number) ?? obj.number
-        let updatedOBJ = ShowObject(id: obj.id, objType: obj.objType, number: num, name: name, objColor: OBJ_COLORS[objColor].description, isOutlined: isOutlined)
+//        let updatedOBJ = ShowObject(id: obj.id, objType: obj.objType, number: num, name: name, objColor: OBJ_COLORS[objColor].description, isOutlined: isOutlined)
+        
+        obj.setName(name)
+        obj.setNumber(num)
+        obj.setColor(OBJ_COLORS[objColor].description)
+        obj.setOutline(isOutlined)
         
         let savedOBJID: NSUUID = obj.id as NSUUID
         
@@ -91,7 +96,7 @@ struct EditObjectView: View {
             objectToUpdate.setValue(isOutlined, forKey: "isOutlined")
             try viewContext.save()
             allObjects.removeAll{$0 == obj}
-            allObjects.append(updatedOBJ)
+            allObjects.append(obj)
             allObjects.sort(by: {$0.number  < $1.number})
         } catch {
             print(error)
