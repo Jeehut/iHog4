@@ -12,17 +12,20 @@ struct SettingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var osc: OSCHelper
     
+    // Gets shows
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \ShowEntity.dateLastModified, ascending: true)],
         animation: .default)
     private var shows: FetchedResults<ShowEntity>
     
+    // Gets all tips
     @FetchRequest(entity: TipEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TipEntity.dateTipped, ascending: true)]) private var tips: FetchedResults<TipEntity>
     
     @State var selectedSetting: SettingsNav? = SettingsNav.device
     @State private var isAddingShow: Bool = false
     @State private var totalTipped: Double = 0.0
     
+    // Format for tips
     static let priceFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         
