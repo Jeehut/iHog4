@@ -35,7 +35,6 @@
 		15727F2C25D742DF00B67505 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15727F2B25D742DF00B67505 /* IAPHelper.swift */; };
 		15727F3A25D7471400B67505 /* IAPViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15727F3925D7471400B67505 /* IAPViews.swift */; };
 		1577808F25D2BDEB009AE8CE /* PPProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1577808E25D2BDEB009AE8CE /* PPProgramming.swift */; };
-		1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3272512F3DF001E1BDF /* ShowBox.swift */; };
 		1578D3312512F460001E1BDF /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3302512F460001E1BDF /* Device.swift */; };
 		158362D925F7AF9600EEC8F7 /* PressAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158362D825F7AF9600EEC8F7 /* PressAction.swift */; };
 		159048312537DEED00910100 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159048302537DEED00910100 /* Constants.swift */; };
@@ -71,8 +70,6 @@
 		15DA268E251237D70063E236 /* iHogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA268D251237D70063E236 /* iHogTests.swift */; };
 		15DA2699251237D70063E236 /* iHogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2698251237D70063E236 /* iHogUITests.swift */; };
 		15DA26AC251238980063E236 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26AB251238980063E236 /* SettingsView.swift */; };
-		15DA26B425123D200063E236 /* SelectShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26B325123D200063E236 /* SelectShow.swift */; };
-		15DA26BA25123EEB0063E236 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26B925123EEB0063E236 /* Show.swift */; };
 		15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E2D203253F14F900C7A453 /* CloudKit.framework */; };
 		15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520252514DA7500EF4B98 /* ShowSetting.swift */; };
 		15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520302514DBA300EF4B98 /* ObjectSettings.swift */; };
@@ -138,7 +135,6 @@
 		15727F2B25D742DF00B67505 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		15727F3925D7471400B67505 /* IAPViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPViews.swift; sourceTree = "<group>"; };
 		1577808E25D2BDEB009AE8CE /* PPProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPProgramming.swift; sourceTree = "<group>"; };
-		1578D3272512F3DF001E1BDF /* ShowBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBox.swift; sourceTree = "<group>"; };
 		1578D3302512F460001E1BDF /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		158362D825F7AF9600EEC8F7 /* PressAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressAction.swift; sourceTree = "<group>"; };
 		159048302537DEED00910100 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -180,8 +176,6 @@
 		15DA2698251237D70063E236 /* iHogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogUITests.swift; sourceTree = "<group>"; };
 		15DA269A251237D70063E236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15DA26AB251238980063E236 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		15DA26B325123D200063E236 /* SelectShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectShow.swift; sourceTree = "<group>"; };
-		15DA26B925123EEB0063E236 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		15E2D1FE253F14F100C7A453 /* iHog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iHog.entitlements; sourceTree = "<group>"; };
 		15E2D203253F14F900C7A453 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		15F520252514DA7500EF4B98 /* ShowSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSetting.swift; sourceTree = "<group>"; };
@@ -297,8 +291,6 @@
 		1578D3262512F3CF001E1BDF /* ChooseShowSettings */ = {
 			isa = PBXGroup;
 			children = (
-				15DA26B325123D200063E236 /* SelectShow.swift */,
-				1578D3272512F3DF001E1BDF /* ShowBox.swift */,
 				156378992539C9BB00C22F0B /* NewShowView.swift */,
 			);
 			path = ChooseShowSettings;
@@ -496,7 +488,6 @@
 		15DA26B825123ED90063E236 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				15DA26B925123EEB0063E236 /* Show.swift */,
 				1557952F2518CBBF004FD603 /* ShowObject.swift */,
 			);
 			path = Data;
@@ -709,7 +700,6 @@
 				379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */,
 				158362D925F7AF9600EEC8F7 /* PressAction.swift in Sources */,
 				15DA0B19251513BC006ADB27 /* ProgrammingObjects.swift in Sources */,
-				15DA26B425123D200063E236 /* SelectShow.swift in Sources */,
 				1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */,
 				15FA5F0E2525FF3400DF1A3C /* HorizontalSlider.swift in Sources */,
 				159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */,
@@ -731,7 +721,6 @@
 				159BAECB251B722700A81EA1 /* PlaybackObjects.swift in Sources */,
 				15D07DF8251E16FA00A80DC4 /* FPProgrammer.swift in Sources */,
 				155450212524B63D0025DCAA /* VerticalMasterView.swift in Sources */,
-				1578D3282512F3DF001E1BDF /* ShowBox.swift in Sources */,
 				15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */,
 				1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */,
 				153009D0258B8A0D00311520 /* OSCHelper.swift in Sources */,
@@ -754,7 +743,6 @@
 				1502F62F251CC53100BAC5EE /* KindButtonView.swift in Sources */,
 				159048312537DEED00910100 /* Constants.swift in Sources */,
 				15F5D12D25CF36CB00EFAB4F /* PPProgramPlayback.swift in Sources */,
-				15DA26BA25123EEB0063E236 /* Show.swift in Sources */,
 				1502F625251CC43900BAC5EE /* ActionButtonView.swift in Sources */,
 				1577808F25D2BDEB009AE8CE /* PPProgramming.swift in Sources */,
 				156893812569B34C00BD6050 /* EditObjectView.swift in Sources */,
