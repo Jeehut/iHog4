@@ -95,7 +95,7 @@ struct EditObjectView: View {
             objectToUpdate.setValue(OBJ_COLORS[objColor].description, forKey: "objColor")
             objectToUpdate.setValue(isOutlined, forKey: "isOutlined")
             try viewContext.save()
-            allObjects.removeAll{$0 == obj}
+            allObjects.removeAll{$0.id == obj.id}
             allObjects.append(obj)
             allObjects.sort(by: {$0.number  < $1.number})
         } catch {
