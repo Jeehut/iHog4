@@ -37,6 +37,8 @@
 		1577808F25D2BDEB009AE8CE /* PPProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1577808E25D2BDEB009AE8CE /* PPProgramming.swift */; };
 		1578D3312512F460001E1BDF /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578D3302512F460001E1BDF /* Device.swift */; };
 		158362D925F7AF9600EEC8F7 /* PressAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158362D825F7AF9600EEC8F7 /* PressAction.swift */; };
+		15893A282671569200780B31 /* ChosenShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15893A272671569200780B31 /* ChosenShow.swift */; };
+		15893A2C2671734000780B31 /* ChosenShowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15893A2B2671734000780B31 /* ChosenShowTests.swift */; };
 		159048312537DEED00910100 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159048302537DEED00910100 /* Constants.swift */; };
 		1592F4C725E53BBC004D4FE6 /* OSCLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1592F4C625E53BBC004D4FE6 /* OSCLogView.swift */; };
 		1598BDCB25E2D1BA0060793F /* iHog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1598BDC925E2D1BA0060793F /* iHog.xcdatamodeld */; };
@@ -137,6 +139,8 @@
 		1577808E25D2BDEB009AE8CE /* PPProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPProgramming.swift; sourceTree = "<group>"; };
 		1578D3302512F460001E1BDF /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		158362D825F7AF9600EEC8F7 /* PressAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressAction.swift; sourceTree = "<group>"; };
+		15893A272671569200780B31 /* ChosenShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenShow.swift; sourceTree = "<group>"; };
+		15893A2B2671734000780B31 /* ChosenShowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenShowTests.swift; sourceTree = "<group>"; };
 		159048302537DEED00910100 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1592F4C625E53BBC004D4FE6 /* OSCLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSCLogView.swift; sourceTree = "<group>"; };
 		1598BDCA25E2D1BA0060793F /* iHog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iHog.xcdatamodel; sourceTree = "<group>"; };
@@ -445,6 +449,7 @@
 				15DA268D251237D70063E236 /* iHogTests.swift */,
 				15DA268F251237D70063E236 /* Info.plist */,
 				1521CA8D26700E1D00014B34 /* ShowObjectTests.swift */,
+				15893A2B2671734000780B31 /* ChosenShowTests.swift */,
 			);
 			path = iHogTests;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 			isa = PBXGroup;
 			children = (
 				1557952F2518CBBF004FD603 /* ShowObject.swift */,
+				15893A272671569200780B31 /* ChosenShow.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -712,6 +718,7 @@
 				1557952B2518CB9C004FD603 /* ShowObjectView.swift in Sources */,
 				15D07E01251E197800A80DC4 /* RegCompFPProgramming.swift in Sources */,
 				155450132524B0E60025DCAA /* FPPlayback.swift in Sources */,
+				15893A282671569200780B31 /* ChosenShow.swift in Sources */,
 				1554501B2524B1390025DCAA /* VerticalSlider.swift in Sources */,
 				1502F634251CC5BF00BAC5EE /* NumericKeypadView.swift in Sources */,
 				15AB35D9251CC1C5008FC212 /* FPButton.swift in Sources */,
@@ -766,6 +773,7 @@
 			files = (
 				15DA268E251237D70063E236 /* iHogTests.swift in Sources */,
 				1521CA8E26700E1D00014B34 /* ShowObjectTests.swift in Sources */,
+				15893A2C2671734000780B31 /* ChosenShowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
