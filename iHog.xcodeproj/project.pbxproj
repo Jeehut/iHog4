@@ -419,7 +419,7 @@
 				1598BDC925E2D1BA0060793F /* iHog.xcdatamodeld */,
 				15E2D1FE253F14F100C7A453 /* iHog.entitlements */,
 				155530CF25138A2D00CF48FD /* Helpers */,
-				15DA26B825123ED90063E236 /* Data */,
+				15DA26B825123ED90063E236 /* Model */,
 				15DA26A92512387D0063E236 /* Views */,
 				15DA2676251237D60063E236 /* iHogApp.swift */,
 				15DA2678251237D60063E236 /* ContentView.swift */,
@@ -485,12 +485,12 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		15DA26B825123ED90063E236 /* Data */ = {
+		15DA26B825123ED90063E236 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				1557952F2518CBBF004FD603 /* ShowObject.swift */,
 			);
-			path = Data;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		15E2D202253F14F900C7A453 /* Frameworks */ = {
