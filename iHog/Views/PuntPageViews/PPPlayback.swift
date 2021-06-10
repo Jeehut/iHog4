@@ -16,6 +16,8 @@ struct PPPlayback: View {
     @State private var allPlaybackObjects: [ShowObject] = []
     @State private var mainPlaybackIsShowing = false
     
+    @ObservedObject var show: ChosenShow
+    
     var body: some View {
         if horizontalSizeClass == .regular {
             if verticalSizeClass == .regular {
@@ -24,6 +26,7 @@ struct PPPlayback: View {
                     ObjectGrid(size: "medium",
                                buttonsAcross: 3,
                                objects: allPlaybackObjects,
+                               show: show,
                                allObjects: $allPlaybackObjects)
                 }.onAppear{
                     getAllObjects()
@@ -35,6 +38,7 @@ struct PPPlayback: View {
                         ObjectGrid(size: "medium",
                                    buttonsAcross: 3,
                                    objects: allPlaybackObjects,
+                                   show: show,
                                    allObjects: $allPlaybackObjects)
                             .transition(.move(edge: .bottom))
                     } else {
@@ -54,6 +58,7 @@ struct PPPlayback: View {
                         ObjectGrid(size: "medium",
                                    buttonsAcross: 3,
                                    objects: allPlaybackObjects,
+                                   show: show,
                                    allObjects: $allPlaybackObjects)
                             .transition(.move(edge: .bottom))
                     } else {
@@ -70,6 +75,7 @@ struct PPPlayback: View {
                         ObjectGrid(size: "medium",
                                    buttonsAcross: 3,
                                    objects: allPlaybackObjects,
+                                   show: show,
                                    allObjects: $allPlaybackObjects)
                             .transition(.move(edge: .bottom))
                     } else {
@@ -125,8 +131,8 @@ struct PPPlayback: View {
         }
     }
 }
-struct PPPlayback_Previews: PreviewProvider {
-    static var previews: some View {
-        PPPlayback()
-    }
-}
+//struct PPPlayback_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PPPlayback()
+//    }
+//}

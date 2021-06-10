@@ -8,15 +8,14 @@
 import Foundation
 
 class ChosenShow: ObservableObject {
-    private var id: UUID
+//    private var id: UUID
     
     @Published var scenes: [ShowObject]
     @Published var lists: [ShowObject]
     @Published var groups: [ShowObject]
     @Published var palettes: [ShowObject]
     
-    init(showID: UUID){
-        id = showID
+    init(){
         scenes = []
         lists = []
         groups = []

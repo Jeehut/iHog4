@@ -35,6 +35,8 @@ struct ProgrammingObjects: View {
     @State private var groupObjects: [ShowObject] = []
     @State private var paletteObjects: [ShowObject] = []
     
+    @ObservedObject var show: ChosenShow
+    
     // MARK: Local constants
     let paletteTypes: [ShowObjectType] = [.intensity, .position, .color, .beam, .effect]
     let sizes: [String] = ["small", "medium", "large", "extra large"]
@@ -45,7 +47,7 @@ struct ProgrammingObjects: View {
                 ObjectGrid(
                     size: sizes[buttonSizeGroup],
                     buttonsAcross: getMaxButtonSize()[0],
-                    objects: groupObjects, allObjects: $groupObjects
+                    objects: groupObjects, show: show, allObjects: $groupObjects
                 ).padding()
                 
                 // MARK: Pallets
@@ -61,7 +63,7 @@ struct ProgrammingObjects: View {
                         buttonsAcross: getMaxButtonSize()[1],
                         objects: paletteObjects.filter({ obj in
                             return obj.objType == paletteTypes[chosenPaletteType]
-                        }), allObjects: $paletteObjects
+                        }), show: show, allObjects: $paletteObjects
                     )
                 }
                 
@@ -75,7 +77,7 @@ struct ProgrammingObjects: View {
             ObjectGrid(
                 size: sizes[buttonSizeGroup],
                 buttonsAcross: getMaxButtonSize()[0],
-                objects: groupObjects, allObjects: $groupObjects
+                objects: groupObjects, show: show, allObjects: $groupObjects
             ).padding()
             
             // MARK: Pallets
@@ -90,7 +92,7 @@ struct ProgrammingObjects: View {
                 buttonsAcross: getMaxButtonSize()[1],
                 objects: paletteObjects.filter({ obj in
                     return obj.objType == paletteTypes[chosenPaletteType]
-                }), allObjects: $paletteObjects
+                }), show: show, allObjects: $paletteObjects
             )
         }
     }
@@ -338,8 +340,8 @@ struct ProgrammingObjects: View {
     }
 }
 
-struct ProgrammingObjects_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgrammingObjects()
-    }
-}
+//struct ProgrammingObjects_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProgrammingObjects()
+//    }
+//}

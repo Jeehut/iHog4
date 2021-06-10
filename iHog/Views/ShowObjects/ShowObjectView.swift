@@ -14,6 +14,7 @@ struct ShowObjectView: View {
     
     @State private var showEditWindow: Bool = false
     @Binding var allObjects: [ShowObject]
+    @ObservedObject var show: ChosenShow
     var obj: ShowObject
     var size: String
     var body: some View {
@@ -38,7 +39,7 @@ struct ShowObjectView: View {
                     .stroke(OBJ_COLORS[obj.getColor()], lineWidth: BASE_LINE_WIDTH)
             ).padding()
             .sheet(isPresented: $showEditWindow){
-                EditObjectView(allObjects: $allObjects, obj: obj)
+                EditObjectView(allObjects: $allObjects, show: show, obj: obj)
             }
         }.foregroundColor(.primary)
         .contextMenu{
@@ -95,7 +96,18 @@ struct ShowObjectView: View {
             let objectToDelete = test[0] as! NSManagedObject
             viewContext.delete(objectToDelete)
             try viewContext.save()
-            allObjects.removeAll{$0 == obj}
+            switch obj.objType{
+            case .scene:
+                show.removeScene(obj)
+            case .list:
+                show.removeList(obj)
+            case .group:
+                show.removeGroup(obj)
+            case .intensity, .position, .color, .beam, .effect:
+                show.removePalette(obj)
+            default:
+                print("DOESN'T GET ADDED TO ANYTHING")
+            }
         } catch {
             print(error)
         }

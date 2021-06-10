@@ -11,6 +11,9 @@ struct ShowNavigation: View {
     @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
     @AppStorage(Settings.puntPageIsEnabled.rawValue) var puntPageIsEnabled: Bool = false
     var selectedShow: ShowEntity
+    
+    @StateObject var chosenShow = ChosenShow()
+    
     @State private var selectedView: Views = Views.programmingObjects
     
     enum Views: Hashable {
@@ -22,28 +25,28 @@ struct ShowNavigation: View {
     }
     var body: some View {
         TabView(selection: $selectedView) {
-            ProgrammingObjects()
+            ProgrammingObjects(show: chosenShow)
                 .tabItem{
                     Image(systemName: "wand.and.rays")
                 }
                 .tag(Views.programmingObjects)
-            PlaybackObjects()
+            PlaybackObjects(show: chosenShow)
                 .tabItem{
                     Image(systemName: "play.rectangle")
                 }
                 .tag(Views.playbackObjects)
             if puntPageIsEnabled {
-                PPPlayback()
+                PPPlayback(show: chosenShow)
                     .tabItem{
                         Image(systemName: "slider.horizontal.below.square.fill.and.square")
                     }
                     .tag(Views.puntPagePlayback)
-                PPProgramPlayback()
+                PPProgramPlayback(show: chosenShow)
                     .tabItem{
                         Image(systemName: "esim")
                     }
                     .tag(Views.puntPageProgPlay)
-                PPProgramming()
+                PPProgramming(show: chosenShow)
                     .tabItem{
                         Image(systemName: "paintbrush")
                     }

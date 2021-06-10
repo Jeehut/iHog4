@@ -12,7 +12,7 @@ class ChosenShowTests: XCTestCase {
     var sut: ChosenShow!
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        sut = ChosenShow(showID: UUID())
+        sut = ChosenShow()
     }
 
     override func tearDown() {

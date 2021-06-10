@@ -13,6 +13,8 @@ struct EditObjectView: View {
     @Environment(\.presentationMode) private var presentationMode
     @Binding var allObjects: [ShowObject]
     
+    @ObservedObject var show: ChosenShow
+    
     @State var obj: ShowObject
     
     @State private var name = ""
@@ -51,12 +53,12 @@ struct EditObjectView: View {
                 }.pickerStyle(MenuPickerStyle())
             }
             ShowObjectView(allObjects: $allObjects,
-                           obj: ShowObject(
-                            objType: obj.objType,
-                            number: obj.number,
-                            name: name,
-                            objColor: OBJ_COLORS[objColor].description,
-                            isOutlined: isOutlined),
+                           show: show,
+                           obj: ShowObject(objType: obj.objType,
+                                           number: obj.number,
+                                           name: name,
+                                           objColor: OBJ_COLORS[objColor].description,
+                                           isOutlined: isOutlined),
                            size: "medium")
         }.onAppear{
             getInitialValues()
@@ -95,9 +97,21 @@ struct EditObjectView: View {
             objectToUpdate.setValue(OBJ_COLORS[objColor].description, forKey: "objColor")
             objectToUpdate.setValue(isOutlined, forKey: "isOutlined")
             try viewContext.save()
-            allObjects.removeAll{$0.id == obj.id}
-            allObjects.append(obj)
-            allObjects.sort(by: {$0.number  < $1.number})
+//            allObjects.removeAll{$0.id == obj.id}
+//            allObjects.append(obj)
+//            allObjects.sort(by: {$0.number  < $1.number})
+            switch obj.objType{
+            case .scene:
+                show.updateScene(obj)
+            case .list:
+                show.updateList(obj)
+            case .group:
+                show.updateGroup(obj)
+            case .intensity, .position, .color, .beam, .effect:
+                show.updatePalette(obj)
+            default:
+                print("DOESN'T GET ADDED TO ANYTHING")
+            }
         } catch {
             print(error)
         }

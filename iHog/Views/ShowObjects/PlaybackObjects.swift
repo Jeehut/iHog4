@@ -28,6 +28,8 @@ struct PlaybackObjects: View {
     @State private var listObjects: [ShowObject] = []
     @State private var sceneObjects: [ShowObject] = []
     
+    @ObservedObject var show: ChosenShow
+    
     // Size selections
     let sizes: [String] = ["small", "medium", "large", "extra large"]
     
@@ -35,11 +37,11 @@ struct PlaybackObjects: View {
         return Group{
             ObjectGrid(size: sizes[buttonSizeList],
                        buttonsAcross: getMaxButtonSize()[0],
-                       objects: listObjects, allObjects: $listObjects)
+                       objects: show.lists, show: show, allObjects: $listObjects)
             // MARK: Scenes
             ObjectGrid(size: sizes[buttonSizeScene],
                        buttonsAcross: getMaxButtonSize()[1],
-                       objects: sceneObjects, allObjects: $sceneObjects)
+                       objects: show.scenes, show: show, allObjects: $sceneObjects)
         }
     }
     
@@ -48,11 +50,11 @@ struct PlaybackObjects: View {
             HStack{
                 ObjectGrid(size: sizes[buttonSizeList],
                            buttonsAcross: getMaxButtonSize()[0],
-                           objects: listObjects, allObjects: $listObjects)
+                           objects: show.lists, show: show, allObjects: $listObjects)
                 // MARK: Scenes
                 ObjectGrid(size: sizes[buttonSizeScene],
                            buttonsAcross: getMaxButtonSize()[1],
-                           objects: sceneObjects, allObjects: $sceneObjects)
+                           objects: show.scenes, show: show, allObjects: $sceneObjects)
             }
         }
     }
@@ -103,11 +105,11 @@ struct PlaybackObjects: View {
         let newList = ShowObject(
             id: UUID(),
             objType: .list,
-            number: Double(listObjects.count+1),
+            number: Double(show.lists.count+1),
             objColor: OBJ_COLORS[buttonColorList].description,
             isOutlined: !buttonFilledList)
         
-        listObjects.append(newList)
+        show.addList(newList)
         
         let obj = ShowObjectEntity(context: viewContext)
         obj.id = newList.id
@@ -131,11 +133,11 @@ struct PlaybackObjects: View {
         let newScene = ShowObject(
             id: UUID(),
             objType: .scene,
-            number: Double(sceneObjects.count+1),
+            number: Double(show.scenes.count+1),
             objColor: OBJ_COLORS[buttonColorScene].description,
             isOutlined: !buttonFilledScene)
         
-        sceneObjects.append(newScene)
+        show.addScene(newScene)
         
         let obj = ShowObjectEntity(context: viewContext)
         obj.id = newScene.id
@@ -161,8 +163,9 @@ struct PlaybackObjects: View {
     
     // MARK: Get all objects
     func getAllObjects(){
-        listObjects = []
-        sceneObjects = []
+        show.lists = []
+        show.scenes = []
+        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShowObjectEntity")
         fetchRequest.predicate = NSPredicate(format: "showID == %@", chosenShowID)
         
@@ -179,7 +182,7 @@ struct PlaybackObjects: View {
                         objColor: showObj.objColor ?? "gray",
                         isOutlined: showObj.isOutlined
                     )
-                    listObjects.append(newObj)
+                    show.addList(newObj)
                 case ShowObjectType.scene.rawValue:
                     let newObj = ShowObject(
                         id: showObj.id!,
@@ -189,13 +192,13 @@ struct PlaybackObjects: View {
                         objColor: showObj.objColor ?? "green",
                         isOutlined: showObj.isOutlined
                     )
-                    sceneObjects.append(newObj)
+                    show.addScene(newObj)
                 default:
                     continue
                 }
             }
-            listObjects.sort(by: {$0.number < $1.number})
-            sceneObjects.sort(by: {$0.number < $1.number})
+            show.lists.sort(by: {$0.number < $1.number})
+            show.scenes.sort(by: {$0.number < $1.number})
         } catch {
             print(error)
         }
@@ -262,8 +265,8 @@ struct PlaybackObjects: View {
 }
 
 // MARK: PREVIEW
-struct PlaybackObjects_Previews: PreviewProvider {
-    static var previews: some View {
-        PlaybackObjects()
-    }
-}
+//struct PlaybackObjects_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PlaybackObjects()
+//    }
+//}

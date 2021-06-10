@@ -22,6 +22,8 @@ struct PPProgramming: View {
     @State private var chosenPaletteType = 0
     let paletteTypes: [ShowObjectType] = [.intensity, .position, .color, .beam, .effect]
     
+    @ObservedObject var show: ChosenShow
+    
     var body: some View {
         if horizontalSizeClass == .regular {
             if verticalSizeClass == .regular {
@@ -32,6 +34,7 @@ struct PPProgramming: View {
                         ObjectGrid(size: "small",
                                    buttonsAcross: 3,
                                    objects: groupObjects,
+                                   show: show,
                                    allObjects: $groupObjects)
                         Picker("palette selection", selection: $chosenPaletteType) {
                             ForEach(0 ..< paletteTypes.count) {
@@ -43,7 +46,7 @@ struct PPProgramming: View {
                             buttonsAcross: 3,
                             objects: paletteObjects.filter({ obj in
                                 return obj.objType == paletteTypes[chosenPaletteType]
-                            }), allObjects: $paletteObjects
+                            }), show: show, allObjects: $paletteObjects
                         )
                         
                     }.onAppear{
@@ -64,6 +67,7 @@ struct PPProgramming: View {
                         ObjectGrid(size: "small",
                                    buttonsAcross: 3,
                                    objects: groupObjects,
+                                   show: show,
                                    allObjects: $groupObjects)
                         Picker("palette selection", selection: $chosenPaletteType) {
                             ForEach(0 ..< paletteTypes.count) {
@@ -75,7 +79,7 @@ struct PPProgramming: View {
                             buttonsAcross: 3,
                             objects: paletteObjects.filter({ obj in
                                 return obj.objType == paletteTypes[chosenPaletteType]
-                            }), allObjects: $paletteObjects
+                            }), show: show, allObjects: $paletteObjects
                         )
                         
                     }
@@ -109,7 +113,7 @@ struct PPProgramming: View {
                     VStack{
                         ObjectGrid(size: "small",
                                    buttonsAcross: 3,
-                                   objects: groupObjects,
+                                   objects: groupObjects, show: show,
                                    allObjects: $groupObjects)
                         Picker("palette selection", selection: $chosenPaletteType) {
                             ForEach(0 ..< paletteTypes.count) {
@@ -121,7 +125,7 @@ struct PPProgramming: View {
                             buttonsAcross: 3,
                             objects: paletteObjects.filter({ obj in
                                 return obj.objType == paletteTypes[chosenPaletteType]
-                            }), allObjects: $paletteObjects
+                            }), show: show, allObjects: $paletteObjects
                         )
                         
                     }
@@ -211,8 +215,8 @@ struct PPProgramming: View {
     }
 }
 
-struct PPProgramming_Previews: PreviewProvider {
-    static var previews: some View {
-        PPProgramming().environmentObject(OSCHelper())
-    }
-}
+//struct PPProgramming_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PPProgramming().environmentObject(OSCHelper())
+//    }
+//}
