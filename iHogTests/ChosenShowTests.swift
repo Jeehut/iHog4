@@ -104,5 +104,77 @@ class ChosenShowTests: XCTestCase {
         sut.removeScene(removedScene)
         XCTAssertFalse(sut.scenes[10] == removedScene)
     }
-
+    
+    // MARK: Testing Lists
+    func test_ChosenShowAddList_ShouldHave1List() {
+        let testList = ShowObject(objType: .list,
+                                   number: 1,
+                                   objColor: "red")
+        
+        sut.addList(testList)
+        XCTAssertEqual(sut.lists, [testList])
+    }
+    
+    func test_ChosenShowAddLists_ShouldHave10Lists() {
+        
+        for n in 1...500 {
+            let tempList = ShowObject(objType: .list,
+                                       number: Double(n),
+                                       objColor: "red")
+            sut.addList(tempList)
+        }
+        
+        XCTAssertEqual(sut.lists.count, 500)
+    }
+    
+    func test_ChosenShowUpdateListName_ShouldHaveOut(){
+        let SAMPLE_TEST = ShowObject(objType: .list,
+                                      number: 1,
+                                      objColor: "red")
+        sut.addList(SAMPLE_TEST)
+        
+        var updatedList = SAMPLE_TEST
+        updatedList.setName("Out")
+        
+        sut.updateList(updatedList)
+        XCTAssertEqual(sut.lists[0].getName(), "Out")
+    }
+    
+    func test_ChosenShowUpdateListName_ShouldHaveOutAt10Scene(){
+        for n in 1...500 {
+            let tempList = ShowObject(objType: .list,
+                                       number: Double(n),
+                                       objColor: "red")
+            sut.addList(tempList)
+        }
+        
+        var updatedLists = sut.lists[10]
+        updatedLists.setName("Out")
+        
+        sut.updateList(updatedLists)
+        XCTAssertEqual(sut.lists[10].getName(), "Out")
+    }
+    
+    func test_RemoveList_ShouldHave0Lists(){
+        let SAMPLE_LIST = ShowObject(objType: .list,
+                                      number: 1,
+                                      objColor: "red")
+        sut.addList(SAMPLE_LIST)
+        sut.removeList(SAMPLE_LIST)
+        XCTAssert(sut.lists.count == 0)
+    }
+    
+    func test_RemoveList_ShouldHave499Lists(){
+        for n in 1...500 {
+            let tempList = ShowObject(objType: .list,
+                                       number: Double(n),
+                                       objColor: "red")
+            sut.addList(tempList)
+        }
+        
+        let removedList = sut.lists[10]
+        
+        sut.removeList(removedList)
+        XCTAssertFalse(sut.lists[10] == removedList)
+    }
 }
