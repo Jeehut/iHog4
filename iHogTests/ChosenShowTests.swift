@@ -72,6 +72,18 @@ class ChosenShowTests: XCTestCase {
         sut.updateScene(updatedScene)
         XCTAssertEqual(sut.scenes[0].getName(), "Out")
     }
+    func test_ChosenShowUpdateSceneNumber_ShouldChange10(){
+        let SAMPLE_SCENE = ShowObject(objType: .scene,
+                                      number: 1,
+                                      objColor: "red")
+        sut.addScene(SAMPLE_SCENE)
+        
+        var updatedScene = SAMPLE_SCENE
+        updatedScene.setNumber(10)
+        
+        sut.updateScene(updatedScene)
+        XCTAssertEqual(sut.scenes[0].getName(), "Scene 10")
+    }
     
     func test_ChosenShowUpdateSceneName_ShouldHaveOutAt10Scene(){
         for n in 1...500 {

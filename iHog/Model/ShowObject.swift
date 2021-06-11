@@ -36,8 +36,11 @@ struct ShowObject: Identifiable, Hashable {
     var isOutlined: Bool = true
     
     // Adjust values
-    mutating func setName(_ newName: String){
-        name = newName
+    mutating func setName(_ newName: String?){
+        guard let name = newName else {
+            return
+        }
+        self.name = name
     }
     
     mutating func setNumber(_ newNumber: Double) {

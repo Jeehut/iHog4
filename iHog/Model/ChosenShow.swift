@@ -33,7 +33,7 @@ class ChosenShow: ObservableObject {
         if obj.objType == .scene {
             let index = scenes.firstIndex{ $0.id == obj.id }
             if index != nil {
-                scenes[index!].setName(obj.getName())
+                scenes[index!].setName(obj.name)
                 scenes[index!].setNumber(obj.number)
                 scenes[index!].setColor(obj.getColorString())
             } else {
@@ -58,7 +58,7 @@ class ChosenShow: ObservableObject {
         if obj.objType == .list {
             let index = lists.firstIndex{ $0.id == obj.id }
             if index != nil {
-                lists[index!].setName(obj.getName())
+                lists[index!].setName(obj.name)
                 lists[index!].setNumber(obj.number)
                 lists[index!].setColor(obj.getColorString())
             } else {
@@ -84,7 +84,7 @@ class ChosenShow: ObservableObject {
         if obj.objType == .group {
             let index = groups.firstIndex{ $0.id == obj.id }
             if index != nil {
-                groups[index!].setName(obj.getName())
+                groups[index!].setName(obj.name)
                 groups[index!].setNumber(obj.number)
                 groups[index!].setColor(obj.getColorString())
             } else {
@@ -114,7 +114,7 @@ class ChosenShow: ObservableObject {
         case .intensity, .color, .position, .effect, .beam:
             let index = palettes.firstIndex{ $0.id == obj.id }
             if index != nil {
-                palettes[index!].setName(obj.getName())
+                palettes[index!].setName(obj.name)
                 palettes[index!].setNumber(obj.number)
                 palettes[index!].setColor(obj.getColorString())
             } else {
