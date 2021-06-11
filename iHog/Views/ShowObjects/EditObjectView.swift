@@ -75,8 +75,10 @@ struct EditObjectView: View {
     func saveValues(){
         let num = Double(number) ?? obj.number
 //        let updatedOBJ = ShowObject(id: obj.id, objType: obj.objType, number: num, name: name, objColor: OBJ_COLORS[objColor].description, isOutlined: isOutlined)
+        if obj.getName() != name {
+            obj.setName(name)
+        }
         
-        obj.setName(name)
         obj.setNumber(num)
         obj.setColor(OBJ_COLORS[objColor].description)
         obj.setOutline(isOutlined)

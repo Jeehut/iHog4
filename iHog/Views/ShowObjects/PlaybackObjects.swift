@@ -114,7 +114,6 @@ struct PlaybackObjects: View {
         let obj = ShowObjectEntity(context: viewContext)
         obj.id = newList.id
         obj.isOutlined = newList.isOutlined
-        obj.name = newList.getName()
         obj.number = newList.number
         obj.objColor = newList.objColor
         obj.objType = newList.objType.rawValue
@@ -142,7 +141,6 @@ struct PlaybackObjects: View {
         let obj = ShowObjectEntity(context: viewContext)
         obj.id = newScene.id
         obj.isOutlined = newScene.isOutlined
-        obj.name = newScene.getName()
         obj.number = newScene.number
         obj.objColor = newScene.objColor
         obj.objType = newScene.objType.rawValue
@@ -172,27 +170,21 @@ struct PlaybackObjects: View {
         do {
             let results = try viewContext.fetch(fetchRequest) as! [ShowObjectEntity]
             for showObj in results{
+                // create temp object
+                var tempOBJ = ShowObject(id: showObj.id!,
+                                         objType: .list,
+                                         number: showObj.number,
+                                         name: showObj.name,
+                                         objColor: showObj.objColor ?? "gray",
+                                         isOutlined: showObj.isOutlined)
+                // determine object type and add to proper list
                 switch showObj.objType {
                 case ShowObjectType.list.rawValue:
-                    let newObj = ShowObject(
-                        id: showObj.id!,
-                        objType: .list,
-                        number: showObj.number,
-                        name: showObj.name,
-                        objColor: showObj.objColor ?? "gray",
-                        isOutlined: showObj.isOutlined
-                    )
-                    show.addList(newObj)
+                    tempOBJ.objType = .list
+                    show.addList(tempOBJ)
                 case ShowObjectType.scene.rawValue:
-                    let newObj = ShowObject(
-                        id: showObj.id!,
-                        objType: .scene,
-                        number: showObj.number,
-                        name: showObj.name,
-                        objColor: showObj.objColor ?? "green",
-                        isOutlined: showObj.isOutlined
-                    )
-                    show.addScene(newObj)
+                    tempOBJ.objType = .scene
+                    show.addScene(tempOBJ)
                 default:
                     continue
                 }
