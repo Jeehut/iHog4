@@ -55,7 +55,7 @@ struct EditObjectView: View {
             ShowObjectView(allObjects: $allObjects,
                            show: show,
                            obj: ShowObject(objType: obj.objType,
-                                           number: obj.number,
+                                           number: Double(number) ?? obj.number,
                                            name: name,
                                            objColor: OBJ_COLORS[objColor].description,
                                            isOutlined: isOutlined),
@@ -94,7 +94,7 @@ struct EditObjectView: View {
         do {
             let test = try viewContext.fetch(fetchRequest)
             let objectToUpdate = test[0] as! NSManagedObject
-            objectToUpdate.setValue(name, forKey: "name")
+            objectToUpdate.setValue(obj.name, forKey: "name")
             objectToUpdate.setValue(num, forKey: "number")
             objectToUpdate.setValue(OBJ_COLORS[objColor].description, forKey: "objColor")
             objectToUpdate.setValue(isOutlined, forKey: "isOutlined")

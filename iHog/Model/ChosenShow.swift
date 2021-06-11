@@ -30,6 +30,7 @@ class ChosenShow: ObservableObject {
     }
     
     func updateScene(_ obj: ShowObject) {
+        print(obj)
         if obj.objType == .scene {
             let index = scenes.firstIndex{ $0.id == obj.id }
             if index != nil {
