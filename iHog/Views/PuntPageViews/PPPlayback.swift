@@ -13,8 +13,10 @@ struct PPPlayback: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
-    @State private var allPlaybackObjects: [ShowObject] = []
+//    @State private var show.playbackObjects: [ShowObject] = []
     @State private var mainPlaybackIsShowing = false
+    
+    @ObservedObject var show: ChosenShow
     
     var body: some View {
         if horizontalSizeClass == .regular {
@@ -23,8 +25,8 @@ struct PPPlayback: View {
                     CompPlayback()
                     ObjectGrid(size: "medium",
                                buttonsAcross: 3,
-                               objects: allPlaybackObjects,
-                               allObjects: $allPlaybackObjects)
+                               objects: show.playbackObjects,
+                               show: show)
                 }.onAppear{
                     getAllObjects()
                 }
@@ -34,8 +36,8 @@ struct PPPlayback: View {
                     if mainPlaybackIsShowing == false {
                         ObjectGrid(size: "medium",
                                    buttonsAcross: 3,
-                                   objects: allPlaybackObjects,
-                                   allObjects: $allPlaybackObjects)
+                                   objects: show.playbackObjects,
+                                   show: show)
                             .transition(.move(edge: .bottom))
                     } else {
                         VertMainPlaybacks()
@@ -53,8 +55,8 @@ struct PPPlayback: View {
                     if mainPlaybackIsShowing == false {
                         ObjectGrid(size: "medium",
                                    buttonsAcross: 3,
-                                   objects: allPlaybackObjects,
-                                   allObjects: $allPlaybackObjects)
+                                   objects: show.playbackObjects,
+                                   show: show)
                             .transition(.move(edge: .bottom))
                     } else {
                         VertMainPlaybacks()
@@ -69,8 +71,8 @@ struct PPPlayback: View {
                     if mainPlaybackIsShowing == false {
                         ObjectGrid(size: "medium",
                                    buttonsAcross: 3,
-                                   objects: allPlaybackObjects,
-                                   allObjects: $allPlaybackObjects)
+                                   objects: show.playbackObjects,
+                                   show: show)
                             .transition(.move(edge: .bottom))
                     } else {
                         VertMainPlaybacks()
@@ -84,8 +86,8 @@ struct PPPlayback: View {
     }
     
     func getAllObjects(){
-        var listObjects: [ShowObject] = []
-        var sceneObjects: [ShowObject] = []
+        show.lists = []
+        show.scenes = []
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShowObjectEntity")
         fetchRequest.predicate = NSPredicate(format: "showID == %@", chosenShowID)
         
@@ -102,7 +104,7 @@ struct PPPlayback: View {
                         objColor: showObj.objColor ?? "gray",
                         isOutlined: showObj.isOutlined
                     )
-                    listObjects.append(newObj)
+                    show.addList(newObj)
                 case ShowObjectType.scene.rawValue:
                     let newObj = ShowObject(
                         id: showObj.id!,
@@ -112,21 +114,20 @@ struct PPPlayback: View {
                         objColor: showObj.objColor ?? "green",
                         isOutlined: showObj.isOutlined
                     )
-                    sceneObjects.append(newObj)
+                    show.addScene(newObj)
                 default:
                     continue
                 }
             }
-            listObjects.sort(by: {$0.number < $1.number})
-            sceneObjects.sort(by: {$0.number < $1.number})
-            allPlaybackObjects = listObjects + sceneObjects
+            show.lists.sort(by: {$0.number < $1.number})
+            show.scenes.sort(by: {$0.number < $1.number})
         } catch {
             print(error)
         }
     }
 }
-struct PPPlayback_Previews: PreviewProvider {
-    static var previews: some View {
-        PPPlayback()
-    }
-}
+//struct PPPlayback_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PPPlayback()
+//    }
+//}

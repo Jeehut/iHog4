@@ -28,6 +28,8 @@ struct PlaybackObjects: View {
     @State private var listObjects: [ShowObject] = []
     @State private var sceneObjects: [ShowObject] = []
     
+    @ObservedObject var show: ChosenShow
+    
     // Size selections
     let sizes: [String] = ["small", "medium", "large", "extra large"]
     
@@ -35,11 +37,13 @@ struct PlaybackObjects: View {
         return Group{
             ObjectGrid(size: sizes[buttonSizeList],
                        buttonsAcross: getMaxButtonSize()[0],
-                       objects: listObjects, allObjects: $listObjects)
+                       objects: show.lists,
+                       show: show)
             // MARK: Scenes
             ObjectGrid(size: sizes[buttonSizeScene],
                        buttonsAcross: getMaxButtonSize()[1],
-                       objects: sceneObjects, allObjects: $sceneObjects)
+                       objects: show.scenes,
+                       show: show)
         }
     }
     
@@ -48,11 +52,13 @@ struct PlaybackObjects: View {
             HStack{
                 ObjectGrid(size: sizes[buttonSizeList],
                            buttonsAcross: getMaxButtonSize()[0],
-                           objects: listObjects, allObjects: $listObjects)
+                           objects: show.lists,
+                           show: show)
                 // MARK: Scenes
                 ObjectGrid(size: sizes[buttonSizeScene],
                            buttonsAcross: getMaxButtonSize()[1],
-                           objects: sceneObjects, allObjects: $sceneObjects)
+                           objects: show.scenes,
+                           show: show)
             }
         }
     }
@@ -103,16 +109,15 @@ struct PlaybackObjects: View {
         let newList = ShowObject(
             id: UUID(),
             objType: .list,
-            number: Double(listObjects.count+1),
+            number: Double(show.lists.count+1),
             objColor: OBJ_COLORS[buttonColorList].description,
             isOutlined: !buttonFilledList)
         
-        listObjects.append(newList)
+        show.addList(newList)
         
         let obj = ShowObjectEntity(context: viewContext)
         obj.id = newList.id
         obj.isOutlined = newList.isOutlined
-        obj.name = newList.getName()
         obj.number = newList.number
         obj.objColor = newList.objColor
         obj.objType = newList.objType.rawValue
@@ -131,16 +136,15 @@ struct PlaybackObjects: View {
         let newScene = ShowObject(
             id: UUID(),
             objType: .scene,
-            number: Double(sceneObjects.count+1),
+            number: Double(show.scenes.count+1),
             objColor: OBJ_COLORS[buttonColorScene].description,
             isOutlined: !buttonFilledScene)
         
-        sceneObjects.append(newScene)
+        show.addScene(newScene)
         
         let obj = ShowObjectEntity(context: viewContext)
         obj.id = newScene.id
         obj.isOutlined = newScene.isOutlined
-        obj.name = newScene.getName()
         obj.number = newScene.number
         obj.objColor = newScene.objColor
         obj.objType = newScene.objType.rawValue
@@ -161,41 +165,36 @@ struct PlaybackObjects: View {
     
     // MARK: Get all objects
     func getAllObjects(){
-        listObjects = []
-        sceneObjects = []
+        show.lists = []
+        show.scenes = []
+        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShowObjectEntity")
         fetchRequest.predicate = NSPredicate(format: "showID == %@", chosenShowID)
         
         do {
             let results = try viewContext.fetch(fetchRequest) as! [ShowObjectEntity]
             for showObj in results{
+                // create temp object
+                var tempOBJ = ShowObject(id: showObj.id!,
+                                         objType: .list,
+                                         number: showObj.number,
+                                         name: showObj.name,
+                                         objColor: showObj.objColor ?? "gray",
+                                         isOutlined: showObj.isOutlined)
+                // determine object type and add to proper list
                 switch showObj.objType {
                 case ShowObjectType.list.rawValue:
-                    let newObj = ShowObject(
-                        id: showObj.id!,
-                        objType: .list,
-                        number: showObj.number,
-                        name: showObj.name,
-                        objColor: showObj.objColor ?? "gray",
-                        isOutlined: showObj.isOutlined
-                    )
-                    listObjects.append(newObj)
+                    tempOBJ.objType = .list
+                    show.addList(tempOBJ)
                 case ShowObjectType.scene.rawValue:
-                    let newObj = ShowObject(
-                        id: showObj.id!,
-                        objType: .scene,
-                        number: showObj.number,
-                        name: showObj.name,
-                        objColor: showObj.objColor ?? "green",
-                        isOutlined: showObj.isOutlined
-                    )
-                    sceneObjects.append(newObj)
+                    tempOBJ.objType = .scene
+                    show.addScene(tempOBJ)
                 default:
                     continue
                 }
             }
-            listObjects.sort(by: {$0.number < $1.number})
-            sceneObjects.sort(by: {$0.number < $1.number})
+            show.lists.sort(by: {$0.number < $1.number})
+            show.scenes.sort(by: {$0.number < $1.number})
         } catch {
             print(error)
         }
@@ -262,8 +261,8 @@ struct PlaybackObjects: View {
 }
 
 // MARK: PREVIEW
-struct PlaybackObjects_Previews: PreviewProvider {
-    static var previews: some View {
-        PlaybackObjects()
-    }
-}
+//struct PlaybackObjects_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PlaybackObjects()
+//    }
+//}

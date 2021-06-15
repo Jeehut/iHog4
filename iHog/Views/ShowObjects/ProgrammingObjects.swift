@@ -35,6 +35,8 @@ struct ProgrammingObjects: View {
     @State private var groupObjects: [ShowObject] = []
     @State private var paletteObjects: [ShowObject] = []
     
+    @ObservedObject var show: ChosenShow
+    
     // MARK: Local constants
     let paletteTypes: [ShowObjectType] = [.intensity, .position, .color, .beam, .effect]
     let sizes: [String] = ["small", "medium", "large", "extra large"]
@@ -45,7 +47,8 @@ struct ProgrammingObjects: View {
                 ObjectGrid(
                     size: sizes[buttonSizeGroup],
                     buttonsAcross: getMaxButtonSize()[0],
-                    objects: groupObjects, allObjects: $groupObjects
+                    objects: show.groups,
+                    show: show
                 ).padding()
                 
                 // MARK: Pallets
@@ -59,9 +62,10 @@ struct ProgrammingObjects: View {
                     ObjectGrid(
                         size: sizes[buttonSizePalette],
                         buttonsAcross: getMaxButtonSize()[1],
-                        objects: paletteObjects.filter({ obj in
+                        objects: show.palettes.filter({ obj in
                             return obj.objType == paletteTypes[chosenPaletteType]
-                        }), allObjects: $paletteObjects
+                        }),
+                        show: show
                     )
                 }
                 
@@ -75,7 +79,8 @@ struct ProgrammingObjects: View {
             ObjectGrid(
                 size: sizes[buttonSizeGroup],
                 buttonsAcross: getMaxButtonSize()[0],
-                objects: groupObjects, allObjects: $groupObjects
+                objects: show.groups,
+                show: show
             ).padding()
             
             // MARK: Pallets
@@ -88,9 +93,10 @@ struct ProgrammingObjects: View {
             ObjectGrid(
                 size: sizes[buttonSizePalette],
                 buttonsAcross: getMaxButtonSize()[1],
-                objects: paletteObjects.filter({ obj in
+                objects: show.palettes.filter({ obj in
                     return obj.objType == paletteTypes[chosenPaletteType]
-                }), allObjects: $paletteObjects
+                }),
+                show: show
             )
         }
     }
@@ -142,15 +148,15 @@ struct ProgrammingObjects: View {
         let newGroup = ShowObject(
             id: UUID(),
             objType: .group,
-            number: (Double((groupObjects.count + 1))),
+            number: (Double((show.groups.count + 1))),
             objColor: OBJ_COLORS[buttonColorGroup].description,
             isOutlined: isButtonFilledGroup)
-        groupObjects.append(newGroup)
+        
+        show.addGroup(newGroup)
         
         let obj = ShowObjectEntity(context: viewContext)
         obj.id = newGroup.id
         obj.isOutlined = newGroup.isOutlined
-        obj.name = newGroup.getName()
         obj.number = newGroup.number
         obj.objColor = newGroup.objColor
         obj.objType = newGroup.objType.rawValue
@@ -167,20 +173,18 @@ struct ProgrammingObjects: View {
         let newPalette = ShowObject(
             id: UUID(),
             objType: paletteTypes[chosenPaletteType],
-            number: Double((
-                            paletteObjects.filter({ obj in
-                                                    return obj.objType == paletteTypes[chosenPaletteType]})
-                                .count)
-                            + 1
-            ),
+            number: Double(( show.palettes
+                                .filter({ obj in
+                                            return obj.objType == paletteTypes[chosenPaletteType]})
+                                .count) + 1 ),
             objColor: OBJ_COLORS[buttonColorPalette].description,
             isOutlined: isButtonFilledPalette)
-        paletteObjects.append(newPalette)
+        
+        show.addPalette(newPalette)
         
         let obj = ShowObjectEntity(context: viewContext)
         obj.id = newPalette.id
         obj.isOutlined = newPalette.isOutlined
-        obj.name = newPalette.getName()
         obj.number = newPalette.number
         obj.objColor = newPalette.objColor
         obj.objType = newPalette.objType.rawValue
@@ -192,7 +196,6 @@ struct ProgrammingObjects: View {
         }
     }
     
-    // TODO: Add OSC
     func clear(){
         osc.pushFrontPanelButton(button: ButtonFunctionNames.clear.rawValue)
 
@@ -201,81 +204,46 @@ struct ProgrammingObjects: View {
     
     // MARK: Get all objects
     func getAllObjects(){
-        groupObjects = []
-        paletteObjects = []
+        show.groups = []
+        show.palettes = []
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShowObjectEntity")
         fetchRequest.predicate = NSPredicate(format: "showID == %@", chosenShowID)
         
         do {
             let results = try viewContext.fetch(fetchRequest) as! [ShowObjectEntity]
             for showObj in results{
+                var newObj = ShowObject(
+                    id: showObj.id!,
+                    objType: .group,
+                    number: showObj.number,
+                    name: showObj.name,
+                    objColor: showObj.objColor ?? "red",
+                    isOutlined: showObj.isOutlined
+                )
                 switch showObj.objType {
                 case ShowObjectType.group.rawValue:
-                    let newObj = ShowObject(
-                        id: showObj.id!,
-                        objType: .group,
-                        number: showObj.number,
-                        name: showObj.name,
-                        objColor: showObj.objColor ?? "red",
-                        isOutlined: showObj.isOutlined
-                    )
-                    groupObjects.append(newObj)
+                    show.addGroup(newObj)
                 case ShowObjectType.intensity.rawValue:
-                    let newObj = ShowObject(
-                        id: showObj.id!,
-                        objType: .intensity,
-                        number: showObj.number,
-                        name: showObj.name,
-                        objColor: showObj.objColor ?? "blue",
-                        isOutlined: showObj.isOutlined
-                    )
-                    paletteObjects.append(newObj)
+                    newObj.objType = .intensity
+                    show.addPalette(newObj)
                 case ShowObjectType.position.rawValue:
-                    let newObj = ShowObject(
-                        id: showObj.id!,
-                        objType: .position,
-                        number: showObj.number,
-                        name: showObj.name,
-                        objColor: showObj.objColor ?? "blue",
-                        isOutlined: showObj.isOutlined
-                    )
-                    paletteObjects.append(newObj)
+                    newObj.objType = .position
+                    show.addPalette(newObj)
                 case ShowObjectType.color.rawValue:
-                    let newObj = ShowObject(
-                        id: showObj.id!,
-                        objType: .color,
-                        number: showObj.number,
-                        name: showObj.name,
-                        objColor: showObj.objColor ?? "blue",
-                        isOutlined: showObj.isOutlined
-                    )
-                    paletteObjects.append(newObj)
+                    newObj.objType = .color
+                    show.addPalette(newObj)
                 case ShowObjectType.beam.rawValue:
-                    let newObj = ShowObject(
-                        id: showObj.id!,
-                        objType: .beam,
-                        number: showObj.number,
-                        name: showObj.name,
-                        objColor: showObj.objColor ?? "blue",
-                        isOutlined: showObj.isOutlined
-                    )
-                    paletteObjects.append(newObj)
+                    newObj.objType = .beam
+                    show.addPalette(newObj)
                 case ShowObjectType.effect.rawValue:
-                    let newObj = ShowObject(
-                        id: showObj.id!,
-                        objType: .effect,
-                        number: showObj.number,
-                        name: showObj.name,
-                        objColor: showObj.objColor ?? "blue",
-                        isOutlined: showObj.isOutlined
-                    )
-                    paletteObjects.append(newObj)
+                    newObj.objType = .effect
+                    show.addPalette(newObj)
                 default:
                     continue
                 }
             }
-            groupObjects.sort(by: {$0.number < $1.number})
-            paletteObjects.sort(by: {$0.number < $1.number})
+            show.groups.sort(by: {$0.number < $1.number})
+            show.palettes.sort(by: {$0.number < $1.number})
         } catch {
             print(error)
         }
@@ -339,8 +307,8 @@ struct ProgrammingObjects: View {
     }
 }
 
-struct ProgrammingObjects_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgrammingObjects()
-    }
-}
+//struct ProgrammingObjects_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProgrammingObjects()
+//    }
+//}
