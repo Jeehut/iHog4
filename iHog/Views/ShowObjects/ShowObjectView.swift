@@ -13,8 +13,8 @@ struct ShowObjectView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var showEditWindow: Bool = false
-    @Binding var allObjects: [ShowObject]
     @ObservedObject var show: ChosenShow
+    
     var obj: ShowObject
     var size: String
     var body: some View {
@@ -39,7 +39,7 @@ struct ShowObjectView: View {
                     .stroke(OBJ_COLORS[obj.getColor()], lineWidth: BASE_LINE_WIDTH)
             ).padding()
             .sheet(isPresented: $showEditWindow){
-                EditObjectView(allObjects: $allObjects, show: show, obj: obj)
+                EditObjectView(show: show, obj: obj)
             }
         }.foregroundColor(.primary)
         .contextMenu{

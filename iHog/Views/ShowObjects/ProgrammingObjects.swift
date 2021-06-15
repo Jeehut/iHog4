@@ -47,7 +47,8 @@ struct ProgrammingObjects: View {
                 ObjectGrid(
                     size: sizes[buttonSizeGroup],
                     buttonsAcross: getMaxButtonSize()[0],
-                    objects: show.groups, show: show, allObjects: $groupObjects
+                    objects: show.groups,
+                    show: show
                 ).padding()
                 
                 // MARK: Pallets
@@ -63,7 +64,8 @@ struct ProgrammingObjects: View {
                         buttonsAcross: getMaxButtonSize()[1],
                         objects: show.palettes.filter({ obj in
                             return obj.objType == paletteTypes[chosenPaletteType]
-                        }), show: show, allObjects: $paletteObjects
+                        }),
+                        show: show
                     )
                 }
                 
@@ -77,7 +79,8 @@ struct ProgrammingObjects: View {
             ObjectGrid(
                 size: sizes[buttonSizeGroup],
                 buttonsAcross: getMaxButtonSize()[0],
-                objects: show.groups, show: show, allObjects: $groupObjects
+                objects: show.groups,
+                show: show
             ).padding()
             
             // MARK: Pallets
@@ -92,7 +95,8 @@ struct ProgrammingObjects: View {
                 buttonsAcross: getMaxButtonSize()[1],
                 objects: show.palettes.filter({ obj in
                     return obj.objType == paletteTypes[chosenPaletteType]
-                }), show: show, allObjects: $paletteObjects
+                }),
+                show: show
             )
         }
     }

@@ -26,8 +26,7 @@ struct PPPlayback: View {
                     ObjectGrid(size: "medium",
                                buttonsAcross: 3,
                                objects: allPlaybackObjects,
-                               show: show,
-                               allObjects: $allPlaybackObjects)
+                               show: show)
                 }.onAppear{
                     getAllObjects()
                 }
@@ -38,8 +37,7 @@ struct PPPlayback: View {
                         ObjectGrid(size: "medium",
                                    buttonsAcross: 3,
                                    objects: allPlaybackObjects,
-                                   show: show,
-                                   allObjects: $allPlaybackObjects)
+                                   show: show)
                             .transition(.move(edge: .bottom))
                     } else {
                         VertMainPlaybacks()
@@ -58,8 +56,7 @@ struct PPPlayback: View {
                         ObjectGrid(size: "medium",
                                    buttonsAcross: 3,
                                    objects: allPlaybackObjects,
-                                   show: show,
-                                   allObjects: $allPlaybackObjects)
+                                   show: show)
                             .transition(.move(edge: .bottom))
                     } else {
                         VertMainPlaybacks()
@@ -75,8 +72,7 @@ struct PPPlayback: View {
                         ObjectGrid(size: "medium",
                                    buttonsAcross: 3,
                                    objects: allPlaybackObjects,
-                                   show: show,
-                                   allObjects: $allPlaybackObjects)
+                                   show: show)
                             .transition(.move(edge: .bottom))
                     } else {
                         VertMainPlaybacks()

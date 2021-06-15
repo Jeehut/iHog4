@@ -37,11 +37,13 @@ struct PlaybackObjects: View {
         return Group{
             ObjectGrid(size: sizes[buttonSizeList],
                        buttonsAcross: getMaxButtonSize()[0],
-                       objects: show.lists, show: show, allObjects: $listObjects)
+                       objects: show.lists,
+                       show: show)
             // MARK: Scenes
             ObjectGrid(size: sizes[buttonSizeScene],
                        buttonsAcross: getMaxButtonSize()[1],
-                       objects: show.scenes, show: show, allObjects: $sceneObjects)
+                       objects: show.scenes,
+                       show: show)
         }
     }
     
@@ -50,11 +52,13 @@ struct PlaybackObjects: View {
             HStack{
                 ObjectGrid(size: sizes[buttonSizeList],
                            buttonsAcross: getMaxButtonSize()[0],
-                           objects: show.lists, show: show, allObjects: $listObjects)
+                           objects: show.lists,
+                           show: show)
                 // MARK: Scenes
                 ObjectGrid(size: sizes[buttonSizeScene],
                            buttonsAcross: getMaxButtonSize()[1],
-                           objects: show.scenes, show: show, allObjects: $sceneObjects)
+                           objects: show.scenes,
+                           show: show)
             }
         }
     }

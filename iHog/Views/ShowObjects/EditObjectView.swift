@@ -11,7 +11,6 @@ import CoreData
 struct EditObjectView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
-    @Binding var allObjects: [ShowObject]
     
     @ObservedObject var show: ChosenShow
     
@@ -52,8 +51,7 @@ struct EditObjectView: View {
                     }
                 }.pickerStyle(MenuPickerStyle())
             }
-            ShowObjectView(allObjects: $allObjects,
-                           show: show,
+            ShowObjectView(show: show,
                            obj: ShowObject(objType: obj.objType,
                                            number: Double(number) ?? obj.number,
                                            name: name,
