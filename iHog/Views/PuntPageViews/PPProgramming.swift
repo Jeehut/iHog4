@@ -34,8 +34,7 @@ struct PPProgramming: View {
                         ObjectGrid(size: "small",
                                    buttonsAcross: 3,
                                    objects: groupObjects,
-                                   show: show,
-                                   allObjects: $groupObjects)
+                                   show: show)
                         Picker("palette selection", selection: $chosenPaletteType) {
                             ForEach(0 ..< paletteTypes.count) {
                                 Text(paletteTypes[$0].rawValue.capitalized)
@@ -46,7 +45,8 @@ struct PPProgramming: View {
                             buttonsAcross: 3,
                             objects: paletteObjects.filter({ obj in
                                 return obj.objType == paletteTypes[chosenPaletteType]
-                            }), show: show, allObjects: $paletteObjects
+                            }),
+                            show: show
                         )
                         
                     }.onAppear{
@@ -67,8 +67,7 @@ struct PPProgramming: View {
                         ObjectGrid(size: "small",
                                    buttonsAcross: 3,
                                    objects: groupObjects,
-                                   show: show,
-                                   allObjects: $groupObjects)
+                                   show: show)
                         Picker("palette selection", selection: $chosenPaletteType) {
                             ForEach(0 ..< paletteTypes.count) {
                                 Text(paletteTypes[$0].rawValue.capitalized)
@@ -79,7 +78,8 @@ struct PPProgramming: View {
                             buttonsAcross: 3,
                             objects: paletteObjects.filter({ obj in
                                 return obj.objType == paletteTypes[chosenPaletteType]
-                            }), show: show, allObjects: $paletteObjects
+                            }),
+                            show: show
                         )
                         
                     }
@@ -113,8 +113,8 @@ struct PPProgramming: View {
                     VStack{
                         ObjectGrid(size: "small",
                                    buttonsAcross: 3,
-                                   objects: groupObjects, show: show,
-                                   allObjects: $groupObjects)
+                                   objects: groupObjects,
+                                   show: show)
                         Picker("palette selection", selection: $chosenPaletteType) {
                             ForEach(0 ..< paletteTypes.count) {
                                 Text(paletteTypes[$0].rawValue.capitalized)
@@ -125,7 +125,8 @@ struct PPProgramming: View {
                             buttonsAcross: 3,
                             objects: paletteObjects.filter({ obj in
                                 return obj.objType == paletteTypes[chosenPaletteType]
-                            }), show: show, allObjects: $paletteObjects
+                            }),
+                            show: show
                         )
                         
                     }

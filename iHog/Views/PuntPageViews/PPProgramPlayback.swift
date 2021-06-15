@@ -34,8 +34,7 @@ struct PPProgramPlayback: View {
                         ObjectGrid(size: "medium",
                                    buttonsAcross: 3,
                                    objects: groupObjects,
-                                   show: show,
-                                   allObjects: $groupObjects)
+                                   show: show)
                         Picker("palette selection", selection: $chosenPaletteType) {
                             ForEach(0 ..< paletteTypes.count) {
                                 Text(paletteTypes[$0].rawValue.capitalized)
@@ -47,8 +46,7 @@ struct PPProgramPlayback: View {
                             objects: paletteObjects.filter({ obj in
                                 return obj.objType == paletteTypes[chosenPaletteType]
                             }),
-                            show: show,
-                            allObjects: $paletteObjects
+                            show: show
                         )
                         
                     }
@@ -63,16 +61,14 @@ struct PPProgramPlayback: View {
                             ObjectGrid(size: "medium",
                                        buttonsAcross: 3,
                                        objects: groupObjects,
-                                       show: show,
-                                       allObjects: $groupObjects)
+                                       show: show)
                                 .transition(.move(edge: .bottom))
                             
                             VStack{
                                 ObjectGrid(size: "medium",
                                            buttonsAcross: 3,
                                            objects: groupObjects,
-                                           show: show,
-                                           allObjects: $groupObjects)
+                                           show: show)
                                 Picker("palette selection", selection: $chosenPaletteType) {
                                     ForEach(0 ..< paletteTypes.count) {
                                         Text(paletteTypes[$0].rawValue.capitalized)
@@ -84,8 +80,7 @@ struct PPProgramPlayback: View {
                                     objects: paletteObjects.filter({ obj in
                                         return obj.objType == paletteTypes[chosenPaletteType]
                                     }),
-                                    show: show,
-                                    allObjects: $paletteObjects
+                                    show: show
                                 )
                                 
                             }
@@ -108,8 +103,7 @@ struct PPProgramPlayback: View {
                                 ObjectGrid(size: "small",
                                            buttonsAcross: 3,
                                            objects: groupObjects,
-                                           show: show,
-                                           allObjects: $groupObjects)
+                                           show: show)
                                 Picker("palette selection", selection: $chosenPaletteType) {
                                     ForEach(0 ..< paletteTypes.count) {
                                         Text(paletteTypes[$0].rawValue.capitalized)
@@ -120,7 +114,8 @@ struct PPProgramPlayback: View {
                                     buttonsAcross: 3,
                                     objects: paletteObjects.filter({ obj in
                                         return obj.objType == paletteTypes[chosenPaletteType]
-                                    }), show: show, allObjects: $paletteObjects
+                                    }),
+                                    show: show
                                 )
                                 
                             }
@@ -139,8 +134,7 @@ struct PPProgramPlayback: View {
                                 ObjectGrid(size: "small",
                                            buttonsAcross: 3,
                                            objects: groupObjects,
-                                           show: show,
-                                           allObjects: $groupObjects)
+                                           show: show)
                                 Picker("palette selection", selection: $chosenPaletteType) {
                                     ForEach(0 ..< paletteTypes.count) {
                                         Text(paletteTypes[$0].rawValue.capitalized)
@@ -151,7 +145,8 @@ struct PPProgramPlayback: View {
                                     buttonsAcross: 3,
                                     objects: paletteObjects.filter({ obj in
                                         return obj.objType == paletteTypes[chosenPaletteType]
-                                    }), show: show, allObjects: $paletteObjects
+                                    }),
+                                    show: show
                                 )
                                 
                             }

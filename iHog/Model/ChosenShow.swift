@@ -37,6 +37,7 @@ class ChosenShow: ObservableObject {
                 scenes[index!].setName(obj.name)
                 scenes[index!].setNumber(obj.number)
                 scenes[index!].setColor(obj.getColorString())
+                scenes[index!].setOutline(obj.getOutlineState())
             } else {
                 print("UPDATE SHOULD NOT HAVE BEEN CALLED")
             }
@@ -62,6 +63,7 @@ class ChosenShow: ObservableObject {
                 lists[index!].setName(obj.name)
                 lists[index!].setNumber(obj.number)
                 lists[index!].setColor(obj.getColorString())
+                lists[index!].setOutline(obj.getOutlineState())
             } else {
                 print("UPDATE SHOULD NOT HAVE BEEN CALLED")
             }
@@ -88,6 +90,7 @@ class ChosenShow: ObservableObject {
                 groups[index!].setName(obj.name)
                 groups[index!].setNumber(obj.number)
                 groups[index!].setColor(obj.getColorString())
+                groups[index!].setOutline(obj.getOutlineState())
             } else {
                 print("UPDATE SHOULD NOT HAVE BEEN CALLED")
             }
@@ -118,6 +121,7 @@ class ChosenShow: ObservableObject {
                 palettes[index!].setName(obj.name)
                 palettes[index!].setNumber(obj.number)
                 palettes[index!].setColor(obj.getColorString())
+                palettes[index!].setOutline(obj.getOutlineState())
             } else {
                 print("UPDATE SHOULD NOT HAVE BEEN CALLED")
             }
