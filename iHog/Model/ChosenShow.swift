@@ -15,6 +15,10 @@ class ChosenShow: ObservableObject {
     @Published var groups: [ShowObject]
     @Published var palettes: [ShowObject]
     
+    var playbackObjects: [ShowObject] {
+        return lists + scenes
+    }
+    
     init(){
         scenes = []
         lists = []

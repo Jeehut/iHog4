@@ -14,9 +14,6 @@ struct PPProgramming: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @AppStorage(Settings.chosenShowID.rawValue) var chosenShowID: String = ""
     
-    @State private var groupObjects: [ShowObject] = []
-    @State private var paletteObjects: [ShowObject] = []
-    
     @State private var numericKeypadIsShowing = false
     
     @State private var chosenPaletteType = 0
@@ -33,7 +30,7 @@ struct PPProgramming: View {
                     VStack{
                         ObjectGrid(size: "small",
                                    buttonsAcross: 3,
-                                   objects: groupObjects,
+                                   objects: show.groups,
                                    show: show)
                         Picker("palette selection", selection: $chosenPaletteType) {
                             ForEach(0 ..< paletteTypes.count) {
@@ -43,7 +40,7 @@ struct PPProgramming: View {
                         ObjectGrid(
                             size: "small",
                             buttonsAcross: 3,
-                            objects: paletteObjects.filter({ obj in
+                            objects: show.palettes.filter({ obj in
                                 return obj.objType == paletteTypes[chosenPaletteType]
                             }),
                             show: show
@@ -66,7 +63,7 @@ struct PPProgramming: View {
                     VStack{
                         ObjectGrid(size: "small",
                                    buttonsAcross: 3,
-                                   objects: groupObjects,
+                                   objects: show.groups,
                                    show: show)
                         Picker("palette selection", selection: $chosenPaletteType) {
                             ForEach(0 ..< paletteTypes.count) {
@@ -76,7 +73,7 @@ struct PPProgramming: View {
                         ObjectGrid(
                             size: "small",
                             buttonsAcross: 3,
-                            objects: paletteObjects.filter({ obj in
+                            objects: show.palettes.filter({ obj in
                                 return obj.objType == paletteTypes[chosenPaletteType]
                             }),
                             show: show
@@ -113,7 +110,7 @@ struct PPProgramming: View {
                     VStack{
                         ObjectGrid(size: "small",
                                    buttonsAcross: 3,
-                                   objects: groupObjects,
+                                   objects: show.groups,
                                    show: show)
                         Picker("palette selection", selection: $chosenPaletteType) {
                             ForEach(0 ..< paletteTypes.count) {
@@ -123,7 +120,7 @@ struct PPProgramming: View {
                         ObjectGrid(
                             size: "small",
                             buttonsAcross: 3,
-                            objects: paletteObjects.filter({ obj in
+                            objects: show.palettes.filter({ obj in
                                 return obj.objType == paletteTypes[chosenPaletteType]
                             }),
                             show: show
@@ -135,8 +132,8 @@ struct PPProgramming: View {
         }
     }
     func getAllObjects(){
-        groupObjects = []
-        paletteObjects = []
+        show.groups = []
+        show.palettes = []
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ShowObjectEntity")
         fetchRequest.predicate = NSPredicate(format: "showID == %@", chosenShowID)
         
@@ -153,7 +150,7 @@ struct PPProgramming: View {
                         objColor: showObj.objColor ?? "red",
                         isOutlined: showObj.isOutlined
                     )
-                    groupObjects.append(newObj)
+                    show.addGroup(newObj)
                 case ShowObjectType.intensity.rawValue:
                     let newObj = ShowObject(
                         id: showObj.id!,
@@ -163,7 +160,7 @@ struct PPProgramming: View {
                         objColor: showObj.objColor ?? "blue",
                         isOutlined: showObj.isOutlined
                     )
-                    paletteObjects.append(newObj)
+                    show.addPalette(newObj)
                 case ShowObjectType.position.rawValue:
                     let newObj = ShowObject(
                         id: showObj.id!,
@@ -173,7 +170,7 @@ struct PPProgramming: View {
                         objColor: showObj.objColor ?? "blue",
                         isOutlined: showObj.isOutlined
                     )
-                    paletteObjects.append(newObj)
+                    show.addPalette(newObj)
                 case ShowObjectType.color.rawValue:
                     let newObj = ShowObject(
                         id: showObj.id!,
@@ -183,7 +180,7 @@ struct PPProgramming: View {
                         objColor: showObj.objColor ?? "blue",
                         isOutlined: showObj.isOutlined
                     )
-                    paletteObjects.append(newObj)
+                    show.addPalette(newObj)
                 case ShowObjectType.beam.rawValue:
                     let newObj = ShowObject(
                         id: showObj.id!,
@@ -193,7 +190,7 @@ struct PPProgramming: View {
                         objColor: showObj.objColor ?? "blue",
                         isOutlined: showObj.isOutlined
                     )
-                    paletteObjects.append(newObj)
+                    show.addPalette(newObj)
                 case ShowObjectType.effect.rawValue:
                     let newObj = ShowObject(
                         id: showObj.id!,
@@ -203,13 +200,13 @@ struct PPProgramming: View {
                         objColor: showObj.objColor ?? "blue",
                         isOutlined: showObj.isOutlined
                     )
-                    paletteObjects.append(newObj)
+                    show.addPalette(newObj)
                 default:
                     continue
                 }
             }
-            groupObjects.sort(by: {$0.number < $1.number})
-            paletteObjects.sort(by: {$0.number < $1.number})
+            show.groups.sort(by: {$0.number < $1.number})
+            show.palettes.sort(by: {$0.number < $1.number})
         } catch {
             print(error)
         }
