@@ -173,9 +173,9 @@ class OSCHelper: ObservableObject, OSCPacketDestination {
     
     /// Used to start OSC connection
     /// - Parameters:
-    ///   - ip: IP address of the console to know where OSC is going
-    ///   - inputPort: What port to send OSC on
-    ///   - outputPort: What port to receive OSC on
+    ///   - ip: IP address of the console to know where to send OSC. This is the client IP.
+    ///   - inputPort: What port to send OSC on. This is the client input port
+    ///   - outputPort: What port to receive OSC on. This is the server port
     func setConsoleSettings(ip: String, inputPort: Int, outputPort: Int) {
         consoleIP = ip
         consoleInputPort = inputPort
