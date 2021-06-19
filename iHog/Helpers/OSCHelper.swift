@@ -573,9 +573,11 @@ extension OSCHelper {
 //        print("push \(objType) button \(objNumber)")
 //    }
     func goListOrScene(objNumber: String, objType: String) {
-        let message = OSCMessage(with: "\(playbackGo)\(objType)", arguments: [Float(objNumber)!])
+        let message = OSCMessage(with: "\(playbackGo)\(objType)/\(objNumber)", arguments: [])
         client.send(packet: message)
         logOSCMessage(sent: "yes", message: message.addressPattern, argument: message.arguments)
+        print(message.addressParts)
+        print(message.arguments)
     }
     
     func releaseList(_ objNumber: String) {
