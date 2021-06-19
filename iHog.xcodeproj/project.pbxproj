@@ -69,7 +69,6 @@
 		15DA267B251237D70063E236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15DA267A251237D70063E236 /* Assets.xcassets */; };
 		15DA267E251237D70063E236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15DA267D251237D70063E236 /* Preview Assets.xcassets */; };
 		15DA2680251237D70063E236 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA267F251237D70063E236 /* Persistence.swift */; };
-		15DA268E251237D70063E236 /* iHogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA268D251237D70063E236 /* iHogTests.swift */; };
 		15DA2699251237D70063E236 /* iHogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2698251237D70063E236 /* iHogUITests.swift */; };
 		15DA26AC251238980063E236 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26AB251238980063E236 /* SettingsView.swift */; };
 		15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E2D203253F14F900C7A453 /* CloudKit.framework */; };
@@ -174,7 +173,6 @@
 		15DA267F251237D70063E236 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		15DA2684251237D70063E236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15DA2689251237D70063E236 /* iHogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iHogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		15DA268D251237D70063E236 /* iHogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogTests.swift; sourceTree = "<group>"; };
 		15DA268F251237D70063E236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15DA2694251237D70063E236 /* iHogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iHogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15DA2698251237D70063E236 /* iHogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogUITests.swift; sourceTree = "<group>"; };
@@ -446,7 +444,6 @@
 		15DA268C251237D70063E236 /* iHogTests */ = {
 			isa = PBXGroup;
 			children = (
-				15DA268D251237D70063E236 /* iHogTests.swift */,
 				15DA268F251237D70063E236 /* Info.plist */,
 				1521CA8D26700E1D00014B34 /* ShowObjectTests.swift */,
 				15893A2B2671734000780B31 /* ChosenShowTests.swift */,
@@ -771,7 +768,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15DA268E251237D70063E236 /* iHogTests.swift in Sources */,
 				1521CA8E26700E1D00014B34 /* ShowObjectTests.swift in Sources */,
 				15893A2C2671734000780B31 /* ChosenShowTests.swift in Sources */,
 			);
