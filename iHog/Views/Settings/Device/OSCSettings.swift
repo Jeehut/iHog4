@@ -48,11 +48,10 @@ struct OSCSettings: View {
                         toggleOSC()
                     }
             ))
-        }
+        }.onAppear(perform: toggleOSC)
     }
     
     func toggleOSC(){
-        print("toggle OSC")
         if isOSCOn {
             osc.setConsoleSettings(ip: consoleIP, inputPort: Int(serverPort) ?? 7001, outputPort: Int(clientPort) ?? 7002)
         } else {
