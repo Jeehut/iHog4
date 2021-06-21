@@ -26,6 +26,7 @@ public enum ShowObjectType: String {
     case plot
 }
 
+/// An object in the show that is used for programming or playback.
 struct ShowObject: Identifiable, Hashable {
     var id: UUID = UUID()
     var objType: ShowObjectType
@@ -34,10 +35,29 @@ struct ShowObject: Identifiable, Hashable {
     var objColor: String
     var isOutlined: Bool = true
     
-    mutating func setName(_ newName: String){
-        name = newName
+    // Adjust values
+    mutating func setName(_ newName: String?){
+        guard let name = newName else {
+            return
+        }
+        self.name = name
     }
     
+    mutating func setNumber(_ newNumber: Double) {
+        number = newNumber
+    }
+    
+    mutating func setOutline(_ newOutlineState: Bool){
+        isOutlined = newOutlineState
+    }
+    
+    mutating func setColor(_ newColor: String){
+        objColor = newColor
+    }
+    
+    // Retrieve values
+    /// Used to return the name of the object
+    /// - Returns: Name of object
     func getName() -> String {
         if let objectName = name {
             return objectName
@@ -45,42 +65,44 @@ struct ShowObject: Identifiable, Hashable {
         return objType.rawValue.localizedCapitalized + " " + getObjNumber()
     }
     
+    /// Used to return the number of the object.
+    /// - Returns: Object Number
     func getObjNumber() -> String {
-        var numString: String = ""
-        let objNum = number
-        let isInt = objNum.truncatingRemainder(dividingBy: 1) == 0
-        
-        if isInt {
-            numString = String(format: "%.0f", number)
-        } else {
-            numString = String(format: "%.3f", number)
-        }
+        let numString: String = String(format: "%g", number)
         
         return numString
+    }
+    
+    func getOutlineState() -> Bool {
+        return isOutlined
     }
     
     func getShortType() -> String {
         switch objType {
         case .group:
-            return "GRP"
+            return "G"
         case .intensity:
-            return "INT"
+            return "I"
         case .position:
-            return "POS"
+            return "P"
         case .color:
-            return "COL"
+            return "C"
         case .beam:
-            return "BEM"
+            return "B"
         case .effect:
-            return "EFF"
+            return "E"
         case .list:
-            return "LST"
+            return "L"
         case .scene:
-            return "SCN"
+            return "S"
         default:
             // NO TYPE FOUND
             return "NTF"
         }
+    }
+    
+    func getColorString() -> String {
+        return objColor
     }
     
     func getColor() -> Int {

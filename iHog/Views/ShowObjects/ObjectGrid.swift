@@ -11,12 +11,13 @@ struct ObjectGrid: View {
     var size: String
     var buttonsAcross: Int
     var objects: [ShowObject]
-    @Binding var allObjects: [ShowObject]
+    @ObservedObject var show: ChosenShow
+    
     var body: some View {
         ScrollView(.vertical) {
             LazyVGrid(columns: getColumns(), spacing: 0.0){
                 ForEach(objects, id: \.self) { obj in
-                    ShowObjectView(allObjects: $allObjects, obj: obj, size: size)
+                    ShowObjectView(show: show, obj: obj, size: size)
                 }
             }
         }

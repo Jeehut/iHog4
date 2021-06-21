@@ -11,13 +11,21 @@ struct RegRegPlayback: View {
     @EnvironmentObject var osc: OSCHelper
     var body: some View {
         HStack{
-            ScrollView(.horizontal){
-                LazyHStack{
-                    ForEach(1 ..< 90) { num in
-                        VerticalMasterView(masterNumber: num).padding(.all, BASE_PADDING)
+            VStack{
+                HStack{
+                    FPButton(buttonText: "Back Page", buttonFunction: .backpage)
+                    Spacer()
+                    FPButton(buttonText: "Next Page", buttonFunction: .nextpage)
+                }.frame(width: 400)
+                Spacer()
+                ScrollView(.horizontal){
+                    LazyHStack{
+                        ForEach(1 ..< 90) { num in
+                            VerticalMasterView(masterNumber: num).padding(.all, BASE_PADDING)
+                        }
                     }
-                }
-            }.padding(.horizontal)
+                }.padding(.horizontal)
+            }
             VStack{
                 FPButton(buttonText: "CH", buttonFunction: .mainchoose)
                     .padding(.bottom)
