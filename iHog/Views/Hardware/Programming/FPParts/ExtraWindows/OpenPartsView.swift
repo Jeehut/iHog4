@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct OpenPartsView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
     @EnvironmentObject var osc: OSCHelper
+    
     @State private var selectedPartView: Int = 4
     @State private var isEncoderShown: Bool = false
     @State private var isFunctionShown: Bool = false
