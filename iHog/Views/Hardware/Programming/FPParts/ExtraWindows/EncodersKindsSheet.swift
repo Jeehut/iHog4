@@ -18,22 +18,47 @@ struct EncodersKindsSheet: View {
     /** Used to determine when the sheet is dismissed*/
     @Environment(\.presentationMode) private var presentationMode
     var body: some View {
-        VStack{
-            HStack{
+        switch horizontalSizeClass {
+        case .regular:
+            VStack{
+                // Close button
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }){
+                        Text("Close")
+                    }
+                    .foregroundColor(.red)
+                    .padding(.horizontal)
+                }.padding(.vertical)
+    //            Spacer()
+                EncoderWheelsView().environmentObject(osc)
                 Spacer()
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }){
-                    Text("Close")
+                KindButtonView().environmentObject(osc)
+                Spacer()
+            }
+        default:
+            VStack{
+                // Close button
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }){
+                        Text("Close")
+                    }
+                    .foregroundColor(.red)
+                    .padding(.horizontal)
+                }.padding(.vertical)
+                Spacer()
+                HStack{
+                    EncoderWheelsView().environmentObject(osc)
+                    Spacer()
+                    KindButtonView().environmentObject(osc)
+                    Spacer()
                 }
-                .foregroundColor(.red)
-                .padding(.horizontal)
-            }.padding(.vertical)
-//            Spacer()
-            EncoderWheelsView().environmentObject(osc)
-            Spacer()
-            KindButtonView().environmentObject(osc)
-            Spacer()
+            }
         }
     }
 }
