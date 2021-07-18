@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct EncodersKindsSheet: View {
+    /** OSC Info*/
     @EnvironmentObject var osc: OSCHelper
+    
+    /** Used to determine rotation */
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
+    /** Used to determine when the sheet is dismissed*/
     @Environment(\.presentationMode) private var presentationMode
     var body: some View {
         VStack{
