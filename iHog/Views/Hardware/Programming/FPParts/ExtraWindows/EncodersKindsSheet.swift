@@ -21,22 +21,46 @@ struct EncodersKindsSheet: View {
         switch horizontalSizeClass {
         case .regular:
             VStack{
-                // Close button
-                HStack{
+                switch verticalSizeClass {
+                case .regular:
+                    // Close button
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }){
+                            Text("Close")
+                        }
+                        .foregroundColor(.red)
+                        .padding(.horizontal)
+                    }.padding(.vertical)
+        //            Spacer()
+                    EncoderWheelsView().environmentObject(osc)
                     Spacer()
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }){
-                        Text("Close")
+                    KindButtonView().environmentObject(osc)
+                    Spacer()
+                default:
+                    VStack{
+                        // Close button
+                        HStack{
+                            Spacer()
+                            Button(action: {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }){
+                                Text("Close")
+                            }
+                            .foregroundColor(.red)
+                            .padding(.horizontal)
+                        }.padding(.vertical)
+                        Spacer()
+                        HStack{
+                            EncoderWheelsView().environmentObject(osc)
+                            Spacer()
+                            KindButtonView().environmentObject(osc)
+                            Spacer()
+                        }
                     }
-                    .foregroundColor(.red)
-                    .padding(.horizontal)
-                }.padding(.vertical)
-    //            Spacer()
-                EncoderWheelsView().environmentObject(osc)
-                Spacer()
-                KindButtonView().environmentObject(osc)
-                Spacer()
+                }
             }
             // Compact size class
         default:
