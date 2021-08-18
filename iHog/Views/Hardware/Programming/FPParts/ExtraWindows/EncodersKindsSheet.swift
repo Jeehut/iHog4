@@ -64,8 +64,7 @@ struct EncodersKindsSheet: View {
             }
             // Compact size class
         default:
-            VStack{
-                // Close button
+            VStack{// Close button
                 HStack{
                     Spacer()
                     Button(action: {
@@ -77,11 +76,21 @@ struct EncodersKindsSheet: View {
                     .padding(.horizontal)
                 }.padding(.vertical)
                 Spacer()
-                VStack{
-                    EncoderWheelsView().environmentObject(osc)
-                    Spacer()
-                    KindButtonView().environmentObject(osc)
-                    Spacer()
+                switch verticalSizeClass {
+                case .regular:
+                        VStack{
+                            EncoderWheelsView().environmentObject(osc)
+                            Spacer()
+                            KindButtonView().environmentObject(osc)
+                            Spacer()
+                        }
+                default:
+                    HStack{
+                        EncoderWheelsView().environmentObject(osc)
+                        Spacer()
+                        KindButtonView().environmentObject(osc)
+                        Spacer()
+                    }
                 }
             }
         }
