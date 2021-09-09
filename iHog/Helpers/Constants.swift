@@ -26,10 +26,10 @@ let BASE_SLIDER_WIDTH: CGFloat      = 25
 let BASE_THUMB_SIZE: CGFloat        = 30
 
 // MARK: FRONT PANEL BUTTON SIZES
-let BASE_BUTTON_SIZE: CGFloat       = 55
+let BASE_BUTTON_SIZE: CGFloat       = 72
 let SMALL_BUTTON_SIZE: CGFloat      = 50
 let XL_BUTTON_WIDTH: CGFloat        = 200
-let L_BUTTON_WIDTH: CGFloat         = 125
+let L_BUTTON_WIDTH: CGFloat         = BASE_BUTTON_SIZE*2.25
 
 // MARK: OBJ BUTTON SIZES
 let SMALL_OBJ_BUTTON_SIZE: CGFloat  = 50.0
