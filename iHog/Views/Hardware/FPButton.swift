@@ -21,9 +21,10 @@ struct FPButton: View {
 //            pushButton()
         }){
             Text(buttonText)
-                .frame(width: setSize(),
-                       height: BASE_BUTTON_SIZE,
-                       alignment: .center
+                .frame(
+                    minWidth: setSize(),
+                    minHeight: 65,
+                    alignment: .center
                 )
                 .padding(HALF_PADDING)
                 .foregroundColor(.primary)
