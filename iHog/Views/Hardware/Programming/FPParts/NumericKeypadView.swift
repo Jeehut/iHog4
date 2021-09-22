@@ -13,8 +13,8 @@ struct NumericKeypadView: View {
             HStack{
                 FPButton(buttonText: "<-", buttonFunction: .backspace)
                 FPButton(buttonText: "/", buttonFunction: .slash)
-                         FPButton(buttonText: "-", buttonFunction: .minus)
-                                  FPButton(buttonText: "+", buttonFunction: .plus)
+                FPButton(buttonText: "-", buttonFunction: .minus)
+                FPButton(buttonText: "+", buttonFunction: .plus)
             }
             HStack{
                 FPButton(buttonText: "7", buttonFunction: .numberpad, buttonNumber: 7)
