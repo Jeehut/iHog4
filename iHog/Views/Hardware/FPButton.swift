@@ -25,7 +25,12 @@ struct FPButton: View {
         } onRelease: {
             releaseButton()
         }
-        .buttonStyle(FrontPanelButton(backgroundColor: setBackGroundColor()))
+        .buttonStyle(
+            FrontPanelButton(
+                width: setSize(),
+                backgroundColor:
+                    setBackGroundColor())
+        )
     }
     
     func setBackGroundColor() -> Color {
