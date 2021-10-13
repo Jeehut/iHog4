@@ -8,10 +8,21 @@
 import SwiftUI
 
 struct NumericKeypadView: View {
+    @EnvironmentObject var osc: OSCHelper
+    
     var body: some View {
         VStack{
             HStack{
-                FPButton(buttonText: "<-", buttonFunction: .backspace)
+                Button("<-"){
+                    print("Backspace")
+                }.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+                    .pressActions {
+                        print("Pressed")
+                        pushButton(buttonFunction: .backspace)
+                    } onRelease: {
+                        print("Releasing")
+                    }
+                
                 FPButton(buttonText: "/", buttonFunction: .slash)
                 FPButton(buttonText: "-", buttonFunction: .minus)
                 FPButton(buttonText: "+", buttonFunction: .plus)
@@ -37,9 +48,22 @@ struct NumericKeypadView: View {
             HStack{
                 FPButton(buttonText: "0", buttonFunction: .numberpad, buttonNumber: 0)
                 FPButton(buttonText: ".", buttonFunction: .period)
-                         FPButton(buttonText: "Enter", buttonFunction: .enter, size: 3)
+                FPButton(buttonText: "Enter", buttonFunction: .enter, size: 3)
             }
         }
+    }
+    
+    // MARK: Used for all buttons not a number key
+    func pushButton(buttonFunction: ButtonFunctionNames){
+        osc.pushFrontPanelButton(button: buttonFunction.rawValue)
+    }
+    
+    // MARK: Only used for number keys
+    func pushButton(buttonFunction: ButtonFunctionNames, number: Int){
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .spellOut
+        guard let english = formatter.string(from: NSNumber(value: number)) else { return }
+        osc.pushFrontPanelButton(button: english)
     }
 }
 
