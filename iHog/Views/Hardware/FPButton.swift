@@ -17,25 +17,15 @@ struct FPButton: View {
     var size: Int = 1
     
     var body: some View {
-        Button(action: {
-//            pushButton()
-        }){
-            Text(buttonText)
-                .frame(
-                    minWidth: setSize(),
-                    minHeight: 65,
-                    alignment: .center
-                )
-                .padding(HALF_PADDING)
-                .foregroundColor(.primary)
+        Button(buttonText){
+            print("Front Panel Button pressed")
         }
-        .background(setBackGroundColor())
-        .cornerRadius(BASE_CORNER_RADIUS)
         .pressActions{
             pushButton()
         } onRelease: {
             releaseButton()
         }
+        .buttonStyle(FrontPanelButton(backgroundColor: setBackGroundColor()))
     }
     
     func setBackGroundColor() -> Color {
