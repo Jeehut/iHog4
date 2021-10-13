@@ -72,6 +72,7 @@
 		15DA2680251237D70063E236 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA267F251237D70063E236 /* Persistence.swift */; };
 		15DA2699251237D70063E236 /* iHogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2698251237D70063E236 /* iHogUITests.swift */; };
 		15DA26AC251238980063E236 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26AB251238980063E236 /* SettingsView.swift */; };
+		15E0A78227166BF9003A2B6F /* FrontPanelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E0A78127166BF9003A2B6F /* FrontPanelButton.swift */; };
 		15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E2D203253F14F900C7A453 /* CloudKit.framework */; };
 		15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520252514DA7500EF4B98 /* ShowSetting.swift */; };
 		15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520302514DBA300EF4B98 /* ObjectSettings.swift */; };
@@ -180,6 +181,7 @@
 		15DA2698251237D70063E236 /* iHogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogUITests.swift; sourceTree = "<group>"; };
 		15DA269A251237D70063E236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15DA26AB251238980063E236 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		15E0A78127166BF9003A2B6F /* FrontPanelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPanelButton.swift; sourceTree = "<group>"; };
 		15E2D1FE253F14F100C7A453 /* iHog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iHog.entitlements; sourceTree = "<group>"; };
 		15E2D203253F14F900C7A453 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		15F520252514DA7500EF4B98 /* ShowSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSetting.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 		15DA26A92512387D0063E236 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				15E0A78027166BD4003A2B6F /* Styles */,
 				1560710925CC29D1000EB05F /* PuntPageViews */,
 				1529025325387225002D4F2E /* ShowViews */,
 				159BAED2251B7BC700A81EA1 /* Hardware */,
@@ -497,6 +500,14 @@
 				15893A272671569200780B31 /* ChosenShow.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		15E0A78027166BD4003A2B6F /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				15E0A78127166BF9003A2B6F /* FrontPanelButton.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		15E2D202253F14F900C7A453 /* Frameworks */ = {
@@ -708,6 +719,7 @@
 				15DA0B19251513BC006ADB27 /* ProgrammingObjects.swift in Sources */,
 				1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */,
 				15FA5F0E2525FF3400DF1A3C /* HorizontalSlider.swift in Sources */,
+				15E0A78227166BF9003A2B6F /* FrontPanelButton.swift in Sources */,
 				159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */,
 				1547E0C2256732B600E7FE98 /* RegCompPlayback.swift in Sources */,
 				15D07DF0251E0EB400A80DC4 /* FunctionKeyView.swift in Sources */,
