@@ -65,6 +65,20 @@ struct NumericKeypadView: View {
         guard let english = formatter.string(from: NSNumber(value: number)) else { return }
         osc.pushFrontPanelButton(button: english)
     }
+    
+    // MARK: RELEASE BUTTONS
+    
+    func releaseButton(buttonFunction: ButtonFunctionNames){
+        osc.releaseFrontPanelButton(button: buttonFunction.rawValue)
+    }
+    
+    // MARK: Only used for number keys
+    func releaseButton(buttonFunction: ButtonFunctionNames, number: Int){
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .spellOut
+        guard let english = formatter.string(from: NSNumber(value: number)) else { return }
+        osc.releaseFrontPanelButton(button: english)
+    }
 }
 
 struct NumericKeypadView_Previews: PreviewProvider {
