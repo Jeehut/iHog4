@@ -8,12 +8,42 @@
 import SwiftUI
 
 struct HBCButtonView: View {
+    @EnvironmentObject var osc: OSCHelper
+    
     var body: some View {
         HStack{
-            FPButton(buttonText: "Blind", buttonFunction: .blind)
-            FPButton(buttonText: "High Light", buttonFunction: .highlight)
-            FPButton(buttonText: "Clear", buttonFunction: .clear)
+            Button("Blind"){print("blind")}
+            .pressActions(onPress: {
+                pushButton(buttonFunction: .blind)
+            }, onRelease: {
+                releaseButton(buttonFunction: .blind)
+            })
+            .buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+            Button("High Light"){print("blind")}
+            .pressActions(onPress: {
+                pushButton(buttonFunction: .highlight)
+            }, onRelease: {
+                releaseButton(buttonFunction: .highlight)
+            })
+            .buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+            Button("Clear"){print("Clear")}
+            .pressActions(onPress: {
+                pushButton(buttonFunction: .clear)
+            }, onRelease: {
+                releaseButton(buttonFunction: .clear)
+            })
+            .buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
         }
+    }
+    // MARK: Used for all buttons not a number key
+    func pushButton(buttonFunction: ButtonFunctionNames){
+        osc.pushFrontPanelButton(button: buttonFunction.rawValue)
+    }
+    
+    // MARK: RELEASE BUTTONS
+    
+    func releaseButton(buttonFunction: ButtonFunctionNames){
+        osc.releaseFrontPanelButton(button: buttonFunction.rawValue)
     }
 }
 

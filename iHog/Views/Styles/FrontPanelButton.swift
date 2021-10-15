@@ -14,8 +14,8 @@ struct FrontPanelButton: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(minWidth: width,
-                   minHeight: 65,
+            .frame(width: width,
+                   height: 65,
                    alignment: .center)
             .padding(HALF_PADDING)
             .foregroundColor(.primary.opacity(configuration.isPressed ? 0.5 : 1.0))

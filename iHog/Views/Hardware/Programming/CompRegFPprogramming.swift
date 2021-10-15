@@ -21,25 +21,35 @@ struct CompRegFPprogramming: View {
 //            }
 //            .padding(.bottom)
             VStack{
+                HBCButtonView()
                 HStack{
-                    HalfHeightButtonFP()
-                    HalfHeightButtonFP()
-                        .padding(.horizontal, HALF_PADDING)
-                    HalfHeightButtonFP()
-                }.padding(.bottom, HALF_PADDING)
-                HStack{
-                    HalfHeightButtonFP()
-                    HalfHeightButtonFP()
-                        .padding(.horizontal, HALF_PADDING)
-                    HalfHeightButtonFP()
-                }.padding(.bottom, HALF_PADDING)
-                HStack{
-                    HalfHeightButtonFP()
-                    HalfHeightButtonFP()
-                        .padding(.horizontal, HALF_PADDING)
-                    HalfHeightButtonFP()
+                    Button {
+                        print("Encoders")
+                    } label: {
+                        Image(systemName: "dial.max")
+                    }.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .systemGray3))
+                    Spacer()
+                    Button {
+                        print("Action buttons and such")
+                    } label: {
+                        Image(systemName: "rectangle.3.offgrid")
+                    }.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .systemGray3))
+                    Spacer()
+                    Button {
+                        print("Encoders")
+                    } label: {
+                        Image(systemName: "square.grid.3x3")
+                    }.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .systemGray3))
                 }
-            }.padding(.bottom, HALF_PADDING)
+                HStack{
+                    Button("Back"){print("back")}.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+                    Spacer()
+                    Button("All"){print("all")}.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+                    Spacer()
+                    Button("Next"){print("next")}.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+                }
+            }.padding(.bottom, BASE_PADDING)
+            Spacer()
             NumericKeypadView()
         }
     }
@@ -48,21 +58,5 @@ struct CompRegFPprogramming: View {
 struct CompRegFPprogrammingView_Previews: PreviewProvider {
     static var previews: some View {
         CompRegFPprogramming()
-    }
-}
-
-struct HalfHeightButtonFP: View {
-    var body: some View {
-        Button(action: {print("HELLP")}){
-            Text("Blind")
-                .frame(
-                    minWidth: BASE_BUTTON_SIZE*1.5,
-                    minHeight: BASE_BUTTON_SIZE/2,
-                    alignment: .center
-                )
-                .padding(HALF_PADDING)
-                .foregroundColor(.primary)
-        }
-        .background(Color.gray)
     }
 }
