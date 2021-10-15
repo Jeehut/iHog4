@@ -41,6 +41,7 @@
 		15893A2C2671734000780B31 /* ChosenShowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15893A2B2671734000780B31 /* ChosenShowTests.swift */; };
 		159048312537DEED00910100 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159048302537DEED00910100 /* Constants.swift */; };
 		1592F4C725E53BBC004D4FE6 /* OSCLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1592F4C625E53BBC004D4FE6 /* OSCLogView.swift */; };
+		1593AB002719A9CA00D8D653 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1593AAFF2719A9CA00D8D653 /* Color+Extension.swift */; };
 		1598BDCB25E2D1BA0060793F /* iHog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1598BDC925E2D1BA0060793F /* iHog.xcdatamodeld */; };
 		159BAECB251B722700A81EA1 /* PlaybackObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BAECA251B722700A81EA1 /* PlaybackObjects.swift */; };
 		159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159BAED3251B7BDB00A81EA1 /* RegRegFPProgramming.swift */; };
@@ -144,6 +145,7 @@
 		15893A2B2671734000780B31 /* ChosenShowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenShowTests.swift; sourceTree = "<group>"; };
 		159048302537DEED00910100 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1592F4C625E53BBC004D4FE6 /* OSCLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSCLogView.swift; sourceTree = "<group>"; };
+		1593AAFF2719A9CA00D8D653 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		1598BDCA25E2D1BA0060793F /* iHog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iHog.xcdatamodel; sourceTree = "<group>"; };
 		159BAECA251B722700A81EA1 /* PlaybackObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackObjects.swift; sourceTree = "<group>"; };
 		159BAED3251B7BDB00A81EA1 /* RegRegFPProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegRegFPProgramming.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				159048302537DEED00910100 /* Constants.swift */,
 				153009CF258B8A0D00311520 /* OSCHelper.swift */,
 				158362D825F7AF9600EEC8F7 /* PressAction.swift */,
+				1593AAFF2719A9CA00D8D653 /* Color+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -743,6 +746,7 @@
 				15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */,
 				1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */,
 				153009D0258B8A0D00311520 /* OSCHelper.swift in Sources */,
+				1593AB002719A9CA00D8D653 /* Color+Extension.swift in Sources */,
 				152902552538727A002D4F2E /* ShowNavigation.swift in Sources */,
 				15D08512260B663800C4DA58 /* ProgrammerSettings.swift in Sources */,
 				1578D3312512F460001E1BDF /* Device.swift in Sources */,
