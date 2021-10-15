@@ -22,10 +22,33 @@ struct NumericKeypadView: View {
                     } onRelease: {
                         print("Releasing")
                     }
-                
-                FPButton(buttonText: "/", buttonFunction: .slash)
-                FPButton(buttonText: "-", buttonFunction: .minus)
-                FPButton(buttonText: "+", buttonFunction: .plus)
+                Button("/"){
+                    print("Slash")
+                }.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+                    .pressActions {
+                        print("Pressed")
+                        pushButton(buttonFunction: .slash)
+                    } onRelease: {
+                        print("Releasing")
+                    }
+                Button("-"){
+                    print("Minus")
+                }.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+                    .pressActions {
+                        print("Pressed")
+                        pushButton(buttonFunction: .minus)
+                    } onRelease: {
+                        print("Releasing")
+                    }
+                Button("+"){
+                    print("plus")
+                }.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+                    .pressActions {
+                        print("Pressed")
+                        pushButton(buttonFunction: .plus)
+                    } onRelease: {
+                        print("Releasing")
+                    }
             }
             HStack{
                 FPButton(buttonText: "7", buttonFunction: .numberpad, buttonNumber: 7)
