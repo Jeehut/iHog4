@@ -18,7 +18,7 @@ struct FPButton: View {
     
     var body: some View {
         Button(buttonText){
-            print("Front Panel Button pressed")
+            print("\(buttonText) pressed Function = \(buttonFunction.rawValue)")
         }
         .pressActions{
             pushButton()
