@@ -18,32 +18,36 @@ struct RegRegFPProgramming: View {
             HStack(alignment: .bottom){
                 VStack{
                     ObjectButtonView()
+                        .padding(.bottom, BASE_PADDING)
                     Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
+                        .frame(width: 65, height: 65)
+                        .padding(.bottom, BASE_PADDING)
                     ActionButtonView()
                     Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 80, maxHeight: 80, alignment: .center)
+                        .frame(width: 65, height: 65)
+                        .padding(.bottom, BASE_PADDING)
                     UtilityButtonView()
                 }
                 VStack{
                     KindButtonView()
                     Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
+                        .frame(width: 65, height: 65)
+                        .padding(.bottom, BASE_PADDING)
                     NumericKeypadView()
-                }
-                .padding(.horizontal)
+                }.padding(.horizontal, BASE_PADDING*4)
                 VStack(alignment: .leading){
                     HBCButtonView()
-                    Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 80, maxHeight: 80, alignment: .center)
+                        .padding(.bottom, BASE_PADDING*2)
                     SelectButtonView()
                     Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
+                        .frame(width: 65, height: 65)
+                        .padding(.bottom, BASE_PADDING)
                     FunctionKeyView()
                 }
             }
             .padding(.bottom)
         }
+        .padding(.horizontal, BASE_PADDING*2)
     }
 }
 
