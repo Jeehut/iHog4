@@ -57,13 +57,7 @@ struct CompRegFPprogramming: View {
                             FunctionKeySheet().environmentObject(osc)
                         }
                 }
-                HStack{
-                    Button("Back"){print("back")}.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
-                    Spacer()
-                    Button("All"){print("all")}.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
-                    Spacer()
-                    Button("Next"){print("next")}.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
-                }
+                SelectButtonView()
             }.padding(.bottom, BASE_PADDING)
             Spacer()
             NumericKeypadView()
