@@ -51,6 +51,7 @@
 		15BC8EC325BCD59F00309C8B /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 15BC8EC225BCD59F00309C8B /* OSCKit */; };
 		15BE2E5B25C88F35009D8E77 /* iHogUITestsScreenShots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE2E5A25C88F35009D8E77 /* iHogUITestsScreenShots.swift */; };
 		15BE2E6725C88FC7009D8E77 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE2E6625C88FC7009D8E77 /* SnapshotHelper.swift */; };
+		15C0D1FF271D981E0051F16C /* ObjActUtilKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C0D1FE271D981E0051F16C /* ObjActUtilKeys.swift */; };
 		15C8284925FA4B15003FAEFA /* Purchases in Frameworks */ = {isa = PBXBuildFile; productRef = 15C8284825FA4B15003FAEFA /* Purchases */; };
 		15C8285125FA4B83003FAEFA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C8285025FA4B83003FAEFA /* StoreKit.framework */; };
 		15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */; };
@@ -156,6 +157,7 @@
 		15BE2E5A25C88F35009D8E77 /* iHogUITestsScreenShots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogUITestsScreenShots.swift; sourceTree = "<group>"; };
 		15BE2E5C25C88F35009D8E77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15BE2E6625C88FC7009D8E77 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		15C0D1FE271D981E0051F16C /* ObjActUtilKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjActUtilKeys.swift; sourceTree = "<group>"; };
 		15C8285025FA4B83003FAEFA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		15CA4276252206D400C56FE0 /* EncodersKindsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodersKindsSheet.swift; sourceTree = "<group>"; };
 		15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionKeySheet.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				15CA428A25220DBD00C56FE0 /* FunctionKeySheet.swift */,
 				15FB201625220F52007EDC36 /* UtilityKeySheet.swift */,
 				159F23ED26C35DA9002B3E1F /* ActionKeySheet.swift */,
+				15C0D1FE271D981E0051F16C /* ObjActUtilKeys.swift */,
 			);
 			path = ExtraWindows;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				155450262524B72E0025DCAA /* RegRegPlayback.swift in Sources */,
 				15D07E18251E209100A80DC4 /* CommandLineView.swift in Sources */,
 				1563789A2539C9BB00C22F0B /* NewShowView.swift in Sources */,
+				15C0D1FF271D981E0051F16C /* ObjActUtilKeys.swift in Sources */,
 				155795362518D49A004FD603 /* ObjectGrid.swift in Sources */,
 				155530D125138A5500CF48FD /* UIDevice+Extensions.swift in Sources */,
 				15DA2679251237D60063E236 /* ContentView.swift in Sources */,

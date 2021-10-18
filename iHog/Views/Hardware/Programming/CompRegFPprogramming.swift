@@ -8,38 +8,54 @@
 import SwiftUI
 
 struct CompRegFPprogramming: View {
+    
+    @EnvironmentObject var osc: OSCHelper
+    
+    @State private var isEncoderShown: Bool = false
+    @State private var isActionShown: Bool = false
+    @State private var isFunctionShown: Bool = false
+    
     var body: some View {
         VStack{
-//            ScrollView{
-//                HStack{
-//                    Spacer().frame(height: 0)
-//                }
-//                HBCButtonView()
-//                SelectButtonView()
-//                    .padding(.vertical)
-//                OpenPartsView()
-//            }
-//            .padding(.bottom)
             VStack{
                 HBCButtonView()
+                // Used to open windows with different sets of buttons in them.
                 HStack{
+                    // Encoders
                     Button {
-                        print("Encoders")
+                        isEncoderShown.toggle()
                     } label: {
                         Image(systemName: "dial.max")
                     }.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .systemGray3))
+                        .sheet(isPresented: $isEncoderShown, content: {
+                            EncodersKindsSheet()
+                                .environmentObject(osc)
+                        })
                     Spacer()
+                    // Object Keys, Action Keys, & utility keys
                     Button {
-                        print("Action buttons and such")
+                        isActionShown.toggle()
                     } label: {
                         Image(systemName: "rectangle.3.offgrid")
                     }.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .systemGray3))
+                        .sheet(isPresented: $isActionShown) {
+                            isActionShown = false
+                        } content: {
+                            ObjActUtilKeys().environmentObject(osc)
+                        }
+
                     Spacer()
+                    // Function keys
                     Button {
-                        print("Encoders")
+                        isFunctionShown.toggle()
                     } label: {
                         Image(systemName: "square.grid.3x3")
                     }.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .systemGray3))
+                        .sheet(isPresented: $isFunctionShown) {
+                            isFunctionShown = false
+                        } content: {
+                            FunctionKeySheet().environmentObject(osc)
+                        }
                 }
                 HStack{
                     Button("Back"){print("back")}.buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
