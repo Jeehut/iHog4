@@ -17,7 +17,8 @@ struct CompRegFPprogramming: View {
     
     var body: some View {
         VStack{
-            VStack{
+            ScrollView{
+                HStack(){Spacer()}
                 HBCButtonView()
                 // Used to open windows with different sets of buttons in them.
                 HStack{
@@ -31,7 +32,6 @@ struct CompRegFPprogramming: View {
                             EncodersKindsSheet()
                                 .environmentObject(osc)
                         })
-                    Spacer()
                     // Object Keys, Action Keys, & utility keys
                     Button {
                         isActionShown.toggle()
@@ -43,8 +43,6 @@ struct CompRegFPprogramming: View {
                         } content: {
                             ObjActUtilKeys().environmentObject(osc)
                         }
-
-                    Spacer()
                     // Function keys
                     Button {
                         isFunctionShown.toggle()
