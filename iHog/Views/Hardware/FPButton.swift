@@ -17,24 +17,20 @@ struct FPButton: View {
     var size: Int = 1
     
     var body: some View {
-        Button(action: {
-//            pushButton()
-        }){
-            Text(buttonText)
-                .frame(width: setSize(),
-                       height: BASE_BUTTON_SIZE,
-                       alignment: .center
-                )
-                .padding(HALF_PADDING)
-                .foregroundColor(.primary)
+        Button(buttonText){
+            print("\(buttonText) pressed Function = \(buttonFunction.rawValue)")
         }
-        .background(setBackGroundColor())
-        .cornerRadius(BASE_CORNER_RADIUS)
         .pressActions{
             pushButton()
         } onRelease: {
             releaseButton()
         }
+        .buttonStyle(
+            FrontPanelButton(
+                width: setSize(),
+                backgroundColor:
+                    setBackGroundColor())
+        )
     }
     
     func setBackGroundColor() -> Color {

@@ -10,14 +10,14 @@ import SwiftUI
 struct KindButtonView: View {
     @EnvironmentObject var osc: OSCHelper
     var body: some View {
-        VStack{
-            HStack{
+        VStack(spacing: 1){
+            HStack(spacing: 1){
                 FPButton(buttonText: "Intens", buttonFunction: ButtonFunctionNames.intensity)
                 FPButton(buttonText: "Positn", buttonFunction: ButtonFunctionNames.position)
                 FPButton(buttonText: "Colour", buttonFunction: ButtonFunctionNames.colour)
                 FPButton(buttonText: "Beam", buttonFunction: ButtonFunctionNames.beam)
             }
-            HStack{
+            HStack(spacing: 1){
                 FPButton(buttonText: "Effect", buttonFunction: ButtonFunctionNames.effect)
                 FPButton(buttonText: "Time", buttonFunction: ButtonFunctionNames.time)
                 FPButton(buttonText: "Group", buttonFunction: ButtonFunctionNames.group)

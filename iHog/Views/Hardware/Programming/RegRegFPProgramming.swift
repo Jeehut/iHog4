@@ -10,40 +10,28 @@ import SwiftUI
 struct RegRegFPProgramming: View {
     @EnvironmentObject var osc: OSCHelper
     var body: some View {
-        VStack{
+        VStack(spacing: 10){
             EncoderWheelsView()
                 .environmentObject(osc)
-                .padding()
-            Spacer()
-            HStack(alignment: .bottom){
-                VStack{
+            HStack(alignment: .bottom, spacing: 10){
+                VStack(spacing: 20){
                     ObjectButtonView()
-                    Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
                     ActionButtonView()
-                    Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 80, maxHeight: 80, alignment: .center)
                     UtilityButtonView()
                 }
-                VStack{
+                VStack(spacing: 10){
                     KindButtonView()
-                    Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
                     NumericKeypadView()
                 }
-                .padding(.horizontal)
-                VStack(alignment: .leading){
+                VStack(alignment: .leading, spacing: 10){
                     HBCButtonView()
-                    Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 80, maxHeight: 80, alignment: .center)
                     SelectButtonView()
-                    Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
                     FunctionKeyView()
                 }
             }
             .padding(.bottom)
         }
+        .padding(.horizontal, BASE_PADDING*2)
     }
 }
 
