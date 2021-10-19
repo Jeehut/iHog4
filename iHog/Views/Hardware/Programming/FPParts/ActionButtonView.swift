@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ActionButtonView: View {
     var body: some View {
-        VStack{
-            HStack{
+        VStack(spacing: 1){
+            HStack(spacing: 1){
                 FPButton(buttonText: "Delete", buttonFunction: ButtonFunctionNames.delete)
                 FPButton(buttonText: "Move", buttonFunction: ButtonFunctionNames.move)
                 FPButton(buttonText: "Copy", buttonFunction: ButtonFunctionNames.copy)
             }
-            HStack{
+            HStack(spacing: 1){
                 FPButton(buttonText: "Update", buttonFunction: ButtonFunctionNames.update)
                 FPButton(buttonText: "Merge", buttonFunction: ButtonFunctionNames.merge)
                 FPButton(buttonText: "Record", buttonFunction: ButtonFunctionNames.record)

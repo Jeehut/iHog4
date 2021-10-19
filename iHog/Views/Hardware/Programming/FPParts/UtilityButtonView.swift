@@ -9,18 +9,18 @@ import SwiftUI
 
 struct UtilityButtonView: View {
     var body: some View {
-        VStack{
-            HStack{
+        VStack(spacing: 1){
+            HStack(spacing: 1){
                 FPButton(buttonText: "Setup", buttonFunction: ButtonFunctionNames.setup)
                 FPButton(buttonText: "Goto", buttonFunction: ButtonFunctionNames.goto)
                 FPButton(buttonText: "Set", buttonFunction: ButtonFunctionNames.set)
             }
-            HStack{
+            HStack(spacing: 1){
                 FPButton(buttonText: "Pig", buttonFunction: ButtonFunctionNames.pig)
                 FPButton(buttonText: "Fan", buttonFunction: ButtonFunctionNames.fan)
                 FPButton(buttonText: "Open", buttonFunction: ButtonFunctionNames.open)
             }
-        }
+        }.padding(.bottom)
     }
 }
 
