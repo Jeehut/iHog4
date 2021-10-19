@@ -11,7 +11,7 @@ struct HBCButtonView: View {
     @EnvironmentObject var osc: OSCHelper
     
     var body: some View {
-        HStack{
+        HStack(spacing: 1){
             Button("Blind"){print("blind")}
             .pressActions(onPress: {
                 pushButton(buttonFunction: .blind)

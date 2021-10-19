@@ -11,8 +11,8 @@ struct FunctionKeyView: View {
     @EnvironmentObject var osc: OSCHelper
     
     var body: some View {
-        VStack{
-            HStack{
+        VStack(spacing: 1){
+            HStack(spacing: 1){
                 FPButton(
                     buttonText: osc.functionKeys[ButtonFunctionNames.h1.rawValue]![0] + "\n"
                               + osc.functionKeys[ButtonFunctionNames.h1.rawValue]![1],
@@ -29,7 +29,7 @@ struct FunctionKeyView: View {
                     buttonFunction: .h3
                 )
             }
-            HStack{
+            HStack(spacing: 1){
                 FPButton(
                     buttonText: osc.functionKeys[ButtonFunctionNames.h4.rawValue]![0] + "\n"
                               + osc.functionKeys[ButtonFunctionNames.h4.rawValue]![1],
@@ -46,7 +46,7 @@ struct FunctionKeyView: View {
                     buttonFunction: .h6
                 )
             }
-            HStack{
+            HStack(spacing: 1){
                 FPButton(
                     buttonText: osc.functionKeys[ButtonFunctionNames.h7.rawValue]![0] + "\n"
                               + osc.functionKeys[ButtonFunctionNames.h7.rawValue]![1],
@@ -63,7 +63,7 @@ struct FunctionKeyView: View {
                     buttonFunction: .h9
                 )
             }
-            HStack{
+            HStack(spacing: 1){
                 FPButton(
                     buttonText: osc.functionKeys[ButtonFunctionNames.h10.rawValue]![0] + "\n"
                               + osc.functionKeys[ButtonFunctionNames.h10.rawValue]![1],
@@ -81,6 +81,7 @@ struct FunctionKeyView: View {
                 )
             }
         }
+        .padding(.bottom)
     }
 }
 
