@@ -9,29 +9,37 @@ import SwiftUI
 
 struct RegRegFPProgramming: View {
     @EnvironmentObject var osc: OSCHelper
+    
+    let minSpace = CGFloat(10)
     var body: some View {
-        VStack(spacing: 10){
+        VStack{
             EncoderWheelsView()
                 .environmentObject(osc)
-            HStack(alignment: .bottom, spacing: 10){
-                VStack(spacing: 20){
+            HStack(alignment: .bottom){
+                VStack{
                     ObjectButtonView()
+                    Spacer(minLength: minSpace*2)
                     ActionButtonView()
+                    Spacer(minLength: minSpace*2)
                     UtilityButtonView()
-                }
-                VStack(spacing: 10){
+                }.frame(maxHeight: .infinity)
+                Spacer(minLength: minSpace)
+                VStack{
                     KindButtonView()
+                    Spacer(minLength: minSpace*2)
                     NumericKeypadView()
                 }
-                VStack(alignment: .leading, spacing: 10){
+                Spacer(minLength: minSpace)
+                VStack{
                     HBCButtonView()
+                    Spacer(minLength: minSpace*2)
                     SelectButtonView()
+                    Spacer(minLength: minSpace*2)
                     FunctionKeyView()
                 }
-            }
-            .padding(.bottom)
+            }.padding()
+            .fixedSize(horizontal: false, vertical: true)
         }
-        .padding(.horizontal, BASE_PADDING*2)
     }
 }
 
