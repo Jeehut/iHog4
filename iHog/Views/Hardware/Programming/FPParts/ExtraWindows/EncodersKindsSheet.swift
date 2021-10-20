@@ -79,10 +79,10 @@ struct EncodersKindsSheet: View {
                 switch verticalSizeClass {
                 case .regular:
                         VStack{
-                            EncoderWheelsView().environmentObject(osc)
-                            Spacer()
                             KindButtonView().environmentObject(osc)
                             Spacer()
+                            EncoderWheelsView().environmentObject(osc)
+                                .padding(.bottom, BASE_PADDING*4)
                         }
                 default:
                     HStack{
