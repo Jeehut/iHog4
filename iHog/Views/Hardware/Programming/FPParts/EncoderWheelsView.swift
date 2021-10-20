@@ -57,6 +57,9 @@ struct EncoderWheelsView: View {
                 }
             default:
                 VStack(alignment: .leading){
+                    GroupBox{
+                        Toggle("Fine Control", isOn: $isEncoderFine)
+                    }.frame(width: 200)
                     HStack{
                         EncoderWheel(encoderWheelNum: 1, paramName: osc.encoderWheelLabels[0], paramValue: osc.encoderWheelValues[0])
                         EncoderWheel(encoderWheelNum: 2, paramName: osc.encoderWheelLabels[1], paramValue: osc.encoderWheelValues[1])
@@ -68,9 +71,6 @@ struct EncoderWheelsView: View {
                             EncoderWheel(encoderWheelNum: 5, paramName: osc.encoderWheelLabels[4], paramValue: osc.encoderWheelValues[4])
                         }
                     }
-                    GroupBox{
-                        Toggle("Fine Control", isOn: $isEncoderFine)
-                    }.frame(width: 200)
                 }
         }
     }
