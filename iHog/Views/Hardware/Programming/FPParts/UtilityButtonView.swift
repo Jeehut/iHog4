@@ -20,7 +20,7 @@ struct UtilityButtonView: View {
                 FPButton(buttonText: "Fan", buttonFunction: ButtonFunctionNames.fan)
                 FPButton(buttonText: "Open", buttonFunction: ButtonFunctionNames.open)
             }
-        }.padding(.bottom)
+        }
     }
 }
 
