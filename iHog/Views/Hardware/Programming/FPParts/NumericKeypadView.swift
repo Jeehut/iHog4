@@ -22,6 +22,7 @@ struct NumericKeypadView: View {
                         pushButton(buttonFunction: .backspace)
                     } onRelease: {
                         print("Releasing")
+                        releaseButton(buttonFunction: .backspace)
                     }
                 Button("/"){
                     print("Slash")
@@ -31,6 +32,7 @@ struct NumericKeypadView: View {
                         pushButton(buttonFunction: .slash)
                     } onRelease: {
                         print("Releasing")
+                        releaseButton(buttonFunction: .slash)
                     }
                 Button("-"){
                     print("Minus")
@@ -39,7 +41,7 @@ struct NumericKeypadView: View {
                         print("Pressed")
                         pushButton(buttonFunction: .minus)
                     } onRelease: {
-                        print("Releasing")
+                        releaseButton(buttonFunction: .minus)
                     }
                 Button("+"){
                     print("plus")
@@ -49,6 +51,7 @@ struct NumericKeypadView: View {
                         pushButton(buttonFunction: .plus)
                     } onRelease: {
                         print("Releasing")
+                        releaseButton(buttonFunction: .plus)
                     }
             }
             HStack(spacing: 1){
