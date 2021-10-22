@@ -10,7 +10,7 @@ import SwiftUI
 struct ObjActUtilKeys: View {
     /** Used to determine when the sheet is dismissed*/
     @Environment(\.presentationMode) private var presentationMode
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var horizontalSizeClass
     
     @EnvironmentObject var osc: OSCHelper
     
