@@ -10,28 +10,56 @@ import SwiftUI
 struct ObjActUtilKeys: View {
     /** Used to determine when the sheet is dismissed*/
     @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     @EnvironmentObject var osc: OSCHelper
     
     var body: some View {
-        VStack{
-            HStack{
-                Spacer()
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }){
-                    Text("Close")
+        switch horizontalSizeClass {
+            case .regular:
+                VStack{
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }){
+                            Text("Close")
+                        }
+                        .foregroundColor(.red)
+                        .padding(.horizontal)
+                    }.padding(.vertical)
+                    ObjectButtonView()
+                    Spacer()
+                    ActionButtonView()
+                    Spacer()
+                    UtilityButtonView()
                 }
-                .foregroundColor(.red)
-                .padding(.horizontal)
-            }.padding(.vertical)
-            ObjectButtonView()
-            Spacer()
-            ActionButtonView()
-            Spacer()
-            UtilityButtonView()
+                .padding()
+            default:
+                VStack{
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }){
+                            Text("Close")
+                        }
+                        .foregroundColor(.red)
+                        .padding(.horizontal)
+                    }
+                    Spacer()
+                    HStack{
+                        VStack{
+                            ObjectButtonView()
+                            Spacer()
+                            ActionButtonView()
+                        }
+                        Spacer()
+                        UtilityButtonView()
+                    }
+                }
+                .padding(.all, BASE_PADDING*2)
         }
-        .padding()
     }
 }
 
