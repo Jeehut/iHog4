@@ -9,40 +9,36 @@ import SwiftUI
 
 struct RegRegFPProgramming: View {
     @EnvironmentObject var osc: OSCHelper
+    
+    let minSpace = CGFloat(10)
     var body: some View {
         VStack{
             EncoderWheelsView()
                 .environmentObject(osc)
-                .padding()
-            Spacer()
             HStack(alignment: .bottom){
                 VStack{
                     ObjectButtonView()
-                    Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
+                    Spacer(minLength: minSpace*2)
                     ActionButtonView()
-                    Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 80, maxHeight: 80, alignment: .center)
+                    Spacer(minLength: minSpace*2)
                     UtilityButtonView()
-                }
+                }.frame(maxHeight: .infinity)
+                Spacer(minLength: minSpace)
                 VStack{
                     KindButtonView()
-                    Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
+                    Spacer(minLength: minSpace*2)
                     NumericKeypadView()
                 }
-                .padding(.horizontal)
-                VStack(alignment: .leading){
+                Spacer(minLength: minSpace)
+                VStack{
                     HBCButtonView()
-                    Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 80, maxHeight: 80, alignment: .center)
+                    Spacer(minLength: minSpace*2)
                     SelectButtonView()
-                    Spacer()
-                        .frame(minWidth: 100, idealWidth: 100, maxWidth: 100, minHeight: 0, idealHeight: 72, maxHeight: 72, alignment: .center)
+                    Spacer(minLength: minSpace*2)
                     FunctionKeyView()
                 }
-            }
-            .padding(.bottom)
+            }.padding()
+            .fixedSize(horizontal: false, vertical: true)
         }
     }
 }

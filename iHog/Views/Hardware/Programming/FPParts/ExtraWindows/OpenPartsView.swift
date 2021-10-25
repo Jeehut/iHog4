@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct OpenPartsView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
     @EnvironmentObject var osc: OSCHelper
+    
     @State private var selectedPartView: Int = 4
     @State private var isEncoderShown: Bool = false
+    @State private var isActionShown: Bool = false
     @State private var isFunctionShown: Bool = false
     @State private var isUtilityShown: Bool = false
     
@@ -29,6 +34,17 @@ struct OpenPartsView: View {
                 EncodersKindsSheet()
                     .environmentObject(osc)
             })
+            Spacer()
+            // MARK: ACTION KEYS
+            Button(action: {
+                self.isActionShown = true
+            }) {
+                Text("Action Keys")
+            }.buttonStyle(OpenButtonStyle())
+            .sheet(isPresented: $isActionShown) {
+                ActionKeySheet()
+                    .environmentObject(osc)
+            }
             Spacer()
             
             // MARK: FUNCTION KEYS

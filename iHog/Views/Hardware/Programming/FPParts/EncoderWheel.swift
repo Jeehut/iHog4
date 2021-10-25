@@ -55,7 +55,7 @@ struct EncoderWheel: View {
         }.onTapGesture {
             print("DO SOMETHING")
         }.padding(2)
-        .frame(width: widthHeight, height: widthHeight, alignment: .center)
+        .frame(width: 100, height: 100, alignment: .center)
         .onAppear(perform: prepareHaptics)
     }
     

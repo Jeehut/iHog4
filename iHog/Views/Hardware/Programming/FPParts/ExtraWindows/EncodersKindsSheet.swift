@@ -8,25 +8,92 @@
 import SwiftUI
 
 struct EncodersKindsSheet: View {
+    /** OSC Info*/
     @EnvironmentObject var osc: OSCHelper
+    
+    /** Used to determine rotation */
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
+    /** Used to determine when the sheet is dismissed*/
     @Environment(\.presentationMode) private var presentationMode
     var body: some View {
-        VStack{
-            HStack{
-                Spacer()
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }){
-                    Text("Close")
+        switch horizontalSizeClass {
+        case .regular:
+            VStack{
+                switch verticalSizeClass {
+                case .regular:
+                    // Close button
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }){
+                            Text("Close")
+                        }
+                        .foregroundColor(.red)
+                        .padding(.horizontal)
+                    }.padding(.vertical)
+        //            Spacer()
+                    EncoderWheelsView().environmentObject(osc)
+                    Spacer()
+                    KindButtonView().environmentObject(osc)
+                    Spacer()
+                default:
+                    VStack{
+                        // Close button
+                        HStack{
+                            Spacer()
+                            Button(action: {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }){
+                                Text("Close")
+                            }
+                            .foregroundColor(.red)
+                            .padding(.horizontal)
+                        }.padding(.vertical)
+                        Spacer()
+                        HStack{
+                            EncoderWheelsView().environmentObject(osc)
+                            Spacer()
+                            KindButtonView().environmentObject(osc)
+                            Spacer()
+                        }
+                    }
                 }
-                .foregroundColor(.red)
-                .padding(.horizontal)
-            }.padding(.vertical)
-//            Spacer()
-            EncoderWheelsView().environmentObject(osc)
-            Spacer()
-            KindButtonView().environmentObject(osc)
-            Spacer()
+            }
+            // Compact size class
+        default:
+            VStack{// Close button
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }){
+                        Text("Close")
+                    }
+                    .foregroundColor(.red)
+                    .padding(.horizontal)
+                }.padding(.vertical)
+                Spacer()
+                switch verticalSizeClass {
+                case .regular:
+                        VStack{
+                            Spacer()
+                            KindButtonView().environmentObject(osc)
+                            Spacer()
+                            EncoderWheelsView().environmentObject(osc)
+                                .padding(.bottom, BASE_PADDING*4)
+                        }
+                default:
+                    HStack{
+                        EncoderWheelsView().environmentObject(osc)
+                        Spacer()
+                        KindButtonView().environmentObject(osc)
+                        Spacer()
+                    }
+                }
+            }
         }
     }
 }

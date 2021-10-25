@@ -24,6 +24,7 @@ struct FPProgrammer: View {
                     .navigationBarTitleDisplayMode(.inline)
             }
         default: // compact
+            // iPhones and iPods usually this one
             if verticalSizeClass == .regular {
                 CompRegFPprogramming()
                     .navigationTitle(osc.commandLine)
