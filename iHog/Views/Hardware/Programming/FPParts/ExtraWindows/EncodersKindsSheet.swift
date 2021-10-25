@@ -79,6 +79,7 @@ struct EncodersKindsSheet: View {
                 switch verticalSizeClass {
                 case .regular:
                         VStack{
+                            Spacer()
                             KindButtonView().environmentObject(osc)
                             Spacer()
                             EncoderWheelsView().environmentObject(osc)
