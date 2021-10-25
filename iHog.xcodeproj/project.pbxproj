@@ -74,6 +74,7 @@
 		15DA2680251237D70063E236 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA267F251237D70063E236 /* Persistence.swift */; };
 		15DA2699251237D70063E236 /* iHogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA2698251237D70063E236 /* iHogUITests.swift */; };
 		15DA26AC251238980063E236 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA26AB251238980063E236 /* SettingsView.swift */; };
+		15DD8BDB2726D87900561E09 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DD8BDA2726D87900561E09 /* CloseButton.swift */; };
 		15E0A78227166BF9003A2B6F /* FrontPanelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E0A78127166BF9003A2B6F /* FrontPanelButton.swift */; };
 		15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E2D203253F14F900C7A453 /* CloudKit.framework */; };
 		15F520262514DA7500EF4B98 /* ShowSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F520252514DA7500EF4B98 /* ShowSetting.swift */; };
@@ -185,6 +186,7 @@
 		15DA2698251237D70063E236 /* iHogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iHogUITests.swift; sourceTree = "<group>"; };
 		15DA269A251237D70063E236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15DA26AB251238980063E236 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		15DD8BDA2726D87900561E09 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		15E0A78127166BF9003A2B6F /* FrontPanelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPanelButton.swift; sourceTree = "<group>"; };
 		15E2D1FE253F14F100C7A453 /* iHog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iHog.entitlements; sourceTree = "<group>"; };
 		15E2D203253F14F900C7A453 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -474,6 +476,7 @@
 		15DA26A92512387D0063E236 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				15DD8BD92726D86600561E09 /* Utilities */,
 				15E0A78027166BD4003A2B6F /* Styles */,
 				1560710925CC29D1000EB05F /* PuntPageViews */,
 				1529025325387225002D4F2E /* ShowViews */,
@@ -506,6 +509,14 @@
 				15893A272671569200780B31 /* ChosenShow.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		15DD8BD92726D86600561E09 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				15DD8BDA2726D87900561E09 /* CloseButton.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		15E0A78027166BD4003A2B6F /* Styles */ = {
@@ -724,6 +735,7 @@
 				158362D925F7AF9600EEC8F7 /* PressAction.swift in Sources */,
 				15DA0B19251513BC006ADB27 /* ProgrammingObjects.swift in Sources */,
 				1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */,
+				15DD8BDB2726D87900561E09 /* CloseButton.swift in Sources */,
 				15FA5F0E2525FF3400DF1A3C /* HorizontalSlider.swift in Sources */,
 				15E0A78227166BF9003A2B6F /* FrontPanelButton.swift in Sources */,
 				159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */,
@@ -994,12 +1006,12 @@
 				DEVELOPMENT_TEAM = ZDK82FGR3Z;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iHog/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appsbymw.hogosc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1019,12 +1031,12 @@
 				DEVELOPMENT_TEAM = ZDK82FGR3Z;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iHog/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appsbymw.hogosc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

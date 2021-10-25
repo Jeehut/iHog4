@@ -9,19 +9,10 @@ import SwiftUI
 
 struct FunctionKeySheet: View {
     @EnvironmentObject var osc: OSCHelper
-    @Environment(\.presentationMode) private var presentationMode
+    
     var body: some View {
         VStack{
-            HStack{
-                Spacer()
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }){
-                    Text("Close")
-                }
-                .foregroundColor(.red)
-                .padding(.horizontal)
-            }.padding(.vertical)
+            CloseButton()
             Spacer()
             FunctionKeyView().environmentObject(osc)
         }

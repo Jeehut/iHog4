@@ -16,7 +16,7 @@ struct EncodersKindsSheet: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     
     /** Used to determine when the sheet is dismissed*/
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         switch horizontalSizeClass {
         case .regular:
@@ -24,16 +24,7 @@ struct EncodersKindsSheet: View {
                 switch verticalSizeClass {
                 case .regular:
                     // Close button
-                    HStack{
-                        Spacer()
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }){
-                            Text("Close")
-                        }
-                        .foregroundColor(.red)
-                        .padding(.horizontal)
-                    }.padding(.vertical)
+                    CloseButton()
         //            Spacer()
                     EncoderWheelsView().environmentObject(osc)
                     Spacer()
@@ -42,16 +33,7 @@ struct EncodersKindsSheet: View {
                 default:
                     VStack{
                         // Close button
-                        HStack{
-                            Spacer()
-                            Button(action: {
-                                self.presentationMode.wrappedValue.dismiss()
-                            }){
-                                Text("Close")
-                            }
-                            .foregroundColor(.red)
-                            .padding(.horizontal)
-                        }.padding(.vertical)
+                        CloseButton()
                         Spacer()
                         HStack{
                             EncoderWheelsView().environmentObject(osc)
@@ -65,16 +47,7 @@ struct EncodersKindsSheet: View {
             // Compact size class
         default:
             VStack{// Close button
-                HStack{
-                    Spacer()
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }){
-                        Text("Close")
-                    }
-                    .foregroundColor(.red)
-                    .padding(.horizontal)
-                }.padding(.vertical)
+                CloseButton()
                 Spacer()
                 switch verticalSizeClass {
                 case .regular:

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ObjActUtilKeys: View {
     /** Used to determine when the sheet is dismissed*/
-    @Environment(\.presentationMode) private var presentationMode
     @Environment(\.verticalSizeClass) var horizontalSizeClass
     
     @EnvironmentObject var osc: OSCHelper
@@ -18,16 +17,7 @@ struct ObjActUtilKeys: View {
         switch horizontalSizeClass {
             case .regular:
                 VStack{
-                    HStack{
-                        Spacer()
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }){
-                            Text("Close")
-                        }
-                        .foregroundColor(.red)
-                        .padding(.horizontal)
-                    }.padding(.vertical)
+                    CloseButton()
                     ObjectButtonView()
                     Spacer()
                     ActionButtonView()
@@ -37,16 +27,7 @@ struct ObjActUtilKeys: View {
                 .padding()
             default:
                 VStack{
-                    HStack{
-                        Spacer()
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }){
-                            Text("Close")
-                        }
-                        .foregroundColor(.red)
-                        .padding(.horizontal)
-                    }
+                    CloseButton()
                     Spacer()
                     HStack{
                         VStack{
