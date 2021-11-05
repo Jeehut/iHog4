@@ -63,6 +63,11 @@ struct SettingsView: View {
                             destination: FPPlayback(),
                             tag: SettingsNav.playbackHardware,
                             selection: $selectedSetting)
+                        NavigationLink(
+                            "Focus",
+                            destination: FPFocus(),
+                            tag: SettingsNav.focusHardware,
+                            selection: $selectedSetting)
                     }
                     // MARK: SETTINGS
                     Section(header: Text("Settings")){

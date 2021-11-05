@@ -18,6 +18,7 @@
 		152902552538727A002D4F2E /* ShowNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152902542538727A002D4F2E /* ShowNavigation.swift */; };
 		152EECDA25D56CCF00136CC7 /* PPPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152EECD925D56CCF00136CC7 /* PPPurchaseView.swift */; };
 		153009D0258B8A0D00311520 /* OSCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153009CF258B8A0D00311520 /* OSCHelper.swift */; };
+		15397A56273555C400AE5DE4 /* FPFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15397A55273555C400AE5DE4 /* FPFocus.swift */; };
 		1547E0C2256732B600E7FE98 /* RegCompPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547E0C1256732B600E7FE98 /* RegCompPlayback.swift */; };
 		155450132524B0E60025DCAA /* FPPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155450122524B0E50025DCAA /* FPPlayback.swift */; };
 		1554501B2524B1390025DCAA /* VerticalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554501A2524B1390025DCAA /* VerticalSlider.swift */; };
@@ -124,6 +125,7 @@
 		152902542538727A002D4F2E /* ShowNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNavigation.swift; sourceTree = "<group>"; };
 		152EECD925D56CCF00136CC7 /* PPPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPPurchaseView.swift; sourceTree = "<group>"; };
 		153009CF258B8A0D00311520 /* OSCHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSCHelper.swift; sourceTree = "<group>"; };
+		15397A55273555C400AE5DE4 /* FPFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPFocus.swift; sourceTree = "<group>"; };
 		1547E0C1256732B600E7FE98 /* RegCompPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegCompPlayback.swift; sourceTree = "<group>"; };
 		155450122524B0E50025DCAA /* FPPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPPlayback.swift; sourceTree = "<group>"; };
 		1554501A2524B1390025DCAA /* VerticalSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalSlider.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				15AB35D8251CC1C5008FC212 /* FPButton.swift */,
 				15D07DF7251E16FA00A80DC4 /* FPProgrammer.swift */,
 				155450122524B0E50025DCAA /* FPPlayback.swift */,
+				15397A55273555C400AE5DE4 /* FPFocus.swift */,
 			);
 			path = Hardware;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */,
 				158362D925F7AF9600EEC8F7 /* PressAction.swift in Sources */,
 				15DA0B19251513BC006ADB27 /* ProgrammingObjects.swift in Sources */,
+				15397A56273555C400AE5DE4 /* FPFocus.swift in Sources */,
 				1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */,
 				15DD8BDB2726D87900561E09 /* CloseButton.swift in Sources */,
 				15FA5F0E2525FF3400DF1A3C /* HorizontalSlider.swift in Sources */,
@@ -929,7 +933,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -984,7 +988,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

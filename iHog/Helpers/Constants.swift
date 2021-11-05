@@ -55,6 +55,7 @@ enum SettingsNav:Hashable {
     case about
     case programmerHardware
     case playbackHardware
+    case focusHardware
     case playbackObject
     case programObject
     case custom
