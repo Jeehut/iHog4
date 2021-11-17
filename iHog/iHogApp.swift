@@ -20,7 +20,7 @@ struct iHogApp: App {
     let osc = OSCHelper()
     
     init() {
-//        Purchases.debugLogsEnabled = true
+        Purchases.logLevel = .debug
         Purchases.configure(withAPIKey: RC_API_KEY, appUserID: nil)
     }
 
