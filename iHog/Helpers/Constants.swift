@@ -107,7 +107,7 @@ enum Settings: String {
     case puntPageIsEnabled
 }
 
-// MARK: BUTTON NAME ENUMS
+/// BUTTON NAME ENUMS
 enum ButtonFunctionNames: String {
     // MARK: PLAYBACKS
     case pause
