@@ -58,24 +58,24 @@ struct NumericKeypadView: View {
                 Button("7"){print(7)}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
                 .pressActions {
-                    pushButton(number: "7")
+                    pushButton(number: "seven")
                 } onRelease: {
-                    releaseButton(number: "7")
+                    releaseButton(number: "seven")
                 }
                 
                 Button("8"){print(8)}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
                 .pressActions {
-                    pushButton(number: "8")
+                    pushButton(number: "eight")
                 } onRelease: {
-                    releaseButton(number: "8")
+                    releaseButton(number: "eight")
                 }
                 Button("9"){print(9)}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
                 .pressActions {
-                    pushButton(number: "9")
+                    pushButton(number: "nine")
                 } onRelease: {
-                    releaseButton(number: "9")
+                    releaseButton(number: "nine")
                 }
                 Button("thru"){print("thru")}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
@@ -89,24 +89,24 @@ struct NumericKeypadView: View {
                 Button("4"){print(4)}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
                 .pressActions {
-                    pushButton(number: "4")
+                    pushButton(number: "four")
                 } onRelease: {
-                    releaseButton(number: "4")
+                    releaseButton(number: "four")
                 }
                 
                 Button("5"){print(5)}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
                 .pressActions {
-                    pushButton(number: "5")
+                    pushButton(number: "five")
                 } onRelease: {
-                    releaseButton(number: "5")
+                    releaseButton(number: "five")
                 }
                 Button("6"){print(6)}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
                 .pressActions {
-                    pushButton(number: "6")
+                    pushButton(number: "six")
                 } onRelease: {
-                    releaseButton(number: "6")
+                    releaseButton(number: "six")
                 }
                 Button("full"){print("full")}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
@@ -120,24 +120,24 @@ struct NumericKeypadView: View {
                 Button("1"){print(1)}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
                 .pressActions {
-                    pushButton(number: "1")
+                    pushButton(number: "one")
                 } onRelease: {
-                    releaseButton(number: "1")
+                    releaseButton(number: "one")
                 }
                 
                 Button("2"){print(2)}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
                 .pressActions {
-                    pushButton(number: "2")
+                    pushButton(number: "two")
                 } onRelease: {
-                    releaseButton(number: "2")
+                    releaseButton(number: "two")
                 }
                 Button("3"){print(3)}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
                 .pressActions {
-                    pushButton(number: "3")
+                    pushButton(number: "three")
                 } onRelease: {
-                    releaseButton(number: "3")
+                    releaseButton(number: "three")
                 }
                 Button("@"){print("@")}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
@@ -151,9 +151,9 @@ struct NumericKeypadView: View {
                 Button("0"){print(0)}
                 .buttonStyle(FrontPanelButton(width: buttonSize, backgroundColor: .gray))
                 .pressActions {
-                    pushButton(number: "0")
+                    pushButton(number: "zero")
                 } onRelease: {
-                    releaseButton(number: "0")
+                    releaseButton(number: "zero")
                 }
                 
                 Button("."){print(".")}
