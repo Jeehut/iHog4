@@ -81,10 +81,11 @@ struct SettingsView: View {
                 .listStyle( SidebarListStyle())
                 .blur(radius: isAddingShow ? 2.5 : 0.0)
                 if isAddingShow{
-                    NewShowView(isShowing: $isAddingShow)
-                        .cornerRadius(BASE_CORNER_RADIUS)
-                        .shadow(radius: DOUBLE_CORNER_RADIUS)
-                        .animation(.spring())
+                    withAnimation {
+                        NewShowView(isShowing: $isAddingShow)
+                            .cornerRadius(BASE_CORNER_RADIUS)
+                            .shadow(radius: DOUBLE_CORNER_RADIUS)
+                    }
                 }
             }
         }.navigationViewStyle( DoubleColumnNavigationViewStyle())

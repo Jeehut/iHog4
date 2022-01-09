@@ -29,12 +29,6 @@ struct iHogApp: App {
             SettingsView(selectedSetting: SettingsNav.device)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(osc)
-                .onAppear {
-                    timesLaunced += 1
-                    if timesLaunced > 5 {
-                        if let windowScene = UIApplication.shared.windows.first?.windowScene { SKStoreReviewController.requestReview(in: windowScene) }
-                    }
-                }
         }
     }
 }
