@@ -87,13 +87,13 @@ struct PurchRow: View {
         } else {
             switch package.product.productIdentifier {
             case "h4tier1":
-                return "Small Tip"
+                return "Smile size tip"
             case "h4tier2":
-                return "Medium Tip"
+                return "Heart sized tip"
             case "h4tier3":
-                return "Large Tip"
+                return "Coffee sized tip"
             case "h4tier4":
-                return "Giant Tip"
+                return "100 sized Tip"
             default:
                 return package.product.localizedTitle
             }

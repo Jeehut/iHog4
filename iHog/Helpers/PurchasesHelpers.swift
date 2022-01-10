@@ -11,6 +11,19 @@ import Purchases
 public struct TippingProducts {
     private let tipProducts = ["h4tier1", "h4tier2", "h4tier3", "h4tier4"]
 
+    func getProducts() -> [Purchases.Package] {
+        var packages: [Purchases.Package] = []
+        Purchases.shared.offerings { (offerings, error) in
+
+            guard let offerings = offerings else {
+                return
+            }
+
+            packages = offerings.offering(identifier: "tipping-default")?.availablePackages ?? []
+        }
+        return packages
+    }
+
     func getTotalTipped() -> String {
         var totalTipped: NSDecimalNumber = 0.0
         var products: [SKProduct] = []

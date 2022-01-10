@@ -17,9 +17,7 @@ struct TipJarView: View {
     
     @State private var totalTipped: Double = 0.0
     //    @State private var products: [SKProduct] = []
-    @State private var packages: [Purchases.Package] = []
-    
-    var store = HogOSCProducts.store
+    @State private var packages: [Purchases.Package] = TippingProducts().getProducts()
     
     let pub = NotificationCenter.default
         .publisher(for: NSNotification.Name("IAPHelperPurchaseNotification"))
@@ -34,13 +32,11 @@ struct TipJarView: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("If you're enjoying iHog and want to drop some money into the tip jar, it workd definitely be appreciated!")
+            Text("I'm one person building iHog, and it relies on your support for development. Pay what you want when you want and no matter what you will be loved for it 💙")
                 .padding()
             Text("Total in Jar: \(TipJarView.priceFormatter.string(from: NSNumber(value: totalTipped)) ?? "NONE")")
                 .font(.title)
                 .foregroundColor((totalTipped > 0) ? .green : .primary)
-                .padding()
-            Text("Any contribution is greatly welcomed, but please don't feel like you must tip.")
                 .padding()
             List{
                 ForEach(packages, id: \.identifier){ package in
@@ -56,14 +52,6 @@ struct TipJarView: View {
         }
         .navigationBarTitle("Tip Jar")
         .onAppear {
-            Purchases.shared.offerings { (offerings, error) in
-                if let tipping = offerings?["tipping-default"]{
-                    packages = tipping.availablePackages
-                } else {
-                    print(error.debugDescription)
-                }
-            
-            }
             getTotalTipped()
         }
     }

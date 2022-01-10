@@ -13,7 +13,6 @@ struct PPPurchaseView: View {
     @AppStorage(Settings.puntPageIsEnabled.rawValue) var puntPageIsEnabled: Bool = false
     @State private var products: [SKProduct] = []
     @State private var packages: [Purchases.Package] = []
-    var store = FeaturePack.store
     
     static let priceFormatter: NumberFormatter = {
       let formatter = NumberFormatter()
