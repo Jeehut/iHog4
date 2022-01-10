@@ -27,7 +27,7 @@ struct ShowNavigation: View {
         TabView(selection: $selectedView) {
             ProgrammingObjects(show: chosenShow)
                 .tabItem{
-                    Image(systemName: "wand.and.rays")
+                    Image(systemName: "paintpalette")
                 }
                 .tag(Views.programmingObjects)
             PlaybackObjects(show: chosenShow)
