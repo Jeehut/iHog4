@@ -11,6 +11,9 @@ import Purchases
 
 struct SettingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+
     @EnvironmentObject var osc: OSCHelper
     
     // Gets shows
@@ -64,11 +67,13 @@ struct SettingsView: View {
                             destination: FPPlayback(),
                             tag: SettingsNav.playbackHardware,
                             selection: $selectedSetting)
-                        NavigationLink(
-                            "Focus",
-                            destination: FPFocus(),
-                            tag: SettingsNav.focusHardware,
-                            selection: $selectedSetting)
+                        if horizontalSizeClass == .compact && verticalSizeClass == .regular{
+                            NavigationLink(
+                                "Focus",
+                                destination: FPFocus(),
+                                tag: SettingsNav.focusHardware,
+                                selection: $selectedSetting)
+                        }
                     }
                     // MARK: SETTINGS
                     Section(header: Text("Settings")){
