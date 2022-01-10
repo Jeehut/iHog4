@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Purchases
 
 struct SettingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -76,7 +77,7 @@ struct SettingsView: View {
                         NavigationLink("OSC Log", destination: OSCLogView(), tag: SettingsNav.oscLogView, selection: $selectedSetting)
                     }
                     // MARK: ABOUT
-                    About(selectedSetting: $selectedSetting, totalTipped: totalTipped)
+                    About(selectedSetting: $selectedSetting)
                 }
                 .listStyle( SidebarListStyle())
                 .blur(radius: isAddingShow ? 2.5 : 0.0)

@@ -86,6 +86,7 @@
 		15FA5F292526025100DF1A3C /* CompPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FA5F282526025100DF1A3C /* CompPlayback.swift */; };
 		15FB201725220F52007EDC36 /* UtilityKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201625220F52007EDC36 /* UtilityKeySheet.swift */; };
 		15FB201C252212B0007EDC36 /* CompRegFPprogramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */; };
+		371F49D6278B3CBB001E7EE1 /* PurchasesHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */; };
 		379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B2C8225CD7CD6007447BB /* CompactFaders.swift */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +201,7 @@
 		15FA5F282526025100DF1A3C /* CompPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompPlayback.swift; sourceTree = "<group>"; };
 		15FB201625220F52007EDC36 /* UtilityKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityKeySheet.swift; sourceTree = "<group>"; };
 		15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRegFPprogramming.swift; sourceTree = "<group>"; };
+		371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesHelpers.swift; sourceTree = "<group>"; };
 		379B2C8225CD7CD6007447BB /* CompactFaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactFaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -278,6 +280,7 @@
 				153009CF258B8A0D00311520 /* OSCHelper.swift */,
 				158362D825F7AF9600EEC8F7 /* PressAction.swift */,
 				1593AAFF2719A9CA00D8D653 /* Color+Extension.swift */,
+				371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				15D07E0E251E1B7400A80DC4 /* HBCButtonView.swift in Sources */,
 				151E061425E20E3200B3844A /* TipJarView.swift in Sources */,
 				155450262524B72E0025DCAA /* RegRegPlayback.swift in Sources */,
+				371F49D6278B3CBB001E7EE1 /* PurchasesHelpers.swift in Sources */,
 				15D07E18251E209100A80DC4 /* CommandLineView.swift in Sources */,
 				1563789A2539C9BB00C22F0B /* NewShowView.swift in Sources */,
 				15C0D1FF271D981E0051F16C /* ObjActUtilKeys.swift in Sources */,
