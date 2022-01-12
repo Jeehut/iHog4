@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -84,6 +84,8 @@
 		15FA5F292526025100DF1A3C /* CompPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FA5F282526025100DF1A3C /* CompPlayback.swift */; };
 		15FB201725220F52007EDC36 /* UtilityKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201625220F52007EDC36 /* UtilityKeySheet.swift */; };
 		15FB201C252212B0007EDC36 /* CompRegFPprogramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */; };
+		370C7C52278E54E500DA036B /* OSCHelper+Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370C7C51278E54E500DA036B /* OSCHelper+Client.swift */; };
+		370C7C54278E552900DA036B /* OSCHelper+Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370C7C53278E552900DA036B /* OSCHelper+Server.swift */; };
 		371F49D6278B3CBB001E7EE1 /* PurchasesHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */; };
 		379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B2C8225CD7CD6007447BB /* CompactFaders.swift */; };
 /* End PBXBuildFile section */
@@ -197,6 +199,8 @@
 		15FA5F282526025100DF1A3C /* CompPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompPlayback.swift; sourceTree = "<group>"; };
 		15FB201625220F52007EDC36 /* UtilityKeySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityKeySheet.swift; sourceTree = "<group>"; };
 		15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRegFPprogramming.swift; sourceTree = "<group>"; };
+		370C7C51278E54E500DA036B /* OSCHelper+Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSCHelper+Client.swift"; sourceTree = "<group>"; };
+		370C7C53278E552900DA036B /* OSCHelper+Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSCHelper+Server.swift"; sourceTree = "<group>"; };
 		371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesHelpers.swift; sourceTree = "<group>"; };
 		379B2C8225CD7CD6007447BB /* CompactFaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactFaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -270,9 +274,9 @@
 		155530CF25138A2D00CF48FD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				370C7C50278E54D500DA036B /* OSC */,
 				155530D025138A5500CF48FD /* UIDevice+Extensions.swift */,
 				159048302537DEED00910100 /* Constants.swift */,
-				153009CF258B8A0D00311520 /* OSCHelper.swift */,
 				158362D825F7AF9600EEC8F7 /* PressAction.swift */,
 				1593AAFF2719A9CA00D8D653 /* Color+Extension.swift */,
 				371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */,
@@ -537,6 +541,16 @@
 			path = ShowSettings;
 			sourceTree = "<group>";
 		};
+		370C7C50278E54D500DA036B /* OSC */ = {
+			isa = PBXGroup;
+			children = (
+				153009CF258B8A0D00311520 /* OSCHelper.swift */,
+				370C7C51278E54E500DA036B /* OSCHelper+Client.swift */,
+				370C7C53278E552900DA036B /* OSCHelper+Server.swift */,
+			);
+			path = OSC;
+			sourceTree = "<group>";
+		};
 		379B2C8125CD7CA1007447BB /* PPPlaybackViewParts */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,7 +664,7 @@
 				};
 			};
 			buildConfigurationList = 15DA266E251237D60063E236 /* Build configuration list for PBXProject "iHog" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -730,6 +744,7 @@
 				1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */,
 				15DD8BDB2726D87900561E09 /* CloseButton.swift in Sources */,
 				15FA5F0E2525FF3400DF1A3C /* HorizontalSlider.swift in Sources */,
+				370C7C52278E54E500DA036B /* OSCHelper+Client.swift in Sources */,
 				15E0A78227166BF9003A2B6F /* FrontPanelButton.swift in Sources */,
 				159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */,
 				1547E0C2256732B600E7FE98 /* RegCompPlayback.swift in Sources */,
@@ -750,6 +765,7 @@
 				159BAECB251B722700A81EA1 /* PlaybackObjects.swift in Sources */,
 				15D07DF8251E16FA00A80DC4 /* FPProgrammer.swift in Sources */,
 				155450212524B63D0025DCAA /* VerticalMasterView.swift in Sources */,
+				370C7C54278E552900DA036B /* OSCHelper+Server.swift in Sources */,
 				15CA4277252206D400C56FE0 /* EncodersKindsSheet.swift in Sources */,
 				1502F639251CC83F00BAC5EE /* EncoderWheel.swift in Sources */,
 				153009D0258B8A0D00311520 /* OSCHelper.swift in Sources */,
@@ -1176,7 +1192,7 @@
 			repositoryURL = "https://github.com/SammySmallman/OSCKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.0;
+				minimumVersion = 3.0.1;
 			};
 		};
 		15C8284725FA4B15003FAEFA /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
