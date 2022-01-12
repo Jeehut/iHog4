@@ -30,3 +30,36 @@ extension OSCHelper: OSCUdpClientDelegate {
     }
 
 }
+
+extension OSCHelper: OSCTcpServerDelegate {
+    func client(_ client: OSCTcpClient,
+                didConnectTo host: String,
+                port: UInt16) {
+        print("client did connect to \(host):\(port)")
+    }
+
+    func client(_ client: OSCTcpClient,
+                didDisconnectWith error: Error?) {
+        if let error = error {
+           print("client did disconnect with error: \(error.localizedDescription)")
+        } else {
+           print("client did disconnect")
+        }
+    }
+
+    func client(_ client: OSCTcpClient,
+                didSendPacket packet: OSCPacket) {
+        print("Client did send packet")
+    }
+
+    func client(_ client: OSCTcpClient,
+                didReceivePacket packet: OSCPacket) {
+        print("Client did receive packet")
+    }
+
+    func client(_ client: OSCTcpClient,
+                didReadData data: Data,
+                with error: Error) {
+        print("Client did read data with error: \(error.localizedDescription)")
+    }
+}
