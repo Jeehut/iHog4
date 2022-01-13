@@ -128,6 +128,8 @@ class OSCHelper: ObservableObject, OSCTcpClientDelegate {
         case back = "/hog/playback/back/"
         case release = "/hog/playback/release/"
         case hardware = "/hog/hardware/"
+        case pig = "/hog/hardware/pig"
+        case hRelease = "/hog/hardware/release"
         case choose = "/hog/hardware/choose/"
         case goHardware = "/hog/hardware/go/"
         case pauseHardware = "/hog/hardware/pause/"
@@ -240,19 +242,49 @@ class OSCHelper: ObservableObject, OSCTcpClientDelegate {
     }
 
     // MARK: Send a message
-    func send(_ message: OSCMessage) {
+    func send(_ stringMessage: String, arguments: [OSCArgumentProtocol] = []) {
+        // check if using TCP
         guard let tcpClient = tcpClient else {
+            // runs if using UDP
             do {
+                let message = try OSCMessage(with: stringMessage, arguments: arguments)
                 try udpClient!.send(message)
+            } catch OSCAddressError.invalidAddress {
+                print("Unable to make message invalid address: \(stringMessage) \(arguments)")
             } catch {
-                print("Unable to send \(error.localizedDescription)")
+                print("Other error \(error.localizedDescription)")
             }
             return
         }
+
+        // runs if using TCP
         do {
+            let message = try OSCMessage(with: stringMessage, arguments: arguments)
             try tcpClient.send(message)
+        } catch OSCAddressError.invalidAddress {
+            print("Unable to make message invalid address: \(stringMessage) \(arguments)")
         } catch {
-            print("Unable to send \(error.localizedDescription)")
+            print("Other error \(error.localizedDescription)")
         }
+    }
+
+    func pushFrontPanelButton(button: String) {
+        let stringMessage = OSCCommands.hardware.rawValue + button
+        send(stringMessage, arguments: [1])
+    }
+
+    func releaseFrontPanelButton(button: String) {
+        let stringMessage = OSCCommands.hardware.rawValue + button
+        send(stringMessage, arguments: [0])
+    }
+
+    func sendReleaseAllMessage() {
+        // Push the buttons
+        send(OSCCommands.pig.rawValue, arguments: [1])
+        send(OSCCommands.hRelease.rawValue, arguments: [1])
+
+        // Release the buttons
+        send(OSCCommands.pig.rawValue, arguments: [0])
+        send(OSCCommands.hRelease.rawValue, arguments: [0])
     }
 }
