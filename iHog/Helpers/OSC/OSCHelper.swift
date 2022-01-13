@@ -9,7 +9,176 @@ import Foundation
 import Combine
 import OSCKit
 
-class OSCHelper {
+class OSCHelper: ObservableObject, OSCTcpClientDelegate {
+
+    // MARK: Published variables
+
+    @Published var encoderWheelLabels = ["", "", "", "", ""]
+    @Published var encoderWheelValues = ["", "", "", "",""]
+    @Published var commandLine = "Command line text"
+    @Published var blind: Float = 0.0
+    @Published var highlight: Float = 0.0
+    @Published var clear: Float = 0.0
+    @Published var macro: Float = 0.0
+    @Published var kindKeys: [String: Float] = [ButtonFunctionNames.intensity.rawValue: 0.0,
+                                                ButtonFunctionNames.position.rawValue: 0.0,
+                                                ButtonFunctionNames.colour.rawValue: 0.0,
+                                                ButtonFunctionNames.beam.rawValue: 0.0,
+                                                ButtonFunctionNames.effect.rawValue: 0.0,
+                                                ButtonFunctionNames.time.rawValue: 0.0]
+    @Published var functionKeys: [String: [String]] = [
+        ButtonFunctionNames.h1.rawValue: ["", ""],
+        ButtonFunctionNames.h2.rawValue: ["", ""],
+        ButtonFunctionNames.h3.rawValue: ["", ""],
+        ButtonFunctionNames.h4.rawValue: ["", ""],
+        ButtonFunctionNames.h5.rawValue: ["", ""],
+        ButtonFunctionNames.h6.rawValue: ["", ""],
+        ButtonFunctionNames.h7.rawValue: ["", ""],
+        ButtonFunctionNames.h8.rawValue: ["", ""],
+        ButtonFunctionNames.h9.rawValue: ["", ""],
+        ButtonFunctionNames.h10.rawValue: ["", ""],
+        ButtonFunctionNames.h11.rawValue: ["", ""],
+        ButtonFunctionNames.h12.rawValue: ["", ""]
+    ]
+    @Published var functionKeyStatus: [String: Float] = [
+        ButtonFunctionNames.h1.rawValue: 0.0,
+        ButtonFunctionNames.h2.rawValue: 0.0,
+        ButtonFunctionNames.h3.rawValue: 0.0,
+        ButtonFunctionNames.h4.rawValue: 0.0,
+        ButtonFunctionNames.h5.rawValue: 0.0,
+        ButtonFunctionNames.h6.rawValue: 0.0,
+        ButtonFunctionNames.h7.rawValue: 0.0,
+        ButtonFunctionNames.h8.rawValue: 0.0,
+        ButtonFunctionNames.h9.rawValue: 0.0,
+        ButtonFunctionNames.h10.rawValue: 0.0,
+        ButtonFunctionNames.h11.rawValue: 0.0,
+        ButtonFunctionNames.h12.rawValue: 0.0]
+
+
+    @Published var plays: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+    @Published var pauses: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+    @Published var backs: [Float]   = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+    @Published var flashes: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+    @Published var chooses: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+    @Published var faders: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    @Published var oscLog: [[String: String]] = []
+
+    enum OSCCommands: String {
+        case go = "/hog/playback/go/"
+        case halt = "/hog/playback/halt/"
+        case back = "/hog/playback/back/"
+        case release = "/hog/playback/release/"
+        case hardware = "/hog/hardware/"
+        case choose = "/hog/hardware/choose/"
+        case goHardware = "/hog/hardware/go/"
+        case pauseHardware = "/hog/hardware/pause/"
+        case backHardware = "/hog/hardware/goback/"
+        case flashHardware = "/hog/hardware/flash/"
+        case encoderWheelButton = "/hog/hardware/ewheelbutton/"
+        case status = "/hog/status/"
+    }
+
+    enum OSCStatuses: String {
+        case led
+        case commandline
+        case encoderWheel1
+        case encoderWheel2
+        case encoderWheel3
+        case encoderWheel4
+        case encoderWheel
+        case h1
+        case h2
+        case h3
+        case h4
+        case h5
+        case h6
+        case h7
+        case h8
+        case h9
+        case h10
+        case h11
+        case h12
+    }
+
+    enum oscButtonNames: String {
+        case pause
+        case choose
+        case go
+        case goback
+        case flash
+        case blind
+        case highlight
+        case clear
+        case macro
+        case intensity
+        case position
+        case colour
+        case beam
+        case effects
+        case time
+    }
+
+    // MARK: Private variables
+
     private var consoleIP: String = ""
     private var consoleInputPort: Int = 0
     private var consoleOutputPort: Int = 0
@@ -29,6 +198,7 @@ class OSCHelper {
         useTCP = false
     }
 
+    // MARK: OSC Settings
     func setOSCClientServer() {
         if useTCP {
             tcpClient = OSCTcpClient(interface: interface,
@@ -60,6 +230,16 @@ class OSCHelper {
         setOSCClientServer()
     }
 
+    func stopServer() {
+        guard let tcpServer = tcpServer else {
+            udpServer!.stopListening()
+            return
+        }
+
+        tcpServer.stopListening()
+    }
+
+    // MARK: Send a message
     func send(_ message: OSCMessage) {
         guard let tcpClient = tcpClient else {
             do {
@@ -74,14 +254,5 @@ class OSCHelper {
         } catch {
             print("Unable to send \(error.localizedDescription)")
         }
-    }
-
-    func stopServer() {
-        guard let tcpServer = tcpServer else {
-            udpServer!.stopListening()
-            return
-        }
-        
-        tcpServer.stopListening()
     }
 }

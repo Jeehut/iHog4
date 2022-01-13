@@ -32,7 +32,7 @@ extension OSCHelper: OSCUdpServerDelegate {
     }
 }
 
-extension OSCHelper: OSCTcpServerDelegate {
+extension OSCHelper {
     func server(_ server: OSCTcpServer,
                 didConnectToClientWithHost host: String,
                 port: UInt16) {
@@ -71,6 +71,6 @@ extension OSCHelper: OSCTcpServerDelegate {
     func server(_ server: OSCTcpServer,
                 didReadData data: Data,
                 with error: Error) {
-        print("Server did read data with error: \(error.localizedDescription)"
+        print("Server did read data with error: \(error.localizedDescription)")
     }
 }
