@@ -57,7 +57,7 @@ struct OSCSettings: View {
         if isOSCOn {
             osc.setConsoleSettings(ip: consoleIP, inputPort: Int(serverPort) ?? 7001, outputPort: Int(clientPort) ?? 7002)
         } else {
-            osc.server.stopListening()
+            osc.stopServer()
         }
     }
 }
