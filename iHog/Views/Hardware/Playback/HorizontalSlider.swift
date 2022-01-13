@@ -67,7 +67,7 @@ struct HorizontalSlider: View {
             faderLevel = Double(newValue)
             consoleFaderValue = absoluteFaderLevel * 1.159
         }
-        osc.fader(master: master, value: Float(consoleFaderValue))
+        osc.sendFaderValue(master: master, value: Float(consoleFaderValue))
         osc.setFaderLevel(value: Float(consoleFaderValue), fader: master)
     }
     

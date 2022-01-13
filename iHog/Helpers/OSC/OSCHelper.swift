@@ -135,6 +135,7 @@ class OSCHelper: ObservableObject, OSCTcpClientDelegate {
         case pauseHardware = "/hog/hardware/pause/"
         case backHardware = "/hog/hardware/goback/"
         case flashHardware = "/hog/hardware/flash/"
+        case fader = "/hog/hardware/fader/"
         case encoderWheelButton = "/hog/hardware/ewheelbutton/"
         case status = "/hog/status/"
     }
@@ -286,5 +287,23 @@ class OSCHelper: ObservableObject, OSCTcpClientDelegate {
         // Release the buttons
         send(OSCCommands.pig.rawValue, arguments: [0])
         send(OSCCommands.hRelease.rawValue, arguments: [0])
+    }
+
+    func sendFaderValue(master: Int, value: Float) {
+        let stringMessage = OSCCommands.fader.rawValue + "\(master)"
+        let args = [value]
+        send(stringMessage, arguments: args)
+    }
+
+    // MARK: Receive Values
+}
+
+
+// MARK: Adjust app values
+extension OSCHelper {
+    func setFaderLevel(value: Float, fader: Int) {
+        let y = 0.86274509803922 * value - 110.0
+//        print(" val: \(value) || y: \(y)")
+        faders[fader] = y
     }
 }
