@@ -16,7 +16,7 @@ struct OSCLogView: View {
             Toggle(isOn: $logIsPaused){
                 Text(logIsPaused ? "Resume OSC Log" : "Pause OSC Log")
             }.onChange(of: logIsPaused){ newValue in
-                    osc.toggleLog(logIsPaused)
+//                    osc.toggleLog(logIsPaused)
                 }
                 .padding(.horizontal)
             List{

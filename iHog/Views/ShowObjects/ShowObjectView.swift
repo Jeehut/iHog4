@@ -38,26 +38,26 @@ struct ShowObjectView: View {
                 RoundedRectangle(cornerRadius: (DOUBLE_CORNER_RADIUS))
                     .stroke(OBJ_COLORS[obj.getColor()], lineWidth: BASE_LINE_WIDTH)
             ).padding()
-            .sheet(isPresented: $showEditWindow){
-                EditObjectView(show: show, obj: obj)
-            }
+                .sheet(isPresented: $showEditWindow){
+                    EditObjectView(show: show, obj: obj)
+                }
         }.foregroundColor(.primary)
-        .contextMenu{
-            if obj.objType == .scene || obj.objType == .list {
-                Button(action: {sendReleaseOSC()}){
-                    Image(systemName: "stop.fill")
-                    Text("Release")
+            .contextMenu{
+                if obj.objType == .scene || obj.objType == .list {
+                    Button(action: {sendReleaseOSC()}){
+                        Image(systemName: "stop.fill")
+                        Text("Release")
+                    }
+                }
+                Button(action: {self.showEditWindow.toggle()}){
+                    Image(systemName: "pencil")
+                    Text("Edit")
+                }
+                Button(action: deleteObject){
+                    Image(systemName: "trash")
+                    Text("Delete")
                 }
             }
-            Button(action: {self.showEditWindow.toggle()}){
-                Image(systemName: "pencil")
-                Text("Edit")
-            }
-            Button(action: deleteObject){
-                Image(systemName: "trash")
-                Text("Delete")
-            }
-        }
     }
     
     func getSize() -> CGFloat{
@@ -115,13 +115,14 @@ struct ShowObjectView: View {
     }
     
     func sendOSC(){
+        let objNum = obj.getObjNumber()
         switch obj.objType {
         case .group, .intensity, .position, .color, .beam, .effect:
-            osc.selectProgrammingObject(objNumber: obj.getObjNumber(), objType: obj.objType)
+            osc.selectProgrammingObject(objNumber: objNum, objType: obj.objType)
         case .list:
-            osc.goListOrScene(objNumber: obj.getObjNumber(), objType: "0")
+            osc.goList(objNumber: objNum)
         case .scene:
-            osc.goListOrScene(objNumber: obj.getObjNumber(), objType: "1")
+            osc.goScene(objNumber: objNum)
         default:
             print("Need a proper object type")
         }

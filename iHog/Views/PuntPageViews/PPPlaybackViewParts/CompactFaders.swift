@@ -43,6 +43,6 @@ struct CompactFaders: View {
 
 struct CompactFaders_Previews: PreviewProvider {
     static var previews: some View {
-        CompactFaders( mainPlaybackIsShowing: .constant(true)).environmentObject(OSCHelper())
+        CompactFaders( mainPlaybackIsShowing: .constant(true)).environmentObject(OSCHelper(ip: "192.168.0.101", inputPort: 9009, outputPort: 9009))
     }
 }

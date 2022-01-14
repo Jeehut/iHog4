@@ -17,7 +17,7 @@ struct iHogApp: App {
     @AppStorage(Settings.timesLaunched.rawValue) var timesLaunced: Int = 0
     
     let persistenceController = PersistenceController.shared
-    let osc = OSCHelper()
+    let osc = OSCHelper(ip: "192.168.0.101", inputPort: 9009, outputPort: 9009)
     
     init() {
         Purchases.logLevel = .debug

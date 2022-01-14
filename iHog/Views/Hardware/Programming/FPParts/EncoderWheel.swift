@@ -63,10 +63,10 @@ struct EncoderWheel: View {
         isHapticOn ? complexSuccess() : print("turned off")
         
         if newValue < yOffSet {
-            osc.encoderWheel(encoderNum: encoderWheelNum, value: encoderWheelPrecision)
+            osc.sendEncoderWheelValue(encoderNum: encoderWheelNum, value: encoderWheelPrecision)
             yOffSet = newValue
         } else {
-            osc.encoderWheel(encoderNum: encoderWheelNum, value: -(encoderWheelPrecision))
+            osc.sendEncoderWheelValue(encoderNum: encoderWheelNum, value: -(encoderWheelPrecision))
             yOffSet = newValue
         }
     }
