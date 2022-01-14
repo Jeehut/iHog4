@@ -120,7 +120,7 @@ struct FPButton: View {
              ButtonFunctionNames.pause,
              ButtonFunctionNames.go,
              ButtonFunctionNames.flash:
-            osc.playbackButtonPush(button: buttonFunction.rawValue, master: buttonNumber)
+            osc.pushPlaybackButton(button: buttonFunction.rawValue, master: buttonNumber)
         case ButtonFunctionNames.numberpad:
             let formatter = NumberFormatter()
             formatter.numberStyle = .spellOut
@@ -138,7 +138,7 @@ struct FPButton: View {
              ButtonFunctionNames.pause,
              ButtonFunctionNames.go,
              ButtonFunctionNames.flash:
-            osc.playbackButtonRelease(button: buttonFunction.rawValue, master: buttonNumber)
+            osc.releasePlaybackButton(button: buttonFunction.rawValue, master: buttonNumber)
         case ButtonFunctionNames.numberpad:
             let formatter = NumberFormatter()
             formatter.numberStyle = .spellOut

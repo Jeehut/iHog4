@@ -137,6 +137,9 @@ class OSCHelper: ObservableObject, OSCTcpClientDelegate {
         case flashHardware = "/hog/hardware/flash/"
         case fader = "/hog/hardware/fader/"
         case encoderWheelButton = "/hog/hardware/ewheelbutton/"
+        case encoderWheel = "/hog/hardware/encoderwheel/"
+        case period = "/hog/hardware/period/"
+        case enter = "/hog/hardware/enter/"
         case status = "/hog/status/"
     }
 
@@ -233,7 +236,7 @@ class OSCHelper: ObservableObject, OSCTcpClientDelegate {
         setOSCClientServer()
     }
 
-    func stopServer() {
+    func er() {
         guard let tcpServer = tcpServer else {
             udpServer!.stopListening()
             return
@@ -274,8 +277,18 @@ class OSCHelper: ObservableObject, OSCTcpClientDelegate {
         send(stringMessage, arguments: [1])
     }
 
+    func pushPlaybackButton(button: String, master: Int) {
+        let stringMessage = OSCCommands.hardware.rawValue + "button/\(master)"
+        send(stringMessage, arguments: [1])
+    }
+
     func releaseFrontPanelButton(button: String) {
         let stringMessage = OSCCommands.hardware.rawValue + button
+        send(stringMessage, arguments: [0])
+    }
+
+    func releasePlaybackButton(button: String, master: Int) {
+        let stringMessage = OSCCommands.hardware.rawValue + "button/\(master)"
         send(stringMessage, arguments: [0])
     }
 
@@ -295,6 +308,80 @@ class OSCHelper: ObservableObject, OSCTcpClientDelegate {
         send(stringMessage, arguments: args)
     }
 
+    func sendEncoderWheelValue(encoderNum: Int, value: Double) {
+        let stringMessage = OSCCommands.encoderWheel.rawValue + "\(encoderNum)"
+        let args = [value]
+        send(stringMessage, arguments: args)
+    }
+
+    func selectProgrammingObject(objNumber: String, objType: ShowObjectType) {
+        let objTypeString = objType.rawValue
+        var message: String
+        let pressedValue = [1]
+        let releasedValue = [0]
+
+        if objType == .group {
+            message = OSCCommands.hardware.rawValue + "backspace/"
+            send(message, arguments: pressedValue)
+            usleep(1000)
+            send(message, arguments: releasedValue)
+            usleep(1000)
+            send(message, arguments: pressedValue)
+            usleep(1000)
+            send(message, arguments: releasedValue)
+            usleep(1000)
+        }
+
+        message = OSCCommands.hardware.rawValue + objTypeString
+        send(message, arguments: pressedValue)
+        usleep(1000)
+        send(message, arguments: releasedValue)
+
+        for num in objNumber {
+            print(num)
+            if num == "." {
+                message = OSCCommands.period.rawValue
+                send(message, arguments: pressedValue)
+                usleep(1000)
+                send(message, arguments: releasedValue)
+            } else {
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .spellOut
+                let english = formatter.string(from: NSNumber(value: Int(String(num))!))
+                message = OSCCommands.hardware.rawValue + english!
+                send(message, arguments: pressedValue)
+                usleep(1000)
+                send(message, arguments: releasedValue)
+            }
+        }
+
+        // ENTER
+        message = OSCCommands.enter.rawValue
+        send(message, arguments: pressedValue)
+        usleep(1000)
+        send(message, arguments: releasedValue)
+    }
+
+    func goList(objNumber: String) {
+        let message = OSCCommands.go.rawValue + "0" + objNumber
+        send(message)
+    }
+
+    func goScene(objNumber: String) {
+        let message = OSCCommands.go.rawValue + "1" + objNumber
+        send(message)
+    }
+
+    func releaseList(_ objNumber: String) {
+        let message = OSCCommands.release.rawValue + "0" + objNumber
+        send(message)
+    }
+
+    func releaseScene(_ objNumber: String) {
+        let message = OSCCommands.release.rawValue + "1" + objNumber
+        send(message)
+    }
+
     // MARK: Receive Values
 }
 
@@ -303,7 +390,6 @@ class OSCHelper: ObservableObject, OSCTcpClientDelegate {
 extension OSCHelper {
     func setFaderLevel(value: Float, fader: Int) {
         let y = 0.86274509803922 * value - 110.0
-//        print(" val: \(value) || y: \(y)")
         faders[fader] = y
     }
 }

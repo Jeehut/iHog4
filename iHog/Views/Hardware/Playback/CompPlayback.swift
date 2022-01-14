@@ -34,7 +34,7 @@ struct CompPlayback: View {
 
 struct CompPlayback_Previews: PreviewProvider {
     static var previews: some View {
-        CompPlayback().environmentObject(OSCHelper())
+        CompPlayback().environmentObject(OSCHelper(ip: "192.168.0.101", inputPort: 9009, outputPort: 9009))
     }
 }
 
