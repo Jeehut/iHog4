@@ -271,19 +271,33 @@ class OSCHelper: ObservableObject {
         tcpServer.stopListening()
     }
 
+    enum OSCSendingErrors: String, Error {
+        case TCPFailed = "TCP didn't send message"
+        case UDPFailedCreateMessage = ""
+        case UDPFailed = "UDP didn't send message"
+    }
+
+    private func createUDPMessage(with message: String, arguments: [OSCArgumentProtocol] = []) throws -> OSCMessage {
+        do {
+            return try OSCMessage(with: message, arguments: arguments)
+        } catch {
+            throw OSCSendingErrors.UDPFailedCreateMessage
+        }
+    }
+
     // MARK: Send a message
     func send(_ stringMessage: String, arguments: [OSCArgumentProtocol] = []) {
         // check if using TCP
         guard let tcpClient = tcpClient else {
             // runs if using UDP
             do {
-                let message = try OSCMessage(with: stringMessage, arguments: arguments)
+                let message = try createUDPMessage(with: stringMessage, arguments: arguments)
                 guard let udpClient = udpClient else {
                     print("ERROR WITH UDP CLIENT")
                     return
                 }
                 try udpClient.send(message)
-            } catch OSCAddressError.invalidAddress {
+            } catch OSCSendingErrors.UDPFailedCreateMessage {
                 print("Unable to make message invalid address: \(stringMessage) \(arguments)")
             } catch {
                 print("Other error \(error.localizedDescription)")
@@ -308,7 +322,7 @@ class OSCHelper: ObservableObject {
     }
 
     func pushPlaybackButton(button: String, master: Int) {
-        let stringMessage = OSCCommands.hardware.rawValue + "button/\(master)"
+        let stringMessage = OSCCommands.hardware.rawValue + button + "/\(master)"
         send(stringMessage, arguments: [1])
     }
 
@@ -318,7 +332,7 @@ class OSCHelper: ObservableObject {
     }
 
     func releasePlaybackButton(button: String, master: Int) {
-        let stringMessage = OSCCommands.hardware.rawValue + "button/\(master)"
+        let stringMessage = OSCCommands.hardware.rawValue + button + "/\(master)"
         send(stringMessage, arguments: [0])
     }
 
