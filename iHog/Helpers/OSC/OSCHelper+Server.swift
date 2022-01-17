@@ -14,7 +14,6 @@ extension OSCHelper: OSCUdpServerDelegate {
                 fromHost host: String,
                 port: UInt16) {
         readBundle(bundle: OSCBundle([packet]))
-        print("UDP server did receive packet from \(host):\(port)")
     }
 
     func server(_ server: OSCUdpServer,

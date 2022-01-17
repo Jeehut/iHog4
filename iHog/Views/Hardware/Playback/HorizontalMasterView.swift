@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HorizontalMasterView: View {
+    @EnvironmentObject var osc: OSCHelper
+
     var masterNumber: Int
     
     var body: some View {
@@ -17,7 +19,7 @@ struct HorizontalMasterView: View {
                 FPButton(buttonText: "Back", buttonFunction: .goback, buttonNumber: masterNumber)
                 FPButton(buttonText: "Pause", buttonFunction: .pause, buttonNumber: masterNumber)
                 FPButton(buttonText: "Play", buttonFunction: .go, buttonNumber: masterNumber)
-                FPButton(buttonText: "FLASH", buttonFunction: .flash, buttonNumber: masterNumber)
+                FPButton(buttonText: "FLASH", buttonFunction: .flash, buttonNumber: masterNumber, bgColor: osc.flashes[masterNumber])
             }
             HStack{
                 HorizontalSlider(master: masterNumber)
