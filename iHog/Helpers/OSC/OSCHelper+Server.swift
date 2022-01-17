@@ -13,6 +13,7 @@ extension OSCHelper: OSCUdpServerDelegate {
                 didReceivePacket packet: OSCPacket,
                 fromHost host: String,
                 port: UInt16) {
+        readBundle(bundle: OSCBundle([packet]))
         print("UDP server did receive packet from \(host):\(port)")
     }
 
