@@ -56,6 +56,8 @@ struct OSCSettings: View {
     func toggleOSC(){
         if isOSCOn {
             osc.setConsoleSettings(ip: consoleIP, inputPort: Int(serverPort) ?? 7001, outputPort: Int(clientPort) ?? 7002)
+            osc.startServer()
+            osc.send("/hog/ihog/is/connected/")
         } else {
             osc.stopServer()
         }
