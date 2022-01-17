@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import OSCKit
 
-class OSCHelper: ObservableObject, OSCTcpClientDelegate {
+class OSCHelper: ObservableObject {
 
     // MARK: Published variables
 
@@ -236,9 +236,35 @@ class OSCHelper: ObservableObject, OSCTcpClientDelegate {
         setOSCClientServer()
     }
 
-    func er() {
+    func startServer() {
         guard let tcpServer = tcpServer else {
-            udpServer!.stopListening()
+            guard let udpServer = udpServer else {
+                print("ERROR WITH UDP")
+                return
+            }
+            do {
+                print("UDP")
+                try udpServer.startListening()
+            } catch {
+                print(error.localizedDescription)
+            }
+            return
+        }
+
+        do {
+            try tcpServer.startListening()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    func stopServer() {
+        guard let tcpServer = tcpServer else {
+            guard let udpServer = udpServer else {
+                print("UDP SERVER NOT FOUND")
+                return
+            }
+            udpServer.stopListening()
             return
         }
 
@@ -252,7 +278,11 @@ class OSCHelper: ObservableObject, OSCTcpClientDelegate {
             // runs if using UDP
             do {
                 let message = try OSCMessage(with: stringMessage, arguments: arguments)
-                try udpClient!.send(message)
+                guard let udpClient = udpClient else {
+                    print("ERROR WITH UDP CLIENT")
+                    return
+                }
+                try udpClient.send(message)
             } catch OSCAddressError.invalidAddress {
                 print("Unable to make message invalid address: \(stringMessage) \(arguments)")
             } catch {
