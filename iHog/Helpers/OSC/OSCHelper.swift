@@ -427,6 +427,16 @@ class OSCHelper: ObservableObject {
     }
 
     // MARK: Receive Values
+
+    func readBundle(bundle: OSCBundle) {
+        for item in bundle.elements {
+            if let message = item as? OSCMessage {
+                print("Found message: \(message.addressPattern)")
+            } else {
+                readBundle(bundle: item as! OSCBundle)
+            }
+        }
+    }
 }
 
 
