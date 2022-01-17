@@ -183,7 +183,7 @@ class OSCHelper: ObservableObject {
         case time
     }
 
-    // MARK: Private variables
+    // MARK: Private OSC Variables
 
     private var consoleIP: String = ""
     private var consoleInputPort: Int = 0

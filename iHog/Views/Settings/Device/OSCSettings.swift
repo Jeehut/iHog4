@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct OSCSettings: View {
-//    @EnvironmentObject var osc: OSCHelper
-
-    var osc: OSCHelper = OSCHelper(ip: "192.168.0.1", inputPort: 2992, outputPort: 2992)
+    @EnvironmentObject var osc: OSCHelper
     
     @AppStorage(Settings.consoleIP.rawValue) var consoleIP: String = "172.31.0.1"
     @AppStorage(Settings.serverPort.rawValue) var serverPort: String = "7001"
