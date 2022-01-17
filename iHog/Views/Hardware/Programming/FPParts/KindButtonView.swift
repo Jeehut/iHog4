@@ -12,14 +12,14 @@ struct KindButtonView: View {
     var body: some View {
         VStack(spacing: 1){
             HStack(spacing: 1){
-                FPButton(buttonText: "Intens", buttonFunction: ButtonFunctionNames.intensity)
-                FPButton(buttonText: "Positn", buttonFunction: ButtonFunctionNames.position)
-                FPButton(buttonText: "Colour", buttonFunction: ButtonFunctionNames.colour)
-                FPButton(buttonText: "Beam", buttonFunction: ButtonFunctionNames.beam)
+                FPButton(buttonText: "Intens", buttonFunction: ButtonFunctionNames.intensity, bgColor: osc.kindKeys[.intensity]!)
+                FPButton(buttonText: "Positn", buttonFunction: ButtonFunctionNames.position, bgColor: osc.kindKeys[.position]!)
+                FPButton(buttonText: "Colour", buttonFunction: ButtonFunctionNames.colour, bgColor: osc.kindKeys[.colour]!)
+                FPButton(buttonText: "Beam", buttonFunction: ButtonFunctionNames.beam, bgColor: osc.kindKeys[.beam]!)
             }
             HStack(spacing: 1){
-                FPButton(buttonText: "Effect", buttonFunction: ButtonFunctionNames.effect)
-                FPButton(buttonText: "Time", buttonFunction: ButtonFunctionNames.time)
+                FPButton(buttonText: "Effect", buttonFunction: ButtonFunctionNames.effect, bgColor: osc.kindKeys[.effect]!)
+                FPButton(buttonText: "Time", buttonFunction: ButtonFunctionNames.time, bgColor: osc.kindKeys[.time]!)
                 FPButton(buttonText: "Group", buttonFunction: ButtonFunctionNames.group)
                 FPButton(buttonText: "Fixture", buttonFunction: ButtonFunctionNames.fixture)
             }

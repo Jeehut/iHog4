@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import OSCKit
+import SwiftUI
 
 class OSCHelper: ObservableObject {
 
@@ -20,12 +21,12 @@ class OSCHelper: ObservableObject {
     @Published var highlight: Float = 0.0
     @Published var clear: Float = 0.0
     @Published var macro: Float = 0.0
-    @Published var kindKeys: [String: Float] = [ButtonFunctionNames.intensity.rawValue: 0.0,
-                                                ButtonFunctionNames.position.rawValue: 0.0,
-                                                ButtonFunctionNames.colour.rawValue: 0.0,
-                                                ButtonFunctionNames.beam.rawValue: 0.0,
-                                                ButtonFunctionNames.effect.rawValue: 0.0,
-                                                ButtonFunctionNames.time.rawValue: 0.0]
+    @Published var kindKeys: [ButtonFunctionNames: Color] = [ButtonFunctionNames.intensity: .gray,
+                                                             ButtonFunctionNames.position: .gray,
+                                                             ButtonFunctionNames.colour: .gray,
+                                                             ButtonFunctionNames.beam: .gray,
+                                                             ButtonFunctionNames.effect: .gray,
+                                                             ButtonFunctionNames.time: .gray]
     @Published var functionKeys: [String: [String]] = [
         ButtonFunctionNames.h1.rawValue: ["", ""],
         ButtonFunctionNames.h2.rawValue: ["", ""],
@@ -88,16 +89,27 @@ class OSCHelper: ObservableObject {
                                        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                                        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
-    @Published var flashes: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    @Published var flashes: [Color] = [Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
+                                       Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
+                                       Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
+                                       Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
+                                       Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
+                                       Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
+                                       Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
+                                       Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
+                                       Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
+                                       Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,]
+
+//    @Published var flashes: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+//                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+//                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+//                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+//                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+//                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+//                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+//                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+//                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+//                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
     @Published var chooses: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                                        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
@@ -431,10 +443,35 @@ class OSCHelper: ObservableObject {
     func readBundle(bundle: OSCBundle) {
         for item in bundle.elements {
             if let message = item as? OSCMessage {
-                print("Found message: \(message.addressPattern)")
+                let messageParts = message.addressPattern.parts
+                let arguments = message.arguments
+                switch messageParts[2] {
+                case "led":
+                    getStatusOfLED(parts: messageParts, arguments: arguments)
+                case "commandline":
+                    commandLine = arguments[0] as! String
+                case "time":
+                    break
+                default:
+                    print("HANDLE MESSAGE")
+                }
             } else {
                 readBundle(bundle: item as! OSCBundle)
             }
+        }
+    }
+
+    func getStatusOfLED(parts: [String], arguments: [OSCArgumentProtocol]) {
+        switch parts[3] {
+        case "flash":
+            let masterNumber = Int(parts[4]) ?? 0
+            if arguments[0] as! Float == 0.0 {
+                flashes[masterNumber] = .gray
+            } else {
+                flashes[masterNumber] = .red
+            }
+        default:
+            print("LED STATUS NOT HANDLED")
         }
     }
 }
