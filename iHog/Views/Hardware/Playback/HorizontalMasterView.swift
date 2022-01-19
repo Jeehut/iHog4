@@ -31,7 +31,10 @@ struct HorizontalMasterView: View {
                          buttonFunction: .go,
                          buttonNumber: masterNumber,
                          bgColor: osc.plays[masterNumber])
-                FPButton(buttonText: "FLASH", buttonFunction: .flash, buttonNumber: masterNumber, bgColor: osc.flashes[masterNumber])
+                FPButton(buttonText: "FLASH",
+                         buttonFunction: .flash,
+                         buttonNumber: masterNumber,
+                         bgColor: osc.flashes[masterNumber])
             }
             HStack{
                 HorizontalSlider(master: masterNumber)
