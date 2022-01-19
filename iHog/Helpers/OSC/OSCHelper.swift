@@ -199,6 +199,8 @@ class OSCHelper: ObservableObject {
 
     private let interface = "en0"
 
+    @Published var isLogPaused = false
+
     init(ip: String, inputPort: Int, outputPort: Int) {
         consoleIP = ip
         consoleInputPort = inputPort
@@ -272,6 +274,9 @@ class OSCHelper: ObservableObject {
 
         tcpServer.stopListening()
     }
+    func toggleLog(_ logState: Bool) {
+        isLogPaused = logState
+    }
 
     enum OSCSendingErrors: String, Error {
         case TCPFailed = "TCP didn't send message"
@@ -289,6 +294,9 @@ class OSCHelper: ObservableObject {
 
     // MARK: Send a message
     func send(_ stringMessage: String, arguments: [OSCArgumentProtocol] = []) {
+        if !isLogPaused {
+            logMessage(sent: "yes", message: stringMessage, argument: arguments)
+        }
         // check if using TCP
         guard let tcpClient = tcpClient else {
             // runs if using UDP
@@ -447,6 +455,9 @@ class OSCHelper: ObservableObject {
                 default:
                     print(messageParts)
                 }
+                if !isLogPaused {
+                    logMessage(sent: "no", message: message.addressPattern.fullPath, argument: arguments)
+                }
             } else {
                 readBundle(bundle: item as! OSCBundle)
             }
@@ -548,6 +559,17 @@ class OSCHelper: ObservableObject {
         } else {
             encoderWheelValues[index] = value
         }
+    }
+
+    func logMessage(sent: String, message: String, argument: [OSCArgumentProtocol]) {
+        var tempArg = ""
+        if !argument.isEmpty {
+            tempArg = argument.description
+        }
+
+        oscLog.append(["sent": sent,
+                       "message": message,
+                       "argument": tempArg])
     }
 }
 

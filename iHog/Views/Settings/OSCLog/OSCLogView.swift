@@ -13,10 +13,10 @@ struct OSCLogView: View {
     
     var body: some View {
         VStack{
-            Toggle(isOn: $logIsPaused){
-                Text(logIsPaused ? "Resume OSC Log" : "Pause OSC Log")
+            Toggle(isOn: $osc.isLogPaused){
+                Text(osc.isLogPaused ? "Resume OSC Log" : "Pause OSC Log")
             }.onChange(of: logIsPaused){ newValue in
-//                    osc.toggleLog(logIsPaused)
+                    osc.toggleLog(logIsPaused)
                 }
                 .padding(.horizontal)
             List{
