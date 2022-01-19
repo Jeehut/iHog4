@@ -278,17 +278,11 @@ class OSCHelper: ObservableObject {
         isLogPaused = logState
     }
 
-    enum OSCSendingErrors: String, Error {
-        case TCPFailed = "TCP didn't send message"
-        case UDPFailedCreateMessage = ""
-        case UDPFailed = "UDP didn't send message"
-    }
-
-    private func createUDPMessage(with message: String, arguments: [OSCArgumentProtocol] = []) throws -> OSCMessage {
+    private func createOSCMessage(with message: String, arguments: [OSCArgumentProtocol] = []) throws -> OSCMessage {
         do {
             return try OSCMessage(with: message, arguments: arguments)
         } catch {
-            throw OSCSendingErrors.UDPFailedCreateMessage
+            throw OSCErrors.FailedToCreateMessage
         }
     }
 
@@ -297,18 +291,32 @@ class OSCHelper: ObservableObject {
         if !isLogPaused {
             logMessage(sent: "yes", message: stringMessage, argument: arguments)
         }
+        var message: OSCMessage?
+
+        // create message
+        do {
+            message = try createOSCMessage(with: stringMessage, arguments: arguments)
+        } catch OSCErrors.FailedToCreateMessage {
+            print("MESSAGE IS NOT RIGHT ")
+            print("Unable to make message invalid address: \(stringMessage) \(arguments)")
+        } catch {
+            print("Other error")
+        }
+        guard let oscMessage = message else {
+            return
+        }
+
         // check if using TCP
         guard let tcpClient = tcpClient else {
             // runs if using UDP
             do {
-                let message = try createUDPMessage(with: stringMessage, arguments: arguments)
                 guard let udpClient = udpClient else {
                     print("ERROR WITH UDP CLIENT")
                     return
                 }
-                try udpClient.send(message)
-            } catch OSCSendingErrors.UDPFailedCreateMessage {
-                print("Unable to make message invalid address: \(stringMessage) \(arguments)")
+                try udpClient.send(oscMessage)
+            } catch OSCErrors.UDPFailedToSend {
+                print("Unable to send on UDP")
             } catch {
                 print("Other error \(error.localizedDescription)")
             }
@@ -317,10 +325,9 @@ class OSCHelper: ObservableObject {
 
         // runs if using TCP
         do {
-            let message = try OSCMessage(with: stringMessage, arguments: arguments)
-            try tcpClient.send(message)
-        } catch OSCAddressError.invalidAddress {
-            print("Unable to make message invalid address: \(stringMessage) \(arguments)")
+            try tcpClient.send(oscMessage)
+        } catch OSCErrors.TCPFailedToSend {
+            print("Unable to send on TCP")
         } catch {
             print("Other error \(error.localizedDescription)")
         }

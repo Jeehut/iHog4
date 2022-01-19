@@ -86,6 +86,7 @@
 		15FB201C252212B0007EDC36 /* CompRegFPprogramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */; };
 		370C7C52278E54E500DA036B /* OSCHelper+Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370C7C51278E54E500DA036B /* OSCHelper+Client.swift */; };
 		370C7C54278E552900DA036B /* OSCHelper+Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370C7C53278E552900DA036B /* OSCHelper+Server.swift */; };
+		3712241D2798CF660063E32D /* HogErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712241C2798CF660063E32D /* HogErrors.swift */; };
 		371F49D6278B3CBB001E7EE1 /* PurchasesHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */; };
 		379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B2C8225CD7CD6007447BB /* CompactFaders.swift */; };
 /* End PBXBuildFile section */
@@ -201,6 +202,7 @@
 		15FB201B252212B0007EDC36 /* CompRegFPprogramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRegFPprogramming.swift; sourceTree = "<group>"; };
 		370C7C51278E54E500DA036B /* OSCHelper+Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSCHelper+Client.swift"; sourceTree = "<group>"; };
 		370C7C53278E552900DA036B /* OSCHelper+Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSCHelper+Server.swift"; sourceTree = "<group>"; };
+		3712241C2798CF660063E32D /* HogErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogErrors.swift; sourceTree = "<group>"; };
 		371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesHelpers.swift; sourceTree = "<group>"; };
 		379B2C8225CD7CD6007447BB /* CompactFaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactFaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,6 +276,7 @@
 		155530CF25138A2D00CF48FD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3712241B2798CEB80063E32D /* ErrorHandling */,
 				370C7C50278E54D500DA036B /* OSC */,
 				155530D025138A5500CF48FD /* UIDevice+Extensions.swift */,
 				159048302537DEED00910100 /* Constants.swift */,
@@ -551,6 +554,14 @@
 			path = OSC;
 			sourceTree = "<group>";
 		};
+		3712241B2798CEB80063E32D /* ErrorHandling */ = {
+			isa = PBXGroup;
+			children = (
+				3712241C2798CF660063E32D /* HogErrors.swift */,
+			);
+			path = ErrorHandling;
+			sourceTree = "<group>";
+		};
 		379B2C8125CD7CA1007447BB /* PPPlaybackViewParts */ = {
 			isa = PBXGroup;
 			children = (
@@ -744,6 +755,7 @@
 				1560711525CC2A08000EB05F /* PPPlayback.swift in Sources */,
 				15DD8BDB2726D87900561E09 /* CloseButton.swift in Sources */,
 				15FA5F0E2525FF3400DF1A3C /* HorizontalSlider.swift in Sources */,
+				3712241D2798CF660063E32D /* HogErrors.swift in Sources */,
 				370C7C52278E54E500DA036B /* OSCHelper+Client.swift in Sources */,
 				15E0A78227166BF9003A2B6F /* FrontPanelButton.swift in Sources */,
 				159BAED4251B7BDB00A81EA1 /* RegRegFPProgramming.swift in Sources */,
