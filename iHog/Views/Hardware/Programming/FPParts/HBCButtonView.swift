@@ -18,21 +18,21 @@ struct HBCButtonView: View {
             }, onRelease: {
                 releaseButton(buttonFunction: .blind)
             })
-            .buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+            .buttonStyle(FrontPanelButton(width: 65, backgroundColor: osc.blind))
             Button("High Light"){print("blind")}
             .pressActions(onPress: {
                 pushButton(buttonFunction: .highlight)
             }, onRelease: {
                 releaseButton(buttonFunction: .highlight)
             })
-            .buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+            .buttonStyle(FrontPanelButton(width: 65, backgroundColor: osc.highlight))
             Button("Clear"){print("Clear")}
             .pressActions(onPress: {
                 pushButton(buttonFunction: .clear)
             }, onRelease: {
                 releaseButton(buttonFunction: .clear)
             })
-            .buttonStyle(FrontPanelButton(width: 65, backgroundColor: .gray))
+            .buttonStyle(FrontPanelButton(width: 65, backgroundColor: osc.clear))
         }
     }
     // MARK: Used for all buttons not a number key

@@ -17,10 +17,10 @@ class OSCHelper: ObservableObject {
     @Published var encoderWheelLabels = ["", "", "", "", ""]
     @Published var encoderWheelValues = ["", "", "", "",""]
     @Published var commandLine = "Command line text"
-    @Published var blind: Float = 0.0
-    @Published var highlight: Float = 0.0
-    @Published var clear: Float = 0.0
-    @Published var macro: Float = 0.0
+    @Published var blind: Color = .gray
+    @Published var highlight: Color = .gray
+    @Published var clear: Color = .gray
+    @Published var macro: Color = .gray
     @Published var kindKeys: [ButtonFunctionNames: Color] = [ButtonFunctionNames.intensity: .gray,
                                                              ButtonFunctionNames.position: .gray,
                                                              ButtonFunctionNames.colour: .gray,
@@ -99,17 +99,6 @@ class OSCHelper: ObservableObject {
                                        Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
                                        Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
                                        Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,]
-
-    //    @Published var flashes: [Float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    //                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    //                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    //                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    //                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    //                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    //                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    //                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    //                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    //                                       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
     @Published var chooses: [Color] = [Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
                                        Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray, Color.gray,
@@ -466,6 +455,24 @@ class OSCHelper: ObservableObject {
 
     func getStatusOfLED(parts: [String], arguments: [OSCArgumentProtocol]) {
         switch parts[3] {
+        case "clear":
+            if arguments[0] as! Float == 0.0 {
+                clear = .gray
+            } else {
+                clear = .red
+            }
+        case "blind":
+            if arguments[0] as! Float == 0.0 {
+                blind = .gray
+            } else {
+                blind = .blue
+            }
+        case "highlight":
+            if arguments[0] as! Float == 0.0 {
+                highlight = .gray
+            } else {
+                highlight = .blue
+            }
         case "choose":
             let masterNumber = Int(parts[4]) ?? 0
             if arguments[0] as! Float == 0.0 {
