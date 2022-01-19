@@ -451,6 +451,8 @@ class OSCHelper: ObservableObject {
                     getStatusOfLED(parts: messageParts, arguments: arguments)
                 case "commandline":
                     commandLine = arguments[0] as! String
+                case let str where str.contains("encoderwheel"):
+                    setEncoderWheel(parts: messageParts, arguments: arguments)
                 case "time":
                     break
                 default:
@@ -500,7 +502,44 @@ class OSCHelper: ObservableObject {
                 flashes[masterNumber] = .red
             }
         default:
-            print(parts)
+            print("NOT FOUND: \(parts) \(arguments)")
+        }
+    }
+
+    func setEncoderWheel(parts: [String], arguments: [OSCArgumentProtocol]) {
+        let isLabel = parts[3] == "label"
+        print(parts)
+        var index = 0
+        switch parts[2] {
+        case "encoderwheel1":
+            index = 0
+        case "encoderwheel2":
+            index = 1
+        case "encoderwheel3":
+            index = 2
+        case "encoderwheel4":
+            index = 3
+        case "encoderwheel5":
+            index = 4
+        default:
+            print("NOT FOUND: \(parts) \(arguments)")
+        }
+        print(arguments)
+        guard let argument = arguments[0] as? String else {
+            return
+        }
+        if isLabel {
+            encoderWheelLabels[index] = argument
+        } else {
+            encoderWheelValues[index] = argument
+        }
+    }
+
+    func setEncoderLabelValue(index: Int, isLabel: Bool, value: String) {
+        if isLabel {
+            encoderWheelLabels[index] = value
+        } else {
+            encoderWheelValues[index] = value
         }
     }
 }
