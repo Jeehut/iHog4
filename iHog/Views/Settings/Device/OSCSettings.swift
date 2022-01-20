@@ -48,6 +48,9 @@ struct OSCSettings: View {
                         toggleOSC()
                     }
             ))
+                .alert(osc.oscErrorDescription, isPresented: $osc.oscErrorOccured){
+                    Button("OK", role: .cancel){}
+                }
         }.onAppear(perform: toggleOSC)
     }
     
@@ -62,8 +65,8 @@ struct OSCSettings: View {
     }
 }
 
-struct OSCSettings_Previews: PreviewProvider {
-    static var previews: some View {
-        OSCSettings()
-    }
-}
+//struct OSCSettings_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OSCSettings()
+//    }
+//}

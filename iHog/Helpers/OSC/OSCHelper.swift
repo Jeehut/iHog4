@@ -14,6 +14,9 @@ class OSCHelper: ObservableObject {
 
     // MARK: Published variables
 
+    @Published var oscErrorOccured = false
+    @Published var oscErrorDescription = ""
+
     @Published var encoderWheelLabels = ["", "", "", "", ""]
     @Published var encoderWheelValues = ["", "", "", "",""]
     @Published var commandLine = "Command line text"
@@ -240,17 +243,25 @@ class OSCHelper: ObservableObject {
         setOSCClientServer()
     }
 
+    func startUDPServer() throws {
+        guard let udpServer = udpServer else {
+            throw OSCErrors.UDPServerNotSet
+        }
+
+        return try udpServer.startListening()
+    }
     func startServer() {
         guard let tcpServer = tcpServer else {
-            guard let udpServer = udpServer else {
-                print("ERROR WITH UDP")
-                return
-            }
             do {
-                print("UDP")
-                try udpServer.startListening()
+                try startUDPServer()
+            } catch OSCErrors.UDPServerNotSet {
+                oscErrorDescription = "Server has not been configured. Make sure to enter an IP address and port numbers."
+                print("UDP Server IS NOT SETUP")
+                oscErrorOccured = true
             } catch {
-                print(error.localizedDescription)
+                oscErrorDescription = error.localizedDescription
+                print("ERROR WITH UDP")
+                oscErrorOccured = true
             }
             return
         }
