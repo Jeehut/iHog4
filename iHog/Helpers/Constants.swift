@@ -66,6 +66,8 @@ enum SettingsNav:Hashable {
 // MARK: SETTING ENUMS
 enum Settings: String {
     case timesLaunched
+    case build
+    case version
     
     case chosenShowID
     

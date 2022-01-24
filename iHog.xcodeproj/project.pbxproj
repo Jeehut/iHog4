@@ -88,6 +88,7 @@
 		370C7C54278E552900DA036B /* OSCHelper+Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370C7C53278E552900DA036B /* OSCHelper+Server.swift */; };
 		3712241D2798CF660063E32D /* HogErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712241C2798CF660063E32D /* HogErrors.swift */; };
 		371F49D6278B3CBB001E7EE1 /* PurchasesHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */; };
+		37970717279ED73F00E15C59 /* NewVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37970716279ED73F00E15C59 /* NewVersionView.swift */; };
 		379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B2C8225CD7CD6007447BB /* CompactFaders.swift */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +205,7 @@
 		370C7C53278E552900DA036B /* OSCHelper+Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSCHelper+Server.swift"; sourceTree = "<group>"; };
 		3712241C2798CF660063E32D /* HogErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogErrors.swift; sourceTree = "<group>"; };
 		371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesHelpers.swift; sourceTree = "<group>"; };
+		37970716279ED73F00E15C59 /* NewVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVersionView.swift; sourceTree = "<group>"; };
 		379B2C8225CD7CD6007447BB /* CompactFaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactFaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -497,6 +499,7 @@
 				15DA26AB251238980063E236 /* SettingsView.swift */,
 				15727F3925D7471400B67505 /* IAPViews.swift */,
 				155A2A8B25E1FE98006EB60E /* About.swift */,
+				37970716279ED73F00E15C59 /* NewVersionView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -788,6 +791,7 @@
 				15D0850C260B656900C4DA58 /* OSCSettings.swift in Sources */,
 				15D07E06251E1B2500A80DC4 /* SelectButtonView.swift in Sources */,
 				15DA2680251237D70063E236 /* Persistence.swift in Sources */,
+				37970717279ED73F00E15C59 /* NewVersionView.swift in Sources */,
 				152EECDA25D56CCF00136CC7 /* PPPurchaseView.swift in Sources */,
 				15D07E0E251E1B7400A80DC4 /* HBCButtonView.swift in Sources */,
 				151E061425E20E3200B3844A /* TipJarView.swift in Sources */,

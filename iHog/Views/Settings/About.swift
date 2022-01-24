@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct About: View {
+    @AppStorage(Settings.build.rawValue) var buildNumber = 125
+    @AppStorage(Settings.version.rawValue) var version = 2022.1
+
     @Binding var selectedSetting: SettingsNav?
     
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
