@@ -143,8 +143,8 @@ class OSCHelper: ObservableObject {
         case fader = "/hog/hardware/fader/"
         case encoderWheelButton = "/hog/hardware/ewheelbutton/"
         case encoderWheel = "/hog/hardware/encoderwheel/"
-        case period = "/hog/hardware/period/"
-        case enter = "/hog/hardware/enter/"
+        case period = "/hog/hardware/period"
+        case enter = "/hog/hardware/enter"
         case status = "/hog/status/"
     }
 
