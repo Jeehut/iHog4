@@ -466,6 +466,30 @@ class OSCHelper: ObservableObject {
                     getStatusOfLED(parts: messageParts, arguments: arguments)
                 case "commandline":
                     commandLine = arguments[0] as! String
+                case "h1":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h1, parts: messageParts, arguments: arguments)
+                case "h2":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h2, parts: messageParts, arguments: arguments)
+                case "h3":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h3, parts: messageParts, arguments: arguments)
+                case "h4":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h4, parts: messageParts, arguments: arguments)
+                case "h5":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h5, parts: messageParts, arguments: arguments)
+                case "h6":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h6, parts: messageParts, arguments: arguments)
+                case "h7":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h7, parts: messageParts, arguments: arguments)
+                case "h8":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h8, parts: messageParts, arguments: arguments)
+                case "h9":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h9, parts: messageParts, arguments: arguments)
+                case "h10":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h10, parts: messageParts, arguments: arguments)
+                case "h11":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h11, parts: messageParts, arguments: arguments)
+                case "h12":
+                    setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames.h12, parts: messageParts, arguments: arguments)
                 case let str where str.contains("encoderwheel"):
                     setEncoderWheel(parts: messageParts, arguments: arguments)
                 case "time":
@@ -576,6 +600,18 @@ class OSCHelper: ObservableObject {
             encoderWheelLabels[index] = value
         } else {
             encoderWheelValues[index] = value
+        }
+    }
+
+    func setStatusOfFunctionKey(funcitonKey: ButtonFunctionNames, parts: [String], arguments: [OSCArgumentProtocol]) {
+        let line = parts[3]
+
+        guard let argument = arguments[0] as? String else { return }
+
+        if line == "line1" {
+            functionKeys[funcitonKey.rawValue]![0] = argument
+        } else {
+            functionKeys[funcitonKey.rawValue]![1] = argument
         }
     }
 
