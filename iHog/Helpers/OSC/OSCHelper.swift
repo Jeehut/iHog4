@@ -402,12 +402,15 @@ class OSCHelper: ObservableObject {
             usleep(1000)
             send(message, arguments: releasedValue)
             usleep(1000)
+            print(message)
         }
 
         message = OSCCommands.hardware.rawValue + objTypeString
         send(message, arguments: pressedValue)
         usleep(1000)
         send(message, arguments: releasedValue)
+        usleep(1000)
+        print(message)
 
         for num in objNumber {
             print(num)
@@ -425,13 +428,18 @@ class OSCHelper: ObservableObject {
                 usleep(1000)
                 send(message, arguments: releasedValue)
             }
+
+            print(message)
         }
+        usleep(1000)
 
         // ENTER
         message = OSCCommands.enter.rawValue
         send(message, arguments: pressedValue)
         usleep(1000)
         send(message, arguments: releasedValue)
+
+        print(message)
     }
 
     func goList(objNumber: String) {
