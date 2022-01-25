@@ -17,37 +17,31 @@ struct NewVersionView: View {
     let appBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as! String
 
     var body: some View {
-        VStack {
-            List {
-                Section {
-                    Text("Focus View")
-                    Text("OSC improvements")
-                } header: {
-                    Text("✅ Enhancements")
-                }
-                Section {
-                    Text("Crash when connect to other device on the network")
-                    Text("Group selection was not working")
-                    Text("Function keys were not receiving labels")
-                    Text("Release notes in app")
-                } header: {
-                    Text("❌ Fixes")
-                }
-                Section {
-                    Text("Thanks for supporting iHog and continuing to use it!").lineLimit(nil)
-                    Button("⭐ Leave a review ⭐") {
-                        let url = URL(string: "itms-apps://itunes.apple.com/app/1487580623")
-                        UIApplication.shared.open(url!)
-                    }.foregroundColor(.primary)
-                    Button("\(Image(systemName: "cup.and.saucer")) Buy Maegan a Coffee") {
-                        let url = URL(string: "itms-apps://itunes.apple.com/app/1487580623")
-                        UIApplication.shared.open(url!)
-                    }.foregroundColor(.primary)
-                } header: {
-                    Text("Support iHog's Development")
-                }
+        VStack(alignment: .leading) {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    Group {
+                        Text("\(Image(systemName: "checkmark.square")) Enhancements")
+                            .font(.headline)
+                            .foregroundColor(Color.green)
+                        Text("Focus View")
+                        Text("OSC improvements")
+                    }
+                    .padding(.bottom)
+
+                    Group {
+                        Text("\(Image(systemName: "x.square")) Fixes")
+                            .font(.headline)
+                            .foregroundColor(Color.red)
+                        Text("Crash when connect to other device on the network")
+                        Text("Group selection was not working")
+                        Text("Function keys were not receiving labels")
+                        Text("Release notes in app")
+                    }
+                    .padding(.bottom)
+                }.frame(maxWidth: .infinity)
             }
-            HStack(spacing: 20)  {
+            HStack  {
                 Button {
                     let url = URL(string: "itms-apps://itunes.apple.com/app/1487580623")
                     UIApplication.shared.open(url!)
@@ -66,18 +60,26 @@ struct NewVersionView: View {
                         Text("A review helps other people find the app and let's Maegan know if they are working in the right direction.")
                             .lineLimit(nil)
                     }
-                    VStack(spacing: 20)  {
-                        Image(systemName: "cup.and.saucer")
-                        Text("Buy Maegan a Coffee")
-                            .font(.headline)
-                            .lineLimit(nil)
-                        Text("Support an solo developer")
-                            .lineLimit(nil)
-                    }
+                    .foregroundColor(.primary)
+                    .padding()
+                    .background(.ultraThickMaterial)
+                    .cornerRadius(5.0)
                 }
-
+                Spacer()
+                VStack(spacing: 20)  {
+                    Image(systemName: "cup.and.saucer")
+                    Text("Buy a Coffee")
+                        .font(.headline)
+                        .lineLimit(nil)
+                    Text("Support a solo developer on their mission to new enhancements and fix bugs.")
+                        .lineLimit(nil)
+                }
+                .padding()
+                .background(.ultraThickMaterial)
+                .cornerRadius(5.0)
             }
-        }.navigationTitle(Text("v\(appVersion) (\(appBuild))"))
-            .navigationBarTitleDisplayMode(.large)
+        }
+        .navigationTitle(Text("v\(appVersion) (\(appBuild))"))
+        .navigationBarTitleDisplayMode(.large)
     }
 }
