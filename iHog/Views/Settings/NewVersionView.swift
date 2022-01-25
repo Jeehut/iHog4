@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Purchases
 
 struct NewVersionView: View {
     @AppStorage(Settings.build.rawValue) var buildNumber = 125
@@ -15,6 +16,10 @@ struct NewVersionView: View {
 
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
     let appBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as! String
+
+    let products = TippingProducts().getProducts()
+
+    @State private var coffeeProduct: Purchases.Package?
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -66,20 +71,47 @@ struct NewVersionView: View {
                     .cornerRadius(5.0)
                 }
                 Spacer()
-                VStack(spacing: 20)  {
-                    Image(systemName: "cup.and.saucer")
-                    Text("Buy a Coffee")
-                        .font(.headline)
-                        .lineLimit(nil)
-                    Text("Support a solo developer on their mission to new enhancements and fix bugs.")
-                        .lineLimit(nil)
+                Button {
+                    Purchases.shared.purchasePackage(coffeeProduct!) { (transaction, purchaserInfo, error, userCancelled) in
+                        print("THANKS FOR SUPPORTING A DEVELOPER")
+                    }
+                } label: {
+                    VStack {
+                        Image(systemName: "cup.and.saucer")
+                            .foregroundColor(.blue)
+                            .padding(.bottom, 10)
+                        Text("Buy a Coffee")
+                            .font(.headline)
+                            .lineLimit(nil)
+                            .padding(.bottom, 10)
+                        if coffeeProduct != nil {
+                            HStack {
+                                Text(coffeeProduct?.localizedPriceString ?? "")
+                                    .padding(.all, 5.0)
+                                    .background(.ultraThickMaterial)
+                            }.background(Color.blue)
+                                .cornerRadius(5.0)
+                                .padding(.bottom, 10)
+                        }
+                        Text("Support a solo developer on their mission to new enhancements and fix bugs.")
+                            .lineLimit(nil)
+                            .padding(.bottom, 10)
+                    }.foregroundColor(.black)
+                    .padding()
+                    .background(.ultraThickMaterial)
+                    .cornerRadius(5.0)
                 }
-                .padding()
-                .background(.ultraThickMaterial)
-                .cornerRadius(5.0)
             }
         }
         .navigationTitle(Text("v\(appVersion) (\(appBuild))"))
         .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            for product in products {
+                print(product.identifier)
+                if product.identifier == "medium" {
+                    coffeeProduct = product
+                }
+            }
+        }
     }
 }
