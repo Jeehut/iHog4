@@ -19,8 +19,10 @@ struct About: View {
         Section(header: Text("About"),
                 footer: Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")){
             Link("\(Image(systemName: "info.circle")) About [iHog Website]", destination: URL(string: "https://ihogapp.com/about")!)
-            Link("\(Image(systemName: "ant")) Report a bug [GitHub Account Required]", destination: URL(string: "https://github.com/maeganwilson/iHog4/issues/new?assignees=maeganwilson&labels=question&template=bug_report.md&title=%5BBUG%5D")!)
-            Link("\(Image(systemName: "lightbulb")) Request a feature [GitHub Account Required]", destination: URL(string: "https://github.com/maeganwilson/iHog4/issues/new?assignees=maeganwilson&labels=question&template=feature_request.md&title=%5BREQUEST%5D")!)
+            NavigationLink("\(Image(systemName: "note.text.badge.plus")) Send Feedback",
+                           destination: UserFeedbackView(),
+                           tag: SettingsNav.userFeedbackView,
+                           selection: $selectedSetting)
             NavigationLink(
                 "\(Image(systemName: "dollarsign.circle")) Tip Jar (\(tip))",
                 destination: TipJarView(),

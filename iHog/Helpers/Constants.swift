@@ -61,6 +61,7 @@ enum SettingsNav:Hashable {
     case custom
     case tipJar
     case oscLogView
+    case userFeedbackView
 }
 
 // MARK: SETTING ENUMS

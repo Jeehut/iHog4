@@ -90,6 +90,7 @@
 		371F49D6278B3CBB001E7EE1 /* PurchasesHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */; };
 		3730E00D27A17B27006FCA5E /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3730E00C27A17B27006FCA5E /* OctoKit */; };
 		3730E00F27A17B8D006FCA5E /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3730E00E27A17B8D006FCA5E /* Secrets.swift */; };
+		3730E01127A17E3A006FCA5E /* UserFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3730E01027A17E3A006FCA5E /* UserFeedbackView.swift */; };
 		379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B2C8225CD7CD6007447BB /* CompactFaders.swift */; };
 /* End PBXBuildFile section */
 
@@ -207,6 +208,7 @@
 		3712241C2798CF660063E32D /* HogErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogErrors.swift; sourceTree = "<group>"; };
 		371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesHelpers.swift; sourceTree = "<group>"; };
 		3730E00E27A17B8D006FCA5E /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		3730E01027A17E3A006FCA5E /* UserFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackView.swift; sourceTree = "<group>"; };
 		379B2C8225CD7CD6007447BB /* CompactFaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactFaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -502,6 +504,7 @@
 				15DA26AB251238980063E236 /* SettingsView.swift */,
 				15727F3925D7471400B67505 /* IAPViews.swift */,
 				155A2A8B25E1FE98006EB60E /* About.swift */,
+				3730E01027A17E3A006FCA5E /* UserFeedbackView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -816,6 +819,7 @@
 				1577808F25D2BDEB009AE8CE /* PPProgramming.swift in Sources */,
 				156893812569B34C00BD6050 /* EditObjectView.swift in Sources */,
 				15DA2677251237D60063E236 /* iHogApp.swift in Sources */,
+				3730E01127A17E3A006FCA5E /* UserFeedbackView.swift in Sources */,
 				15727F3A25D7471400B67505 /* IAPViews.swift in Sources */,
 				15DA26AC251238980063E236 /* SettingsView.swift in Sources */,
 				15F520312514DBA300EF4B98 /* ObjectSettings.swift in Sources */,
