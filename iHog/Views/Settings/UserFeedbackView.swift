@@ -10,7 +10,7 @@ import OctoKit
 
 struct UserFeedbackView: View {
     @State private var title: String = ""
-    @State private var details: String = ""
+    @State private var details: String = "Include any additional information for the feedback."
     @State private var selectedFeedbackType: FeedbackType = .general
 
     let config = TokenConfiguration(Secrets.github.rawValue)
@@ -36,12 +36,6 @@ struct UserFeedbackView: View {
             }
 
             Section {
-                TextEditor(text: $details)
-            } header: {
-                Text("Feedback Details")
-            }
-
-            Section {
                 Picker("Feedback", selection: $selectedFeedbackType) {
                     Text("Issue").tag(FeedbackType.bug)
                     Text("Feature Request").tag(FeedbackType.feature)
@@ -49,6 +43,13 @@ struct UserFeedbackView: View {
                 }.pickerStyle(.menu)
             } header: {
                 Text("Type")
+            }
+
+            Section {
+                TextEditor(text: $details)
+                    .frame(height: 100.0)
+            } header: {
+                Text("Feedback Details")
             }
 
             Section {
