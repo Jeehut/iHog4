@@ -98,8 +98,8 @@ struct UserFeedbackView: View {
             switch response {
             case .success:
                 buttonState = .sent
-            case .failure:
-                print("FAILED")
+            case .failure(let error):
+                print(error)
                 buttonState = .error
             }
         }
