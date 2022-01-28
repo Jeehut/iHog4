@@ -14,19 +14,8 @@ struct UserFeedbackView: View {
     @State private var selectedFeedbackType: FeedbackType = .feature
     @State private var buttonState: ButtonState = .neutral
 
-    let config = TokenConfiguration(Secrets.github.rawValue)
-
     var body: some View {
         Form {
-            VStack(alignment: .leading) {
-                Text("This feedback will be public on the GitHub repo.")
-                Text("Your name and contact information will not be recorded unless you put it in the description.")
-                    .lineLimit(nil)
-            }
-            .listRowBackground(Color.clear)
-            .listRowInsets(.init())
-            .border(.clear, width: 0)
-
             Section {
                 TextField("Summary", text: $title)
             } header: {
@@ -84,18 +73,30 @@ struct UserFeedbackView: View {
         case feature = "enhancement"
     }
 
+    let config = TokenConfiguration(Secrets.github.rawValue)
+
+    let appVersion: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "2022"
+    let appBuild: String = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+
     private func addIssueToGithub() {
         buttonState = .sending
-        details = details
+        let device = UIDevice()
+        var issueBody = "| Auto Gen | Information |\n"
+        issueBody += "|---|---|\n"
+        issueBody += "| Date | \(Date.now) |\n"
+        issueBody += "|App Version| \(appVersion) \(appBuild)|\n"
+        issueBody += "|OS Version| \(device.systemVersion)|\n"
+        issueBody += "|Device Model| \(device.model)|\n"
+        issueBody += "\n" + details + "\n"
+
         Octokit(config).postIssue(owner: "maeganwilson",
                                   repository: "ihogissues",
                                   title: title,
-                                  body: details,
+                                  body: issueBody,
                                   assignee: "maeganwilson",
                                   labels: [selectedFeedbackType.rawValue]) { response in
             switch response {
-            case .success(let issue):
-                print(issue)
+            case .success:
                 buttonState = .sent
             case .failure:
                 print("FAILED")
