@@ -28,6 +28,7 @@ struct SettingsView: View {
     @State var selectedSetting: SettingsNav? = SettingsNav.device
     @State private var isAddingShow: Bool = false
     @State private var totalTipped: Double = 0.0
+    @State var issueSubmitted: Bool? = false
     
     // Format for tips
     static let priceFormatter: NumberFormatter = {
@@ -82,7 +83,7 @@ struct SettingsView: View {
                         NavigationLink("OSC Log", destination: OSCLogView(), tag: SettingsNav.oscLogView, selection: $selectedSetting)
                     }
                     // MARK: ABOUT
-                    About(selectedSetting: $selectedSetting)
+                    About(selectedSetting: $selectedSetting, issueSubmitted: $issueSubmitted)
                 }
                 .listStyle( SidebarListStyle())
                 .blur(radius: isAddingShow ? 2.5 : 0.0)
@@ -93,10 +94,28 @@ struct SettingsView: View {
                             .shadow(radius: DOUBLE_CORNER_RADIUS)
                     }
                 }
+
+                if issueSubmitted! {
+                    VStack {
+                        Text("Feedback Submitted Successfully")
+                            .padding()
+                            .background(Color.green)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(10.0)
+                            .offset(x: 0, y: -100)
+                            .animation(.default, value: issueSubmitted)
+                        Spacer()
+                    }
+                }
             }
         }.navigationViewStyle( DoubleColumnNavigationViewStyle())
+            .navigationTitle("iHog")
+            .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             getTotalTipped()
+            if issueSubmitted! {
+                issueSubmitted?.toggle()
+            }
         }
     }
     

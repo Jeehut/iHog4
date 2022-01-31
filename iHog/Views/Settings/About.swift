@@ -9,6 +9,7 @@ import SwiftUI
 
 struct About: View {
     @Binding var selectedSetting: SettingsNav?
+    @Binding var issueSubmitted: Bool?
     
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     let appBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
@@ -20,7 +21,8 @@ struct About: View {
                 footer: Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")){
             Link("\(Image(systemName: "info.circle")) About [iHog Website]", destination: URL(string: "https://ihogapp.com/about")!)
             NavigationLink("\(Image(systemName: "note.text.badge.plus")) Send Feedback",
-                           destination: UserFeedbackView(selection: $selectedSetting),
+                           destination: UserFeedbackView(selection: $selectedSetting,
+                                                         issueSubmitted: $issueSubmitted),
                            tag: SettingsNav.userFeedbackView,
                            selection: $selectedSetting)
             NavigationLink(

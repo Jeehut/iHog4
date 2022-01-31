@@ -12,6 +12,7 @@ struct UserFeedbackView: View {
     @Environment(\.dismiss) private var dismiss
 
     @Binding var selection: SettingsNav?
+    @Binding var issueSubmitted: Bool?
 
     @State private var title: String = ""
     @State private var details: String = "Include any additional information here."
@@ -117,6 +118,7 @@ struct UserFeedbackView: View {
             case .success:
                 buttonState = .sent
                 selection = SettingsNav.about
+                issueSubmitted = true
             case .failure(let error):
                 print(error)
                 errorText = "No summary given."
@@ -130,7 +132,7 @@ struct UserFeedbackView_Previews: PreviewProvider {
     @State static var settings: SettingsNav? = SettingsNav.userFeedbackView
     static var previews: some View {
         NavigationView {
-            UserFeedbackView(selection: $settings)
+            UserFeedbackView(selection: $settings, issueSubmitted: Binding.constant(false))
         }
     }
 }
