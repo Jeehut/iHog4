@@ -94,7 +94,7 @@ struct UserFeedbackView: View {
         case feature = "enhancement"
     }
 
-    let config = TokenConfiguration(Secrets.github.rawValue)
+    let config = TokenConfiguration(ProcessInfo.processInfo.environment["GitHubAPI"])
 
     let appVersion: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "2022"
     let appBuild: String = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
