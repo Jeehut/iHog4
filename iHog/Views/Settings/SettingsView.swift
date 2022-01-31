@@ -15,6 +15,7 @@ struct SettingsView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
 
     @EnvironmentObject var osc: OSCHelper
+    @EnvironmentObject var toast: ToastNotification
     
     // Gets shows
     @FetchRequest(
@@ -24,7 +25,7 @@ struct SettingsView: View {
     
     // Gets all tips
     @FetchRequest(entity: TipEntity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \TipEntity.dateTipped, ascending: true)]) private var tips: FetchedResults<TipEntity>
-    
+
     @State var selectedSetting: SettingsNav? = SettingsNav.device
     @State private var isAddingShow: Bool = false
     @State private var totalTipped: Double = 0.0
@@ -94,29 +95,13 @@ struct SettingsView: View {
                             .shadow(radius: DOUBLE_CORNER_RADIUS)
                     }
                 }
-
-                if issueSubmitted! {
-                    VStack {
-                        Text("Feedback Submitted Successfully")
-                            .padding()
-                            .background(Color.green)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(10.0)
-                            .offset(x: 0, y: -100)
-                            .animation(.default, value: issueSubmitted)
-                        Spacer()
-                    }
-                }
             }
+            .navigationBarHidden(true)
         }.navigationViewStyle( DoubleColumnNavigationViewStyle())
-            .navigationTitle("iHog")
-            .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            getTotalTipped()
-            if issueSubmitted! {
-                issueSubmitted?.toggle()
+            .onAppear {
+                print("✅ APPEARED")
+                getTotalTipped()
             }
-        }
     }
     
     

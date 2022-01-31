@@ -11,6 +11,8 @@ import OctoKit
 struct UserFeedbackView: View {
     @Environment(\.dismiss) private var dismiss
 
+    @EnvironmentObject var toast: ToastNotification
+
     @Binding var selection: SettingsNav?
     @Binding var issueSubmitted: Bool?
 
@@ -117,12 +119,13 @@ struct UserFeedbackView: View {
             switch response {
             case .success:
                 buttonState = .sent
-                selection = SettingsNav.about
-                issueSubmitted = true
+                toast.animateIn(text: "Feedback submitted", color: Color.green)
+                selection = nil
             case .failure(let error):
                 print(error)
                 errorText = "No summary given."
                 buttonState = .error
+                toast.animateIn(text: "No summary given", color: .red)
             }
         }
     }
@@ -132,7 +135,8 @@ struct UserFeedbackView_Previews: PreviewProvider {
     @State static var settings: SettingsNav? = SettingsNav.userFeedbackView
     static var previews: some View {
         NavigationView {
-            UserFeedbackView(selection: $settings, issueSubmitted: Binding.constant(false))
+            UserFeedbackView(selection: $settings,
+                             issueSubmitted: Binding.constant(false))
         }
     }
 }
