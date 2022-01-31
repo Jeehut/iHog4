@@ -9,6 +9,10 @@ import SwiftUI
 import OctoKit
 
 struct UserFeedbackView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    @Binding var selection: SettingsNav?
+
     @State private var title: String = ""
     @State private var details: String = "Include any additional information here."
     @State private var selectedFeedbackType: FeedbackType = .feature
@@ -24,7 +28,7 @@ struct UserFeedbackView: View {
 
             Section {
                 Picker("Feedback", selection: $selectedFeedbackType) {
-                    Text("Issue").tag(FeedbackType.bug)
+                    Text("Bug").tag(FeedbackType.bug)
                     Text("Feature Request").tag(FeedbackType.feature)
                 }.pickerStyle(.menu)
             } header: {
@@ -39,22 +43,28 @@ struct UserFeedbackView: View {
             }
 
             /// MARK: Submit Button
-            HStack {
-                Button {
-                    addIssueToGithub()
-                } label: {
+            VStack {
+                Button(action: addIssueToGithub) {
                     switch buttonState {
                     case .neutral:
                         Text("\(Image(systemName: "paperplane")) Submit")
+                            .frame(width: 200.0, height: 50.0)
+                            .background(Color.blue)
                     case .error:
                         Text("There is an error submitting the feedback. Please email it to maegan@maeganwilson.com")
                     case .sending:
                         Text("\(Image(systemName: "paperplane.fill")) Sending")
+                            .frame(width: 200.0, height: 50.0)
+                            .background(Color.gray)
                     case .sent:
                         Text("\(Image(systemName: "checkmark")) Submitted")
+                            .frame(width: 200.0, height: 50.0)
+                            .background(Color.green)
                     }
-                }.foregroundColor(.green)
-            }
+                }
+                .foregroundColor(Color.white)
+                .cornerRadius(10.0)
+            }.frame(maxWidth: .infinity)
             .listRowBackground(Color.clear)
             .listRowInsets(.init())
             .border(.clear, width: 0)
@@ -98,6 +108,7 @@ struct UserFeedbackView: View {
             switch response {
             case .success:
                 buttonState = .sent
+                selection = SettingsNav.about
             case .failure(let error):
                 print(error)
                 buttonState = .error
@@ -107,9 +118,10 @@ struct UserFeedbackView: View {
 }
 
 struct UserFeedbackView_Previews: PreviewProvider {
+    @State static var settings: SettingsNav? = SettingsNav.userFeedbackView
     static var previews: some View {
         NavigationView {
-            UserFeedbackView()
+            UserFeedbackView(selection: $settings)
         }
     }
 }

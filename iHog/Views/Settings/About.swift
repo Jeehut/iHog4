@@ -20,7 +20,7 @@ struct About: View {
                 footer: Text("App Version: \(appVersion ?? "N/A") (\(appBuild ?? "N/A"))")){
             Link("\(Image(systemName: "info.circle")) About [iHog Website]", destination: URL(string: "https://ihogapp.com/about")!)
             NavigationLink("\(Image(systemName: "note.text.badge.plus")) Send Feedback",
-                           destination: UserFeedbackView(),
+                           destination: UserFeedbackView(selection: $selectedSetting),
                            tag: SettingsNav.userFeedbackView,
                            selection: $selectedSetting)
             NavigationLink(
