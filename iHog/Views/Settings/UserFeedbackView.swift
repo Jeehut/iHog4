@@ -17,6 +17,7 @@ struct UserFeedbackView: View {
     @State private var details: String = "Include any additional information here."
     @State private var selectedFeedbackType: FeedbackType = .feature
     @State private var buttonState: ButtonState = .neutral
+    @State private var errorText = ""
 
     var body: some View {
         Form {
@@ -51,7 +52,9 @@ struct UserFeedbackView: View {
                             .frame(width: 200.0, height: 50.0)
                             .background(Color.blue)
                     case .error:
-                        Text("There is an error submitting the feedback. Please email it to maegan@maeganwilson.com")
+                        Text("\(Image(systemName: "paperplane")) Submit")
+                            .frame(width: 200.0, height: 50.0)
+                            .background((title.count == 0) ? Color.red : Color.blue)
                     case .sending:
                         Text("\(Image(systemName: "paperplane.fill")) Sending")
                             .frame(width: 200.0, height: 50.0)
@@ -62,8 +65,13 @@ struct UserFeedbackView: View {
                             .background(Color.green)
                     }
                 }
+                .animation(.easeInOut, value: buttonState)
+                .animation(.easeInOut, value: title)
                 .foregroundColor(Color.white)
                 .cornerRadius(10.0)
+
+                Text(errorText)
+                    .foregroundColor(.red)
             }.frame(maxWidth: .infinity)
             .listRowBackground(Color.clear)
             .listRowInsets(.init())
@@ -111,6 +119,7 @@ struct UserFeedbackView: View {
                 selection = SettingsNav.about
             case .failure(let error):
                 print(error)
+                errorText = "No summary given."
                 buttonState = .error
             }
         }
