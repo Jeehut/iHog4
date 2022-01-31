@@ -89,7 +89,6 @@
 		3712241D2798CF660063E32D /* HogErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712241C2798CF660063E32D /* HogErrors.swift */; };
 		371F49D6278B3CBB001E7EE1 /* PurchasesHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */; };
 		3730E00D27A17B27006FCA5E /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3730E00C27A17B27006FCA5E /* OctoKit */; };
-		3730E00F27A17B8D006FCA5E /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3730E00E27A17B8D006FCA5E /* Secrets.swift */; };
 		3730E01127A17E3A006FCA5E /* UserFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3730E01027A17E3A006FCA5E /* UserFeedbackView.swift */; };
 		379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B2C8225CD7CD6007447BB /* CompactFaders.swift */; };
 /* End PBXBuildFile section */
@@ -207,7 +206,6 @@
 		370C7C53278E552900DA036B /* OSCHelper+Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSCHelper+Server.swift"; sourceTree = "<group>"; };
 		3712241C2798CF660063E32D /* HogErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogErrors.swift; sourceTree = "<group>"; };
 		371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesHelpers.swift; sourceTree = "<group>"; };
-		3730E00E27A17B8D006FCA5E /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		3730E01027A17E3A006FCA5E /* UserFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackView.swift; sourceTree = "<group>"; };
 		379B2C8225CD7CD6007447BB /* CompactFaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactFaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -289,7 +287,6 @@
 				158362D825F7AF9600EEC8F7 /* PressAction.swift */,
 				1593AAFF2719A9CA00D8D653 /* Color+Extension.swift */,
 				371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */,
-				3730E00E27A17B8D006FCA5E /* Secrets.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -757,7 +754,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1598BDCB25E2D1BA0060793F /* iHog.xcdatamodeld in Sources */,
-				3730E00F27A17B8D006FCA5E /* Secrets.swift in Sources */,
 				155A2A8C25E1FE98006EB60E /* About.swift in Sources */,
 				379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */,
 				158362D925F7AF9600EEC8F7 /* PressAction.swift in Sources */,
