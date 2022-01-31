@@ -53,16 +53,16 @@ struct iHogApp: App {
                     .environmentObject(osc)
                     .environmentObject(toastNotification)
                 VStack {
+                    Spacer()
                     Text(toastNotification.text)
                         .padding()
                         .background(toastNotification.color)
                         .foregroundColor(Color.white)
                         .cornerRadius(10.0)
-                        .offset(x: 0, y: toastNotification.isShown ? 0 : -100)
+                        .offset(x: 0, y: toastNotification.isShown ? 0 : 100)
                         .animation(.default, value: toastNotification.isShown)
-                    Spacer()
                 }
-            }.onAppear{ print("IS SHOWN TOAST: \(toastNotification.isShown)") }
+            }
 
         }
     }
