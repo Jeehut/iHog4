@@ -2,7 +2,7 @@
 
 An iOS and iPadOS app to control [Hog 4](https://www.etcconnect.com/Products/High-End-Systems/Hog-4-Consoles/) consoles.
 
-v2021.3 has been released!
+v2022.1 is in TestFlight.
 
 # Need support, found a bug, or have a feature request?
 
@@ -19,4 +19,4 @@ Are you wondering how you can support further development? Well, here's how!
 
 # How to run
 
-In order to get feedback from app to github, you must have a Access Token from GitHub. This will need to be inside a `Secrets.swift` file in the `Helpers` folder.
+Add an environment variable for the key `GitHubAPI` and paste the token as the value for the variable.
