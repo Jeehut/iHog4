@@ -2,20 +2,11 @@
   "object": {
     "pins": [
       {
-        "package": "CocoaAsyncSocket",
-        "repositoryURL": "https://github.com/robbiehanson/CocoaAsyncSocket",
+        "package": "CoffeeToast",
+        "repositoryURL": "https://github.com/maeganwilson/CoffeeToast",
         "state": {
           "branch": null,
-          "revision": "dbdc00669c1ced63b27c3c5f052ee4d28f10150c",
-          "version": "7.6.5"
-        }
-      },
-      {
-        "package": "CoreOSC",
-        "repositoryURL": "https://github.com/sammysmallman/CoreOSC",
-        "state": {
-          "branch": null,
-          "revision": "9a8524b3822002e3536528b77008e01a59c2b224",
+          "revision": "479ac368e4164fa9887a88c44546dbe2a6a35ea8",
           "version": "1.0.0"
         }
       },
@@ -26,15 +17,6 @@
           "branch": null,
           "revision": "9521cdff919053868ab13cd08a228f7bc1bde2a9",
           "version": "0.11.0"
-        }
-      },
-      {
-        "package": "OSCKit",
-        "repositoryURL": "https://github.com/SammySmallman/OSCKit",
-        "state": {
-          "branch": null,
-          "revision": "86575430ac1f98d20f36dc03e9c0d458c217f158",
-          "version": "3.0.1"
         }
       },
       {
@@ -53,15 +35,6 @@
           "branch": null,
           "revision": "fd5e9e99aada7432170366c9e95967011ce13bad",
           "version": "2.4.0"
-        }
-      },
-      {
-        "package": "NetUtils",
-        "repositoryURL": "https://github.com/svdo/swift-netutils",
-        "state": {
-          "branch": null,
-          "revision": "776909ce0b37bd9ea1fa0f2156e4e5ad07a592b8",
-          "version": "4.2.0"
         }
       }
     ]

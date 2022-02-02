@@ -47,7 +47,6 @@
 		159F23EE26C35DA9002B3E1F /* ActionKeySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159F23ED26C35DA9002B3E1F /* ActionKeySheet.swift */; };
 		15AB35D9251CC1C5008FC212 /* FPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB35D8251CC1C5008FC212 /* FPButton.swift */; };
 		15AB35DF251CC354008FC212 /* ObjectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB35DE251CC354008FC212 /* ObjectButtonView.swift */; };
-		15BC8EC325BCD59F00309C8B /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 15BC8EC225BCD59F00309C8B /* OSCKit */; };
 		15BE2E5B25C88F35009D8E77 /* iHogUITestsScreenShots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE2E5A25C88F35009D8E77 /* iHogUITestsScreenShots.swift */; };
 		15BE2E6725C88FC7009D8E77 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE2E6625C88FC7009D8E77 /* SnapshotHelper.swift */; };
 		15C0D1FF271D981E0051F16C /* ObjActUtilKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C0D1FE271D981E0051F16C /* ObjActUtilKeys.swift */; };
@@ -90,6 +89,7 @@
 		371F49D6278B3CBB001E7EE1 /* PurchasesHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371F49D5278B3CBB001E7EE1 /* PurchasesHelpers.swift */; };
 		3730E00D27A17B27006FCA5E /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3730E00C27A17B27006FCA5E /* OctoKit */; };
 		3730E01127A17E3A006FCA5E /* UserFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3730E01027A17E3A006FCA5E /* UserFeedbackView.swift */; };
+		377087D727AABFF000B0754A /* CoffeeToast in Frameworks */ = {isa = PBXBuildFile; productRef = 377087D627AABFF000B0754A /* CoffeeToast */; };
 		379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B2C8225CD7CD6007447BB /* CompactFaders.swift */; };
 /* End PBXBuildFile section */
 
@@ -224,9 +224,9 @@
 			files = (
 				15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */,
 				3730E00D27A17B27006FCA5E /* OctoKit in Frameworks */,
-				15BC8EC325BCD59F00309C8B /* OSCKit in Frameworks */,
 				15C8284925FA4B15003FAEFA /* Purchases in Frameworks */,
 				15C8285125FA4B83003FAEFA /* StoreKit.framework in Frameworks */,
+				377087D727AABFF000B0754A /* CoffeeToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,9 +610,9 @@
 			);
 			name = iHog;
 			packageProductDependencies = (
-				15BC8EC225BCD59F00309C8B /* OSCKit */,
 				15C8284825FA4B15003FAEFA /* Purchases */,
 				3730E00C27A17B27006FCA5E /* OctoKit */,
+				377087D627AABFF000B0754A /* CoffeeToast */,
 			);
 			productName = iHog;
 			productReference = 15DA2673251237D60063E236 /* iHog.app */;
@@ -690,9 +690,9 @@
 			);
 			mainGroup = 15DA266A251237D60063E236;
 			packageReferences = (
-				15A316C32588F6BC00A4D67A /* XCRemoteSwiftPackageReference "OSCKit" */,
 				15C8284725FA4B15003FAEFA /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				3730E00B27A17B27006FCA5E /* XCRemoteSwiftPackageReference "octokit" */,
+				377087D527AABFF000B0754A /* XCRemoteSwiftPackageReference "CoffeeToast" */,
 			);
 			productRefGroup = 15DA2674251237D60063E236 /* Products */;
 			projectDirPath = "";
@@ -1207,14 +1207,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		15A316C32588F6BC00A4D67A /* XCRemoteSwiftPackageReference "OSCKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SammySmallman/OSCKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.1;
-			};
-		};
 		15C8284725FA4B15003FAEFA /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
@@ -1231,14 +1223,17 @@
 				minimumVersion = 0.9.0;
 			};
 		};
+		377087D527AABFF000B0754A /* XCRemoteSwiftPackageReference "CoffeeToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maeganwilson/CoffeeToast";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		15BC8EC225BCD59F00309C8B /* OSCKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 15A316C32588F6BC00A4D67A /* XCRemoteSwiftPackageReference "OSCKit" */;
-			productName = OSCKit;
-		};
 		15C8284825FA4B15003FAEFA /* Purchases */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 15C8284725FA4B15003FAEFA /* XCRemoteSwiftPackageReference "purchases-ios" */;
@@ -1248,6 +1243,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3730E00B27A17B27006FCA5E /* XCRemoteSwiftPackageReference "octokit" */;
 			productName = OctoKit;
+		};
+		377087D627AABFF000B0754A /* CoffeeToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 377087D527AABFF000B0754A /* XCRemoteSwiftPackageReference "CoffeeToast" */;
+			productName = CoffeeToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 
