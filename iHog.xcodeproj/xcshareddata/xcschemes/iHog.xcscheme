@@ -91,7 +91,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "GitHubAPI"
-            value = "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"
+            value = ""
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
