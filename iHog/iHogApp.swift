@@ -11,6 +11,7 @@
 import SwiftUI
 import Purchases
 import StoreKit
+import CoffeeToast
 
 class ToastNotification: ObservableObject {
     @Published var isShown = false
@@ -47,23 +48,13 @@ struct iHogApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                SettingsView(selectedSetting: SettingsNav.device)
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .environmentObject(osc)
-                    .environmentObject(toastNotification)
-                VStack {
-                    Spacer()
-                    Text(toastNotification.text)
-                        .padding()
-                        .background(toastNotification.color)
-                        .foregroundColor(Color.white)
-                        .cornerRadius(10.0)
-                        .offset(x: 0, y: toastNotification.isShown ? 0 : 100)
-                        .animation(.default, value: toastNotification.isShown)
-                }
-            }
+            Toast(toastNotification.text, backgroundColor: toastNotification.color, isShown: $toastNotification.isShown) {
 
+                    SettingsView(selectedSetting: SettingsNav.device)
+                        .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                        .environmentObject(osc)
+                        .environmentObject(toastNotification)
+            }
         }
     }
 }

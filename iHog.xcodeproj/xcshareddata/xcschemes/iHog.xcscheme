@@ -88,6 +88,13 @@
             ReferencedContainer = "container:iHog.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "GitHubAPI"
+            value = "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"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

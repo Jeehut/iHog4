@@ -91,6 +91,7 @@
 		3730E01127A17E3A006FCA5E /* UserFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3730E01027A17E3A006FCA5E /* UserFeedbackView.swift */; };
 		377087D727AABFF000B0754A /* CoffeeToast in Frameworks */ = {isa = PBXBuildFile; productRef = 377087D627AABFF000B0754A /* CoffeeToast */; };
 		379B2C8325CD7CD7007447BB /* CompactFaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B2C8225CD7CD6007447BB /* CompactFaders.swift */; };
+		37EAFA9027AF31530092C11E /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 37EAFA8F27AF31530092C11E /* OSCKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15E2D204253F14F900C7A453 /* CloudKit.framework in Frameworks */,
+				37EAFA9027AF31530092C11E /* OSCKit in Frameworks */,
 				3730E00D27A17B27006FCA5E /* OctoKit in Frameworks */,
 				15C8284925FA4B15003FAEFA /* Purchases in Frameworks */,
 				15C8285125FA4B83003FAEFA /* StoreKit.framework in Frameworks */,
@@ -613,6 +615,7 @@
 				15C8284825FA4B15003FAEFA /* Purchases */,
 				3730E00C27A17B27006FCA5E /* OctoKit */,
 				377087D627AABFF000B0754A /* CoffeeToast */,
+				37EAFA8F27AF31530092C11E /* OSCKit */,
 			);
 			productName = iHog;
 			productReference = 15DA2673251237D60063E236 /* iHog.app */;
@@ -693,6 +696,7 @@
 				15C8284725FA4B15003FAEFA /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				3730E00B27A17B27006FCA5E /* XCRemoteSwiftPackageReference "octokit" */,
 				377087D527AABFF000B0754A /* XCRemoteSwiftPackageReference "CoffeeToast" */,
+				37EAFA8E27AF31530092C11E /* XCRemoteSwiftPackageReference "OSCKit" */,
 			);
 			productRefGroup = 15DA2674251237D60063E236 /* Products */;
 			projectDirPath = "";
@@ -1228,7 +1232,15 @@
 			repositoryURL = "https://github.com/maeganwilson/CoffeeToast";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 2.0.0;
+			};
+		};
+		37EAFA8E27AF31530092C11E /* XCRemoteSwiftPackageReference "OSCKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maeganwilson/OSCKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1248,6 +1260,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 377087D527AABFF000B0754A /* XCRemoteSwiftPackageReference "CoffeeToast" */;
 			productName = CoffeeToast;
+		};
+		37EAFA8F27AF31530092C11E /* OSCKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 37EAFA8E27AF31530092C11E /* XCRemoteSwiftPackageReference "OSCKit" */;
+			productName = OSCKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
